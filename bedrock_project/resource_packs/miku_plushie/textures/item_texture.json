@@ -1,0 +1,12 @@
+{
+  "resource_pack_name": "miku_plushie",
+  "texture_data": {
+    "miku:canudinho": { "textures": "textures/items/canudinho" },
+    "miku:baguette": { "textures": "textures/items/baguette" },
+    "miku:leek": { "textures": "textures/items/leek" },
+    "miku:leek_seeds": { "textures": "textures/items/leek_seeds" },
+    "miku:akita_neru_phone": { "textures": "textures/items/akita_neru_phone" },
+    "miku:vocaloid_heart": { "textures": "textures/items/vocaloid_heart" },
+    "miku:teto_pickaxe": { "textures": "textures/items/teto_pickaxe" }
+  }
+}

@@ -1,68 +1,40 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Sample Add-on Pack",
-    "description": "Sample Add-on Behavior Pack",
+    "name": "Miku Plushie",
+    "description": "Adds Hatsune Miku and friends as adorable plushies! Tameable, equippable, and full of personality.",
     "uuid": "1cfc0db2-fd2f-4dce-96ae-bd751f91699e",
-    "version": [
-      1,
-      0,
-      0
-    ],
-    "min_engine_version": [
-      1,
-      26,
-      10
-    ]
+    "version": [2, 0, 0],
+    "min_engine_version": [1, 26, 10]
   },
   "modules": [
     {
-      "description": "Behavior",
-      "version": [
-        1,
-        0,
-        0
-      ],
+      "description": "Behavior Data",
+      "version": [2, 0, 0],
       "uuid": "cc50b29f-243e-41ee-adef-c356161452be",
       "type": "data"
     },
     {
-      "description": "Script resources",
+      "description": "Script Module",
       "language": "javascript",
       "type": "script",
       "uuid": "2807de5c-c8bc-44b9-934a-d6ef7bf6517d",
-      "version": [
-        0,
-        0,
-        1
-      ],
+      "version": [2, 0, 0],
       "entry": "scripts/main.js"
     }
   ],
   "dependencies": [
     {
       "uuid": "a33d0d2a-d82b-4840-8b58-f1a45a767f65",
-      "version": [
-        1,
-        0,
-        0
-      ]
+      "version": [2, 0, 0]
     },
     {
       "module_name": "@minecraft/server",
-      "version": [
-        2,
-        6,
-        0
-      ]
+      "version": [2, 6, 0]
     },
     {
       "module_name": "@minecraft/server-ui",
-      "version": [
-        2,
-        0,
-        0
-      ]
+      "version": [2, 0, 0]
     }
   ]
 }

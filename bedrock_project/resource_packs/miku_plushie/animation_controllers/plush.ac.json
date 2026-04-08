@@ -1,0 +1,106 @@
+{
+  "format_version": "1.12.0",
+  "animation_controllers": {
+    "controller.animation.plush.main": {
+      "initial_state": "spawning",
+      "states": {
+        "spawning": {
+          "animations": ["spawn"],
+          "transitions": [
+            { "idle": "query.life_time > 0.5" }
+          ]
+        },
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [
+            { "sitting": "query.is_sitting" },
+            { "dancing": "variable.is_dancing && !query.is_sitting" },
+            { "attacking": "query.is_delayed_attacking" }
+          ]
+        },
+        "sitting": {
+          "animations": ["sit"],
+          "transitions": [
+            { "sit_dancing": "variable.is_dancing && query.is_sitting" },
+            { "idle": "!query.is_sitting" }
+          ]
+        },
+        "sit_dancing": {
+          "animations": ["sit-dance"],
+          "transitions": [
+            { "sitting": "!variable.is_dancing" },
+            { "idle": "!query.is_sitting" }
+          ]
+        },
+        "dancing": {
+          "animations": ["dance"],
+          "blend_transition": 0.1,
+          "transitions": [
+            { "idle": "!variable.is_dancing" },
+            { "attacking": "query.is_delayed_attacking" }
+          ]
+        },
+        "attacking": {
+          "animations": ["swipe"],
+          "blend_transition": 0.1,
+          "transitions": [
+            { "idle": "!query.is_delayed_attacking" }
+          ]
+        }
+      }
+    },
+    "controller.animation.plush.hair": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["idle"]
+        }
+      }
+    },
+    "controller.animation.miku.eat": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            { "eating": "variable.is_eating" }
+          ]
+        },
+        "eating": {
+          "animations": ["eat"],
+          "transitions": [
+            { "default": "!variable.is_eating" }
+          ]
+        }
+      }
+    },
+    "controller.animation.plush.dance_select": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            { "caramelldansen": "variable.is_dancing && variable.dance_index == 0" },
+            { "miku_dance": "variable.is_dancing && variable.dance_index == 1" },
+            { "ievan_polkka": "variable.is_dancing && variable.dance_index == 2" },
+            { "vegetable_juice": "variable.is_dancing && variable.dance_index == 3" },
+            { "static_dance": "variable.is_dancing && variable.dance_index == 4" }
+          ]
+        },
+        "caramelldansen": {
+          "animations": ["caramelldansen"]
+        },
+        "miku_dance": {
+          "animations": ["miku_dance"]
+        },
+        "ievan_polkka": {
+          "animations": ["ievan-polkka"]
+        },
+        "vegetable_juice": {
+          "animations": ["vegetable-juice"]
+        },
+        "static_dance": {
+          "animations": ["static_dance"]
+        }
+      }
+    }
+  }
+}
