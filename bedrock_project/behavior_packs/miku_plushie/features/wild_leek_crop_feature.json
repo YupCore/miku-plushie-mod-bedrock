@@ -1,0 +1,11 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "miku:wild_leek_crop_feature"
+    },
+    "places_block": "miku:wild_leek_crop",
+    "enforce_survivability_rules": true,
+    "enforce_placement_rules": true
+  }
+}

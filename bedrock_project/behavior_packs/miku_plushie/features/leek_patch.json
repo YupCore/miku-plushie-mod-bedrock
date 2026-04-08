@@ -1,0 +1,23 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "miku:leek_patch"
+    },
+    "places_feature": "miku:wild_leek_crop_feature",
+    "iterations": 8,
+    "scatter_chance": {
+      "numerator": 1,
+      "denominator": 1
+    },
+    "x": {
+      "distribution": "uniform",
+      "extent": [-2, 2]
+    },
+    "y": 0,
+    "z": {
+      "distribution": "uniform",
+      "extent": [-2, 2]
+    }
+  }
+}
