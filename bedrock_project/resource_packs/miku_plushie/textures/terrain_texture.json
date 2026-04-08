@@ -102,6 +102,15 @@
     "miku:kaito_plush": { "textures": "textures/blocks/kaito_plush" },
     "miku:kaito_plush_v3": { "textures": "textures/blocks/kaito_plush_v3" },
     "miku:kaito_plush_v4": { "textures": "textures/blocks/kaito_plush_v4" },
-    "miku:deep_sea_girl": { "textures": "textures/blocks/deep_sea_girl" }
+    "miku:deep_sea_girl": { "textures": "textures/blocks/deep_sea_girl" },
+    "miku:leek_crop_stage0": { "textures": "textures/blocks/leek_crop_stage0" },
+    "miku:leek_crop_stage1": { "textures": "textures/blocks/leek_crop_stage1" },
+    "miku:leek_crop_stage2": { "textures": "textures/blocks/leek_crop_stage2" },
+    "miku:leek_crop_stage3": { "textures": "textures/blocks/leek_crop_stage3" },
+    "miku:leek_crop_stage4": { "textures": "textures/blocks/leek_crop_stage4" },
+    "miku:leek_crop_stage5": { "textures": "textures/blocks/leek_crop_stage5" },
+    "miku:leek_crop_stage6": { "textures": "textures/blocks/leek_crop_stage6" },
+    "miku:leek_crop_stage7": { "textures": "textures/blocks/leek_crop_stage7" },
+    "miku:wild_leek_crop": { "textures": "textures/blocks/leek_crop_stage7" }
   }
 }
