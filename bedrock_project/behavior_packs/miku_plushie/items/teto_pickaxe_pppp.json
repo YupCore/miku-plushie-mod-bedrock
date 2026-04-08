@@ -2,7 +2,11 @@
   "format_version": "1.21.70",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:teto_pickaxe_pppp"
+      "identifier": "miku:teto_pickaxe_pppp",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.pickaxe"
+      }
     },
     "components": {
       "minecraft:icon": "miku:teto_pickaxe_pppp",

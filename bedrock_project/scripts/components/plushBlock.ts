@@ -51,13 +51,8 @@ class PlushBlockComponent implements BlockCustomComponent {
       const isKonoha = character === "konoha";
 
       if (!isKonoha) {
-        const byeSound = `miku.plushie.${character}_bye`;
-        dimension.playSound(byeSound, spawnLocation, {
-          volume: 1,
-          pitch: 1,
-        });
-        dimension.playSound("miku.plushie.miku_bye", spawnLocation, {
-          volume: 1,
+        dimension.playSound("random.totem", spawnLocation, {
+          volume: 0.5,
           pitch: 1,
         });
       }
