@@ -14,6 +14,17 @@
     "miku:leek_crop_stage4": { "textures": "textures/blocks/leek_crop_stage4" },
     "miku:leek_crop_stage5": { "textures": "textures/blocks/leek_crop_stage5" },
     "miku:leek_crop_stage6": { "textures": "textures/blocks/leek_crop_stage6" },
-    "miku:leek_crop_stage7": { "textures": "textures/blocks/leek_crop_stage7" }
+    "miku:leek_crop_stage7": { "textures": "textures/blocks/leek_crop_stage7" },
+    "miku:teto_pickaxe": { "textures": "textures/items/teto_pickaxe" },
+    "miku:teto_pickaxe_mesmerizer": { "textures": "textures/items/teto_pickaxe_mesmerizer" },
+    "miku:teto_pickaxe_birdbrain": { "textures": "textures/items/teto_pickaxe_birdbrain" },
+    "miku:teto_pickaxe_regret_rock": { "textures": "textures/items/teto_pickaxe_regret_rock" },
+    "miku:teto_pickaxe_dont_believe_in_t": { "textures": "textures/items/teto_pickaxe_dont_believe_in_t" },
+    "miku:teto_pickaxe_liar_dancer": { "textures": "textures/items/teto_pickaxe_liar_dancer" },
+    "miku:teto_pickaxe_whatchacallitsname": { "textures": "textures/items/teto_pickaxe_whatchacallitsname" },
+    "miku:teto_pickaxe_some_more_of_that_song": { "textures": "textures/items/teto_pickaxe_some_more_of_that_song" },
+    "miku:teto_pickaxe_synthv": { "textures": "textures/items/teto_pickaxe_synthv" },
+    "miku:teto_pickaxe_spoken_for": { "textures": "textures/items/teto_pickaxe_spoken_for" },
+    "miku:teto_pickaxe_pppp": { "textures": "textures/items/teto_pickaxe_pppp" }
   }
 }

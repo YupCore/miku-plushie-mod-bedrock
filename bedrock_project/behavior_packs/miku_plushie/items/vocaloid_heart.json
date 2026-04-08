@@ -1,0 +1,11 @@
+{
+  "format_version": "1.21.70",
+  "minecraft:item": {
+    "description": {
+      "identifier": "miku:vocaloid_heart"
+    },
+    "components": {
+      "minecraft:icon": "miku:vocaloid_heart"
+    }
+  }
+}
