@@ -1,0 +1,52 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "miku:akita_neru_plush",
+      "materials": {
+        "default": "entity_alphatest",
+        "ghost": "entity_alphablend"
+      },
+      "textures": {
+        "default": "textures/blocks/akita_neru_plush",
+        "tails": "textures/blocks/akita_neru_plush_tails"
+      },
+      "geometry": {
+        "default": "geometry.akita_neru_plush"
+      },
+      "animations": {
+        "idle": "animation.plush.misc.idle",
+        "sit": "animation.plush.misc.sit",
+        "sit_dance": "animation.plush.misc.sit-dance",
+        "spawn": "animation.plush.misc.spawn",
+        "swipe": "animation.plush.attack.swipe",
+        "swipe2": "animation.plush.attack.swipe2",
+        "swipe3": "animation.plush.attack.swipe3",
+        "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
+        "ievan_polkka": "animation.plush.misc.dance.miku.ievan-polkka",
+        "vegetable_juice": "animation.plush.misc.dance.miku.vegetable-juice",
+        "main_controller": "controller.animation.plush.main",
+        "hair_controller": "controller.animation.plush.hair"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller",
+          "hair_controller"
+        ],
+        "variables": {
+          "variable.is_dancing": "public",
+          "variable.dance_index": "public",
+          "variable.health_bend": "public",
+          "variable.variant": "public"
+        }
+      },
+      "render_controllers": [
+        "controller.render.neru_plush"
+      ],
+      "spawn_egg": {
+        "base_color": "#F5A623",
+        "overlay_color": "#8B572A"
+      }
+    }
+  }
+}

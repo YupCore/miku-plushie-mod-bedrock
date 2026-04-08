@@ -1,0 +1,125 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.akita_neru_phone",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "akita_neru_phone",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{
+							"origin": [-0.5, 1, -3.5],
+							"size": [1, 13, 6],
+							"uv": {
+								"north": {"uv": [6, 0], "uv_size": [1, 13]},
+								"east": {"uv": [9, 0], "uv_size": [6, 13]},
+								"south": {"uv": [1, 0], "uv_size": [1, 13]},
+								"west": {"uv": [1, 0], "uv_size": [6, 13]},
+								"up": {"uv": [7, 1], "uv_size": [-6, -1], "uv_rotation": 270},
+								"down": {"uv": [7, 13], "uv_size": [-6, -1], "uv_rotation": 90}
+							}
+						},
+						{
+							"origin": [-0.5, 2, 2.5],
+							"size": [1, 11, 1],
+							"uv": {
+								"north": {"uv": [0, 1], "uv_size": [1, 11]},
+								"east": {"uv": [0, 1], "uv_size": [1, 11]},
+								"south": {"uv": [0, 1], "uv_size": [1, 11]},
+								"west": {"uv": [1, 1], "uv_size": [-1, 11]},
+								"up": {"uv": [1, 2], "uv_size": [-1, -1], "uv_rotation": 270},
+								"down": {"uv": [1, 12], "uv_size": [-1, -1], "uv_rotation": 90}
+							}
+						},
+						{
+							"origin": [-0.5, 2, -4.5],
+							"size": [1, 11, 1],
+							"uv": {
+								"north": {"uv": [7, 1], "uv_size": [1, 11]},
+								"east": {"uv": [7, 1], "uv_size": [1, 11]},
+								"south": {"uv": [7, 1], "uv_size": [1, 11]},
+								"west": {"uv": [8, 1], "uv_size": [-1, 11]},
+								"up": {"uv": [8, 2], "uv_size": [-1, -1], "uv_rotation": 270},
+								"down": {"uv": [8, 12], "uv_size": [-1, -1], "uv_rotation": 90}
+							}
+						}
+					]
+				}
+			],
+			"item_display_transforms": {
+				"thirdperson_righthand": {
+					"rotation": [0, 0, 0],
+					"translation": [0, 3, 1],
+					"scale": [0.55, 0.55, 0.55],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"thirdperson_lefthand": {
+					"rotation": [0, -180, 0],
+					"translation": [0, 3, 1],
+					"scale": [0.55, 0.55, 0.55],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"firstperson_righthand": {
+					"rotation": [-25, 0, 0],
+					"translation": [1.13, 3.2, 1.13],
+					"scale": [0.68, 0.68, 0.68],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"firstperson_lefthand": {
+					"rotation": [-25, -180, 0],
+					"translation": [1.13, 3.2, 1.13],
+					"scale": [0.68, 0.68, 0.68],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"ground": {
+					"rotation": [0, 0, 0],
+					"translation": [0, 2, 0],
+					"scale": [0.5, 0.5, 0.5],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"gui": {
+					"rotation": [0, 90, 0],
+					"translation": [0.5, 0, 0],
+					"scale": [1, 1, 1],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0],
+					"fit_to_frame": false
+				},
+				"head": {
+					"rotation": [0, -180, 0],
+					"translation": [0, 13, 7],
+					"scale": [1, 1, 1],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"fixed": {
+					"rotation": [0, -90, 0],
+					"translation": [0, 0, 0],
+					"scale": [1, 1, 1],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"on_shelf": {
+					"rotation": [0, 90, 0],
+					"translation": [0, 0, 0],
+					"scale": [1, 1, 1],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				}
+			}
+		}
+	]
+}

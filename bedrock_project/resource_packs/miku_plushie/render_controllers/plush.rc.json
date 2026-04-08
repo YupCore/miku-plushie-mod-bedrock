@@ -2,6 +2,80 @@
   "format_version": "1.10.0",
   "render_controllers": {
     "controller.render.miku_plush": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "textures/blocks/miku_plush",
+            "textures/blocks/miku_plush_br",
+            "textures/blocks/miku_plush_br_am",
+            "textures/blocks/miku_plush_br_ba",
+            "textures/blocks/miku_plush_br_ba_drum",
+            "textures/blocks/miku_plush_br_beach",
+            "textures/blocks/miku_plush_br_bik_orange",
+            "textures/blocks/miku_plush_br_braid",
+            "textures/blocks/miku_plush_br_brown_bro",
+            "textures/blocks/miku_plush_br_electrician",
+            "textures/blocks/miku_plush_br_fut_cam",
+            "textures/blocks/miku_plush_br_fut_crvg",
+            "textures/blocks/miku_plush_br_fut_fla",
+            "textures/blocks/miku_plush_br_go",
+            "textures/blocks/miku_plush_br_mg",
+            "textures/blocks/miku_plush_br_pa",
+            "textures/blocks/miku_plush_br_rs",
+            "textures/blocks/miku_plush_br_school_pe",
+            "textures/blocks/miku_plush_br_sp",
+            "textures/blocks/miku_plush_bik",
+            "textures/blocks/deep_sea_girl",
+            "textures/blocks/miku_plush_devil",
+            "textures/blocks/miku_plush_digital_stars_2025",
+            "textures/blocks/miku_plush_dont_believe_in_t",
+            "textures/blocks/miku_plush_fortnite_neko",
+            "textures/blocks/miku_plush_frankenstein",
+            "textures/blocks/miku_plush_frog",
+            "textures/blocks/miku_plush_ghost",
+            "textures/blocks/miku_plush_ghostface",
+            "textures/blocks/miku_plush_hachune",
+            "textures/blocks/miku_plush_helloplanet",
+            "textures/blocks/miku_plush_hollow_knight",
+            "textures/blocks/miku_plush_hornet",
+            "textures/blocks/miku_plush_infinity",
+            "textures/blocks/miku_plush_jason",
+            "textures/blocks/miku_plush_link",
+            "textures/blocks/miku_plush_lucario_z",
+            "textures/blocks/miku_plush_mesmerizer",
+            "textures/blocks/miku_plush_michael_myers",
+            "textures/blocks/miku_plush_mochimochi",
+            "textures/blocks/miku_plush_monitoring",
+            "textures/blocks/miku_plush_mummy",
+            "textures/blocks/miku_plush_mushroom",
+            "textures/blocks/miku_plush_patata",
+            "textures/blocks/miku_plush_patati",
+            "textures/blocks/miku_plush_personadancing",
+            "textures/blocks/miku_plush_pppp",
+            "textures/blocks/miku_plush_psycho_mode",
+            "textures/blocks/miku_plush_pumpkin",
+            "textures/blocks/miku_plush_reindeer",
+            "textures/blocks/miku_plush_renaissance",
+            "textures/blocks/miku_plush_rolling_girl",
+            "textures/blocks/miku_plush_rotten_girl",
+            "textures/blocks/miku_plush_santa",
+            "textures/blocks/miku_plush_santa_elf",
+            "textures/blocks/miku_plush_senbonzakura",
+            "textures/blocks/miku_plush_sonic",
+            "textures/blocks/miku_plush_sonic_crossworlds",
+            "textures/blocks/miku_plush_static",
+            "textures/blocks/miku_plush_synthv",
+            "textures/blocks/miku_plush_uraotomelovers",
+            "textures/blocks/miku_plush_v4",
+            "textures/blocks/miku_plush_vampire",
+            "textures/blocks/miku_plush_werewoman",
+            "textures/blocks/miku_plush_witch",
+            "textures/blocks/miku_plush_world_is_mine",
+            "textures/blocks/miku_plush_xmas_tree",
+            "textures/blocks/miku_plush_zatsune"
+          ]
+        }
+      },
       "geometry": "geometry.default",
       "materials": [
         { "*": "material.default" }
@@ -9,9 +83,209 @@
       "textures": ["array.skins[variable.variant]"]
     },
     "controller.render.miku_plush_ghost": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "textures/blocks/miku_plush",
+            "textures/blocks/miku_plush_br",
+            "textures/blocks/miku_plush_br_am",
+            "textures/blocks/miku_plush_br_ba",
+            "textures/blocks/miku_plush_br_ba_drum",
+            "textures/blocks/miku_plush_br_beach",
+            "textures/blocks/miku_plush_br_bik_orange",
+            "textures/blocks/miku_plush_br_braid",
+            "textures/blocks/miku_plush_br_brown_bro",
+            "textures/blocks/miku_plush_br_electrician",
+            "textures/blocks/miku_plush_br_fut_cam",
+            "textures/blocks/miku_plush_br_fut_crvg",
+            "textures/blocks/miku_plush_br_fut_fla",
+            "textures/blocks/miku_plush_br_go",
+            "textures/blocks/miku_plush_br_mg",
+            "textures/blocks/miku_plush_br_pa",
+            "textures/blocks/miku_plush_br_rs",
+            "textures/blocks/miku_plush_br_school_pe",
+            "textures/blocks/miku_plush_br_sp",
+            "textures/blocks/miku_plush_bik",
+            "textures/blocks/deep_sea_girl",
+            "textures/blocks/miku_plush_devil",
+            "textures/blocks/miku_plush_digital_stars_2025",
+            "textures/blocks/miku_plush_dont_believe_in_t",
+            "textures/blocks/miku_plush_fortnite_neko",
+            "textures/blocks/miku_plush_frankenstein",
+            "textures/blocks/miku_plush_frog",
+            "textures/blocks/miku_plush_ghost",
+            "textures/blocks/miku_plush_ghostface",
+            "textures/blocks/miku_plush_hachune",
+            "textures/blocks/miku_plush_helloplanet",
+            "textures/blocks/miku_plush_hollow_knight",
+            "textures/blocks/miku_plush_hornet",
+            "textures/blocks/miku_plush_infinity",
+            "textures/blocks/miku_plush_jason",
+            "textures/blocks/miku_plush_link",
+            "textures/blocks/miku_plush_lucario_z",
+            "textures/blocks/miku_plush_mesmerizer",
+            "textures/blocks/miku_plush_michael_myers",
+            "textures/blocks/miku_plush_mochimochi",
+            "textures/blocks/miku_plush_monitoring",
+            "textures/blocks/miku_plush_mummy",
+            "textures/blocks/miku_plush_mushroom",
+            "textures/blocks/miku_plush_patata",
+            "textures/blocks/miku_plush_patati",
+            "textures/blocks/miku_plush_personadancing",
+            "textures/blocks/miku_plush_pppp",
+            "textures/blocks/miku_plush_psycho_mode",
+            "textures/blocks/miku_plush_pumpkin",
+            "textures/blocks/miku_plush_reindeer",
+            "textures/blocks/miku_plush_renaissance",
+            "textures/blocks/miku_plush_rolling_girl",
+            "textures/blocks/miku_plush_rotten_girl",
+            "textures/blocks/miku_plush_santa",
+            "textures/blocks/miku_plush_santa_elf",
+            "textures/blocks/miku_plush_senbonzakura",
+            "textures/blocks/miku_plush_sonic",
+            "textures/blocks/miku_plush_sonic_crossworlds",
+            "textures/blocks/miku_plush_static",
+            "textures/blocks/miku_plush_synthv",
+            "textures/blocks/miku_plush_uraotomelovers",
+            "textures/blocks/miku_plush_v4",
+            "textures/blocks/miku_plush_vampire",
+            "textures/blocks/miku_plush_werewoman",
+            "textures/blocks/miku_plush_witch",
+            "textures/blocks/miku_plush_world_is_mine",
+            "textures/blocks/miku_plush_xmas_tree",
+            "textures/blocks/miku_plush_zatsune"
+          ]
+        }
+      },
       "geometry": "geometry.default",
       "materials": [
         { "*": "material.entity_alphablend" }
+      ],
+      "textures": ["array.skins[variable.variant]"]
+    },
+    "controller.render.teto_plush": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "textures/blocks/teto_plush",
+            "textures/blocks/teto_plush_birdbrain",
+            "textures/blocks/teto_plush_dont_believe_in_t",
+            "textures/blocks/teto_plush_liar_dancer",
+            "textures/blocks/teto_plush_lobster",
+            "textures/blocks/teto_plush_mesmerizer",
+            "textures/blocks/teto_plush_pppp",
+            "textures/blocks/teto_plush_regret_rock",
+            "textures/blocks/teto_plush_shadow",
+            "textures/blocks/teto_plush_shrimp",
+            "textures/blocks/teto_plush_some_more_of_that_song",
+            "textures/blocks/teto_plush_spoken_for",
+            "textures/blocks/teto_plush_synthv",
+            "textures/blocks/teto_plush_whatchacallitsname"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["array.skins[variable.variant]"]
+    },
+    "controller.render.neru_plush": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "textures/blocks/akita_neru_plush",
+            "textures/blocks/akita_neru_plush_tails"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["array.skins[variable.variant]"]
+    },
+    "controller.render.aiko_plush": {
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["textures/blocks/aiko_plush"]
+    },
+    "controller.render.rin_plush": {
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["textures/blocks/rin_plush"]
+    },
+    "controller.render.len_plush": {
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["textures/blocks/len_plush"]
+    },
+    "controller.render.konoha_plush": {
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["textures/blocks/konoha_plush"]
+    },
+    "controller.render.luka_plush": {
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["textures/blocks/luka_plush"]
+    },
+    "controller.render.meiko_plush": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "textures/blocks/meiko_plush",
+            "textures/blocks/meiko_plush_v3",
+            "textures/blocks/meiko_plush_v4"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["array.skins[variable.variant]"]
+    },
+    "controller.render.gumi_plush": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "textures/blocks/gumi_plush",
+            "textures/blocks/gumi_plush_v3",
+            "textures/blocks/gumi_plush_v4",
+            "textures/blocks/gumi_plush_v6"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
+      ],
+      "textures": ["array.skins[variable.variant]"]
+    },
+    "controller.render.kaito_plush": {
+      "arrays": {
+        "textures": {
+          "array.skins": [
+            "textures/blocks/kaito_plush",
+            "textures/blocks/kaito_plush_v3",
+            "textures/blocks/kaito_plush_v4"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [
+        { "*": "material.default" }
       ],
       "textures": ["array.skins[variable.variant]"]
     }

@@ -1,0 +1,129 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "miku:miku_plush",
+      "materials": {
+        "default": "entity_alphatest",
+        "ghost": "entity_alphablend"
+      },
+      "textures": {
+        "default": "textures/blocks/miku_plush",
+        "br": "textures/blocks/miku_plush_br",
+        "br_am": "textures/blocks/miku_plush_br_am",
+        "br_ba": "textures/blocks/miku_plush_br_ba",
+        "br_ba_drum": "textures/blocks/miku_plush_br_ba_drum",
+        "br_beach": "textures/blocks/miku_plush_br_beach",
+        "br_bik_orange": "textures/blocks/miku_plush_br_bik_orange",
+        "br_braid": "textures/blocks/miku_plush_br_braid",
+        "br_brown_bro": "textures/blocks/miku_plush_br_brown_bro",
+        "br_electrician": "textures/blocks/miku_plush_br_electrician",
+        "br_fut_cam": "textures/blocks/miku_plush_br_fut_cam",
+        "br_fut_crvg": "textures/blocks/miku_plush_br_fut_crvg",
+        "br_fut_fla": "textures/blocks/miku_plush_br_fut_fla",
+        "br_go": "textures/blocks/miku_plush_br_go",
+        "br_mg": "textures/blocks/miku_plush_br_mg",
+        "br_pa": "textures/blocks/miku_plush_br_pa",
+        "br_rs": "textures/blocks/miku_plush_br_rs",
+        "br_school_pe": "textures/blocks/miku_plush_br_school_pe",
+        "br_sp": "textures/blocks/miku_plush_br_sp",
+        "bik": "textures/blocks/miku_plush_bik",
+        "deep_sea_girl": "textures/blocks/deep_sea_girl",
+        "devil": "textures/blocks/miku_plush_devil",
+        "digital_stars_2025": "textures/blocks/miku_plush_digital_stars_2025",
+        "dont_believe_in_t": "textures/blocks/miku_plush_dont_believe_in_t",
+        "fortnite_neko": "textures/blocks/miku_plush_fortnite_neko",
+        "frankenstein": "textures/blocks/miku_plush_frankenstein",
+        "frog": "textures/blocks/miku_plush_frog",
+        "ghost": "textures/blocks/miku_plush_ghost",
+        "ghostface": "textures/blocks/miku_plush_ghostface",
+        "hachune": "textures/blocks/miku_plush_hachune",
+        "helloplanet": "textures/blocks/miku_plush_helloplanet",
+        "hollow_knight": "textures/blocks/miku_plush_hollow_knight",
+        "hornet": "textures/blocks/miku_plush_hornet",
+        "infinity": "textures/blocks/miku_plush_infinity",
+        "jason": "textures/blocks/miku_plush_jason",
+        "link": "textures/blocks/miku_plush_link",
+        "lucario_z": "textures/blocks/miku_plush_lucario_z",
+        "mesmerizer": "textures/blocks/miku_plush_mesmerizer",
+        "michael_myers": "textures/blocks/miku_plush_michael_myers",
+        "mochimochi": "textures/blocks/miku_plush_mchimochi",
+        "monitoring": "textures/blocks/miku_plush_monitoring",
+        "mummy": "textures/blocks/miku_plush_mummy",
+        "mushroom": "textures/blocks/miku_plush_mushroom",
+        "patata": "textures/blocks/miku_plush_patata",
+        "patati": "textures/blocks/miku_plush_patati",
+        "personadancing": "textures/blocks/miku_plush_personadancing",
+        "pppp": "textures/blocks/miku_plush_pppp",
+        "psycho_mode": "textures/blocks/miku_plush_psycho_mode",
+        "pumpkin": "textures/blocks/miku_plush_pumpkin",
+        "reindeer": "textures/blocks/miku_plush_reindeer",
+        "renaissance": "textures/blocks/miku_plush_renaissance",
+        "rolling_girl": "textures/blocks/miku_plush_rolling_girl",
+        "rotten_girl": "textures/blocks/miku_plush_rotten_girl",
+        "santa": "textures/blocks/miku_plush_santa",
+        "santa_elf": "textures/blocks/miku_plush_santa_elf",
+        "senbonzakura": "textures/blocks/miku_plush_senbonzakura",
+        "sonic": "textures/blocks/miku_plush_sonic",
+        "sonic_crossworlds": "textures/blocks/miku_plush_sonic_crossworlds",
+        "static": "textures/blocks/miku_plush_static",
+        "synthv": "textures/blocks/miku_plush_synthv",
+        "uraotomelovers": "textures/blocks/miku_plush_uraotomelovers",
+        "v4": "textures/blocks/miku_plush_v4",
+        "vampire": "textures/blocks/miku_plush_vampire",
+        "werewoman": "textures/blocks/miku_plush_werewoman",
+        "witch": "textures/blocks/miku_plush_witch",
+        "world_is_mine": "textures/blocks/miku_plush_world_is_mine",
+        "xmas_tree": "textures/blocks/miku_plush_xmas_tree",
+        "zatsune": "textures/blocks/miku_plush_zatsune"
+      },
+      "geometry": {
+        "default": "geometry.miku_plush",
+        "model2": "geometry.miku_plush_2",
+        "model3": "geometry.miku_plush_3"
+      },
+      "animations": {
+        "idle": "animation.plush.misc.idle",
+        "sit": "animation.plush.misc.sit",
+        "sit_dance": "animation.plush.misc.sit-dance",
+        "spawn": "animation.plush.misc.spawn",
+        "swipe": "animation.plush.attack.swipe",
+        "swipe2": "animation.plush.attack.swipe2",
+        "swipe3": "animation.plush.attack.swipe3",
+        "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
+        "miku_dance": "animation.plush.misc.dance.miku.miku",
+        "ievan_polkka": "animation.plush.misc.dance.miku.ievan-polkka",
+        "vegetable_juice": "animation.plush.misc.dance.miku.vegetable-juice",
+        "static_dance": "animation.plush.misc.dance.miku.static",
+        "eat": "animation.plush.misc.eat",
+        "main_controller": "controller.animation.plush.main",
+        "hair_controller": "controller.animation.plush.hair",
+        "eat_controller": "controller.animation.miku.eat",
+        "dance_select": "controller.animation.plush.dance_select"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller",
+          "hair_controller",
+          "eat_controller",
+          "dance_select"
+        ],
+        "variables": {
+          "variable.is_dancing": "public",
+          "variable.dance_index": "public",
+          "variable.is_eating": "public",
+          "variable.health_bend": "public",
+          "variable.variant": "public",
+          "variable.geo_index": "public"
+        }
+      },
+      "render_controllers": [
+        "controller.render.miku_plush"
+      ],
+      "spawn_egg": {
+        "base_color": "#39C5BB",
+        "overlay_color": "#1A8A7D"
+      }
+    }
+  }
+}

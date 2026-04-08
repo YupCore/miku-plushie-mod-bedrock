@@ -1,0 +1,48 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "miku:luka_plush",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/blocks/luka_plush"
+      },
+      "geometry": {
+        "default": "geometry.luka_plush"
+      },
+      "animations": {
+        "idle": "animation.plush.misc.idle",
+        "sit": "animation.plush.misc.sit",
+        "sit_dance": "animation.plush.misc.sit-dance",
+        "spawn": "animation.plush.misc.spawn",
+        "swipe": "animation.plush.attack.swipe",
+        "swipe2": "animation.plush.attack.swipe2",
+        "swipe3": "animation.plush.attack.swipe3",
+        "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
+        "main_controller": "controller.animation.plush.main",
+        "hair_controller": "controller.animation.plush.hair"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller",
+          "hair_controller"
+        ],
+        "variables": {
+          "variable.is_dancing": "public",
+          "variable.dance_index": "public",
+          "variable.health_bend": "public",
+          "variable.variant": "public"
+        }
+      },
+      "render_controllers": [
+        "controller.render.luka_plush"
+      ],
+      "spawn_egg": {
+        "base_color": "#FF6B6B",
+        "overlay_color": "#C71585"
+      }
+    }
+  }
+}

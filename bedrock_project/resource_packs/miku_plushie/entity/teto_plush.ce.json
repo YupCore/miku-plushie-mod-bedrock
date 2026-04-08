@@ -1,0 +1,65 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "miku:teto_plush",
+      "materials": {
+        "default": "entity_alphatest",
+        "ghost": "entity_alphablend"
+      },
+      "textures": {
+        "default": "textures/blocks/teto_plush",
+        "birdbrain": "textures/blocks/teto_plush_birdbrain",
+        "dont_believe_in_t": "textures/blocks/teto_plush_dont_believe_in_t",
+        "liar_dancer": "textures/blocks/teto_plush_liar_dancer",
+        "lobster": "textures/blocks/teto_plush_lobster",
+        "mesmerizer": "textures/blocks/teto_plush_mesmerizer",
+        "pppp": "textures/blocks/teto_plush_pppp",
+        "regret_rock": "textures/blocks/teto_plush_regret_rock",
+        "shadow": "textures/blocks/teto_plush_shadow",
+        "shrimp": "textures/blocks/teto_plush_shrimp",
+        "some_more_of_that_song": "textures/blocks/teto_plush_some_more_of_that_song",
+        "spoken_for": "textures/blocks/teto_plush_spoken_for",
+        "synthv": "textures/blocks/teto_plush_synthv",
+        "whatchacallitsname": "textures/blocks/teto_plush_whatchacallitsname"
+      },
+      "geometry": {
+        "default": "geometry.teto_plush"
+      },
+      "animations": {
+        "idle": "animation.plush.misc.idle",
+        "sit": "animation.plush.misc.sit",
+        "sit_dance": "animation.plush.misc.sit-dance",
+        "spawn": "animation.plush.misc.spawn",
+        "swipe": "animation.plush.attack.swipe",
+        "swipe2": "animation.plush.attack.swipe2",
+        "swipe3": "animation.plush.attack.swipe3",
+        "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
+        "teto_territory": "animation.plush.misc.dance.teto.teto-territory",
+        "birdbrain": "animation.plush.misc.dance.teto.birdbrain",
+        "liar_dancer": "animation.plush.misc.dance.teto.liar-dancer",
+        "main_controller": "controller.animation.plush.main",
+        "hair_controller": "controller.animation.plush.hair"
+      },
+      "scripts": {
+        "animate": [
+          "main_controller",
+          "hair_controller"
+        ],
+        "variables": {
+          "variable.is_dancing": "public",
+          "variable.dance_index": "public",
+          "variable.health_bend": "public",
+          "variable.variant": "public"
+        }
+      },
+      "render_controllers": [
+        "controller.render.teto_plush"
+      ],
+      "spawn_egg": {
+        "base_color": "#D4312E",
+        "overlay_color": "#FF8A80"
+      }
+    }
+  }
+}

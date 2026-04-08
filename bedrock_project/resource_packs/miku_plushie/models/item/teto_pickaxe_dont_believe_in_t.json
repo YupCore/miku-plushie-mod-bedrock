@@ -1,0 +1,9 @@
+{
+  "format_version": "1.21.70",
+  "minecraft:item_model": {
+    "parent": "item/generated",
+    "textures": {
+      "layer0": "textures/items/teto_pickaxe_dont_believe_in_t"
+    }
+  }
+}
