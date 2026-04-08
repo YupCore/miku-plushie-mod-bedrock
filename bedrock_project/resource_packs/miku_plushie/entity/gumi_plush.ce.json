@@ -7,6 +7,7 @@
         "default": "entity_alphatest"
       },
       "textures": {
+        "default": "textures/blocks/gumi_plush",
         "v3": "textures/blocks/gumi_plush_v3",
         "v4": "textures/blocks/gumi_plush_v4",
         "v6": "textures/blocks/gumi_plush_v6"
