@@ -1,7 +1,6 @@
 package com.any.mikuplushie.entity.client.render;
 
 import com.any.mikuplushie.entity.AbstractPlushEntity;
-import com.any.mikuplushie.entity.TetoEntity;
 import com.any.mikuplushie.entity.client.model.AbstractPlushModel;
 import com.any.mikuplushie.registry.ModBlocks;
 import com.any.mikuplushie.util.ModUtil;

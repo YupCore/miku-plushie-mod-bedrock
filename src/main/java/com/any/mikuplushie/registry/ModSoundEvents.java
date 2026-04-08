@@ -1,7 +1,6 @@
 package com.any.mikuplushie.registry;
 
 import com.any.mikuplushie.MikuPlushie;
-import com.any.mikuplushie.entity.KonohaEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
