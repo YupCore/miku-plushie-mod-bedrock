@@ -1,0 +1,37 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:miku_plush_witch"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:miku_plush"
+      },
+      {
+        "item": "minecraft:purple_wool"
+      },
+      {
+        "item": "minecraft:green_wool"
+      },
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "item": "minecraft:wheat"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:miku_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:miku_plush_witch",
+      "count": 1
+    }
+  }
+}

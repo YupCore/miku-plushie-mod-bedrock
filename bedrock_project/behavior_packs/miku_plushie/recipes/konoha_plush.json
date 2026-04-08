@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "miku:konoha_plush"
+    },
+    "tags": ["crafting_table"],
+    "pattern": [
+      "121",
+      "323"
+    ],
+    "key": {
+      "1": {
+        "item": "minecraft:white_wool"
+      },
+      "2": {
+        "item": "minecraft:light_gray_wool"
+      },
+      "3": {
+        "item": "minecraft:lime_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:light_gray_wool"
+      },
+      {
+        "item": "minecraft:lime_wool"
+      }
+    ],
+    "result": {
+      "item": "miku:konoha_plush",
+      "count": 1
+    }
+  }
+}

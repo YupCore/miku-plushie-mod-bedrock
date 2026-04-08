@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "miku:canudinho"
+    },
+    "tags": ["crafting_table"],
+    "pattern": [
+      "p",
+      "p"
+    ],
+    "key": {
+      "p": {
+        "item": "minecraft:paper"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:paper"
+      }
+    ],
+    "result": {
+      "item": "miku:canudinho",
+      "count": 1
+    }
+  }
+}

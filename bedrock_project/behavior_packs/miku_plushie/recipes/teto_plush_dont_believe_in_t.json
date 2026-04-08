@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:teto_plush_dont_believe_in_t"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:teto_plush"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:red_wool"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:teto_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:teto_plush_dont_believe_in_t",
+      "count": 1
+    }
+  }
+}

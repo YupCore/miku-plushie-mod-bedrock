@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "miku:meiko_plush"
+    },
+    "tags": ["crafting_table"],
+    "pattern": [
+      "121",
+      "3  "
+    ],
+    "key": {
+      "1": {
+        "item": "minecraft:brown_wool"
+      },
+      "2": {
+        "item": "minecraft:white_wool"
+      },
+      "3": {
+        "item": "minecraft:red_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:brown_wool"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:red_wool"
+      }
+    ],
+    "result": {
+      "item": "miku:meiko_plush",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:teto_plush_shrimp"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:teto_plush"
+      },
+      {
+        "item": "minecraft:kelp"
+      },
+      {
+        "item": "minecraft:kelp"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:teto_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:teto_plush_shrimp",
+      "count": 1
+    }
+  }
+}

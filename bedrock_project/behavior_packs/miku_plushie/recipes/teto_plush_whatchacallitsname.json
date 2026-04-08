@@ -1,0 +1,37 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:teto_plush_whatchacallitsname"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:teto_plush"
+      },
+      {
+        "item": "minecraft:glass"
+      },
+      {
+        "item": "minecraft:glass"
+      },
+      {
+        "item": "minecraft:red_wool"
+      },
+      {
+        "item": "minecraft:orange_wool"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:teto_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:teto_plush_whatchacallitsname",
+      "count": 1
+    }
+  }
+}

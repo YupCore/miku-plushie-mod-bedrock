@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:miku_plush_infinity"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:miku_plush"
+      },
+      {
+        "item": "minecraft:ender_eye"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:miku_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:miku_plush_infinity",
+      "count": 1
+    }
+  }
+}

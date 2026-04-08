@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:miku_plush_br_pa"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:miku_plush"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:cornflower"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:miku_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:miku_plush_br_pa",
+      "count": 1
+    }
+  }
+}

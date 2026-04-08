@@ -1,0 +1,47 @@
+{
+  "format_version": "1.21.70",
+  "minecraft:economy_trade_table": {
+    "description": {
+      "identifier": "miku:farmer_leek_trades"
+    },
+    "tiers": [
+      {
+        "tier": 1,
+        "trades": [
+          {
+            "min_num_deals": 2,
+            "max_num_deals": 4,
+            "wants": [
+              {
+                "item": "minecraft:emerald",
+                "quantity": 1
+              }
+            ],
+            "gives": [
+              {
+                "item": "miku:leek_seeds",
+                "quantity": 3
+              }
+            ]
+          },
+          {
+            "min_num_deals": 2,
+            "max_num_deals": 4,
+            "wants": [
+              {
+                "item": "miku:leek",
+                "quantity": 16
+              }
+            ],
+            "gives": [
+              {
+                "item": "minecraft:emerald",
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

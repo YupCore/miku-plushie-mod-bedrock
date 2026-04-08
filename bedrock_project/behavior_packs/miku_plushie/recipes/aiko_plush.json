@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "miku:aiko_plush"
+    },
+    "tags": ["crafting_table"],
+    "pattern": [
+      "121",
+      "131"
+    ],
+    "key": {
+      "1": {
+        "item": "minecraft:blue_wool"
+      },
+      "2": {
+        "item": "minecraft:white_wool"
+      },
+      "3": {
+        "item": "minecraft:green_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:blue_wool"
+      },
+      {
+        "item": "minecraft:white_wool"
+      },
+      {
+        "item": "minecraft:green_wool"
+      }
+    ],
+    "result": {
+      "item": "miku:aiko_plush",
+      "count": 1
+    }
+  }
+}

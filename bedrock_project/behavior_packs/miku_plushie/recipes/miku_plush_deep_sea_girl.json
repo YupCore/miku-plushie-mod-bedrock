@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:miku_plush_deep_sea_girl"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:miku_plush"
+      },
+      {
+        "item": "minecraft:tube_coral"
+      },
+      {
+        "item": "minecraft:bubble_coral"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:miku_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:miku_plush_deep_sea_girl",
+      "count": 1
+    }
+  }
+}

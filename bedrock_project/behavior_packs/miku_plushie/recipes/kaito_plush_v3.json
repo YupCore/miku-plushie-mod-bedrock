@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:kaito_plush_v3"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:kaito_plush"
+      },
+      {
+        "item": "minecraft:iron_ingot"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:kaito_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:kaito_plush_v3",
+      "count": 1
+    }
+  }
+}

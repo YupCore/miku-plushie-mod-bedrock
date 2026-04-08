@@ -1,0 +1,34 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "miku:teto_pickaxe_whatchacallitsname"
+    },
+    "tags": ["crafting_table"],
+    "pattern": [
+      "121",
+      " T ",
+      " T "
+    ],
+    "key": {
+      "1": {
+        "item": "minecraft:diamond"
+      },
+      "2": {
+        "item": "miku:teto_plush_whatchacallitsname"
+      },
+      "T": {
+        "item": "minecraft:stick"
+      }
+    },
+    "unlock": [
+      {
+        "item": "miku:teto_plush_whatchacallitsname"
+      }
+    ],
+    "result": {
+      "item": "miku:teto_pickaxe_whatchacallitsname",
+      "count": 1
+    }
+  }
+}

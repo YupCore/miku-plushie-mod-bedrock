@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "miku:rin_plush"
+    },
+    "tags": ["crafting_table"],
+    "pattern": [
+      "121",
+      "121"
+    ],
+    "key": {
+      "1": {
+        "item": "minecraft:yellow_wool"
+      },
+      "2": {
+        "item": "minecraft:white_wool"
+      }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:yellow_wool"
+      },
+      {
+        "item": "minecraft:white_wool"
+      }
+    ],
+    "result": {
+      "item": "miku:rin_plush",
+      "count": 1
+    }
+  }
+}

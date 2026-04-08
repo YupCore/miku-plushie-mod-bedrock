@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:miku_plush_devil"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:miku_plush"
+      },
+      {
+        "item": "minecraft:magma_block"
+      },
+      {
+        "item": "minecraft:netherrack"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:miku_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:miku_plush_devil",
+      "count": 1
+    }
+  }
+}
