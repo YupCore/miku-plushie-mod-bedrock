@@ -2,7 +2,11 @@
   "format_version": "1.21.70",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:leek_seeds"
+      "identifier": "miku:leek_seeds",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.seed"
+      }
     },
     "components": {
       "minecraft:icon": "miku:leek_seeds",

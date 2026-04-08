@@ -1,0 +1,18 @@
+{
+  "pack": {
+    "pack_format": 45,
+    "version": [1, 0, 0]
+  },
+  "subpacks": [
+    {
+      "folder_name": "legacy_textures",
+      "display_name": "Legacy Textures",
+      "description": "Alternative block textures for the Miku Plushie mod."
+    },
+    {
+      "folder_name": "en_us_dub",
+      "display_name": "English Voice Dub",
+      "description": "English voice lines for the Miku Plushie mod."
+    }
+  ]
+}

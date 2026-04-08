@@ -2,7 +2,11 @@
   "format_version": "1.21.70",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:baguette"
+      "identifier": "miku:baguette",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.crop"
+      }
     },
     "components": {
       "minecraft:icon": "miku:baguette",

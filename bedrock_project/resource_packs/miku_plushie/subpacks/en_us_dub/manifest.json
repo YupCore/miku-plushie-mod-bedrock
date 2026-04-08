@@ -1,0 +1,33 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Miku Plushie: English Dub",
+    "description": "English voice lines for the Miku Plushie mod. Enable via resource pack settings.",
+    "uuid": "e85fa2b6-1d93-5c74-9fa1-b40d2e8c7352",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 10]
+  },
+  "modules": [
+    {
+      "description": "English Dub Resources",
+      "type": "resources",
+      "uuid": "f96cb3c1-2ea4-5d85-0fb2-c51e3f9d8463",
+      "version": [1, 0, 0]
+    },
+    {
+      "description": "English Dub Subpack",
+      "type": "resources",
+      "uuid": "0a7dc4d2-3fb5-6e96-1fc3-d62f4g0e9564",
+      "version": [1, 0, 0]
+    }
+  ],
+  "subpack": {
+    "group_name": "Miku Plushie Voice Options",
+    "entries": {
+      "en_us_dub": {
+        "folder": "sounds",
+        "display_name": "English Voice Dub"
+      }
+    }
+  }
+}

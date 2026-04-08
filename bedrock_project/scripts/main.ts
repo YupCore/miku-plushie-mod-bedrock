@@ -11,7 +11,7 @@ import { startSpawnAgeTracker } from "./systems/spawnAgeTracker";
 import { startVariantSyncSystem } from "./systems/variantSync";
 import { startSpawnMikusCommand } from "./commands/spawnMikus";
 
-console.log("[Miku Plushie] Initializing Script API systems...");
+console.log("[Miku Plushie] Miku is now Joining Bedrock Edition!!!");
 
 try {
   registerPlushBlockComponent();
@@ -80,3 +80,4 @@ world.afterEvents.worldLoad.subscribe(() => {
 });
 
 console.log("[Miku Plushie] All systems initialized successfully!");
+console.log("[Miku Plushie] Miku: (^v^)/ Hi!!!");
