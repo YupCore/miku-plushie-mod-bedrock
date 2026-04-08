@@ -1,0 +1,265 @@
+{
+  "format_version": "1.21.70",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "miku:miku_plush",
+      "is_summonable": true,
+      "is_spawnable": true,
+      "is_experimental": false,
+      "properties": {
+        "miku:variant": {
+          "type": "int",
+          "range": [0, 66],
+          "default": 0,
+          "client_sync": true
+        },
+        "miku:spawn_age": {
+          "type": "int",
+          "range": [0, 10],
+          "default": 0,
+          "client_sync": true
+        },
+        "miku:is_dancing": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "miku:dance_index": {
+          "type": "int",
+          "range": [0, 4],
+          "default": 0,
+          "client_sync": true
+        },
+        "miku:is_eating": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "component_groups": {
+      "miku:wild": {
+        "minecraft:tameable": {
+          "probability": 1.0,
+          "tame_items": ["miku:leek"],
+          "on_tame": {
+            "event": "miku:on_tame",
+            "target": "self"
+          }
+        }
+      },
+      "miku:tamed": {
+        "minecraft:is_tamed": {},
+        "minecraft:sittable": {},
+        "minecraft:behavior.follow_owner": {
+          "priority": 4,
+          "speed_multiplier": 1.0,
+          "start_distance": 5.0,
+          "stop_distance": 1.0
+        }
+      },
+      "miku:standing": {
+        "minecraft:behavior.avoid_mob_type": {
+          "priority": 7,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  { "test": "is_family", "value": "creeper" }
+                ]
+              },
+              "max_dist": 6.0,
+              "sprint_speed_multiplier": 1.2
+            }
+          ]
+        }
+      },
+      "miku:sitting": {
+        "minecraft:is_sitting": {},
+        "minecraft:behavior.sitting": {
+          "priority": 1
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["plush", "creature"]
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:attack": {
+        "damage": 2.0
+      },
+      "minecraft:movement": {
+        "value": 0.3
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.0
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/miku_plush.json"
+      },
+      "minecraft:navigation.walk": {
+        "can_walk": true,
+        "can_pass_doors": true,
+        "can_open_doors": false,
+        "avoid_sun": false,
+        "avoid_water": false
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.delayed_attack": {
+        "priority": 2,
+        "speed_multiplier": 1.5,
+        "attack_once": false,
+        "track_target": true,
+        "reach_multiplier": 1.0,
+        "hit_delay_pct": 0.25
+      },
+      "minecraft:behavior.tempt": {
+        "priority": 6,
+        "speed_multiplier": 1.5,
+        "items": ["miku:leek"]
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 8,
+        "look_distance": 8.0,
+        "probability": 0.02
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 9,
+        "look_distance": 8.0,
+        "look_time": [2.0, 4.0]
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 3,
+        "entity_types": [
+          {
+            "filters": {
+              "none_of": [
+                { "test": "is_family", "subject": "other", "value": "plush" },
+                { "test": "is_family", "subject": "other", "value": "creeper" },
+                { "test": "is_family", "subject": "other", "value": "ghast" }
+              ]
+            },
+            "max_dist": 32
+          }
+        ]
+      },
+      "minecraft:behavior.owner_hurt_by_target": {
+        "priority": 1,
+        "entity_types": [
+          {
+            "filters": {
+              "none_of": [
+                { "test": "is_family", "subject": "other", "value": "plush" },
+                { "test": "is_family", "subject": "other", "value": "creeper" },
+                { "test": "is_family", "subject": "other", "value": "ghast" }
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:behavior.owner_hurt_target": {
+        "priority": 2,
+        "entity_types": [
+          {
+            "filters": {
+              "none_of": [
+                { "test": "is_family", "subject": "other", "value": "plush" },
+                { "test": "is_family", "subject": "other", "value": "creeper" },
+                { "test": "is_family", "subject": "other", "value": "ghast" }
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:shareables": {
+        "items": [
+          {
+            "item": "minecraft:wooden_sword",
+            "want_amount": 1,
+            "surplus_amount": 1
+          },
+          {
+            "item": "minecraft:stone_sword",
+            "want_amount": 1,
+            "surplus_amount": 1
+          },
+          {
+            "item": "minecraft:iron_sword",
+            "want_amount": 1,
+            "surplus_amount": 1
+          },
+          {
+            "item": "minecraft:diamond_sword",
+            "want_amount": 1,
+            "surplus_amount": 1
+          },
+          {
+            "item": "minecraft:netherite_sword",
+            "want_amount": 1,
+            "surplus_amount": 1
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:persistent": {},
+      "minecraft:born_event": {},
+      "minecraft:interact": {
+        "on_interact": {
+          "event": "miku:toggle_sit"
+        }
+      }
+    },
+    "events": {
+      "miku:on_tame": {
+        "remove": {
+          "component_groups": ["miku:wild"]
+        },
+        "add": {
+          "component_groups": ["miku:tamed"]
+        },
+        "run_command": {
+          "command": ["playsound miku.plushie.miku_oie @s ~ ~ ~ 1.0 1.0"]
+        }
+      },
+      "miku:toggle_sit": {
+        "run_command": {
+          "command": [
+            "function miku/toggle_sit"
+          ]
+        }
+      },
+      "miku:start_sitting": {
+        "add": {
+          "component_groups": ["miku:sitting"]
+        },
+        "remove": {
+          "component_groups": ["miku:standing"]
+        }
+      },
+      "miku:stop_sitting": {
+        "add": {
+          "component_groups": ["miku:standing"]
+        },
+        "remove": {
+          "component_groups": ["miku:sitting"]
+        }
+      }
+    }
+  }
+}

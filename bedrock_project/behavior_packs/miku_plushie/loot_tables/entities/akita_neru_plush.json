@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "miku:akita_neru_plush",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}
