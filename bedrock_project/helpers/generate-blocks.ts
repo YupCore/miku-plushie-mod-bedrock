@@ -4,6 +4,7 @@ import * as path from "path";
 const BP_DIR = path.join(__dirname, "..", "behavior_packs", "miku_plushie");
 const BLOCKS_DIR = path.join(BP_DIR, "blocks");
 const LOOT_TABLES_DIR = path.join(BP_DIR, "loot_tables", "blocks");
+const RP_DIR = path.join(__dirname, "..", "resource_packs", "miku_plushie");
 
 interface PlushBlockDef {
   blockId: string;
@@ -353,10 +354,9 @@ function ensureDir(dir: string) {
 function generatePlushBlockJson(block: PlushBlockDef): object {
   const fullBlockId = `miku:${block.blockId}`;
   const renderMethod = block.isGhost ? "blend" : "alpha_test";
-  const soundGroup = block.isGhost ? "glass" : "cloth";
 
   return {
-    format_version: "1.21.70",
+    format_version: "1.26.10",
     "minecraft:block": {
       description: {
         identifier: fullBlockId,
@@ -377,28 +377,27 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
           },
         },
         "minecraft:collision_box": {
-          origin: [-4, 0, -4],
-          size: [8, 14, 8],
+          origin: [-3.5, 0, -3.5],
+          size: [7, 13.5, 7],
         },
         "minecraft:selection_box": {
-          origin: [-4, 0, -4],
-          size: [8, 14, 8],
+          origin: [-3.5, 0, -3.5],
+          size: [7, 13.5, 7],
         },
         "minecraft:destructible_by_mining": {
-          seconds_to_destroy: 0.5,
+          seconds_to_destroy: 0,
         },
         "minecraft:destructible_by_explosion": {
           explosion_resistance: 0,
         },
         "minecraft:loot": `loot_tables/blocks/${block.blockId}.json`,
-        "minecraft:map_color": "#FFFFFF",
+        "minecraft:map_color": "#8E3A24",
         "minecraft:light_dampening": 0,
         "minecraft:light_emission": 0,
         "minecraft:placement_filter": {
           conditions: [
             {
-              allowed_faces: ["up", "side"],
-              block_filter: [],
+              allowed_faces: ["up"],
             },
           ],
         },
@@ -450,9 +449,25 @@ function generatePlushLootTable(block: PlushBlockDef): object {
   };
 }
 
+function generateRpBlocksJson(): object {
+  const blocksSounds: Record<string, { sound: string }> = {};
+
+  for (const block of PLUSH_BLOCKS) {
+    const fullBlockId = `miku:${block.blockId}`;
+    const soundGroup = block.isGhost ? "glass" : "cloth";
+    blocksSounds[fullBlockId] = { sound: soundGroup };
+  }
+
+  return {
+    format_version: "1.19.30",
+    ...blocksSounds,
+  };
+}
+
 function generateBlocks() {
   ensureDir(BLOCKS_DIR);
   ensureDir(LOOT_TABLES_DIR);
+  ensureDir(RP_DIR);
 
   console.log("Generating plush block JSONs...");
 
@@ -467,7 +482,13 @@ function generateBlocks() {
     fs.writeFileSync(lootPath, JSON.stringify(lootJson, null, 2));
   }
 
-  console.log(`\nGenerated ${PLUSH_BLOCKS.length} plush blocks with loot tables.`);
+  console.log("\nGenerating RP blocks.json for sounds...");
+  const rpBlocksJson = generateRpBlocksJson();
+  const rpBlocksPath = path.join(RP_DIR, "blocks.json");
+  fs.writeFileSync(rpBlocksPath, JSON.stringify(rpBlocksJson, null, 2));
+  console.log(`  Created: blocks.json`);
+
+  console.log(`\nGenerated ${PLUSH_BLOCKS.length} plush blocks with loot tables and sounds.`);
   console.log("Block generation complete!");
 }
 

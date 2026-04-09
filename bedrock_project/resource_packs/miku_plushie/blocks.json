@@ -1,0 +1,300 @@
+{
+  "format_version": "1.19.30",
+  "miku:miku_plush": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_ba": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_bik": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_beach": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_braid": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_ba_drum": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_pa": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_sp": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_mg": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_brown_bro": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_electrician": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_bik_orange": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_am": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_fut_fla": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_fut_cam": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_go": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_school_pe": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_fut_crvg": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_br_rs": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_frog": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_mushroom": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_senbonzakura": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_uraotomelovers": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_personadancing": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_helloplanet": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_hachune": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_zatsune": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_infinity": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_vampire": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_werewoman": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_jason": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_michael_myers": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_pumpkin": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_ghostface": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_frankenstein": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_mummy": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_ghost": {
+    "sound": "glass"
+  },
+  "miku:miku_plush_patati": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_patata": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_devil": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_witch": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_santa": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_reindeer": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_santa_elf": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_xmas_tree": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_sonic_crossworlds": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_fortnite_neko": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_v4": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_mesmerizer": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_sonic": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_psycho_mode": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_dont_believe_in_t": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_static": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_mochimochi": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_monitoring": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_digital_stars_2025": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_rotten_girl": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_hollow_knight": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_hornet": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_world_is_mine": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_rolling_girl": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_deep_sea_girl": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_lucario_z": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_pppp": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_link": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_renaissance": {
+    "sound": "cloth"
+  },
+  "miku:miku_plush_bik": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_mesmerizer": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_shadow": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_birdbrain": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_regret_rock": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_dont_believe_in_t": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_liar_dancer": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_whatchacallitsname": {
+    "sound": "glass"
+  },
+  "miku:teto_plush_some_more_of_that_song": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_lobster": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_synthv": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_pppp": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_shrimp": {
+    "sound": "cloth"
+  },
+  "miku:teto_plush_spoken_for": {
+    "sound": "cloth"
+  },
+  "miku:akita_neru_plush": {
+    "sound": "cloth"
+  },
+  "miku:akita_neru_plush_tails": {
+    "sound": "cloth"
+  },
+  "miku:aiko_plush": {
+    "sound": "cloth"
+  },
+  "miku:rin_plush": {
+    "sound": "cloth"
+  },
+  "miku:len_plush": {
+    "sound": "cloth"
+  },
+  "miku:konoha_plush": {
+    "sound": "cloth"
+  },
+  "miku:luka_plush": {
+    "sound": "cloth"
+  },
+  "miku:meiko_plush": {
+    "sound": "cloth"
+  },
+  "miku:meiko_plush_v3": {
+    "sound": "cloth"
+  },
+  "miku:meiko_plush_v4": {
+    "sound": "cloth"
+  },
+  "miku:gumi_plush": {
+    "sound": "cloth"
+  },
+  "miku:gumi_plush_v3": {
+    "sound": "cloth"
+  },
+  "miku:gumi_plush_v4": {
+    "sound": "cloth"
+  },
+  "miku:gumi_plush_v6": {
+    "sound": "cloth"
+  },
+  "miku:kaito_plush": {
+    "sound": "cloth"
+  },
+  "miku:kaito_plush_v3": {
+    "sound": "cloth"
+  },
+  "miku:kaito_plush_v4": {
+    "sound": "cloth"
+  }
+}
