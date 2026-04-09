@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:miku_plush_michael_myers_helmet_to_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:miku_plush_michael_myers_helmet"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:miku_plush_michael_myers_helmet"
+      }
+    ],
+    "result": {
+      "item": "miku:miku_plush_michael_myers",
+      "count": 1
+    }
+  }
+}

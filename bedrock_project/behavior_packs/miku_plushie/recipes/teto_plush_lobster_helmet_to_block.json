@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:teto_plush_lobster_helmet_to_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:teto_plush_lobster_helmet"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:teto_plush_lobster_helmet"
+      }
+    ],
+    "result": {
+      "item": "miku:teto_plush_lobster",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:teto_plush_regret_rock_helmet_from_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:teto_plush_regret_rock"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:teto_plush_regret_rock"
+      }
+    ],
+    "result": {
+      "item": "miku:teto_plush_regret_rock_helmet",
+      "count": 1
+    }
+  }
+}

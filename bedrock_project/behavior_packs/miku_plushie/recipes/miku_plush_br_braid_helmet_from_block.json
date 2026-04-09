@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:miku_plush_br_braid_helmet_from_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:miku_plush_br_braid"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:miku_plush_br_braid"
+      }
+    ],
+    "result": {
+      "item": "miku:miku_plush_br_braid_helmet",
+      "count": 1
+    }
+  }
+}

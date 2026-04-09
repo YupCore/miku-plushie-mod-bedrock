@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:meiko_plush_v4_helmet_from_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:meiko_plush_v4"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:meiko_plush_v4"
+      }
+    ],
+    "result": {
+      "item": "miku:meiko_plush_v4_helmet",
+      "count": 1
+    }
+  }
+}

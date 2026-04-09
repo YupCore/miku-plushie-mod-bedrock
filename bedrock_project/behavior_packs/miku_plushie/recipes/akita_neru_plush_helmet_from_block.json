@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:akita_neru_plush_helmet_from_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:akita_neru_plush"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:akita_neru_plush"
+      }
+    ],
+    "result": {
+      "item": "miku:akita_neru_plush_helmet",
+      "count": 1
+    }
+  }
+}

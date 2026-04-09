@@ -1,0 +1,14 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.plush_helmet.transform": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"scale": 0.35,
+					"position": [0, 28, 0]
+				}
+			}
+		}
+	}
+}

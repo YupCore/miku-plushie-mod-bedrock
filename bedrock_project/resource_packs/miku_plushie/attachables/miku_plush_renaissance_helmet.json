@@ -1,0 +1,28 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "miku:miku_plush_renaissance_helmet",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/blocks/miku_plush_renaissance"
+      },
+      "geometry": {
+        "default": "geometry.miku_plush"
+      }
+    },
+    "scripts": {
+      "animate": [
+        "helmet_transform"
+      ]
+    },
+    "animations": {
+      "helmet_transform": "animation.plush_helmet.transform"
+    },
+    "render_controllers": [
+      "controller.render.plush_helmet"
+    ]
+  }
+}

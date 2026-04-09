@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "miku:miku_plush_digital_stars_2025_helmet_to_block"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "miku:miku_plush_digital_stars_2025_helmet"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "miku:miku_plush_digital_stars_2025_helmet"
+      }
+    ],
+    "result": {
+      "item": "miku:miku_plush_digital_stars_2025",
+      "count": 1
+    }
+  }
+}
