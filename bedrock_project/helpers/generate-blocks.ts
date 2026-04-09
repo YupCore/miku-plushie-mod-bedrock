@@ -253,6 +253,7 @@ const PLUSH_BLOCKS: PlushBlockDef[] = [
     geometry: "geometry.miku_plush",
     character: "miku",
   },
+  { blockId: "miku_plush_bik", entityType: "miku:miku_plush", geometry: "geometry.miku_plush", character: "miku" },
 
   // Teto plush variants
   { blockId: "teto_plush", entityType: "miku:teto_plush", geometry: "geometry.teto_plush", character: "teto" },
@@ -367,6 +368,7 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
         },
       },
       components: {
+        "miku:plush_block": {},
         "minecraft:geometry": block.geometry,
         "minecraft:material_instances": {
           "*": {

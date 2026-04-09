@@ -136,12 +136,7 @@ export function getVariantIndex(blockId: string): number {
 export function getEntityTypeFromBlock(blockId: string): string {
   const cleanId = blockId.replace("miku:", "");
 
-  for (const variant of MIKU_VARIANTS) {
-    if (cleanId.startsWith("miku_plush")) {
-      return "miku:miku_plush";
-    }
-  }
-
+  if (cleanId.startsWith("miku_plush")) return "miku:miku_plush";
   if (cleanId.startsWith("teto_plush")) return "miku:teto_plush";
   if (cleanId.startsWith("akita_neru_plush")) return "miku:akita_neru_plush";
   if (cleanId.startsWith("aiko_plush")) return "miku:aiko_plush";

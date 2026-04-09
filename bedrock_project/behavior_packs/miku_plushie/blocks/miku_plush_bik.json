@@ -2,7 +2,7 @@
   "format_version": "1.21.70",
   "minecraft:block": {
     "description": {
-      "identifier": "miku:miku_plush_br_electrician",
+      "identifier": "miku:miku_plush_bik",
       "traits": {
         "minecraft:placement_direction": {
           "enabled_states": [
@@ -17,7 +17,7 @@
       "minecraft:geometry": "geometry.miku_plush",
       "minecraft:material_instances": {
         "*": {
-          "texture": "miku:miku_plush_br_electrician",
+          "texture": "miku:miku_plush_bik",
           "render_method": "alpha_test"
         }
       },
@@ -51,7 +51,7 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 0
       },
-      "minecraft:loot": "loot_tables/blocks/miku_plush_br_electrician.json",
+      "minecraft:loot": "loot_tables/blocks/miku_plush_bik.json",
       "minecraft:map_color": "#FFFFFF",
       "minecraft:light_dampening": 0,
       "minecraft:light_emission": 0,

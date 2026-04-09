@@ -76,8 +76,7 @@ export function startMikuEatLeekSystem(): void {
         continue;
       }
 
-      const isSitting = miku.getComponent("minecraft:is_sitting");
-      if (isSitting) continue;
+      if (miku.getTags().includes("miku_sitting")) continue;
 
       const pos = miku.location;
       const leekPos = findNearbyLeekCrop(overworld, pos);

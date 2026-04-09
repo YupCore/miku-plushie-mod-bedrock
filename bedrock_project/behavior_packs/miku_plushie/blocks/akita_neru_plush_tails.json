@@ -13,6 +13,7 @@
       }
     },
     "components": {
+      "miku:plush_block": {},
       "minecraft:geometry": "geometry.akita_neru_plush",
       "minecraft:material_instances": {
         "*": {

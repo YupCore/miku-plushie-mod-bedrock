@@ -13,10 +13,11 @@ export function startSpawnAgeTracker(): void {
 
     let age = 0;
     const entityId = entity.id;
+    const dimId = entity.dimension.id;
 
     const intervalId = system.runInterval(() => {
       const currentEntity = world
-        .getDimension("overworld")
+        .getDimension(dimId)
         .getEntities({ type: entity.typeId })
         .find((e) => e.id === entityId);
 

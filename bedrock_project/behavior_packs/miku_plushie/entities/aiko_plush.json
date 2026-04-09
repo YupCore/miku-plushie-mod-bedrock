@@ -38,22 +38,22 @@
           ],
           "default": 0,
           "client_sync": true
+        },
+        "miku:is_eating": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "miku:health_bend": {
+          "type": "float",
+          "range": [-25.0, 0.0],
+          "default": 0.0,
+          "client_sync": true
         }
       }
     },
     "component_groups": {
-      "miku:wild": {
-        "minecraft:tameable": {
-          "probability": 1,
-          "tame_items": [
-            "miku:leek"
-          ],
-          "tame_event": {
-            "event": "miku:on_tame",
-            "target": "self"
-          }
-        }
-      },
+      "miku:wild": {},
       "miku:tamed": {
         "minecraft:is_tamed": {},
         "minecraft:sittable": {},
@@ -68,6 +68,16 @@
       "miku:sitting": {}
     },
     "components": {
+      "minecraft:tameable": {
+        "probability": 1,
+        "tame_items": [
+          "miku:leek"
+        ],
+        "tame_event": {
+          "event": "miku:on_tame",
+          "target": "self"
+        }
+      },
       "minecraft:type_family": {
         "family": [
           "plush",
@@ -242,14 +252,16 @@
         ]
       },
       "minecraft:nameable": {},
-      "minecraft:despawn": {
-        "despawn_from_distance": {}
-      },
       "minecraft:persistent": {},
       "minecraft:interact": {
         "interactions": [
           {
             "on_interact": {
+              "filters": {
+                "test": "has_component",
+                "subject": "self",
+                "value": "minecraft:is_tamed"
+              },
               "event": "miku:toggle_sit"
             }
           }

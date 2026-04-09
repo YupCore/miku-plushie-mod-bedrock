@@ -3,11 +3,7 @@ import { PLUSH_ENTITIES } from "../utils/plush_registry";
 import { getCharacterFromEntity, playPlushSound } from "../utils/sounds";
 
 function isEntityOnGround(entity: Entity): boolean {
-  try {
-    return (entity as any).isOnGround ?? true;
-  } catch {
-    return true;
-  }
+  return entity.isOnGround;
 }
 
 export function startPlushInteractionSystem(): void {
@@ -24,10 +20,8 @@ export function startPlushInteractionSystem(): void {
     if (!isEntityOnGround(target)) return;
 
     const tameable = target.getComponent("minecraft:tameable");
-    if (!tameable) return;
-
-    const owner = (tameable as any).owner;
-    if (!owner || owner.id !== player.id) return;
+    if (!tameable?.isTamed) return;
+    if (tameable.tamedToPlayerId !== player.id) return;
 
     const equippable = player.getComponent("minecraft:equippable");
     const mainhand = equippable?.getEquipmentSlot(EquipmentSlot.Mainhand);
@@ -85,7 +79,5 @@ export function startPlushInteractionSystem(): void {
         return;
       }
     }
-
-    target.triggerEvent("miku:toggle_sit");
   });
 }

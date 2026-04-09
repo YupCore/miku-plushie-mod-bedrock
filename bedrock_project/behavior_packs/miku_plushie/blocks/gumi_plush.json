@@ -13,6 +13,7 @@
       }
     },
     "components": {
+      "miku:plush_block": {},
       "minecraft:geometry": "geometry.gumi_plush",
       "minecraft:material_instances": {
         "*": {
