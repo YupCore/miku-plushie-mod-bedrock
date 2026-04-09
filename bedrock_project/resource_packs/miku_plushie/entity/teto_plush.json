@@ -1,11 +1,10 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.12.0",
   "minecraft:client_entity": {
     "description": {
       "identifier": "miku:teto_plush",
       "materials": {
-        "default": "entity_alphatest",
-        "ghost": "entity_alphablend"
+        "default": "entity_alphatest"
       },
       "textures": {
         "default": "textures/blocks/teto_plush",
@@ -35,17 +34,19 @@
         "swipe2": "animation.plush.attack.swipe2",
         "swipe3": "animation.plush.attack.swipe3",
         "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
-        "teto_territory": "animation.plush.misc.dance.teto.teto-territory",
+        "teto_territory": "animation.plush.misc.dance.teto.teto_territory",
         "birdbrain": "animation.plush.misc.dance.teto.birdbrain",
-        "liar_dancer": "animation.plush.misc.dance.teto.liar-dancer",
+        "liar_dancer": "animation.plush.misc.dance.teto.liar_dancer",
         "walk": "animation.plush.procedural.walk",
         "main_controller": "controller.animation.plush.main",
-        "hair_controller": "controller.animation.plush.hair"
+        "hair_controller": "controller.animation.plush.hair",
+        "dance_select": "controller.animation.teto.dance_select"
       },
       "scripts": {
         "animate": [
           "main_controller",
-          "hair_controller"
+          "hair_controller",
+          "dance_select"
         ],
         "variables": {
           "variable.is_dancing": "public",

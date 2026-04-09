@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.12.0",
   "minecraft:client_entity": {
     "description": {
       "identifier": "miku:miku_plush",
@@ -92,8 +92,8 @@
         "swipe3": "animation.plush.attack.swipe3",
         "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
         "miku_dance": "animation.plush.misc.dance.miku.miku",
-        "ievan_polkka": "animation.plush.misc.dance.miku.ievan-polkka",
-        "vegetable_juice": "animation.plush.misc.dance.miku.vegetable-juice",
+        "ievan_polkka": "animation.plush.misc.dance.miku.ievan_polkka",
+        "vegetable_juice": "animation.plush.misc.dance.miku.vegetable_juice",
         "static_dance": "animation.plush.misc.dance.miku.static",
         "eat": "animation.plush.misc.eat",
         "walk": "animation.plush.procedural.walk",

@@ -33,7 +33,6 @@
           ]
         },
         "dancing": {
-          "animations": ["dance"],
           "blend_transition": 0.1,
           "transitions": [
             { "idle": "!v.is_dancing" },
@@ -52,9 +51,7 @@
     "controller.animation.plush.hair": {
       "initial_state": "default",
       "states": {
-        "default": {
-          "animations": ["idle"]
-        }
+        "default": {}
       }
     },
     "controller.animation.miku.eat": {
@@ -86,19 +83,71 @@
           ]
         },
         "caramelldansen": {
-          "animations": ["caramelldansen"]
+          "animations": ["caramelldansen"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
         },
         "miku_dance": {
-          "animations": ["miku_dance"]
+          "animations": ["miku_dance"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
         },
         "ievan_polkka": {
-          "animations": ["ievan_polkka"]
+          "animations": ["ievan_polkka"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
         },
         "vegetable_juice": {
-          "animations": ["vegetable_juice"]
+          "animations": ["vegetable_juice"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
         },
         "static_dance": {
-          "animations": ["static_dance"]
+          "animations": ["static_dance"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
+        }
+      }
+    },
+    "controller.animation.teto.dance_select": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            { "caramelldansen": "v.is_dancing && v.dance_index == 0" },
+            { "teto_territory": "v.is_dancing && v.dance_index == 1" },
+            { "birdbrain": "v.is_dancing && v.dance_index == 2" },
+            { "liar_dancer": "v.is_dancing && v.dance_index == 3" }
+          ]
+        },
+        "caramelldansen": {
+          "animations": ["caramelldansen"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
+        },
+        "teto_territory": {
+          "animations": ["teto_territory"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
+        },
+        "birdbrain": {
+          "animations": ["birdbrain"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
+        },
+        "liar_dancer": {
+          "animations": ["liar_dancer"],
+          "transitions": [
+            { "default": "!v.is_dancing" }
+          ]
         }
       }
     }

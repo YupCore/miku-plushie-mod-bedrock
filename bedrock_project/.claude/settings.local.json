@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Read(//tmp/**)",
-      "Bash(grep -E \"^\\\\.$|^[A-Za-z]\")"
+      "Bash(grep -E \"^\\\\.$|^[A-Za-z]\")",
+      "Bash(find /d/source/miku-plushie-mod-bedrock/src -name \"*.java\" -exec grep -l \"JukeboxBlock\\\\|game\\\\.getJukeboxManager\\\\|WorldEvents\\\\|ServerGamePacketListenerImpl\" {} \\\\;)",
+      "Bash(find /d/source/miku-plushie-mod-bedrock -name \"*.java\" -exec grep -l \"JukeboxBlockEntity\\\\|JukeboxPlayMusicEvent\\\\|PlaySoundC2SPacket\\\\|music\\\\|setNearbySongPlaying\" {} \\\\;)",
+      "Bash(xargs grep:*)",
+      "Bash(grep \"Entity.java$\")",
+      "mcp__tavily__tavily_extract",
+      "mcp__microsoft-learn__microsoft_docs_search"
     ]
   }
 }

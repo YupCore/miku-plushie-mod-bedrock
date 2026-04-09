@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.12.0",
   "minecraft:client_entity": {
     "description": {
       "identifier": "miku:rin_plush",
@@ -21,6 +21,7 @@
         "swipe2": "animation.plush.attack.swipe2",
         "swipe3": "animation.plush.attack.swipe3",
         "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
+        "walk": "animation.plush.procedural.walk",
         "main_controller": "controller.animation.plush.main",
         "hair_controller": "controller.animation.plush.hair"
       },
