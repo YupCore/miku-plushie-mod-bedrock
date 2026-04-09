@@ -47,6 +47,21 @@ export function startPlushInteractionSystem(): void {
       return;
     }
 
+    if (playerItem?.typeId === "miku:canudinho") {
+      const character = getCharacterFromEntity(target.typeId);
+      playPlushSound(target, character, "canudinho", 1, 1);
+
+      const isCreative = player.getGameMode() === GameMode.Creative;
+      if (!isCreative) {
+        if (mainhand!.amount > 1) {
+          mainhand!.amount--;
+        } else {
+          mainhand!.setItem(undefined);
+        }
+      }
+      return;
+    }
+
     const healthComponent = target.getComponent("minecraft:health");
     if (healthComponent && healthComponent.currentValue < healthComponent.effectiveMax) {
       if (mainhand?.typeId === "miku:leek") {

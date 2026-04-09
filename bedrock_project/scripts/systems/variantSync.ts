@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+import { world, system } from "@minecraft/server";
 import { PLUSH_ENTITIES } from "../utils/plushRegistry";
 
 export function startVariantSyncSystem(): void {
@@ -13,4 +13,19 @@ export function startVariantSyncSystem(): void {
     entity.setProperty("miku:dance_index", 0);
     entity.setProperty("miku:is_eating", false);
   });
+
+  system.runInterval(() => {
+    for (const entity of world.getAllPlayers()) {
+      for (const plush of PLUSH_ENTITIES) {
+        for (const miku of entity.dimension.getEntities({ type: plush })) {
+          const health = miku.getComponent("minecraft:health");
+          if (health) {
+            const healthFactor = health.currentValue / health.effectiveMax;
+            const healthBend = (healthFactor - 1) * 25;
+            miku.setProperty("miku:health_bend", healthBend);
+          }
+        }
+      }
+    }
+  }, 10);
 }

@@ -104,6 +104,17 @@ export function startMikuEatLeekSystem(): void {
         state.timer = EAT_TIMER_TOTAL;
         state.targetPos = leekPos;
         miku.setProperty("miku:is_eating", true);
+
+        miku.lookAt({
+          x: leekPos.x + 0.5,
+          y: leekPos.y + 0.5,
+          z: leekPos.z + 0.5,
+        });
+
+        miku.dimension.playSound("miku.plushie.miku_nom", miku.location, {
+          volume: 1,
+          pitch: 1,
+        });
       }
 
       if (state.eating && state.timer > 0) {
@@ -117,6 +128,14 @@ export function startMikuEatLeekSystem(): void {
           miku.dimension.playSound("miku.plushie.miku_eat", miku.location, {
             volume: 1,
             pitch: 1,
+          });
+        }
+
+        if (state.timer % 5 === 0 && state.timer > 10) {
+          miku.dimension.spawnParticle("minecraft:crop_growth_emitter", {
+            x: miku.location.x + (Math.random() - 0.5) * 0.5,
+            y: miku.location.y + 0.3,
+            z: miku.location.z + (Math.random() - 0.5) * 0.5,
           });
         }
 
