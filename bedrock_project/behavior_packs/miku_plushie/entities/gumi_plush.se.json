@@ -26,14 +26,14 @@
         },
         "miku:dance_index": {
           "type": "int",
-          "range": [0, 0],
+          "range": [0, 1],
           "default": 0,
           "client_sync": true
         },
         "miku:health_bend": {
           "type": "float",
-          "range": [-25, 0],
-          "default": 0,
+          "range": [-25.0, 0.0],
+          "default": 0.0,
           "client_sync": true
         }
       }

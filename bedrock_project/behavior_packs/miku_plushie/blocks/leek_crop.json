@@ -50,7 +50,7 @@
         "seconds_to_destroy": 0
       },
       "minecraft:destructible_by_explosion": {
-        "explosions_resistant": false
+        "explosion_resistance": 0
       },
       "minecraft:loot": "loot_tables/blocks/leek_crop.json",
       "minecraft:collision_box": {
@@ -96,9 +96,7 @@
         "can_survate_on_interaction": false,
         "interaction_fertilize_type": "bonemeal"
       },
-      "minecraft:light_dampening": 0,
-      "minecraft:physics": false,
-      "minecraft:air_physical": true
+      "minecraft:light_dampening": 0
     },
     "permutations": [
       {

@@ -18,7 +18,7 @@
         "seconds_to_destroy": 0
       },
       "minecraft:destructible_by_explosion": {
-        "explosions_resistant": false
+        "explosion_resistance": 0
       },
       "minecraft:loot": "loot_tables/blocks/wild_leek_crop.json",
       "minecraft:collision_box": {
@@ -71,9 +71,7 @@
           }
         ]
       },
-      "minecraft:light_dampening": 0,
-      "minecraft:physics": false,
-      "minecraft:air_physical": true
+      "minecraft:light_dampening": 0
     }
   }
 }

@@ -52,7 +52,7 @@ function generateLeekCropBlock(): object {
           seconds_to_destroy: 0.0,
         },
         "minecraft:destructible_by_explosion": {
-          explosions_resistant: false,
+          explosion_resistance: 0,
         },
         "minecraft:loot": "loot_tables/blocks/leek_crop.json",
         "minecraft:collision_box": {
@@ -77,8 +77,6 @@ function generateLeekCropBlock(): object {
           interaction_fertilize_type: "bonemeal",
         },
         "minecraft:light_dampening": 0,
-        "minecraft:physics": false,
-        "minecraft:air_physical": true,
       },
       permutations: growthStages.flatMap(({ stage, height }) => [
         {
@@ -189,7 +187,7 @@ function generateWildLeekCropBlock(): object {
           seconds_to_destroy: 0.0,
         },
         "minecraft:destructible_by_explosion": {
-          explosions_resistant: false,
+          explosion_resistance: 0,
         },
         "minecraft:loot": "loot_tables/blocks/wild_leek_crop.json",
         "minecraft:collision_box": {
@@ -213,8 +211,6 @@ function generateWildLeekCropBlock(): object {
           ],
         },
         "minecraft:light_dampening": 0,
-        "minecraft:physics": false,
-        "minecraft:air_physical": true,
       },
     },
   };
