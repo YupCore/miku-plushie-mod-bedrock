@@ -1,129 +1,80 @@
 {
   "resource_pack_name": "miku_plushie",
   "texture_data": {
-    "miku:canudinho": { "textures": "textures/items/canudinho" },
-    "miku:baguette": { "textures": "textures/items/baguette" },
-    "miku:leek": { "textures": "textures/items/leek" },
-    "miku:leek_seeds": { "textures": "textures/items/leek_seeds" },
-    "miku:akita_neru_phone": { "textures": "textures/items/akita_neru_phone" },
-    "miku:vocaloid_heart": { "textures": "textures/items/vocaloid_heart" },
-    "miku:leek_crop_stage0": { "textures": "textures/blocks/leek_crop_stage0" },
-    "miku:leek_crop_stage1": { "textures": "textures/blocks/leek_crop_stage1" },
-    "miku:leek_crop_stage2": { "textures": "textures/blocks/leek_crop_stage2" },
-    "miku:leek_crop_stage3": { "textures": "textures/blocks/leek_crop_stage3" },
-    "miku:leek_crop_stage4": { "textures": "textures/blocks/leek_crop_stage4" },
-    "miku:leek_crop_stage5": { "textures": "textures/blocks/leek_crop_stage5" },
-    "miku:leek_crop_stage6": { "textures": "textures/blocks/leek_crop_stage6" },
-    "miku:leek_crop_stage7": { "textures": "textures/blocks/leek_crop_stage7" },
-    "miku:teto_pickaxe": { "textures": "textures/items/teto_pickaxe" },
-    "miku:teto_pickaxe_mesmerizer": { "textures": "textures/items/teto_pickaxe_mesmerizer" },
-    "miku:teto_pickaxe_birdbrain": { "textures": "textures/items/teto_pickaxe_birdbrain" },
-    "miku:teto_pickaxe_regret_rock": { "textures": "textures/items/teto_pickaxe_regret_rock" },
-    "miku:teto_pickaxe_dont_believe_in_t": { "textures": "textures/items/teto_pickaxe_dont_believe_in_t" },
-    "miku:teto_pickaxe_liar_dancer": { "textures": "textures/items/teto_pickaxe_liar_dancer" },
-    "miku:teto_pickaxe_whatchacallitsname": { "textures": "textures/items/teto_pickaxe_whatchacallitsname" },
-    "miku:teto_pickaxe_some_more_of_that_song": { "textures": "textures/items/teto_pickaxe_some_more_of_that_song" },
-    "miku:teto_pickaxe_synthv": { "textures": "textures/items/teto_pickaxe_synthv" },
-    "miku:teto_pickaxe_spoken_for": { "textures": "textures/items/teto_pickaxe_spoken_for" },
-    "miku:teto_pickaxe_pppp": { "textures": "textures/items/teto_pickaxe_pppp" },
-    "miku:miku_plush_helmet": { "textures": "textures/blocks/miku_plush" },
-    "miku:miku_plush_br_helmet": { "textures": "textures/blocks/miku_plush_br" },
-    "miku:miku_plush_br_am_helmet": { "textures": "textures/blocks/miku_plush_br_am" },
-    "miku:miku_plush_br_ba_helmet": { "textures": "textures/blocks/miku_plush_br_ba" },
-    "miku:miku_plush_br_ba_drum_helmet": { "textures": "textures/blocks/miku_plush_br_ba_drum" },
-    "miku:miku_plush_br_beach_helmet": { "textures": "textures/blocks/miku_plush_br_beach" },
-    "miku:miku_plush_br_bik_orange_helmet": { "textures": "textures/blocks/miku_plush_br_bik_orange" },
-    "miku:miku_plush_br_braid_helmet": { "textures": "textures/blocks/miku_plush_br_braid" },
-    "miku:miku_plush_br_brown_bro_helmet": { "textures": "textures/blocks/miku_plush_br_brown_bro" },
-    "miku:miku_plush_br_electrician_helmet": { "textures": "textures/blocks/miku_plush_br_electrician" },
-    "miku:miku_plush_br_fut_cam_helmet": { "textures": "textures/blocks/miku_plush_br_fut_cam" },
-    "miku:miku_plush_br_fut_crvg_helmet": { "textures": "textures/blocks/miku_plush_br_fut_crvg" },
-    "miku:miku_plush_br_fut_fla_helmet": { "textures": "textures/blocks/miku_plush_br_fut_fla" },
-    "miku:miku_plush_br_go_helmet": { "textures": "textures/blocks/miku_plush_br_go" },
-    "miku:miku_plush_br_mg_helmet": { "textures": "textures/blocks/miku_plush_br_mg" },
-    "miku:miku_plush_br_pa_helmet": { "textures": "textures/blocks/miku_plush_br_pa" },
-    "miku:miku_plush_br_rs_helmet": { "textures": "textures/blocks/miku_plush_br_rs" },
-    "miku:miku_plush_br_school_pe_helmet": { "textures": "textures/blocks/miku_plush_br_school_pe" },
-    "miku:miku_plush_br_sp_helmet": { "textures": "textures/blocks/miku_plush_br_sp" },
-    "miku:miku_plush_bik_helmet": { "textures": "textures/blocks/miku_plush_bik" },
-    "miku:miku_plush_deep_sea_girl_helmet": { "textures": "textures/blocks/deep_sea_girl" },
-    "miku:miku_plush_devil_helmet": { "textures": "textures/blocks/miku_plush_devil" },
-    "miku:miku_plush_digital_stars_2025_helmet": { "textures": "textures/blocks/miku_plush_digital_stars_2025" },
-    "miku:miku_plush_dont_believe_in_t_helmet": { "textures": "textures/blocks/miku_plush_dont_believe_in_t" },
-    "miku:miku_plush_fortnite_neko_helmet": { "textures": "textures/blocks/miku_plush_fortnite_neko" },
-    "miku:miku_plush_frankenstein_helmet": { "textures": "textures/blocks/miku_plush_frankenstein" },
-    "miku:miku_plush_frog_helmet": { "textures": "textures/blocks/miku_plush_frog" },
-    "miku:miku_plush_ghost_helmet": { "textures": "textures/blocks/miku_plush_ghost" },
-    "miku:miku_plush_ghostface_helmet": { "textures": "textures/blocks/miku_plush_ghostface" },
-    "miku:miku_plush_hachune_helmet": { "textures": "textures/blocks/miku_plush_hachune" },
-    "miku:miku_plush_helloplanet_helmet": { "textures": "textures/blocks/miku_plush_helloplanet" },
-    "miku:miku_plush_hollow_knight_helmet": { "textures": "textures/blocks/miku_plush_hollow_knight" },
-    "miku:miku_plush_hornet_helmet": { "textures": "textures/blocks/miku_plush_hornet" },
-    "miku:miku_plush_infinity_helmet": { "textures": "textures/blocks/miku_plush_infinity" },
-    "miku:miku_plush_jason_helmet": { "textures": "textures/blocks/miku_plush_jason" },
-    "miku:miku_plush_link_helmet": { "textures": "textures/blocks/miku_plush_link" },
-    "miku:miku_plush_lucario_z_helmet": { "textures": "textures/blocks/miku_plush_lucario_z" },
-    "miku:miku_plush_mesmerizer_helmet": { "textures": "textures/blocks/miku_plush_mesmerizer" },
-    "miku:miku_plush_michael_myers_helmet": { "textures": "textures/blocks/miku_plush_michael_myers" },
-    "miku:miku_plush_mochimochi_helmet": { "textures": "textures/blocks/miku_plush_mochimochi" },
-    "miku:miku_plush_monitoring_helmet": { "textures": "textures/blocks/miku_plush_monitoring" },
-    "miku:miku_plush_mummy_helmet": { "textures": "textures/blocks/miku_plush_mummy" },
-    "miku:miku_plush_mushroom_helmet": { "textures": "textures/blocks/miku_plush_mushroom" },
-    "miku:miku_plush_patata_helmet": { "textures": "textures/blocks/miku_plush_patata" },
-    "miku:miku_plush_patati_helmet": { "textures": "textures/blocks/miku_plush_patati" },
-    "miku:miku_plush_personadancing_helmet": { "textures": "textures/blocks/miku_plush_personadancing" },
-    "miku:miku_plush_pppp_helmet": { "textures": "textures/blocks/miku_plush_pppp" },
-    "miku:miku_plush_psycho_mode_helmet": { "textures": "textures/blocks/miku_plush_psycho_mode" },
-    "miku:miku_plush_pumpkin_helmet": { "textures": "textures/blocks/miku_plush_pumpkin" },
-    "miku:miku_plush_reindeer_helmet": { "textures": "textures/blocks/miku_plush_reindeer" },
-    "miku:miku_plush_renaissance_helmet": { "textures": "textures/blocks/miku_plush_renaissance" },
-    "miku:miku_plush_rolling_girl_helmet": { "textures": "textures/blocks/miku_plush_rolling_girl" },
-    "miku:miku_plush_rotten_girl_helmet": { "textures": "textures/blocks/miku_plush_rotten_girl" },
-    "miku:miku_plush_santa_helmet": { "textures": "textures/blocks/miku_plush_santa" },
-    "miku:miku_plush_santa_elf_helmet": { "textures": "textures/blocks/miku_plush_santa_elf" },
-    "miku:miku_plush_senbonzakura_helmet": { "textures": "textures/blocks/miku_plush_senbonzakura" },
-    "miku:miku_plush_sonic_helmet": { "textures": "textures/blocks/miku_plush_sonic" },
-    "miku:miku_plush_sonic_crossworlds_helmet": { "textures": "textures/blocks/miku_plush_sonic_crossworlds" },
-    "miku:miku_plush_static_helmet": { "textures": "textures/blocks/miku_plush_static" },
-    "miku:miku_plush_synthv_helmet": { "textures": "textures/blocks/miku_plush_synthv" },
-    "miku:miku_plush_uraotomelovers_helmet": { "textures": "textures/blocks/miku_plush_uraotomelovers" },
-    "miku:miku_plush_v4_helmet": { "textures": "textures/blocks/miku_plush_v4" },
-    "miku:miku_plush_vampire_helmet": { "textures": "textures/blocks/miku_plush_vampire" },
-    "miku:miku_plush_werewoman_helmet": { "textures": "textures/blocks/miku_plush_werewoman" },
-    "miku:miku_plush_witch_helmet": { "textures": "textures/blocks/miku_plush_witch" },
-    "miku:miku_plush_world_is_mine_helmet": { "textures": "textures/blocks/miku_plush_world_is_mine" },
-    "miku:miku_plush_xmas_tree_helmet": { "textures": "textures/blocks/miku_plush_xmas_tree" },
-    "miku:miku_plush_zatsune_helmet": { "textures": "textures/blocks/miku_plush_zatsune" },
-    "miku:teto_plush_helmet": { "textures": "textures/blocks/teto_plush" },
-    "miku:teto_plush_birdbrain_helmet": { "textures": "textures/blocks/teto_plush_birdbrain" },
-    "miku:teto_plush_dont_believe_in_t_helmet": { "textures": "textures/blocks/teto_plush_dont_believe_in_t" },
-    "miku:teto_plush_liar_dancer_helmet": { "textures": "textures/blocks/teto_plush_liar_dancer" },
-    "miku:teto_plush_lobster_helmet": { "textures": "textures/blocks/teto_plush_lobster" },
-    "miku:teto_plush_mesmerizer_helmet": { "textures": "textures/blocks/teto_plush_mesmerizer" },
-    "miku:teto_plush_pppp_helmet": { "textures": "textures/blocks/teto_plush_pppp" },
-    "miku:teto_plush_regret_rock_helmet": { "textures": "textures/blocks/teto_plush_regret_rock" },
-    "miku:teto_plush_shadow_helmet": { "textures": "textures/blocks/teto_plush_shadow" },
-    "miku:teto_plush_shrimp_helmet": { "textures": "textures/blocks/teto_plush_shrimp" },
-    "miku:teto_plush_some_more_of_that_song_helmet": { "textures": "textures/blocks/teto_plush_some_more_of_that_song" },
-    "miku:teto_plush_spoken_for_helmet": { "textures": "textures/blocks/teto_plush_spoken_for" },
-    "miku:teto_plush_synthv_helmet": { "textures": "textures/blocks/teto_plush_synthv" },
-    "miku:teto_plush_whatchacallitsname_helmet": { "textures": "textures/blocks/teto_plush_whatchacallitsname" },
-    "miku:akita_neru_plush_helmet": { "textures": "textures/blocks/akita_neru_plush" },
-    "miku:akita_neru_plush_tails_helmet": { "textures": "textures/blocks/akita_neru_plush_tails" },
-    "miku:luka_plush_helmet": { "textures": "textures/blocks/luka_plush" },
-    "miku:meiko_plush_helmet": { "textures": "textures/blocks/meiko_plush" },
-    "miku:meiko_plush_v3_helmet": { "textures": "textures/blocks/meiko_plush_v3" },
-    "miku:meiko_plush_v4_helmet": { "textures": "textures/blocks/meiko_plush_v4" },
-    "miku:kaito_plush_helmet": { "textures": "textures/blocks/kaito_plush" },
-    "miku:kaito_plush_v3_helmet": { "textures": "textures/blocks/kaito_plush_v3" },
-    "miku:kaito_plush_v4_helmet": { "textures": "textures/blocks/kaito_plush_v4" },
-    "miku:gumi_plush_helmet": { "textures": "textures/blocks/gumi_plush" },
-    "miku:gumi_plush_v3_helmet": { "textures": "textures/blocks/gumi_plush_v3" },
-    "miku:gumi_plush_v4_helmet": { "textures": "textures/blocks/gumi_plush_v4" },
-    "miku:gumi_plush_v6_helmet": { "textures": "textures/blocks/gumi_plush_v6" },
-    "miku:rin_plush_helmet": { "textures": "textures/blocks/rin_plush" },
-    "miku:len_plush_helmet": { "textures": "textures/blocks/len_plush" },
-    "miku:konoha_plush_helmet": { "textures": "textures/blocks/konoha_plush" },
-    "miku:aiko_plush_helmet": { "textures": "textures/blocks/aiko_plush" }
+    "miku:canudinho": {
+      "textures": "textures/items/canudinho"
+    },
+    "miku:baguette": {
+      "textures": "textures/items/baguette"
+    },
+    "miku:leek": {
+      "textures": "textures/items/leek"
+    },
+    "miku:leek_seeds": {
+      "textures": "textures/items/leek_seeds"
+    },
+    "miku:akita_neru_phone": {
+      "textures": "textures/items/akita_neru_phone"
+    },
+    "miku:vocaloid_heart": {
+      "textures": "textures/items/vocaloid_heart"
+    },
+    "miku:leek_crop_stage0": {
+      "textures": "textures/blocks/leek_crop_stage0"
+    },
+    "miku:leek_crop_stage1": {
+      "textures": "textures/blocks/leek_crop_stage1"
+    },
+    "miku:leek_crop_stage2": {
+      "textures": "textures/blocks/leek_crop_stage2"
+    },
+    "miku:leek_crop_stage3": {
+      "textures": "textures/blocks/leek_crop_stage3"
+    },
+    "miku:leek_crop_stage4": {
+      "textures": "textures/blocks/leek_crop_stage4"
+    },
+    "miku:leek_crop_stage5": {
+      "textures": "textures/blocks/leek_crop_stage5"
+    },
+    "miku:leek_crop_stage6": {
+      "textures": "textures/blocks/leek_crop_stage6"
+    },
+    "miku:leek_crop_stage7": {
+      "textures": "textures/blocks/leek_crop_stage7"
+    },
+    "miku:teto_pickaxe": {
+      "textures": "textures/blocks/teto_plush"
+    },
+    "miku:teto_pickaxe_mesmerizer": {
+      "textures": "textures/blocks/teto_plush_mesmerizer"
+    },
+    "miku:teto_pickaxe_birdbrain": {
+      "textures": "textures/blocks/teto_plush_birdbrain"
+    },
+    "miku:teto_pickaxe_regret_rock": {
+      "textures": "textures/blocks/teto_plush_regret_rock"
+    },
+    "miku:teto_pickaxe_dont_believe_in_t": {
+      "textures": "textures/blocks/teto_plush_dont_believe_in_t"
+    },
+    "miku:teto_pickaxe_liar_dancer": {
+      "textures": "textures/blocks/teto_plush_liar_dancer"
+    },
+    "miku:teto_pickaxe_whatchacallitsname": {
+      "textures": "textures/blocks/teto_plush_whatchacallitsname"
+    },
+    "miku:teto_pickaxe_some_more_of_that_song": {
+      "textures": "textures/blocks/teto_plush_some_more_of_that_song"
+    },
+    "miku:teto_pickaxe_synthv": {
+      "textures": "textures/blocks/teto_plush_synthv"
+    },
+    "miku:teto_pickaxe_spoken_for": {
+      "textures": "textures/blocks/teto_plush_spoken_for"
+    },
+    "miku:teto_pickaxe_pppp": {
+      "textures": "textures/blocks/teto_plush_pppp"
+    }
   }
 }

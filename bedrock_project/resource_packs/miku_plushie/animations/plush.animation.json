@@ -576,7 +576,7 @@
 				}
 			}
 		},
-		"misc.dance.miku.ievan-polkka": {
+		"misc.dance.miku.ievan_polkka": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
@@ -630,7 +630,7 @@
 				}
 			}
 		},
-		"misc.dance.miku.vegetable-juice": {
+		"misc.dance.miku.vegetable_juice": {
 			"loop": true,
 			"animation_length": 0.7917,
 			"bones": {
@@ -857,7 +857,7 @@
 				}
 			}
 		},
-		"misc.dance.teto.teto-territory": {
+		"misc.dance.teto.teto_territory": {
 			"loop": true,
 			"animation_length": 0.7083,
 			"bones": {
@@ -1210,7 +1210,7 @@
 				}
 			}
 		},
-		"misc.dance.teto.liar-dancer": {
+		"misc.dance.teto.liar_dancer": {
 			"loop": true,
 			"animation_length": 2.8333,
 			"bones": {
@@ -1537,6 +1537,5 @@
 				}
 			}
 		}
-	},
-	"geckolib_format_version": 2
+	}
 }

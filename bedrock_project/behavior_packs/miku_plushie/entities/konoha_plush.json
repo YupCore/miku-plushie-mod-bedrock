@@ -206,12 +206,21 @@
     },
     "events": {
       "miku:on_tame": {
-        "remove": {
-          "component_groups": ["miku:wild"]
-        },
-        "add": {
-          "component_groups": ["miku:tamed"]
-        }
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["miku:wild"]
+            },
+            "add": {
+              "component_groups": ["miku:tamed"]
+            }
+          },
+          {
+            "queue_command": {
+              "command": ["playsound miku.plushie.konoha_oie @s ~ ~ ~ 1.0 1.0"]
+            }
+          }
+        ]
       },
       "miku:toggle_sit": {
         "queue_command": {

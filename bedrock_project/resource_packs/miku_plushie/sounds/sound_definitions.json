@@ -480,6 +480,52 @@
         "sounds/kaito/kaito-equip3",
         "sounds/kaito/kaito-equip4"
       ]
+    },
+    "miku.plushie.konoha_oie": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/konoha/konoha-placing1",
+        "sounds/konoha/konoha-placing2",
+        "sounds/konoha/konoha-placing3",
+        "sounds/konoha/konoha-placing4",
+        "sounds/konoha/konoha-placing5",
+        "sounds/konoha/konoha-placing6"
+      ]
+    },
+    "miku.plushie.konoha_dor": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/konoha/konoha-hurt1",
+        "sounds/konoha/konoha-hurt2",
+        "sounds/konoha/konoha-hurt3",
+        "sounds/konoha/konoha-hurt4",
+        "sounds/konoha/konoha-hurt5",
+        "sounds/konoha/konoha-hurt6",
+        "sounds/konoha/konoha-hurt7",
+        "sounds/konoha/konoha-hurt8",
+        "sounds/konoha/konoha-hurt9"
+      ]
+    },
+    "miku.plushie.konoha_bye": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/konoha/konoha-break1",
+        "sounds/konoha/konoha-break2",
+        "sounds/konoha/konoha-break3",
+        "sounds/konoha/konoha-break4",
+        "sounds/konoha/konoha-break5",
+        "sounds/konoha/konoha-break6",
+        "sounds/konoha/konoha-break7"
+      ]
+    },
+    "miku.plushie.konoha_equip": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/konoha/konoha-equip1",
+        "sounds/konoha/konoha-equip2",
+        "sounds/konoha/konoha-equip3",
+        "sounds/konoha/konoha-equip4"
+      ]
     }
   }
 }

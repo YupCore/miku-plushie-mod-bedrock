@@ -7,44 +7,44 @@
         "spawning": {
           "animations": ["spawn"],
           "transitions": [
-            { "idle": "query.life_time > 0.5" }
+            { "idle": "q.life_time > 0.5" }
           ]
         },
         "idle": {
           "animations": ["idle", "walk"],
           "transitions": [
-            { "sitting": "query.is_sitting" },
-            { "dancing": "variable.is_dancing && !query.is_sitting" },
-            { "attacking": "query.is_delayed_attacking" }
+            { "sitting": "q.is_sitting" },
+            { "dancing": "v.is_dancing && !q.is_sitting" },
+            { "attacking": "q.is_delayed_attacking" }
           ]
         },
         "sitting": {
           "animations": ["sit"],
           "transitions": [
-            { "sit_dancing": "variable.is_dancing && query.is_sitting" },
-            { "idle": "!query.is_sitting" }
+            { "sit_dancing": "v.is_dancing && q.is_sitting" },
+            { "idle": "!q.is_sitting" }
           ]
         },
         "sit_dancing": {
-          "animations": ["sit-dance"],
+          "animations": ["sit_dance"],
           "transitions": [
-            { "sitting": "!variable.is_dancing" },
-            { "idle": "!query.is_sitting" }
+            { "sitting": "!v.is_dancing" },
+            { "idle": "!q.is_sitting" }
           ]
         },
         "dancing": {
           "animations": ["dance"],
           "blend_transition": 0.1,
           "transitions": [
-            { "idle": "!variable.is_dancing" },
-            { "attacking": "query.is_delayed_attacking" }
+            { "idle": "!v.is_dancing" },
+            { "attacking": "q.is_delayed_attacking" }
           ]
         },
         "attacking": {
           "animations": ["swipe"],
           "blend_transition": 0.1,
           "transitions": [
-            { "idle": "!query.is_delayed_attacking" }
+            { "idle": "!q.is_delayed_attacking" }
           ]
         }
       }
@@ -62,13 +62,13 @@
       "states": {
         "default": {
           "transitions": [
-            { "eating": "variable.is_eating" }
+            { "eating": "v.is_eating" }
           ]
         },
         "eating": {
           "animations": ["eat"],
           "transitions": [
-            { "default": "!variable.is_eating" }
+            { "default": "!v.is_eating" }
           ]
         }
       }
@@ -78,11 +78,11 @@
       "states": {
         "default": {
           "transitions": [
-            { "caramelldansen": "variable.is_dancing && variable.dance_index == 0" },
-            { "miku_dance": "variable.is_dancing && variable.dance_index == 1" },
-            { "ievan_polkka": "variable.is_dancing && variable.dance_index == 2" },
-            { "vegetable_juice": "variable.is_dancing && variable.dance_index == 3" },
-            { "static_dance": "variable.is_dancing && variable.dance_index == 4" }
+            { "caramelldansen": "v.is_dancing && v.dance_index == 0" },
+            { "miku_dance": "v.is_dancing && v.dance_index == 1" },
+            { "ievan_polkka": "v.is_dancing && v.dance_index == 2" },
+            { "vegetable_juice": "v.is_dancing && v.dance_index == 3" },
+            { "static_dance": "v.is_dancing && v.dance_index == 4" }
           ]
         },
         "caramelldansen": {
@@ -92,10 +92,10 @@
           "animations": ["miku_dance"]
         },
         "ievan_polkka": {
-          "animations": ["ievan-polkka"]
+          "animations": ["ievan_polkka"]
         },
         "vegetable_juice": {
-          "animations": ["vegetable-juice"]
+          "animations": ["vegetable_juice"]
         },
         "static_dance": {
           "animations": ["static_dance"]

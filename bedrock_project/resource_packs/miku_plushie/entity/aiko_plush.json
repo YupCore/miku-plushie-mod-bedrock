@@ -20,6 +20,7 @@
         "swipe": "animation.plush.attack.swipe",
         "swipe2": "animation.plush.attack.swipe2",
         "swipe3": "animation.plush.attack.swipe3",
+        "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
         "walk": "animation.plush.procedural.walk",
         "main_controller": "controller.animation.plush.main",
         "hair_controller": "controller.animation.plush.hair"
