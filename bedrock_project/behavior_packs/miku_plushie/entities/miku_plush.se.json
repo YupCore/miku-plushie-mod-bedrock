@@ -70,9 +70,7 @@
           "entity_types": [
             {
               "filters": {
-                "any_of": [
-                  { "test": "is_family", "value": "creeper" }
-                ]
+                "any_of": [{ "test": "is_family", "value": "creeper" }]
               },
               "max_dist": 6.0,
               "sprint_speed_multiplier": 1.2
@@ -219,7 +217,6 @@
         "despawn_from_distance": {}
       },
       "minecraft:persistent": {},
-      "minecraft:born_event": {}
       "minecraft:interact": {
         "interactions": [
           {
@@ -250,9 +247,7 @@
       },
       "miku:toggle_sit": {
         "queue_command": {
-          "command": [
-            "function miku/toggle_sit"
-          ]
+          "command": ["function miku/toggle_sit"]
         }
       },
       "miku:start_sitting": {

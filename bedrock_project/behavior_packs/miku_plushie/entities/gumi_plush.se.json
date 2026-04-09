@@ -197,7 +197,6 @@
         "despawn_from_distance": {}
       },
       "minecraft:persistent": {},
-      "minecraft:born_event": {}
       "minecraft:interact": {
         "interactions": [
           {
@@ -228,9 +227,7 @@
       },
       "miku:toggle_sit": {
         "queue_command": {
-          "command": [
-            "function miku/toggle_sit"
-          ]
+          "command": ["function miku/toggle_sit"]
         }
       },
       "miku:start_sitting": {

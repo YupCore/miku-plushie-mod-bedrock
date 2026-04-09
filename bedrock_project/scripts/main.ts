@@ -1,15 +1,15 @@
 import { world } from "@minecraft/server";
 
-import { registerPlushBlockComponent } from "./components/plushBlock";
-import { startCropGrowthSystem } from "./components/cropGrowth";
-import { startJukeboxDanceSystem } from "./systems/jukeboxDance";
-import { startPlushInteractionSystem } from "./systems/plushInteraction";
-import { startAttackSoundSystem } from "./systems/attackSound";
-import { startPickaxeBreakSoundSystem } from "./systems/pickaxeBreakSound";
-import { startMikuEatLeekSystem } from "./systems/mikuEatLeek";
-import { startSpawnAgeTracker } from "./systems/spawnAgeTracker";
-import { startVariantSyncSystem } from "./systems/variantSync";
-import { startSpawnMikusCommand } from "./commands/spawnMikus";
+import { registerPlushBlockComponent } from "./components/plush_block";
+import { startCropGrowthSystem } from "./components/crop_growth";
+import { startJukeboxDanceSystem } from "./systems/jukebox_dance";
+import { startPlushInteractionSystem } from "./systems/plush_interaction";
+import { startAttackSoundSystem } from "./systems/attack_sound";
+import { startPickaxeBreakSoundSystem } from "./systems/pickaxe_break_sound";
+import { startMikuEatLeekSystem } from "./systems/miku_eat_leek";
+import { startSpawnAgeTracker } from "./systems/spawn_age_tracker";
+import { startVariantSyncSystem } from "./systems/variant_sync";
+import { startSpawnMikusCommand } from "./commands/spawn_mikus";
 
 console.log("[Miku Plushie] Miku is now Joining Bedrock Edition!!!");
 
