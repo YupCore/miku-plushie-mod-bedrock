@@ -1,11 +1,10 @@
 {
-  "format_version": "1.21.130",
+  "format_version": "1.26.10",
   "minecraft:entity": {
     "description": {
       "identifier": "miku:aiko_plush",
       "is_summonable": true,
       "is_spawnable": true,
-      "is_experimental": false,
       "properties": {
         "miku:variant": {
           "type": "int",
@@ -50,17 +49,21 @@
         "minecraft:sittable": {},
         "minecraft:behavior.follow_owner": {
           "priority": 4,
-          "speed_multiplier": 1,
-          "start_distance": 5,
-          "stop_distance": 1
+          "speed_multiplier": 1.0,
+          "start_distance": 5.0,
+          "stop_distance": 1.0
         }
       },
       "miku:standing": {},
-      "miku:sitting": {}
+      "miku:sitting": {
+        "minecraft:behavior.stay_while_sitting": {
+          "priority": 1
+        }
+      }
     },
     "components": {
       "minecraft:tameable": {
-        "probability": 1,
+        "probability": 1.0,
         "tame_items": ["miku:leek"],
         "tame_event": {
           "event": "miku:on_tame",
@@ -74,15 +77,23 @@
         "value": 20,
         "max": 20
       },
+      "minecraft:healable": {
+        "items": [
+          {
+            "item": "miku:leek",
+            "heal_amount": 4
+          }
+        ]
+      },
       "minecraft:attack": {
-        "damage": 2
+        "damage": 2.0
       },
       "minecraft:movement": {
         "value": 0.3
       },
       "minecraft:collision_box": {
         "width": 0.6,
-        "height": 1
+        "height": 1.0
       },
       "minecraft:physics": {},
       "minecraft:pushable": {
@@ -106,7 +117,7 @@
         "speed_multiplier": 1.5,
         "attack_once": false,
         "track_target": true,
-        "reach_multiplier": 1,
+        "reach_multiplier": 1.0,
         "hit_delay_pct": 0.25
       },
       "minecraft:behavior.tempt": {
@@ -116,13 +127,11 @@
       },
       "minecraft:behavior.look_at_player": {
         "priority": 8,
-        "look_distance": 8,
+        "look_distance": 8.0,
         "probability": 0.02
       },
       "minecraft:behavior.random_look_around": {
-        "priority": 9,
-        "look_distance": 8,
-        "look_time": [2, 4]
+        "priority": 9
       },
       "minecraft:behavior.hurt_by_target": {
         "priority": 3,
@@ -130,21 +139,9 @@
           {
             "filters": {
               "none_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "plush"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "creeper"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "ghast"
-                }
+                { "test": "is_family", "subject": "other", "value": "plush" },
+                { "test": "is_family", "subject": "other", "value": "creeper" },
+                { "test": "is_family", "subject": "other", "value": "ghast" }
               ]
             },
             "max_dist": 32
@@ -157,21 +154,9 @@
           {
             "filters": {
               "none_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "plush"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "creeper"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "ghast"
-                }
+                { "test": "is_family", "subject": "other", "value": "plush" },
+                { "test": "is_family", "subject": "other", "value": "creeper" },
+                { "test": "is_family", "subject": "other", "value": "ghast" }
               ]
             }
           }
@@ -183,54 +168,111 @@
           {
             "filters": {
               "none_of": [
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "plush"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "creeper"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
-                  "value": "ghast"
-                }
+                { "test": "is_family", "subject": "other", "value": "plush" },
+                { "test": "is_family", "subject": "other", "value": "creeper" },
+                { "test": "is_family", "subject": "other", "value": "ghast" }
               ]
             }
           }
         ]
       },
       "minecraft:shareables": {
+        "singular_pickup": true,
         "items": [
           {
-            "item": "minecraft:wooden_sword",
-            "want_amount": 1,
-            "surplus_amount": 1
-          },
-          {
-            "item": "minecraft:stone_sword",
-            "want_amount": 1,
-            "surplus_amount": 1
-          },
-          {
-            "item": "minecraft:iron_sword",
-            "want_amount": 1,
-            "surplus_amount": 1
+            "item": "minecraft:netherite_sword",
+            "priority": 0,
+            "surplus_amount": 1,
+            "want_amount": 1
           },
           {
             "item": "minecraft:diamond_sword",
-            "want_amount": 1,
-            "surplus_amount": 1
+            "priority": 1,
+            "surplus_amount": 1,
+            "want_amount": 1
           },
           {
-            "item": "minecraft:netherite_sword",
-            "want_amount": 1,
-            "surplus_amount": 1
+            "item": "minecraft:iron_sword",
+            "priority": 2,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:golden_sword",
+            "priority": 3,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:copper_sword",
+            "priority": 4,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:stone_sword",
+            "priority": 5,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:wooden_sword",
+            "priority": 6,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:netherite_spear",
+            "priority": 0,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:diamond_spear",
+            "priority": 1,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:iron_spear",
+            "priority": 2,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:golden_spear",
+            "priority": 3,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:copper_spear",
+            "priority": 4,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:stone_spear",
+            "priority": 5,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:wooden_spear",
+            "priority": 6,
+            "surplus_amount": 1,
+            "want_amount": 1
           }
         ]
+      },
+      "minecraft:behavior.pickup_items": {
+        "priority": 5,
+        "goal_radius": 2,
+        "max_dist": 3,
+        "speed_multiplier": 1
+      },
+      "minecraft:behavior.equip_item": {
+        "priority": 2
       },
       "minecraft:nameable": {},
       "minecraft:persistent": {},
@@ -239,9 +281,11 @@
           {
             "on_interact": {
               "filters": {
-                "test": "has_component",
-                "subject": "self",
-                "value": "minecraft:is_tamed"
+                "all_of": [
+                  { "test": "has_component", "subject": "self", "value": "minecraft:is_tamed" },
+                  { "test": "is_family", "subject": "other", "value": "player" },
+                  { "test": "is_owner", "subject": "other", "value": true }
+                ]
               },
               "event": "miku:toggle_sit"
             }
