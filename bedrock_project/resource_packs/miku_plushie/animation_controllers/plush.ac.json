@@ -11,7 +11,7 @@
           ]
         },
         "idle": {
-          "animations": ["idle"],
+          "animations": ["idle", "walk"],
           "transitions": [
             { "sitting": "query.is_sitting" },
             { "dancing": "variable.is_dancing && !query.is_sitting" },

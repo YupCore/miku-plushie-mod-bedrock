@@ -25,6 +25,7 @@
         "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
         "ievan_polkka": "animation.plush.misc.dance.miku.ievan-polkka",
         "vegetable_juice": "animation.plush.misc.dance.miku.vegetable-juice",
+        "walk": "animation.plush.procedural.walk",
         "main_controller": "controller.animation.plush.main",
         "hair_controller": "controller.animation.plush.hair"
       },

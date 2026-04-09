@@ -96,6 +96,7 @@
         "vegetable_juice": "animation.plush.misc.dance.miku.vegetable-juice",
         "static_dance": "animation.plush.misc.dance.miku.static",
         "eat": "animation.plush.misc.eat",
+        "walk": "animation.plush.procedural.walk",
         "main_controller": "controller.animation.plush.main",
         "hair_controller": "controller.animation.plush.hair",
         "eat_controller": "controller.animation.miku.eat",

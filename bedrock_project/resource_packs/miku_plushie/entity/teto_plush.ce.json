@@ -38,6 +38,7 @@
         "teto_territory": "animation.plush.misc.dance.teto.teto-territory",
         "birdbrain": "animation.plush.misc.dance.teto.birdbrain",
         "liar_dancer": "animation.plush.misc.dance.teto.liar-dancer",
+        "walk": "animation.plush.procedural.walk",
         "main_controller": "controller.animation.plush.main",
         "hair_controller": "controller.animation.plush.hair"
       },

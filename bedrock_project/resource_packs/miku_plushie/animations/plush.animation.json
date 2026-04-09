@@ -1482,6 +1482,60 @@
 					}
 				}
 			}
+		},
+		"procedural.walk": {
+			"loop": true,
+			"bones": {
+				"left_arm": {
+					"rotation": {
+						"vector": [
+							"math.sin(query.modified_distance_moved * 38.17) * query.modified_move_speed * 30",
+							0,
+							0
+						]
+					}
+				},
+				"right_arm": {
+					"rotation": {
+						"vector": [
+							"math.sin(query.modified_distance_moved * 38.17) * query.modified_move_speed * -30",
+							0,
+							0
+						]
+					}
+				},
+				"left_leg": {
+					"rotation": {
+						"vector": [
+							"math.sin(query.modified_distance_moved * 38.17) * query.modified_move_speed * -30",
+							0,
+							0
+						]
+					}
+				},
+				"right_leg": {
+					"rotation": {
+						"vector": [
+							"math.sin(query.modified_distance_moved * 38.17) * query.modified_move_speed * 30",
+							0,
+							0
+						]
+					}
+				},
+				"body": {
+					"rotation": {
+						"vector": ["variable.health_bend", 0, 0]
+					},
+					"position": {
+						"vector": [0, "math.sin(query.modified_distance_moved * 38.17) * query.modified_move_speed * 0.05", 0]
+					}
+				},
+				"root": {
+					"position": {
+						"vector": [0, "math.abs(math.sin(query.modified_distance_moved * 38.17) * query.modified_move_speed * 0.1)", 0]
+					}
+				}
+			}
 		}
 	},
 	"geckolib_format_version": 2

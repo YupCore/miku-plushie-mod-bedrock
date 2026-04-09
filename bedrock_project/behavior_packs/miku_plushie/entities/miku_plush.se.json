@@ -34,6 +34,12 @@
           "type": "bool",
           "default": false,
           "client_sync": true
+        },
+        "miku:health_bend": {
+          "type": "float",
+          "range": [-25, 0],
+          "default": 0,
+          "client_sync": true
         }
       }
     },
