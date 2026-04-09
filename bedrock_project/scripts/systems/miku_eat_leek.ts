@@ -44,7 +44,7 @@ function findNearbyLeekCrop(
     };
     const block = dimension.getBlock(checkPos);
     if (block?.typeId === LEEK_CROP_BLOCK) {
-      const age = (block.permutation as any).getState?.("miku:growth") ?? 0;
+      const age = (block.permutation.getState("miku:growth" as any) as number) ?? 0;
       if (age >= MAX_LEEK_AGE) {
         return checkPos;
       }
@@ -144,16 +144,9 @@ export function startMikuEatLeekSystem(): void {
           if (currentLeekPos) {
             const leekBlock = overworld.getBlock(currentLeekPos);
             if (leekBlock?.typeId === LEEK_CROP_BLOCK) {
-              const age = (leekBlock.permutation as any).getState?.("miku:growth") ?? 0;
+              const age = (leekBlock.permutation.getState("miku:growth" as any) as number) ?? 0;
               if (age >= MAX_LEEK_AGE) {
-                try {
-                  const newPermutation = (leekBlock.permutation as any).withState?.("miku:growth", 0);
-                  if (newPermutation) {
-                    leekBlock.setPermutation(newPermutation);
-                  }
-                } catch {
-                  // Block update not supported
-                }
+                leekBlock.setPermutation(leekBlock.permutation.withState("miku:growth" as any, 0));
 
                 const currentHealth = miku.getComponent("minecraft:health");
                 if (currentHealth) {

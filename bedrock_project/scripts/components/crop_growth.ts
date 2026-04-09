@@ -1,40 +1,43 @@
-import { world, EquipmentSlot, GameMode, system } from "@minecraft/server";
+import { world, EquipmentSlot, GameMode, system, BlockVolume } from "@minecraft/server";
 
 const MAX_GROWTH_AGE = 7;
 const BONE_MEAL_AMOUNT_MIN = 2;
 const BONE_MEAL_AMOUNT_MAX = 5;
 const RANDOM_GROWTH_CHANCE = 0.05;
 const CROP_GROWTH_INTERVAL = 10;
+const SCAN_RADIUS_XZ = 64;
+const SCAN_RADIUS_Y = 16;
 
 function getGrowthState(block: any): number {
-  try {
-    return (block.permutation as any).getState?.("miku:growth") ?? 0;
-  } catch {
-    return 0;
-  }
+  return (block.permutation.getState("miku:growth" as any) as number) ?? 0;
 }
 
 function setGrowthState(block: any, age: number): void {
-  try {
-    const newPermutation = (block.permutation as any).withState?.("miku:growth", age);
-    if (newPermutation) {
-      block.setPermutation(newPermutation);
-    }
-  } catch {
-    // Block permutation update not supported
-  }
+  block.setPermutation(block.permutation.withState("miku:growth" as any, age));
 }
 
-function processCropGrowth(dimension: any): void {
-  const cropBlocks = dimension.getBlocks({
-    volume: {
-      min: { x: -1000, y: -64, z: -1000 },
-      max: { x: 1000, y: 320, z: 1000 },
-    },
-    includeTypes: ["miku:leek_crop"],
-  });
+function processCropGrowth(dimension: any, center: { x: number; y: number; z: number }): void {
+  const minX = Math.floor(center.x) - SCAN_RADIUS_XZ;
+  const minY = Math.max(-64, Math.floor(center.y) - SCAN_RADIUS_Y);
+  const minZ = Math.floor(center.z) - SCAN_RADIUS_XZ;
+  const maxX = Math.floor(center.x) + SCAN_RADIUS_XZ;
+  const maxY = Math.min(320, Math.floor(center.y) + SCAN_RADIUS_Y);
+  const maxZ = Math.floor(center.z) + SCAN_RADIUS_XZ;
 
-  for (const block of cropBlocks) {
+  let blockLocations: Iterable<any>;
+  try {
+    blockLocations = dimension.getBlocks(
+      new BlockVolume({ x: minX, y: minY, z: minZ }, { x: maxX, y: maxY, z: maxZ }),
+      { includeTypes: ["miku:leek_crop"] }
+    );
+  } catch {
+    return;
+  }
+
+  for (const loc of blockLocations) {
+    const block = dimension.getBlock(loc);
+    if (!block) continue;
+
     const currentAge = getGrowthState(block);
     if (currentAge >= MAX_GROWTH_AGE) continue;
 
@@ -87,13 +90,14 @@ export function startCropGrowthSystem(): void {
   });
 
   system.runInterval(() => {
-    for (const dimId of ["overworld"]) {
-      try {
-        const dimension = world.getDimension(dimId);
-        processCropGrowth(dimension);
-      } catch {
-        // Dimension might not exist
-      }
+    const seen = new Set<string>();
+    for (const player of world.getAllPlayers()) {
+      const pos = player.location;
+      // Deduplicate: one scan per 64-block tile per dimension per tick
+      const key = `${player.dimension.id}:${Math.floor(pos.x / SCAN_RADIUS_XZ)}:${Math.floor(pos.z / SCAN_RADIUS_XZ)}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      processCropGrowth(player.dimension, pos);
     }
   }, CROP_GROWTH_INTERVAL);
 }

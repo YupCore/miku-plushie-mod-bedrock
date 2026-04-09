@@ -2,7 +2,10 @@
   "format_version": "1.21.70",
   "minecraft:block": {
     "description": {
-      "identifier": "miku:leek_crop"
+      "identifier": "miku:leek_crop",
+      "states": {
+        "miku:growth": [0, 1, 2, 3, 4, 5, 6, 7]
+      }
     },
     "components": {
       "minecraft:geometry": "geometry.crop",
@@ -91,16 +94,11 @@
           }
         ]
       },
-      "minecraft:growable": {
-        "can_grow_on_interaction": false,
-        "can_survate_on_interaction": false,
-        "interaction_fertilize_type": "bonemeal"
-      },
       "minecraft:light_dampening": 0
     },
     "permutations": [
       {
-        "condition": "q.block_state('minecraft:growth') == 0",
+        "condition": "q.block_state('miku:growth') == 0",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -136,7 +134,7 @@
         }
       },
       {
-        "condition": "q.block_state('minecraft:growth') == 1",
+        "condition": "q.block_state('miku:growth') == 1",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -172,7 +170,7 @@
         }
       },
       {
-        "condition": "q.block_state('minecraft:growth') == 2",
+        "condition": "q.block_state('miku:growth') == 2",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -208,7 +206,7 @@
         }
       },
       {
-        "condition": "q.block_state('minecraft:growth') == 3",
+        "condition": "q.block_state('miku:growth') == 3",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -244,7 +242,7 @@
         }
       },
       {
-        "condition": "q.block_state('minecraft:growth') == 4",
+        "condition": "q.block_state('miku:growth') == 4",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -280,7 +278,7 @@
         }
       },
       {
-        "condition": "q.block_state('minecraft:growth') == 5",
+        "condition": "q.block_state('miku:growth') == 5",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -316,7 +314,7 @@
         }
       },
       {
-        "condition": "q.block_state('minecraft:growth') == 6",
+        "condition": "q.block_state('miku:growth') == 6",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -352,7 +350,7 @@
         }
       },
       {
-        "condition": "q.block_state('minecraft:growth') == 7",
+        "condition": "q.block_state('miku:growth') == 7",
         "components": {
           "minecraft:material_instances": {
             "*": {
