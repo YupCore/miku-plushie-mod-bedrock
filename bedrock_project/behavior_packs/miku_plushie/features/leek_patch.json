@@ -8,7 +8,7 @@
     "iterations": 8,
     "scatter_chance": {
       "numerator": 1,
-      "denominator": 1
+      "denominator": 4
     },
     "x": {
       "distribution": "uniform",

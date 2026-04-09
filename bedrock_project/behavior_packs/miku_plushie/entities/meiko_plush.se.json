@@ -37,7 +37,7 @@
         "minecraft:tameable": {
           "probability": 1.0,
           "tame_items": ["miku:leek"],
-          "on_tame": {
+          "tame_event": {
             "event": "miku:on_tame",
             "target": "self"
           }
@@ -54,12 +54,7 @@
         }
       },
       "miku:standing": {},
-      "miku:sitting": {
-        "minecraft:is_sitting": {},
-        "minecraft:behavior.sitting": {
-          "priority": 1
-        }
-      }
+      "miku:sitting": {}
     },
     "components": {
       "minecraft:type_family": {
@@ -196,27 +191,37 @@
         "despawn_from_distance": {}
       },
       "minecraft:persistent": {},
-      "minecraft:born_event": {},
+      "minecraft:born_event": {}
       "minecraft:interact": {
-        "on_interact": {
-          "event": "miku:toggle_sit"
-        }
+        "interactions": [
+          {
+            "on_interact": {
+              "event": "miku:toggle_sit"
+            }
+          }
+        ]
       }
     },
     "events": {
       "miku:on_tame": {
-        "remove": {
-          "component_groups": ["miku:wild"]
-        },
-        "add": {
-          "component_groups": ["miku:tamed"]
-        },
-        "run_command": {
-          "command": ["playsound miku.plushie.meiko_oie @s ~ ~ ~ 1.0 1.0"]
-        }
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": ["miku:wild"]
+            },
+            "add": {
+              "component_groups": ["miku:tamed"]
+            }
+          },
+          {
+            "queue_command": {
+              "command": ["playsound miku.plushie.meiko_oie @s ~ ~ ~ 1.0 1.0"]
+            }
+          }
+        ]
       },
       "miku:toggle_sit": {
-        "run_command": {
+        "queue_command": {
           "command": [
             "function miku/toggle_sit"
           ]
