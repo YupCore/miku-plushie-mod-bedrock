@@ -79,11 +79,9 @@
           ]
         }
       },
-      "geometry": "array.geos[variable.geo_index]",
-      "materials": [
-        { "*": "material.default" }
-      ],
-      "textures": ["array.skins[variable.variant]"]
+      "geometry": "array.geos[v.geo_index]",
+      "materials": [{ "*": "material.default" }],
+      "textures": ["array.skins[v.variant]"]
     },
     "controller.render.teto_plush": {
       "arrays": {
@@ -107,59 +105,42 @@
         }
       },
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
-      "textures": ["array.skins[variable.variant]"]
+      "materials": [{ "*": "material.default" }],
+      "textures": ["array.skins[v.variant]"]
     },
     "controller.render.neru_plush": {
       "arrays": {
         "textures": {
-          "array.skins": [
-            "textures/blocks/akita_neru_plush",
-            "textures/blocks/akita_neru_plush_tails"
-          ]
+          "array.skins": ["textures/blocks/akita_neru_plush", "textures/blocks/akita_neru_plush_tails"]
         }
       },
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
-      "textures": ["array.skins[variable.variant]"]
+      "materials": [{ "*": "material.default" }],
+      "textures": ["array.skins[v.variant]"]
     },
     "controller.render.aiko_plush": {
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
+      "materials": [{ "*": "material.default" }],
       "textures": ["textures/blocks/aiko_plush"]
     },
     "controller.render.rin_plush": {
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
+      "materials": [{ "*": "material.default" }],
       "textures": ["textures/blocks/rin_plush"]
     },
     "controller.render.len_plush": {
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
+      "materials": [{ "*": "material.default" }],
       "textures": ["textures/blocks/len_plush"]
     },
     "controller.render.konoha_plush": {
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
+      "materials": [{ "*": "material.default" }],
       "textures": ["textures/blocks/konoha_plush"]
     },
     "controller.render.luka_plush": {
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
+      "materials": [{ "*": "material.default" }],
       "textures": ["textures/blocks/luka_plush"]
     },
     "controller.render.meiko_plush": {
@@ -173,10 +154,8 @@
         }
       },
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
-      "textures": ["array.skins[variable.variant]"]
+      "materials": [{ "*": "material.default" }],
+      "textures": ["array.skins[v.variant]"]
     },
     "controller.render.gumi_plush": {
       "arrays": {
@@ -190,10 +169,8 @@
         }
       },
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
-      "textures": ["array.skins[variable.variant]"]
+      "materials": [{ "*": "material.default" }],
+      "textures": ["array.skins[v.variant]"]
     },
     "controller.render.kaito_plush": {
       "arrays": {
@@ -206,10 +183,8 @@
         }
       },
       "geometry": "geometry.default",
-      "materials": [
-        { "*": "material.default" }
-      ],
-      "textures": ["array.skins[variable.variant]"]
+      "materials": [{ "*": "material.default" }],
+      "textures": ["array.skins[v.variant]"]
     }
   }
 }

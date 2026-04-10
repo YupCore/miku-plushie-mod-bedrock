@@ -1668,7 +1668,7 @@
         },
         "body": {
           "rotation": {
-            "vector": ["variable.health_bend", 0, 0]
+            "vector": ["v.health_bend", 0, 0]
           },
           "position": {
             "vector": [0, "Math.sin(query.modified_distance_moved * 38.17) * query.modified_move_speed * 0.05", 0]

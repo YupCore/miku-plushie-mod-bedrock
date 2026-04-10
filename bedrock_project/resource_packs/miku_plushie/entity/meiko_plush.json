@@ -30,10 +30,10 @@
       "scripts": {
         "animate": ["main_controller", "hair_controller"],
         "variables": {
-          "variable.is_dancing": "public",
-          "variable.dance_index": "public",
-          "variable.health_bend": "public",
-          "variable.variant": "public"
+          "v.is_dancing": "public",
+          "v.dance_index": "public",
+          "v.health_bend": "public",
+          "v.variant": "public"
         }
       },
       "render_controllers": ["controller.render.meiko_plush"],

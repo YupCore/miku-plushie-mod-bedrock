@@ -2,7 +2,7 @@
   "format_version": 2,
   "header": {
     "name": "Miku Plushie Resources",
-    "description": "Textures, models, animations, and sounds for the Miku Plushie mod.",
+    "description": "Adds Hatsune Miku and friends as adorable plushies! Tameable, equippable, and full of personality.",
     "uuid": "a33d0d2a-d82b-4840-8b58-f1a45a767f65",
     "version": [2, 0, 0],
     "min_engine_version": [1, 26, 10]
