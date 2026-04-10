@@ -7,9 +7,6 @@
     "miku:aiko_plush": {
       "textures": "textures/blocks/aiko_plush"
     },
-    "miku:aiko_plush_emissive": {
-      "textures": "textures/blocks/aiko_plush_emissive"
-    },
     "miku:akita_neru_plush": {
       "textures": "textures/blocks/akita_neru_plush"
     },

@@ -3,7 +3,6 @@ import * as path from "path";
 
 const BP_DIR = path.join(__dirname, "..", "behavior_packs", "miku_plushie");
 const BLOCKS_DIR = path.join(BP_DIR, "blocks");
-const LOOT_TABLES_DIR = path.join(BP_DIR, "loot_tables", "blocks");
 const RP_DIR = path.join(__dirname, "..", "resource_packs", "miku_plushie");
 
 interface PlushBlockDef {
@@ -376,6 +375,15 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
             render_method: renderMethod,
           },
         },
+        "minecraft:item_visual": {
+          geometry: block.geometry,
+          material_instances: {
+            "*": {
+              texture: fullBlockId,
+              render_method: renderMethod,
+            },
+          },
+        },
         "minecraft:collision_box": {
           origin: [-3.5, 0, -3.5],
           size: [7, 13.5, 7],
@@ -390,10 +398,7 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
         "minecraft:destructible_by_explosion": {
           explosion_resistance: 0,
         },
-        "minecraft:loot": `loot_tables/blocks/${block.blockId}.json`,
         "minecraft:map_color": "#8E3A24",
-        "minecraft:light_dampening": 0,
-        "minecraft:light_emission": 0,
         "minecraft:placement_filter": {
           conditions: [
             {
@@ -418,34 +423,17 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
         {
           condition: "q.block_state('minecraft:cardinal_direction') == 'south'",
           components: {
-            "minecraft:transformation": { rotation: [0, -180, 0] },
+            "minecraft:transformation": { rotation: [0, 180, 0] },
           },
         },
         {
           condition: "q.block_state('minecraft:cardinal_direction') == 'west'",
           components: {
-            "minecraft:transformation": { rotation: [0, -270, 0] },
+            "minecraft:transformation": { rotation: [0, 90, 0] },
           },
         },
       ],
     },
-  };
-}
-
-function generatePlushLootTable(block: PlushBlockDef): object {
-  return {
-    pools: [
-      {
-        rolls: 1,
-        entries: [
-          {
-            type: "item",
-            name: `miku:${block.blockId}`,
-            weight: 1,
-          },
-        ],
-      },
-    ],
   };
 }
 
@@ -459,14 +447,13 @@ function generateRpBlocksJson(): object {
   }
 
   return {
-    format_version: "1.19.30",
+    format_version: "1.26.10",
     ...blocksSounds,
   };
 }
 
 function generateBlocks() {
   ensureDir(BLOCKS_DIR);
-  ensureDir(LOOT_TABLES_DIR);
   ensureDir(RP_DIR);
 
   console.log("Generating plush block JSONs...");
@@ -477,9 +464,14 @@ function generateBlocks() {
     fs.writeFileSync(blockPath, JSON.stringify(blockJson, null, 2));
     console.log(`  Created: ${block.blockId}.json`);
 
-    const lootJson = generatePlushLootTable(block);
-    const lootPath = path.join(LOOT_TABLES_DIR, `${block.blockId}.json`);
-    fs.writeFileSync(lootPath, JSON.stringify(lootJson, null, 2));
+    console.log("\nGenerating RP blocks.json for sounds...");
+    const rpBlocksJson = generateRpBlocksJson();
+    const rpBlocksPath = path.join(RP_DIR, "blocks.json");
+    fs.writeFileSync(rpBlocksPath, JSON.stringify(rpBlocksJson, null, 2));
+    console.log(`  Created: blocks.json`);
+
+    console.log(`\nGenerated ${PLUSH_BLOCKS.length} plush blocks with loot tables, sounds, and item definitions.`);
+    console.log("Block generation complete!");
   }
 
   console.log("\nGenerating RP blocks.json for sounds...");

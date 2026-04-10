@@ -11,7 +11,9 @@
     "components": {
       "minecraft:icon": "miku:leek_seeds",
       "minecraft:block_placer": {
-        "block": "miku:leek_crop"
+        "block": "miku:leek_crop",
+        "aligned_placement": false,
+        "replace_block_item": true
       }
     }
   }
