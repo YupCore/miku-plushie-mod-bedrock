@@ -26,10 +26,7 @@
         "hair_controller": "controller.animation.plush.hair"
       },
       "scripts": {
-        "animate": [
-          "main_controller",
-          "hair_controller"
-        ],
+        "animate": ["main_controller", "hair_controller"],
         "variables": {
           "variable.is_dancing": "public",
           "variable.dance_index": "public",
@@ -37,9 +34,7 @@
           "variable.variant": "public"
         }
       },
-      "render_controllers": [
-        "controller.render.aiko_plush"
-      ],
+      "render_controllers": ["controller.render.aiko_plush"],
       "spawn_egg": {
         "base_color": "#FF69B4",
         "overlay_color": "#FFB6C1"

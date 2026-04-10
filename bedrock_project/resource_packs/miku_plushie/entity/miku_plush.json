@@ -103,12 +103,7 @@
         "dance_select": "controller.animation.plush.dance_select"
       },
       "scripts": {
-        "animate": [
-          "main_controller",
-          "hair_controller",
-          "eat_controller",
-          "dance_select"
-        ],
+        "animate": ["main_controller", "hair_controller", "eat_controller", "dance_select"],
         "variables": {
           "variable.is_dancing": "public",
           "variable.dance_index": "public",
@@ -118,9 +113,7 @@
           "variable.geo_index": "public"
         }
       },
-      "render_controllers": [
-        "controller.render.miku_plush"
-      ],
+      "render_controllers": ["controller.render.miku_plush"],
       "spawn_egg": {
         "base_color": "#39C5BB",
         "overlay_color": "#1A8A7D"

@@ -1,10 +1,12 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shaped": {
     "description": {
       "identifier": "miku:rin_plush"
     },
-    "tags": ["crafting_table"],
+    "tags": [
+      "crafting_table"
+    ],
     "pattern": [
       "121",
       "121"
@@ -26,8 +28,7 @@
       }
     ],
     "result": {
-      "item": "miku:rin_plush",
-      "count": 1
+      "item": "miku:rin_plush"
     }
   }
 }

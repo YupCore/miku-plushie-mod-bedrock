@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shapeless": {
     "description": {
       "identifier": "miku:miku_plush_br_school_pe"
@@ -18,7 +18,7 @@
         "item": "minecraft:blue_wool"
       },
       {
-        "item": "minecraft:horn_coral_fan"
+        "item": "minecraft:tube_coral_fan"
       }
     ],
     "unlock": [
@@ -27,8 +27,7 @@
       }
     ],
     "result": {
-      "item": "miku:miku_plush_br_school_pe",
-      "count": 1
+      "item": "miku:miku_plush_br_school_pe"
     }
   }
 }

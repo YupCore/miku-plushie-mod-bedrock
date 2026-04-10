@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shapeless": {
     "description": {
       "identifier": "miku:teto_plush_whatchacallitsname"
@@ -12,10 +12,8 @@
         "item": "miku:teto_plush"
       },
       {
-        "item": "minecraft:glass"
-      },
-      {
-        "item": "minecraft:glass"
+        "item": "minecraft:glass",
+        "count": 2
       },
       {
         "item": "minecraft:red_wool"
@@ -30,8 +28,7 @@
       }
     ],
     "result": {
-      "item": "miku:teto_plush_whatchacallitsname",
-      "count": 1
+      "item": "miku:teto_plush_whatchacallitsname"
     }
   }
 }

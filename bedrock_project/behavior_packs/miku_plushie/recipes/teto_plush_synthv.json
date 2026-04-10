@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shapeless": {
     "description": {
       "identifier": "miku:teto_plush_synthv"
@@ -21,8 +21,7 @@
       }
     ],
     "result": {
-      "item": "miku:teto_plush_synthv",
-      "count": 1
+      "item": "miku:teto_plush_synthv"
     }
   }
 }

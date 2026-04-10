@@ -1,10 +1,12 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shaped": {
     "description": {
       "identifier": "miku:miku_plush_ghost"
     },
-    "tags": ["crafting_table"],
+    "tags": [
+      "crafting_table"
+    ],
     "pattern": [
       "121",
       "131"
@@ -32,8 +34,7 @@
       }
     ],
     "result": {
-      "item": "miku:miku_plush_ghost",
-      "count": 1
+      "item": "miku:miku_plush_ghost"
     }
   }
 }

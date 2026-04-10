@@ -1,10 +1,12 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shapeless": {
     "description": {
       "identifier": "miku:akita_neru_phone"
     },
-    "tags": ["crafting_table"],
+    "tags": [
+      "crafting_table"
+    ],
     "ingredients": [
       {
         "item": "minecraft:gold_ingot"
@@ -19,11 +21,16 @@
     "unlock": [
       {
         "item": "minecraft:gold_ingot"
+      },
+      {
+        "item": "minecraft:redstone"
+      },
+      {
+        "item": "minecraft:black_stained_glass"
       }
     ],
     "result": {
-      "item": "miku:akita_neru_phone",
-      "count": 1
+      "item": "miku:akita_neru_phone"
     }
   }
 }

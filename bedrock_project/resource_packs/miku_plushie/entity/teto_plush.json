@@ -43,11 +43,7 @@
         "dance_select": "controller.animation.teto.dance_select"
       },
       "scripts": {
-        "animate": [
-          "main_controller",
-          "hair_controller",
-          "dance_select"
-        ],
+        "animate": ["main_controller", "hair_controller", "dance_select"],
         "variables": {
           "variable.is_dancing": "public",
           "variable.dance_index": "public",
@@ -55,9 +51,7 @@
           "variable.variant": "public"
         }
       },
-      "render_controllers": [
-        "controller.render.teto_plush"
-      ],
+      "render_controllers": ["controller.render.teto_plush"],
       "spawn_egg": {
         "base_color": "#D4312E",
         "overlay_color": "#FF8A80"

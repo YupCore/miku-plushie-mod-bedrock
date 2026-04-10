@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shapeless": {
     "description": {
       "identifier": "miku:gumi_plush_v6"
@@ -12,10 +12,8 @@
         "item": "miku:gumi_plush"
       },
       {
-        "item": "minecraft:iron_ingot"
-      },
-      {
-        "item": "minecraft:iron_ingot"
+        "item": "minecraft:iron_ingot",
+        "count": 2
       },
       {
         "item": "minecraft:redstone"
@@ -27,8 +25,7 @@
       }
     ],
     "result": {
-      "item": "miku:gumi_plush_v6",
-      "count": 1
+      "item": "miku:gumi_plush_v6"
     }
   }
 }

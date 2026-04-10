@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.70",
+  "format_version": "1.26.10",
   "minecraft:block": {
     "description": {
       "identifier": "miku:wild_leek_crop"
@@ -22,40 +22,18 @@
       },
       "minecraft:loot": "loot_tables/blocks/wild_leek_crop.json",
       "minecraft:collision_box": {
-        "origin": [
-          -7,
-          0,
-          -7
-        ],
-        "size": [
-          14,
-          16,
-          14
-        ]
+        "origin": [-7, 0, -7],
+        "size": [14, 16, 14]
       },
       "minecraft:selection_box": {
-        "origin": [
-          -7,
-          0,
-          -7
-        ],
-        "size": [
-          14,
-          16,
-          14
-        ]
+        "origin": [-7, 0, -7],
+        "size": [14, 16, 14]
       },
       "minecraft:placement_filter": {
         "conditions": [
           {
-            "allowed_faces": [
-              "up"
-            ],
-            "block_filter": [
-              "minecraft:grass_block",
-              "minecraft:podzol",
-              "minecraft:rooted_dirt"
-            ]
+            "allowed_faces": ["up"],
+            "block_filter": ["minecraft:grass_block", "minecraft:podzol", "minecraft:rooted_dirt"]
           }
         ]
       },

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shapeless": {
     "description": {
       "identifier": "miku:teto_plush_liar_dancer"
@@ -12,10 +12,8 @@
         "item": "miku:teto_plush"
       },
       {
-        "item": "minecraft:black_stained_glass"
-      },
-      {
-        "item": "minecraft:black_stained_glass"
+        "item": "minecraft:black_stained_glass",
+        "count": 2
       },
       {
         "item": "minecraft:white_wool"
@@ -27,8 +25,7 @@
       }
     ],
     "result": {
-      "item": "miku:teto_plush_liar_dancer",
-      "count": 1
+      "item": "miku:teto_plush_liar_dancer"
     }
   }
 }

@@ -1,14 +1,14 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.26.10",
   "minecraft:recipe_shaped": {
     "description": {
       "identifier": "miku:teto_pickaxe_birdbrain"
     },
-    "tags": ["crafting_table"],
+    "tags": [
+      "crafting_table"
+    ],
     "pattern": [
-      "121",
-      " T ",
-      " T "
+      "121"
     ],
     "key": {
       "1": {
@@ -16,9 +16,6 @@
       },
       "2": {
         "item": "miku:teto_plush_birdbrain"
-      },
-      "T": {
-        "item": "minecraft:stick"
       }
     },
     "unlock": [
@@ -27,8 +24,7 @@
       }
     ],
     "result": {
-      "item": "miku:teto_pickaxe_birdbrain",
-      "count": 1
+      "item": "miku:teto_pickaxe_birdbrain"
     }
   }
 }
