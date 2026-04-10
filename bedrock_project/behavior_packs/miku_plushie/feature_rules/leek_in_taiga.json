@@ -20,24 +20,23 @@
             }
           ]
         }
-      ],
-      "minecraft:scatter_chance": {
-        "numerator": 1,
-        "denominator": 8,
-        "first_in_chunk": true
-      }
+      ]
     },
     "distribution": {
       "iterations": 1,
       "coordinate_eval_order": "xzy",
+      "scatter_chance": {
+        "numerator": 1,
+        "denominator": 8
+      },
       "x": {
         "distribution": "uniform",
-        "extent": [0, 15]
+        "extent": [0, 16]
       },
       "y": "q.heightmap(v.worldx, v.worldz)",
       "z": {
         "distribution": "uniform",
-        "extent": [0, 15]
+        "extent": [0, 16]
       }
     }
   }
