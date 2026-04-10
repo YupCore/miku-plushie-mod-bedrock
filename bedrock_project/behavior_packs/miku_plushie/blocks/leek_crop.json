@@ -4,7 +4,9 @@
     "description": {
       "identifier": "miku:leek_crop",
       "states": {
-        "miku:growth": [0, 1, 2, 3, 4, 5, 6, 7]
+        "miku:growth": {
+          "values": { "min": 0, "max": 7 }
+        }
       }
     },
     "components": {
