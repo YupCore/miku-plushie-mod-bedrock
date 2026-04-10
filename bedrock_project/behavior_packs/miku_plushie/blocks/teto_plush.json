@@ -21,6 +21,15 @@
           "render_method": "alpha_test"
         }
       },
+      "minecraft:item_visual": {
+        "geometry": "geometry.teto_plush",
+        "material_instances": {
+          "*": {
+            "texture": "miku:teto_plush",
+            "render_method": "alpha_test"
+          }
+        }
+      },
       "minecraft:collision_box": {
         "origin": [
           -3.5,
@@ -46,15 +55,12 @@
         ]
       },
       "minecraft:destructible_by_mining": {
-        "seconds_to_destroy": 0
+        "seconds_to_destroy": 2
       },
       "minecraft:destructible_by_explosion": {
-        "explosion_resistance": 0
+        "explosion_resistance": 5
       },
-      "minecraft:loot": "loot_tables/blocks/teto_plush.json",
       "minecraft:map_color": "#8E3A24",
-      "minecraft:light_dampening": 0,
-      "minecraft:light_emission": 0,
       "minecraft:placement_filter": {
         "conditions": [
           {
@@ -96,7 +102,7 @@
           "minecraft:transformation": {
             "rotation": [
               0,
-              -180,
+              180,
               0
             ]
           }
@@ -108,7 +114,7 @@
           "minecraft:transformation": {
             "rotation": [
               0,
-              -270,
+              90,
               0
             ]
           }

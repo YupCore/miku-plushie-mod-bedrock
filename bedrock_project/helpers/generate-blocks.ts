@@ -393,10 +393,10 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
           size: [7, 13.5, 7],
         },
         "minecraft:destructible_by_mining": {
-          seconds_to_destroy: 0,
+          seconds_to_destroy: 2,
         },
         "minecraft:destructible_by_explosion": {
-          explosion_resistance: 0,
+          explosion_resistance: 5,
         },
         "minecraft:map_color": "#8E3A24",
         "minecraft:placement_filter": {
