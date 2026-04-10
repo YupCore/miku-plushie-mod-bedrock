@@ -368,6 +368,7 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
       },
       components: {
         "miku:plush_block": {},
+        "minecraft:display_name": `block.${fullBlockId}.name`,
         "minecraft:geometry": block.geometry,
         "minecraft:material_instances": {
           "*": {

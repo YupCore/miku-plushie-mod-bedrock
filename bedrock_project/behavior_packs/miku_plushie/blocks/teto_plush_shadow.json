@@ -14,6 +14,7 @@
     },
     "components": {
       "miku:plush_block": {},
+      "minecraft:display_name": "block.miku:teto_plush_shadow.name",
       "minecraft:geometry": "geometry.teto_plush",
       "minecraft:material_instances": {
         "*": {

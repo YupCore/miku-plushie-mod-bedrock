@@ -14,6 +14,7 @@
     },
     "components": {
       "miku:plush_block": {},
+      "minecraft:display_name": "block.miku:meiko_plush.name",
       "minecraft:geometry": "geometry.meiko_plush",
       "minecraft:material_instances": {
         "*": {

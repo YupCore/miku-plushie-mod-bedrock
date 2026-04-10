@@ -5,13 +5,16 @@
       "identifier": "miku:aiko_plush",
       "traits": {
         "minecraft:placement_direction": {
-          "enabled_states": ["minecraft:cardinal_direction"],
+          "enabled_states": [
+            "minecraft:cardinal_direction"
+          ],
           "y_rotation_offset": 180
         }
       }
     },
     "components": {
       "miku:plush_block": {},
+      "minecraft:display_name": "block.miku:aiko_plush.name",
       "minecraft:geometry": "geometry.aiko_plush",
       "minecraft:material_instances": {
         "*": {
@@ -29,12 +32,28 @@
         }
       },
       "minecraft:collision_box": {
-        "origin": [-3.5, 0, -3.5],
-        "size": [7, 13.5, 7]
+        "origin": [
+          -3.5,
+          0,
+          -3.5
+        ],
+        "size": [
+          7,
+          13.5,
+          7
+        ]
       },
       "minecraft:selection_box": {
-        "origin": [-3.5, 0, -3.5],
-        "size": [7, 13.5, 7]
+        "origin": [
+          -3.5,
+          0,
+          -3.5
+        ],
+        "size": [
+          7,
+          13.5,
+          7
+        ]
       },
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 2
@@ -46,7 +65,9 @@
       "minecraft:placement_filter": {
         "conditions": [
           {
-            "allowed_faces": ["up"]
+            "allowed_faces": [
+              "up"
+            ]
           }
         ]
       }
@@ -56,7 +77,11 @@
         "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
         "components": {
           "minecraft:transformation": {
-            "rotation": [0, 0, 0]
+            "rotation": [
+              0,
+              0,
+              0
+            ]
           }
         }
       },
@@ -64,7 +89,11 @@
         "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
         "components": {
           "minecraft:transformation": {
-            "rotation": [0, -90, 0]
+            "rotation": [
+              0,
+              -90,
+              0
+            ]
           }
         }
       },
@@ -72,7 +101,11 @@
         "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
         "components": {
           "minecraft:transformation": {
-            "rotation": [0, 180, 0]
+            "rotation": [
+              0,
+              180,
+              0
+            ]
           }
         }
       },
@@ -80,7 +113,11 @@
         "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
         "components": {
           "minecraft:transformation": {
-            "rotation": [0, 90, 0]
+            "rotation": [
+              0,
+              90,
+              0
+            ]
           }
         }
       }

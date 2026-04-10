@@ -9,6 +9,7 @@
       }
     },
     "components": {
+      "minecraft:display_name": "item.miku:teto_pickaxe_pppp.name",
       "minecraft:icon": "miku:teto_pickaxe_pppp",
       "minecraft:max_stack_size": 1,
       "minecraft:durability": {

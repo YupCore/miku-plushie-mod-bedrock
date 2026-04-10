@@ -11,6 +11,7 @@
     },
     "components": {
       "minecraft:geometry": "geometry.crop",
+      "minecraft:display_name": "block.miku:leek_crop.name",
       "minecraft:material_instances": {
         "*": {
           "texture": "miku:leek_crop_stage0",

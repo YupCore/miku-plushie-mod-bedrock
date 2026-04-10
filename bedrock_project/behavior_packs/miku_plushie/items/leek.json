@@ -9,6 +9,7 @@
       }
     },
     "components": {
+      "minecraft:display_name": "item.miku:leek.name",
       "minecraft:icon": "miku:leek",
       "minecraft:food": {
         "nutrition": 4,

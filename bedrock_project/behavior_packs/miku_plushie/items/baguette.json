@@ -9,6 +9,7 @@
       }
     },
     "components": {
+      "minecraft:display_name": "item.miku:baguette.name",
       "minecraft:icon": "miku:baguette",
       "minecraft:food": {
         "nutrition": 8,

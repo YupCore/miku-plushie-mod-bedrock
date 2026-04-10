@@ -8,6 +8,7 @@
       }
     },
     "components": {
+      "minecraft:display_name": "item.miku:vocaloid_heart.name",
       "minecraft:icon": "miku:vocaloid_heart"
     }
   }

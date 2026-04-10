@@ -9,6 +9,7 @@
       }
     },
     "components": {
+      "minecraft:display_name": "item.miku:leek_seeds.name",
       "minecraft:icon": "miku:leek_seeds",
       "minecraft:block_placer": {
         "block": "miku:leek_crop",

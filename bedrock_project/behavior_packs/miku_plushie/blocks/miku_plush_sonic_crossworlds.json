@@ -14,6 +14,7 @@
     },
     "components": {
       "miku:plush_block": {},
+      "minecraft:display_name": "block.miku:miku_plush_sonic_crossworlds.name",
       "minecraft:geometry": "geometry.miku_plush",
       "minecraft:material_instances": {
         "*": {

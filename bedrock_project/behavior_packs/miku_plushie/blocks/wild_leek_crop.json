@@ -6,6 +6,7 @@
     },
     "components": {
       "minecraft:geometry": "geometry.leek_crop_stage7",
+      "minecraft:display_name": "block.miku:wild_leek_crop.name",
       "minecraft:material_instances": {
         "*": {
           "texture": "miku:wild_leek_crop",
