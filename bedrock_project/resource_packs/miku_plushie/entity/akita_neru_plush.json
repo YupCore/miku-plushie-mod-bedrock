@@ -12,7 +12,7 @@
         "tails": "textures/blocks/akita_neru_plush_tails"
       },
       "geometry": {
-        "default": "geometry.akita_neru_plush"
+        "default": "geometry.akita_neru_plush_entity"
       },
       "animations": {
         "idle": "animation.plush.misc.idle",
@@ -30,6 +30,10 @@
         "hair_controller": "controller.animation.plush.hair"
       },
       "scripts": {
+        "pre_animation": [
+          "variable.variant = q.property('miku:variant');",
+          "variable.health_bend = q.property('miku:health_bend');"
+        ],
         "animate": [
           "main_controller",
           "hair_controller"

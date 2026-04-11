@@ -53,21 +53,8 @@
               "up"
             ],
             "block_filter": [
-              {
-                "blocks": [
-                  "minecraft:grass_block"
-                ]
-              },
-              {
-                "blocks": [
-                  "minecraft:podzol"
-                ]
-              },
-              {
-                "blocks": [
-                  "minecraft:rooted_dirt"
-                ]
-              }
+              { "name": "minecraft:grass_block" },
+              { "name": "minecraft:podzol" }
             ]
           }
         ]

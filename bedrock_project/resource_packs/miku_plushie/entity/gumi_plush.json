@@ -13,7 +13,7 @@
         "v6": "textures/blocks/gumi_plush_v6"
       },
       "geometry": {
-        "default": "geometry.gumi_plush"
+        "default": "geometry.gumi_plush_entity"
       },
       "animations": {
         "idle": "animation.plush.misc.idle",
@@ -29,6 +29,10 @@
         "hair_controller": "controller.animation.plush.hair"
       },
       "scripts": {
+        "pre_animation": [
+          "variable.variant = q.property('miku:variant');",
+          "variable.health_bend = q.property('miku:health_bend');"
+        ],
         "animate": [
           "main_controller",
           "hair_controller"
@@ -36,11 +40,7 @@
       },
       "render_controllers": [
         "controller.render.gumi_plush"
-      ],
-      "spawn_egg": {
-        "base_color": "#98D8AA",
-        "overlay_color": "#2E8B57"
-      }
+      ]
     }
   }
 }

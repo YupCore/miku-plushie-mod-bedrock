@@ -10,7 +10,7 @@
         "default": "textures/blocks/konoha_plush"
       },
       "geometry": {
-        "default": "geometry.konoha_plush"
+        "default": "geometry.konoha_plush_entity"
       },
       "animations": {
         "idle": "animation.plush.misc.idle",
@@ -26,6 +26,9 @@
         "hair_controller": "controller.animation.plush.hair"
       },
       "scripts": {
+        "pre_animation": [
+          "variable.health_bend = q.property('miku:health_bend');"
+        ],
         "animate": [
           "main_controller",
           "hair_controller"

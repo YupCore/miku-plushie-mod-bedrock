@@ -60,6 +60,12 @@ export function startMikuEatLeekSystem(): void {
     const overworld = world.getDimension("overworld");
     const mikus = overworld.getEntities({ type: MIKU_ENTITY_TYPE });
 
+    // Clean up state for entities that are no longer alive
+    const liveIds = new Set(mikus.map((e) => e.id));
+    for (const id of eatingMikus.keys()) {
+      if (!liveIds.has(id)) eatingMikus.delete(id);
+    }
+
     for (const miku of mikus) {
       const entityId = miku.id;
       const health = miku.getComponent("minecraft:health");

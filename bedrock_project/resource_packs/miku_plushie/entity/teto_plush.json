@@ -23,7 +23,7 @@
         "whatchacallitsname": "textures/blocks/teto_plush_whatchacallitsname"
       },
       "geometry": {
-        "default": "geometry.teto_plush"
+        "default": "geometry.teto_plush_entity"
       },
       "animations": {
         "idle": "animation.plush.misc.idle",
@@ -43,6 +43,10 @@
         "dance_select": "controller.animation.teto.dance_select"
       },
       "scripts": {
+        "pre_animation": [
+          "variable.variant = q.property('miku:variant');",
+          "variable.health_bend = q.property('miku:health_bend');"
+        ],
         "animate": [
           "main_controller",
           "hair_controller",

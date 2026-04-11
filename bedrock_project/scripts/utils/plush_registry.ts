@@ -110,6 +110,39 @@ export const KAITO_VARIANTS = ["kaito_plush", "kaito_plush_v3", "kaito_plush_v4"
 
 export const SINGLE_VARIANT_ENTITIES = ["aiko_plush", "rin_plush", "len_plush", "konoha_plush", "luka_plush"] as const;
 
+const MODEL2_VARIANTS = [
+  "miku_plush_devil",
+  "miku_plush_mushroom",
+  "miku_plush_patata",
+  "miku_plush_patati",
+  "miku_plush_werewoman",
+  "miku_plush_witch",
+];
+
+const MODEL3_VARIANTS = [
+  "miku_plush_digital_stars_2025",
+  "miku_plush_dont_believe_in_t",
+  "miku_plush_hollow_knight",
+  "miku_plush_hornet",
+  "miku_plush_lucario_z",
+  "miku_plush_mochimochi",
+  "miku_plush_monitoring",
+  "miku_plush_pppp",
+  "miku_plush_psycho_mode",
+  "miku_plush_rotten_girl",
+  "miku_plush_sonic",
+  "miku_plush_sonic_crossworlds",
+  "miku_plush_static",
+  "miku_plush_xmas_tree",
+];
+
+export function getGeoIndex(blockId: string): number {
+  const cleanId = blockId.replace("miku:", "");
+  if (MODEL2_VARIANTS.includes(cleanId)) return 1;
+  if (MODEL3_VARIANTS.includes(cleanId)) return 2;
+  return 0;
+}
+
 export function getVariantIndex(blockId: string): number {
   const cleanId = blockId.replace("miku:", "");
   const mikuIdx = MIKU_VARIANTS.indexOf(cleanId as (typeof MIKU_VARIANTS)[number]);

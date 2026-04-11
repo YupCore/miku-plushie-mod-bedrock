@@ -4,7 +4,7 @@
     "description": {
       "identifier": "miku:gumi_plush",
       "is_summonable": true,
-      "is_spawnable": true,
+      "is_spawnable": false,
       "properties": {
         "miku:variant": {
           "type": "int",

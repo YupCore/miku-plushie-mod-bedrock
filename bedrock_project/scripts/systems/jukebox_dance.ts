@@ -1,47 +1,39 @@
 import { world, system, Dimension } from "@minecraft/server";
-import { PLUSH_ENTITIES, getDanceCountForEntity } from "../utils/plush_registry";
+import { getDanceCountForEntity } from "../utils/plush_registry";
 import { getCharacterFromEntity, playPlushSound } from "../utils/sounds";
 
 const JUKEBOX_CHECK_RADIUS = 8;
 const DANCE_CHECK_INTERVAL = 20;
 
+function isJukeboxNearby(dimension: Dimension, x: number, y: number, z: number): boolean {
+  for (let dx = -JUKEBOX_CHECK_RADIUS; dx <= JUKEBOX_CHECK_RADIUS; dx++) {
+    for (let dz = -JUKEBOX_CHECK_RADIUS; dz <= JUKEBOX_CHECK_RADIUS; dz++) {
+      for (let dy = -2; dy <= 2; dy++) {
+        const block = dimension.getBlock({ x: x + dx, y: y + dy, z: z + dz });
+        if (block?.typeId === "minecraft:jukebox") return true;
+      }
+    }
+  }
+  return false;
+}
+
 function processJukeboxDetection(dimension: Dimension): void {
-  for (const plushType of PLUSH_ENTITIES) {
-    const entities = dimension.getEntities({ type: plushType });
-    for (const entity of entities) {
-      const pos = entity.location;
-      const blockX = Math.floor(pos.x);
-      const blockY = Math.floor(pos.y);
-      const blockZ = Math.floor(pos.z);
+  const entities = dimension.getEntities({ families: ["plush"] });
+  if (entities.length === 0) return;
 
-      let nearJukebox = false;
+  for (const entity of entities) {
+    const pos = entity.location;
+    const nearJukebox = isJukeboxNearby(dimension, Math.floor(pos.x), Math.floor(pos.y), Math.floor(pos.z));
 
-      for (let dx = -JUKEBOX_CHECK_RADIUS; dx <= JUKEBOX_CHECK_RADIUS; dx++) {
-        for (let dz = -JUKEBOX_CHECK_RADIUS; dz <= JUKEBOX_CHECK_RADIUS; dz++) {
-          const block = dimension.getBlock({
-            x: blockX + dx,
-            y: blockY,
-            z: blockZ + dz,
-          });
-          if (block?.typeId === "minecraft:jukebox") {
-            nearJukebox = true;
-            break;
-          }
-        }
-        if (nearJukebox) break;
-      }
+    const wasDancing = entity.getProperty("miku:is_dancing") ?? false;
+    entity.setProperty("miku:is_dancing", nearJukebox);
 
-      const wasDancing = entity.getProperty("miku:is_dancing") ?? false;
-      entity.setProperty("miku:is_dancing", nearJukebox);
+    if (nearJukebox && !wasDancing) {
+      const character = getCharacterFromEntity(entity.typeId);
+      playPlushSound(entity, character, "oie", 1.0, 1.0);
 
-      if (nearJukebox && !wasDancing) {
-        const character = getCharacterFromEntity(entity.typeId);
-        playPlushSound(entity, character, "oie", 1.0, 1.0);
-
-        const maxDances = getDanceCountForEntity(entity.typeId);
-        const randomDanceIndex = Math.floor(Math.random() * maxDances);
-        entity.setProperty("miku:dance_index", randomDanceIndex);
-      }
+      const maxDances = getDanceCountForEntity(entity.typeId);
+      entity.setProperty("miku:dance_index", Math.floor(Math.random() * maxDances));
     }
   }
 }
@@ -52,10 +44,9 @@ export function startJukeboxDanceSystem(): void {
   system.runInterval(() => {
     for (const dimId of ["overworld", "nether", "the_end"]) {
       try {
-        const dimension = world.getDimension(dimId);
-        processJukeboxDetection(dimension);
-      } catch (e) {
-        // Dimension might not exist
+        processJukeboxDetection(world.getDimension(dimId));
+      } catch {
+        // Dimension not loaded
       }
     }
   }, DANCE_CHECK_INTERVAL);

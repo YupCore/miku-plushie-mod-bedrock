@@ -78,9 +78,9 @@
         "zatsune": "textures/blocks/miku_plush_zatsune"
       },
       "geometry": {
-        "default": "geometry.miku_plush",
-        "model2": "geometry.miku_plush_2",
-        "model3": "geometry.miku_plush_3"
+        "default": "geometry.miku_plush_entity",
+        "model2": "geometry.miku_plush_2_entity",
+        "model3": "geometry.miku_plush_3_entity"
       },
       "animations": {
         "idle": "animation.plush.misc.idle",
@@ -103,6 +103,11 @@
         "dance_select": "controller.animation.plush.dance_select"
       },
       "scripts": {
+        "pre_animation": [
+          "variable.variant = q.property('miku:variant');",
+          "variable.geo_index = q.property('miku:geo_index');",
+          "variable.health_bend = q.property('miku:health_bend');"
+        ],
         "animate": [
           "main_controller",
           "hair_controller",

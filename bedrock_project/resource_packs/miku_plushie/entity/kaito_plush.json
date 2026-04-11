@@ -12,7 +12,7 @@
         "v4": "textures/blocks/kaito_plush_v4"
       },
       "geometry": {
-        "default": "geometry.kaito_plush"
+        "default": "geometry.kaito_plush_entity"
       },
       "animations": {
         "idle": "animation.plush.misc.idle",
@@ -28,6 +28,10 @@
         "hair_controller": "controller.animation.plush.hair"
       },
       "scripts": {
+        "pre_animation": [
+          "variable.variant = q.property('miku:variant');",
+          "variable.health_bend = q.property('miku:health_bend');"
+        ],
         "animate": [
           "main_controller",
           "hair_controller"

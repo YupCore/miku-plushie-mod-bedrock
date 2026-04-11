@@ -9,7 +9,7 @@ import {
   BlockComponentPlayerBreakEvent,
 } from "@minecraft/server";
 import { getCharacterFromBlock } from "../utils/sounds";
-import { getEntityTypeFromBlock, getVariantIndex } from "../utils/plush_registry";
+import { getEntityTypeFromBlock, getVariantIndex, getGeoIndex } from "../utils/plush_registry";
 
 class PlushBlockComponent implements BlockCustomComponent {
   constructor() {
@@ -45,6 +45,9 @@ class PlushBlockComponent implements BlockCustomComponent {
       const entity = dimension.spawnEntity(entityType, spawnLocation);
 
       entity.setProperty("miku:variant", variant);
+      if (entityType === "miku:miku_plush") {
+        entity.setProperty("miku:geo_index", getGeoIndex(blockId));
+      }
       entity.setProperty("miku:is_dancing", false);
       entity.setProperty("miku:dance_index", 0);
 

@@ -16,7 +16,7 @@
         "item": "miku:leek"
       },
       "N": {
-        "item": "minecraft:note_block"
+        "item": "minecraft:noteblock"
       },
       "B": {
         "item": "miku:baguette"
@@ -30,7 +30,7 @@
         "item": "miku:leek"
       },
       {
-        "item": "minecraft:note_block"
+        "item": "minecraft:noteblock"
       },
       {
         "item": "miku:baguette"

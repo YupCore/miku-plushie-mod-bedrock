@@ -1,6 +1,8 @@
 import { world, system } from "@minecraft/server";
 import { PLUSH_ENTITIES } from "../utils/plush_registry";
 
+const DIMENSIONS = ["overworld", "nether", "the_end"] as const;
+
 export function startVariantSyncSystem(): void {
   console.log("[Miku Plushie] Starting variant sync system");
 
@@ -14,17 +16,15 @@ export function startVariantSyncSystem(): void {
   });
 
   system.runInterval(() => {
-    for (const entity of world.getAllPlayers()) {
-      for (const plush of PLUSH_ENTITIES) {
-        for (const miku of entity.dimension.getEntities({ type: plush })) {
-          const health = miku.getComponent("minecraft:health");
-          if (health) {
-            const healthFactor = health.currentValue / health.effectiveMax;
-            const healthBend = (healthFactor - 1) * 25;
-            miku.setProperty("miku:health_bend", healthBend);
-          }
+    for (const dimId of DIMENSIONS) {
+      const dim = world.getDimension(dimId);
+      for (const entity of dim.getEntities({ families: ["plush"] })) {
+        const health = entity.getComponent("minecraft:health");
+        if (health) {
+          const healthFactor = health.currentValue / health.effectiveMax;
+          entity.setProperty("miku:health_bend", (healthFactor - 1) * 25);
         }
       }
     }
-  }, 10);
+  }, 20);
 }

@@ -3,7 +3,7 @@
   "minecraft:geometry": [
     {
       "description": {
-        "identifier": "geometry.teto_plush",
+        "identifier": "geometry.teto_plush_entity",
         "texture_width": 64,
         "texture_height": 64,
         "visible_bounds_width": 3,
