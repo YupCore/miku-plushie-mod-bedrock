@@ -5,10 +5,11 @@
       "identifier": "miku:wild_leek_crop"
     },
     "components": {
-      "minecraft:geometry": "geometry.leek_crop_stage7",
+      "minecraft:geometry": "geometry.leek",
+      "minecraft:display_name": "block.miku:teto_plush.name",
       "minecraft:material_instances": {
         "*": {
-          "texture": "miku:wild_leek_crop",
+          "texture": "miku:leek_crop_stage7",
           "render_method": "alpha_test"
         }
       },

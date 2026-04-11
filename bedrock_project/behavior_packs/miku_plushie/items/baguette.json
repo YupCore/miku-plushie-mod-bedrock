@@ -6,6 +6,9 @@
     },
     "components": {
       "minecraft:icon": "miku:baguette",
+      "minecraft:display_name": {
+        "value": "item.miku:baguette.name"
+      },
       "minecraft:food": {
         "nutrition": 8,
         "saturation_modifier": 0.6

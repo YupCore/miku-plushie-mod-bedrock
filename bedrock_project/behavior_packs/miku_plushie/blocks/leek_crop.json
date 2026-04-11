@@ -91,11 +91,6 @@
           }
         ]
       },
-      "minecraft:growable": {
-        "can_grow_on_interaction": false,
-        "can_survate_on_interaction": false,
-        "interaction_fertilize_type": "bonemeal"
-      },
       "minecraft:light_dampening": 0
     },
     "permutations": [

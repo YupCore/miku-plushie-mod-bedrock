@@ -6,6 +6,9 @@
     },
     "components": {
       "minecraft:icon": "miku:canudinho",
+      "minecraft:display_name": {
+        "value": "item.miku:canudinho.name"
+      },
       "minecraft:rarity": "rare"
     }
   }

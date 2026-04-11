@@ -6,6 +6,9 @@
     },
     "components": {
       "minecraft:icon": "miku:leek",
+      "minecraft:display_name": {
+        "value": "item.miku:leek.name"
+      },
       "minecraft:food": {
         "nutrition": 4,
         "saturation_modifier": 0.6

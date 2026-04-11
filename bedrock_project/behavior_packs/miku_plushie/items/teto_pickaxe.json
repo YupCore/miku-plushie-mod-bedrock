@@ -6,6 +6,9 @@
     },
     "components": {
       "minecraft:icon": "miku:teto_pickaxe",
+      "minecraft:display_name": {
+        "value": "item.miku:teto_pickaxe.name"
+      },
       "minecraft:durability": {
         "max_durability": 500
       },

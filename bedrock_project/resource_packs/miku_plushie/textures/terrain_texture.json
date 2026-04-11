@@ -97,6 +97,9 @@
     "miku:miku_plush_br_beach": {
       "textures": "textures/blocks/miku_plush_br_beach"
     },
+    "miku:miku_plush_br_bik": {
+      "textures": "textures/blocks/miku_plush_br_bik"
+    },
     "miku:miku_plush_br_bik_orange": {
       "textures": "textures/blocks/miku_plush_br_bik_orange"
     },

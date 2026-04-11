@@ -26,15 +26,14 @@
         "hair_controller": "controller.animation.plush.hair"
       },
       "scripts": {
-        "animate": ["main_controller", "hair_controller"],
-        "variables": {
-          "v.is_dancing": "public",
-          "v.dance_index": "public",
-          "v.health_bend": "public",
-          "v.variant": "public"
-        }
+        "animate": [
+          "main_controller",
+          "hair_controller"
+        ]
       },
-      "render_controllers": ["controller.render.rin_plush"],
+      "render_controllers": [
+        "controller.render.rin_plush"
+      ],
       "spawn_egg": {
         "base_color": "#FFD700",
         "overlay_color": "#FFA500"

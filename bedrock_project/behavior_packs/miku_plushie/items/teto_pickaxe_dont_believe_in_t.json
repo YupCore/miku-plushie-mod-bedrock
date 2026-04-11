@@ -2,10 +2,13 @@
   "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:teto_pickaxe"
+      "identifier": "miku:teto_pickaxe_dont_believe_in_t"
     },
     "components": {
-      "minecraft:icon": "miku:teto_pickaxe",
+      "minecraft:icon": "miku:teto_pickaxe_dont_believe_in_t",
+      "minecraft:display_name": {
+        "value": "item.miku:teto_pickaxe_dont_believe_in_t.name"
+      },
       "minecraft:durability": {
         "max_durability": 500
       },

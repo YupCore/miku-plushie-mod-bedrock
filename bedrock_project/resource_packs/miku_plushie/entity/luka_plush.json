@@ -26,15 +26,14 @@
         "hair_controller": "controller.animation.plush.hair"
       },
       "scripts": {
-        "animate": ["main_controller", "hair_controller"],
-        "variables": {
-          "v.is_dancing": "public",
-          "v.dance_index": "public",
-          "v.health_bend": "public",
-          "v.variant": "public"
-        }
+        "animate": [
+          "main_controller",
+          "hair_controller"
+        ]
       },
-      "render_controllers": ["controller.render.luka_plush"],
+      "render_controllers": [
+        "controller.render.luka_plush"
+      ],
       "spawn_egg": {
         "base_color": "#FF6B6B",
         "overlay_color": "#C71585"

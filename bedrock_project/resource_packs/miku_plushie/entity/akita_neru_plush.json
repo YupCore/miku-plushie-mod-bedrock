@@ -30,15 +30,14 @@
         "hair_controller": "controller.animation.plush.hair"
       },
       "scripts": {
-        "animate": ["main_controller", "hair_controller"],
-        "variables": {
-          "v.is_dancing": "public",
-          "v.dance_index": "public",
-          "v.health_bend": "public",
-          "v.variant": "public"
-        }
+        "animate": [
+          "main_controller",
+          "hair_controller"
+        ]
       },
-      "render_controllers": ["controller.render.neru_plush"],
+      "render_controllers": [
+        "controller.render.neru_plush"
+      ],
       "spawn_egg": {
         "base_color": "#F5A623",
         "overlay_color": "#8B572A"

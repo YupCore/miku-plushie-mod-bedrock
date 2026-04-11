@@ -291,7 +291,7 @@
             }
           }
         ]
-      },
+      }
     },
     "events": {
       "miku:on_tame": {

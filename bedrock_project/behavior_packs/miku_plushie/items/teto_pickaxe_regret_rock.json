@@ -2,10 +2,13 @@
   "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:teto_pickaxe"
+      "identifier": "miku:teto_pickaxe_regret_rock"
     },
     "components": {
-      "minecraft:icon": "miku:teto_pickaxe",
+      "minecraft:icon": "miku:teto_pickaxe_regret_rock",
+      "minecraft:display_name": {
+        "value": "item.miku:teto_pickaxe_regret_rock.name"
+      },
       "minecraft:durability": {
         "max_durability": 500
       },
