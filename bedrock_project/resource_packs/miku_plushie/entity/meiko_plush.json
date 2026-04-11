@@ -35,11 +35,7 @@
       },
       "render_controllers": [
         "controller.render.meiko_plush"
-      ],
-      "spawn_egg": {
-        "base_color": "#B22222",
-        "overlay_color": "#DC143C"
-      }
+      ]
     }
   }
 }

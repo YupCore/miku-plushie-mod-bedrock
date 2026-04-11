@@ -35,11 +35,7 @@
       },
       "render_controllers": [
         "controller.render.kaito_plush"
-      ],
-      "spawn_egg": {
-        "base_color": "#4682B4",
-        "overlay_color": "#000080"
-      }
+      ]
     }
   }
 }

@@ -33,11 +33,7 @@
       },
       "render_controllers": [
         "controller.render.aiko_plush"
-      ],
-      "spawn_egg": {
-        "base_color": "#FF69B4",
-        "overlay_color": "#FFB6C1"
-      }
+      ]
     }
   }
 }

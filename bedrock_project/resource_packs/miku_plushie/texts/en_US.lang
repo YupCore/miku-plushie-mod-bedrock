@@ -130,16 +130,4 @@ entity.miku:meiko_plush.name=Meiko
 entity.miku:gumi_plush.name=Gumi
 entity.miku:kaito_plush.name=Kaito
 
-item.spawn_egg.entity.miku:miku_plush.name=Spawn Miku Plush
-item.spawn_egg.entity.miku:aiko_plush.name=Spawn Aiko Plush
-item.spawn_egg.entity.miku:teto_plush.name=Spawn Teto Plush
-item.spawn_egg.entity.miku:akita_neru_plush.name=Spawn Akita Neru Plush
-item.spawn_egg.entity.miku:rin_plush.name=Spawn Rin Plush
-item.spawn_egg.entity.miku:len_plush.name=Spawn Len Plush
-item.spawn_egg.entity.miku:konoha_plush.name=Spawn Konoha Plush
-item.spawn_egg.entity.miku:luka_plush.name=Spawn Luka Plush
-item.spawn_egg.entity.miku:meiko_plush.name=Spawn Meiko Plush
-item.spawn_egg.entity.miku:gumi_plush.name=Spawn Gumi Plush
-item.spawn_egg.entity.miku:kaito_plush.name=Spawn Kaito Plush
-
 itemGroup.miku_plushies.name=Mikus!!

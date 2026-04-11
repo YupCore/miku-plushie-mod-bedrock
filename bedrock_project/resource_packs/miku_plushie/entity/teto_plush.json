@@ -51,11 +51,7 @@
       },
       "render_controllers": [
         "controller.render.teto_plush"
-      ],
-      "spawn_egg": {
-        "base_color": "#D4312E",
-        "overlay_color": "#FF8A80"
-      }
+      ]
     }
   }
 }

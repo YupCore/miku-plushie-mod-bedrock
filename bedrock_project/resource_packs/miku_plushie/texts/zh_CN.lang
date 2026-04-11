@@ -130,16 +130,4 @@ entity.miku:meiko_plush.name=MEIKO
 entity.miku:gumi_plush.name=GUMI
 entity.miku:kaito_plush.name=KAITO
 
-item.spawn_egg.entity.miku:miku_plush.name=生成 初音未来玩偶
-item.spawn_egg.entity.miku:aiko_plush.name=生成 气球音爱子玩偶
-item.spawn_egg.entity.miku:teto_plush.name=生成 重音Teto玩偶
-item.spawn_egg.entity.miku:akita_neru_plush.name=生成 亚北音留玩偶
-item.spawn_egg.entity.miku:rin_plush.name=生成 镜音铃玩偶
-item.spawn_egg.entity.miku:len_plush.name=生成 镜音连玩偶
-item.spawn_egg.entity.miku:konoha_plush.name=生成 Konoha玩偶
-item.spawn_egg.entity.miku:luka_plush.name=生成 巡音流歌玩偶
-item.spawn_egg.entity.miku:meiko_plush.name=生成 MEIKO玩偶
-item.spawn_egg.entity.miku:gumi_plush.name=生成 GUMI玩偶
-item.spawn_egg.entity.miku:kaito_plush.name=生成 KAITO玩偶
-
 itemGroup.miku_plushies.name=Mikus!!

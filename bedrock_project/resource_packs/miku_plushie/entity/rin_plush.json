@@ -33,11 +33,7 @@
       },
       "render_controllers": [
         "controller.render.rin_plush"
-      ],
-      "spawn_egg": {
-        "base_color": "#FFD700",
-        "overlay_color": "#FFA500"
-      }
+      ]
     }
   }
 }
