@@ -1,20 +1,13 @@
 {
-  "format_version": "1.26.10",
+  "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:leek_seeds",
-      "menu_category": {
-        "category": "nature",
-        "group": "minecraft:itemGroup.name.seed"
-      }
+      "identifier": "miku:leek_seeds"
     },
     "components": {
-      "minecraft:display_name": "item.miku:leek_seeds.name",
       "minecraft:icon": "miku:leek_seeds",
       "minecraft:block_placer": {
-        "block": "miku:leek_crop",
-        "aligned_placement": false,
-        "replace_block_item": true
+        "block": "miku:leek_crop"
       }
     }
   }

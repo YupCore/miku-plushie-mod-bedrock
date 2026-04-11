@@ -25,7 +25,7 @@ const growthStages = [
 
 function generateLeekCropBlock(): object {
   return {
-    format_version: "1.21.70",
+    format_version: "1.21.50",
     "minecraft:block": {
       description: {
         identifier: "miku:leek_crop",
@@ -168,7 +168,7 @@ function generateMatureLeekCropLootTable(): object {
 
 function generateWildLeekCropBlock(): object {
   return {
-    format_version: "1.21.70",
+    format_version: "1.21.50",
     "minecraft:block": {
       description: {
         identifier: "miku:wild_leek_crop",

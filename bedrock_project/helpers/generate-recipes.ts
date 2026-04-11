@@ -24,7 +24,7 @@ type Recipe = ShapelessRecipe | ShapedRecipe;
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-const FORMAT_VERSION = "1.26.10";
+const FORMAT_VERSION = "1.21.50";
 const NAMESPACE = "miku";
 
 function ns(id: string): string {

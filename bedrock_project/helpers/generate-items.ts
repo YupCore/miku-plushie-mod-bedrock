@@ -40,7 +40,7 @@ function ensureDir(dir: string) {
 
 function generateFoodItem(item: ItemDef): object {
   return {
-    format_version: "1.21.70",
+    format_version: "1.21.50",
     "minecraft:item": {
       description: {
         identifier: `miku:${item.itemId}`,
@@ -66,7 +66,7 @@ function generateFoodItem(item: ItemDef): object {
 
 function generateSeedItem(item: ItemDef): object {
   return {
-    format_version: "1.21.70",
+    format_version: "1.21.50",
     "minecraft:item": {
       description: {
         identifier: `miku:${item.itemId}`,
@@ -89,7 +89,7 @@ function generateRegularItem(item: ItemDef): object {
     components["minecraft:rarity"] = item.rarity;
   }
   return {
-    format_version: "1.21.70",
+    format_version: "1.21.50",
     "minecraft:item": {
       description: {
         identifier: `miku:${item.itemId}`,
@@ -101,7 +101,7 @@ function generateRegularItem(item: ItemDef): object {
 
 function generatePickaxeItem(): object {
   return {
-    format_version: "1.21.70",
+    format_version: "1.21.50",
     "minecraft:item": {
       description: {
         identifier: "miku:teto_pickaxe",

@@ -1,14 +1,10 @@
 {
-  "format_version": "1.26.10",
+  "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:canudinho",
-      "menu_category": {
-        "category": "items"
-      }
+      "identifier": "miku:canudinho"
     },
     "components": {
-      "minecraft:display_name": "item.miku:canudinho.name",
       "minecraft:icon": "miku:canudinho",
       "minecraft:rarity": "rare"
     }

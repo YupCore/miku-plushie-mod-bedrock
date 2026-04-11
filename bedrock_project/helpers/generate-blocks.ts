@@ -355,7 +355,7 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
   const renderMethod = block.isGhost ? "blend" : "alpha_test";
 
   return {
-    format_version: "1.26.10",
+    format_version: "1.21.50",
     "minecraft:block": {
       description: {
         identifier: fullBlockId,
@@ -448,7 +448,7 @@ function generateRpBlocksJson(): object {
   }
 
   return {
-    format_version: "1.26.10",
+    format_version: "1.21.50",
     ...blocksSounds,
   };
 }

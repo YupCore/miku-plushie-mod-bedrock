@@ -1,7 +1,7 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "misc.idle": {
+    "animation.plush.misc.idle": {
       "loop": true,
       "animation_length": 4,
       "bones": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "misc.sit": {
+    "animation.plush.misc.sit": {
       "loop": true,
       "animation_length": 2,
       "bones": {
@@ -187,7 +187,7 @@
         }
       }
     },
-    "misc.sit-dance": {
+    "animation.plush.misc.sit-dance": {
       "loop": true,
       "animation_length": 0.6667,
       "bones": {
@@ -335,7 +335,7 @@
         }
       }
     },
-    "misc.dance.generic.caramelldansen": {
+    "animation.plush.misc.dance.generic.caramelldansen": {
       "loop": true,
       "animation_length": 0.7083,
       "bones": {
@@ -469,7 +469,7 @@
         }
       }
     },
-    "misc.dance.miku.miku": {
+    "animation.plush.misc.dance.miku.miku": {
       "loop": true,
       "animation_length": 0.9167,
       "bones": {
@@ -608,7 +608,7 @@
         }
       }
     },
-    "misc.dance.miku.ievan_polkka": {
+    "animation.plush.misc.dance.miku.ievan_polkka": {
       "loop": true,
       "animation_length": 1,
       "bones": {
@@ -682,7 +682,7 @@
         }
       }
     },
-    "misc.dance.miku.vegetable_juice": {
+    "animation.plush.misc.dance.miku.vegetable_juice": {
       "loop": true,
       "animation_length": 0.7917,
       "bones": {
@@ -856,7 +856,7 @@
         }
       }
     },
-    "misc.dance.miku.static": {
+    "animation.plush.misc.dance.miku.static": {
       "loop": true,
       "animation_length": 1.25,
       "bones": {
@@ -941,7 +941,7 @@
         }
       }
     },
-    "misc.dance.teto.teto_territory": {
+    "animation.plush.misc.dance.teto.teto_territory": {
       "loop": true,
       "animation_length": 0.7083,
       "bones": {
@@ -1129,7 +1129,7 @@
         }
       }
     },
-    "misc.dance.teto.birdbrain": {
+    "animation.plush.misc.dance.teto.birdbrain": {
       "loop": true,
       "animation_length": 2,
       "bones": {
@@ -1306,7 +1306,7 @@
         }
       }
     },
-    "misc.dance.teto.liar_dancer": {
+    "animation.plush.misc.dance.teto.liar_dancer": {
       "loop": true,
       "animation_length": 2.8333,
       "bones": {
@@ -1383,7 +1383,7 @@
         }
       }
     },
-    "attack.swipe": {
+    "animation.plush.attack.swipe": {
       "animation_length": 0.5,
       "bones": {
         "body": {
@@ -1402,7 +1402,7 @@
         }
       }
     },
-    "attack.swipe2": {
+    "animation.plush.attack.swipe2": {
       "animation_length": 0.5417,
       "bones": {
         "body": {
@@ -1421,7 +1421,7 @@
         }
       }
     },
-    "attack.swipe3": {
+    "animation.plush.attack.swipe3": {
       "animation_length": 0.5,
       "bones": {
         "body": {
@@ -1440,7 +1440,7 @@
         }
       }
     },
-    "misc.eat": {
+    "animation.plush.misc.eat": {
       "loop": true,
       "animation_length": 0.6667,
       "bones": {
@@ -1499,7 +1499,7 @@
         }
       }
     },
-    "misc.spawn": {
+    "animation.plush.misc.spawn": {
       "animation_length": 0.5,
       "bones": {
         "root": {
@@ -1643,7 +1643,7 @@
         }
       }
     },
-    "procedural.walk": {
+    "animation.plush.procedural.walk": {
       "loop": true,
       "bones": {
         "left_arm": {

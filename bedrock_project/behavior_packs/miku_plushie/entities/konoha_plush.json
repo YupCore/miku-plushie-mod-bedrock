@@ -1,5 +1,5 @@
 {
-  "format_version": "1.26.10",
+  "format_version": "1.21.60",
   "minecraft:entity": {
     "description": {
       "identifier": "miku:konoha_plush",
@@ -292,9 +292,6 @@
           }
         ]
       },
-      "minecraft:death_sound_event": {
-        "sound_event": ""
-      }
     },
     "events": {
       "miku:on_tame": {

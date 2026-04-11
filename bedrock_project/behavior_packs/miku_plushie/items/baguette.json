@@ -1,15 +1,10 @@
 {
-  "format_version": "1.26.10",
+  "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:baguette",
-      "menu_category": {
-        "category": "nature",
-        "group": "minecraft:itemGroup.name.crop"
-      }
+      "identifier": "miku:baguette"
     },
     "components": {
-      "minecraft:display_name": "item.miku:baguette.name",
       "minecraft:icon": "miku:baguette",
       "minecraft:food": {
         "nutrition": 8,
@@ -21,7 +16,9 @@
         "movement_modifier": 0.35
       },
       "minecraft:tags": {
-        "tags": ["minecraft:is_food"]
+        "tags": [
+          "minecraft:is_food"
+        ]
       }
     }
   }

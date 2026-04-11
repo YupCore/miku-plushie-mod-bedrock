@@ -1,17 +1,11 @@
 {
-  "format_version": "1.26.10",
+  "format_version": "1.21.50",
   "minecraft:block": {
     "description": {
-      "identifier": "miku:leek_crop",
-      "states": {
-        "miku:growth": {
-          "values": { "min": 0, "max": 7 }
-        }
-      }
+      "identifier": "miku:leek_crop"
     },
     "components": {
       "minecraft:geometry": "geometry.crop",
-      "minecraft:display_name": "block.miku:leek_crop.name",
       "minecraft:material_instances": {
         "*": {
           "texture": "miku:leek_crop_stage0",
@@ -60,17 +54,35 @@
       },
       "minecraft:loot": "loot_tables/blocks/leek_crop.json",
       "minecraft:collision_box": {
-        "origin": [-7, 0, -7],
-        "size": [14, 16, 14]
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          16,
+          14
+        ]
       },
       "minecraft:selection_box": {
-        "origin": [-7, 0, -7],
-        "size": [14, 16, 14]
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          16,
+          14
+        ]
       },
       "minecraft:placement_filter": {
         "conditions": [
           {
-            "allowed_faces": ["up"],
+            "allowed_faces": [
+              "up"
+            ],
             "block_filter": [
               {
                 "tags": "query.any_tag('minecraft:is_fertile')"
@@ -79,11 +91,16 @@
           }
         ]
       },
+      "minecraft:growable": {
+        "can_grow_on_interaction": false,
+        "can_survate_on_interaction": false,
+        "interaction_fertilize_type": "bonemeal"
+      },
       "minecraft:light_dampening": 0
     },
     "permutations": [
       {
-        "condition": "q.block_state('miku:growth') == 0",
+        "condition": "q.block_state('minecraft:growth') == 0",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -93,17 +110,33 @@
           },
           "minecraft:geometry": "geometry.leek_crop_stage0",
           "minecraft:collision_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 1, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              1,
+              14
+            ]
           },
           "minecraft:selection_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 1, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              1,
+              14
+            ]
           }
         }
       },
       {
-        "condition": "q.block_state('miku:growth') == 1",
+        "condition": "q.block_state('minecraft:growth') == 1",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -113,17 +146,33 @@
           },
           "minecraft:geometry": "geometry.leek_crop_stage1",
           "minecraft:collision_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 2, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              2,
+              14
+            ]
           },
           "minecraft:selection_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 2, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              2,
+              14
+            ]
           }
         }
       },
       {
-        "condition": "q.block_state('miku:growth') == 2",
+        "condition": "q.block_state('minecraft:growth') == 2",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -133,17 +182,33 @@
           },
           "minecraft:geometry": "geometry.leek_crop_stage2",
           "minecraft:collision_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 4, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              4,
+              14
+            ]
           },
           "minecraft:selection_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 4, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              4,
+              14
+            ]
           }
         }
       },
       {
-        "condition": "q.block_state('miku:growth') == 3",
+        "condition": "q.block_state('minecraft:growth') == 3",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -153,17 +218,33 @@
           },
           "minecraft:geometry": "geometry.leek_crop_stage3",
           "minecraft:collision_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 6, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              6,
+              14
+            ]
           },
           "minecraft:selection_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 6, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              6,
+              14
+            ]
           }
         }
       },
       {
-        "condition": "q.block_state('miku:growth') == 4",
+        "condition": "q.block_state('minecraft:growth') == 4",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -173,17 +254,33 @@
           },
           "minecraft:geometry": "geometry.leek_crop_stage4",
           "minecraft:collision_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 8, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              8,
+              14
+            ]
           },
           "minecraft:selection_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 8, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              8,
+              14
+            ]
           }
         }
       },
       {
-        "condition": "q.block_state('miku:growth') == 5",
+        "condition": "q.block_state('minecraft:growth') == 5",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -193,17 +290,33 @@
           },
           "minecraft:geometry": "geometry.leek_crop_stage5",
           "minecraft:collision_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 10, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              10,
+              14
+            ]
           },
           "minecraft:selection_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 10, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              10,
+              14
+            ]
           }
         }
       },
       {
-        "condition": "q.block_state('miku:growth') == 6",
+        "condition": "q.block_state('minecraft:growth') == 6",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -213,17 +326,33 @@
           },
           "minecraft:geometry": "geometry.leek_crop_stage6",
           "minecraft:collision_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 12, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              12,
+              14
+            ]
           },
           "minecraft:selection_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 12, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              12,
+              14
+            ]
           }
         }
       },
       {
-        "condition": "q.block_state('miku:growth') == 7",
+        "condition": "q.block_state('minecraft:growth') == 7",
         "components": {
           "minecraft:material_instances": {
             "*": {
@@ -233,12 +362,28 @@
           },
           "minecraft:geometry": "geometry.leek_crop_stage7",
           "minecraft:collision_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 16, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              16,
+              14
+            ]
           },
           "minecraft:selection_box": {
-            "origin": [-7, 0, -7],
-            "size": [14, 16, 14]
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              16,
+              14
+            ]
           }
         }
       }
