@@ -117,9 +117,6 @@
         "is_pushable": true,
         "is_pushable_by_piston": true
       },
-      "minecraft:loot": {
-        "table": "loot_tables/entities/gumi_plush.json"
-      },
       "minecraft:navigation.walk": {
         "can_walk": true,
         "can_pass_doors": true,
