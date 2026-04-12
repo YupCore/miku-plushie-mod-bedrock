@@ -121,11 +121,11 @@
       },
       "minecraft:behavior.delayed_attack": {
         "priority": 2,
-        "speed_multiplier": 1.5,
+        "speed_multiplier": 2,
         "attack_once": false,
         "track_target": true,
-        "reach_multiplier": 1.0,
-        "hit_delay_pct": 0.25
+        "reach_multiplier": 3.0,
+        "hit_delay_pct": 0.1
       },
       "minecraft:behavior.tempt": {
         "priority": 6,
@@ -182,10 +182,7 @@
           }
         ]
       },
-      "minecraft:inventory": {
-          "inventory_size": 1,
-          "container_type": "inventory"
-      },
+
       "minecraft:shareables": {
         "singular_pickup": true,
         "items": [
@@ -276,16 +273,16 @@
         ]
       },
       "minecraft:behavior.pickup_items": {
-          "can_pickup_any_item": false,
-          "can_pickup_to_hand_or_equipment": true,
-          "priority": 5,
-          "goal_radius": 2,
-          "max_dist": 3,
-          "speed_multiplier": 1
+        "can_pickup_any_item": false,
+        "priority": 5,
+        "goal_radius": 2,
+        "max_dist": 3,
+        "speed_multiplier": 1
       },
       "minecraft:behavior.equip_item": {
         "priority": 3
       },
+      "minecraft:equip_item": {},
       "minecraft:nameable": {},
       "minecraft:persistent": {},
       "minecraft:interact": {
