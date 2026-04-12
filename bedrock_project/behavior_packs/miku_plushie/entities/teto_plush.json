@@ -307,42 +307,7 @@
       },
       "minecraft:equip_item": {},
       "minecraft:nameable": {},
-      "minecraft:persistent": {},
-      "minecraft:interact": {
-        "interactions": [
-          {
-            "on_interact": {
-              "filters": {
-                "all_of": [
-                  {
-                    "test": "has_component",
-                    "subject": "self",
-                    "value": "minecraft:is_tamed"
-                  },
-                  {
-                    "test": "is_family",
-                    "subject": "other",
-                    "value": "player"
-                  },
-                  {
-                    "test": "is_owner",
-                    "subject": "other",
-                    "value": true
-                  },
-                  {
-                    "test": "has_equipment",
-                    "subject": "other",
-                    "domain": "hand",
-                    "operator": "!=",
-                    "value": "miku:leek"
-                  }
-                ]
-              },
-              "event": "miku:toggle_sit"
-            }
-          }
-        ]
-      }
+      "minecraft:persistent": {}
     },
     "events": {
       "miku:on_tame": {

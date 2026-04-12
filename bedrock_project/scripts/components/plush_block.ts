@@ -79,7 +79,7 @@ class PlushBlockComponent implements BlockCustomComponent {
 
       dimension.spawnParticle("miku:miku_spawn", {
         x: location.x + 0.5,
-        y: location.y + 0.5,
+        y: location.y,
         z: location.z + 0.5,
       });
 

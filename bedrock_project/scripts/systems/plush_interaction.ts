@@ -79,5 +79,8 @@ export function startPlushInteractionSystem(): void {
         return;
       }
     }
+
+    // Default: toggle sit (any item or empty hand, matches Java behavior)
+    target.triggerEvent("miku:toggle_sit");
   });
 }
