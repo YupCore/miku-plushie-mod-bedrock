@@ -213,9 +213,9 @@
           ]
         },
         {
-          "name": "left_hand",
+          "name": "leftItem",
           "parent": "left_arm",
-          "pivot": [3, 4.5, -1]
+          "pivot": [3, 5.5, 0]
         },
         {
           "name": "right_arm_offset",
@@ -338,14 +338,9 @@
           ]
         },
         {
-          "name": "right_hand",
-          "parent": "right_arm",
-          "pivot": [-3, 4.5, -1]
-        },
-        {
           "name": "rightItem",
-          "parent": "right_hand",
-          "pivot": [-3, 4.5, -1]
+          "parent": "right_arm",
+          "pivot": [-3, 5.5, 0]
         },
         {
           "name": "head_offset",
