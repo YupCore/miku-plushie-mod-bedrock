@@ -8,6 +8,9 @@
       "minecraft:icon": "miku:vocaloid_heart",
       "minecraft:display_name": {
         "value": "item.miku:vocaloid_heart.name"
+      },
+      "minecraft:menu_category": {
+        "category": "items"
       }
     }
   }

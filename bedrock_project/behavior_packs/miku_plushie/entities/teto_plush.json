@@ -8,13 +8,19 @@
       "properties": {
         "miku:variant": {
           "type": "int",
-          "range": [0, 13],
+          "range": [
+            0,
+            13
+          ],
           "default": 0,
           "client_sync": true
         },
         "miku:spawn_age": {
           "type": "int",
-          "range": [0, 10],
+          "range": [
+            0,
+            10
+          ],
           "default": 0,
           "client_sync": true
         },
@@ -25,13 +31,19 @@
         },
         "miku:dance_index": {
           "type": "int",
-          "range": [0, 3],
+          "range": [
+            0,
+            3
+          ],
           "default": 0,
           "client_sync": true
         },
         "miku:health_bend": {
           "type": "float",
-          "range": [-25.0, 0.0],
+          "range": [
+            -25.0,
+            0.0
+          ],
           "default": 0.0,
           "client_sync": true
         },
@@ -64,14 +76,19 @@
     "components": {
       "minecraft:tameable": {
         "probability": 0.5,
-        "tame_items": ["miku:leek"],
+        "tame_items": [
+          "miku:leek"
+        ],
         "tame_event": {
           "event": "miku:on_tame",
           "target": "self"
         }
       },
       "minecraft:type_family": {
-        "family": ["plush", "creature"]
+        "family": [
+          "plush",
+          "creature"
+        ]
       },
       "minecraft:health": {
         "value": 20,
@@ -109,6 +126,7 @@
         "can_open_doors": false
       },
       "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -123,7 +141,9 @@
       "minecraft:behavior.tempt": {
         "priority": 6,
         "speed_multiplier": 1.5,
-        "items": ["miku:leek"]
+        "items": [
+          "miku:leek"
+        ]
       },
       "minecraft:behavior.look_at_player": {
         "priority": 8,
@@ -139,9 +159,21 @@
           {
             "filters": {
               "none_of": [
-                { "test": "is_family", "subject": "other", "value": "plush" },
-                { "test": "is_family", "subject": "other", "value": "creeper" },
-                { "test": "is_family", "subject": "other", "value": "ghast" }
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "plush"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "creeper"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "ghast"
+                }
               ]
             },
             "max_dist": 32
@@ -154,9 +186,21 @@
           {
             "filters": {
               "none_of": [
-                { "test": "is_family", "subject": "other", "value": "plush" },
-                { "test": "is_family", "subject": "other", "value": "creeper" },
-                { "test": "is_family", "subject": "other", "value": "ghast" }
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "plush"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "creeper"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "ghast"
+                }
               ]
             }
           }
@@ -168,9 +212,21 @@
           {
             "filters": {
               "none_of": [
-                { "test": "is_family", "subject": "other", "value": "plush" },
-                { "test": "is_family", "subject": "other", "value": "creeper" },
-                { "test": "is_family", "subject": "other", "value": "ghast" }
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "plush"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "creeper"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "ghast"
+                }
               ]
             }
           }
@@ -282,9 +338,28 @@
             "on_interact": {
               "filters": {
                 "all_of": [
-                  { "test": "has_component", "subject": "self", "value": "minecraft:is_tamed" },
-                  { "test": "is_family", "subject": "other", "value": "player" },
-                  { "test": "is_owner", "subject": "other", "value": true }
+                  {
+                    "test": "has_component",
+                    "subject": "self",
+                    "value": "minecraft:is_tamed"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "miku:leek"
+                  }
                 ]
               },
               "event": "miku:toggle_sit"
@@ -298,38 +373,54 @@
         "sequence": [
           {
             "remove": {
-              "component_groups": ["miku:wild"]
+              "component_groups": [
+                "miku:wild"
+              ]
             },
             "add": {
-              "component_groups": ["miku:tamed"]
+              "component_groups": [
+                "miku:tamed"
+              ]
             }
           },
           {
             "queue_command": {
-              "command": ["playsound miku.plushie.teto_oie @s ~ ~ ~ 1.0 1.0"]
+              "command": [
+                "playsound miku.plushie.teto_oie @s ~ ~ ~ 1.0 1.0"
+              ]
             }
           }
         ]
       },
       "miku:toggle_sit": {
         "queue_command": {
-          "command": ["function miku/toggle_sit"]
+          "command": [
+            "function miku/toggle_sit"
+          ]
         }
       },
       "miku:start_sitting": {
         "add": {
-          "component_groups": ["miku:sitting"]
+          "component_groups": [
+            "miku:sitting"
+          ]
         },
         "remove": {
-          "component_groups": ["miku:standing"]
+          "component_groups": [
+            "miku:standing"
+          ]
         }
       },
       "miku:stop_sitting": {
         "add": {
-          "component_groups": ["miku:standing"]
+          "component_groups": [
+            "miku:standing"
+          ]
         },
         "remove": {
-          "component_groups": ["miku:sitting"]
+          "component_groups": [
+            "miku:sitting"
+          ]
         }
       }
     }

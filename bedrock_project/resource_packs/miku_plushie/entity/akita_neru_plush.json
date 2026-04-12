@@ -3,6 +3,7 @@
   "minecraft:client_entity": {
     "description": {
       "identifier": "miku:akita_neru_plush",
+      "enable_attachables": true,
       "materials": {
         "default": "entity_alphatest",
         "ghost": "entity_alphablend"

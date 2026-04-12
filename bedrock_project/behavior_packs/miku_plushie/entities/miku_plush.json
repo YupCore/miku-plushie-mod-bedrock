@@ -130,6 +130,7 @@
         "avoid_water": false
       },
       "minecraft:movement.basic": {},
+      "minecraft:jump.static": {},
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -305,7 +306,8 @@
                 "all_of": [
                   { "test": "has_component", "subject": "self", "value": "minecraft:is_tamed" },
                   { "test": "is_family", "subject": "other", "value": "player" },
-                  { "test": "is_owner", "subject": "other", "value": true }
+                  { "test": "is_owner", "subject": "other", "value": true },
+                  { "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "miku:leek" }
                 ]
               },
               "event": "miku:toggle_sit"

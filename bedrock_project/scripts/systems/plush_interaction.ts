@@ -58,7 +58,7 @@ export function startPlushInteractionSystem(): void {
 
     const healthComponent = target.getComponent("minecraft:health");
     if (healthComponent && healthComponent.currentValue < healthComponent.effectiveMax) {
-      if (mainhand?.typeId === "miku:leek") {
+      if (playerItem?.typeId === "miku:leek") {
         healthComponent.setCurrentValue(Math.min(healthComponent.currentValue + 4, healthComponent.effectiveMax));
 
         const character = getCharacterFromEntity(target.typeId);
@@ -70,10 +70,10 @@ export function startPlushInteractionSystem(): void {
 
         const isCreative = player.getGameMode() === GameMode.Creative;
         if (!isCreative) {
-          if (mainhand.amount > 1) {
-            mainhand.amount--;
+          if (mainhand!.amount > 1) {
+            mainhand!.amount--;
           } else {
-            mainhand.setItem(undefined);
+            mainhand!.setItem(undefined);
           }
         }
         return;

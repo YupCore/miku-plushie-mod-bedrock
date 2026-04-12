@@ -3,6 +3,7 @@
   "minecraft:client_entity": {
     "description": {
       "identifier": "miku:luka_plush",
+      "enable_attachables": true,
       "materials": {
         "default": "entity_alphatest"
       },

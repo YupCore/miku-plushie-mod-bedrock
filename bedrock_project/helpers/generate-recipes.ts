@@ -125,8 +125,8 @@ const recipes: Recipe[] = [
   shapedPlush(
     "vocaloid_heart",
     ["LN", "BP"],
-    { L: "miku:leek", N: "minecraft:note_block", B: "miku:baguette", P: "miku:akita_neru_phone" },
-    ["miku:leek", "minecraft:note_block", "miku:baguette", "miku:akita_neru_phone"]
+    { L: "miku:leek", N: "minecraft:noteblock", B: "miku:baguette", P: "miku:akita_neru_phone" },
+    ["miku:leek", "minecraft:noteblock", "miku:baguette", "miku:akita_neru_phone"]
   ),
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -206,7 +206,7 @@ const recipes: Recipe[] = [
   plushShapeless("miku_plush_bik", "miku_plush", "blue_wool", "water_bucket"),
   plushShapeless("miku_plush_br_beach", "miku_plush", "yellow_wool", "green_wool", "sand"),
   plushShapeless("miku_plush_br_braid", "miku_plush", "yellow_wool", "green_wool", "glowstone"),
-  plushShapeless("miku_plush_br_ba_drum", "miku_plush", "red_wool", "white_wool", "blue_wool", "note_block"),
+  plushShapeless("miku_plush_br_ba_drum", "miku_plush", "red_wool", "white_wool", "blue_wool", "noteblock"),
   plushShapeless("miku_plush_br_pa", "miku_plush", "white_wool", "cornflower"),
   plushShapeless("miku_plush_br_sp", "miku_plush", "white_wool", "red_wool", "black_wool", "gray_concrete"),
   plushShapeless("miku_plush_br_mg", "miku_plush", "brown_wool", "red_wool", "gold_nugget"),
@@ -224,7 +224,7 @@ const recipes: Recipe[] = [
   plushShapeless("miku_plush_mushroom", "miku_plush", "moss_block", "red_mushroom_block"),
   plushShapeless("miku_plush_senbonzakura", "miku_plush", "green_wool", "cherry_log"),
   plushShapeless("miku_plush_uraotomelovers", "miku_plush", "white_wool", "black_wool"),
-  plushShapeless("miku_plush_personadancing", "miku_plush", "white_wool", "black_wool", "note_block"),
+  plushShapeless("miku_plush_personadancing", "miku_plush", "white_wool", "black_wool", "noteblock"),
   plushShapeless("miku_plush_helloplanet", "miku_plush", "white_wool", "lime_wool", "magenta_wool"),
   plushShapeless("miku_plush_hachune", "miku_plush", "lily_of_the_valley"),
   plushShapeless("miku_plush_zatsune", "miku_plush", "black_wool", "black_wool"),
@@ -239,9 +239,9 @@ const recipes: Recipe[] = [
   plushShapeless("miku_plush_mummy", "miku_plush", "black_wool", "paper", "paper"),
   plushShapeless("miku_plush_patati", "miku_plush", "yellow_wool", "light_blue_wool", "white_wool"),
   plushShapeless("miku_plush_patata", "miku_plush", "yellow_wool", "lime_wool", "red_wool"),
-  plushShapeless("miku_plush_devil", "miku_plush", "magma_block", "netherrack"),
+  plushShapeless("miku_plush_devil", "miku_plush", "magma", "netherrack"),
   plushShapeless("miku_plush_witch", "miku_plush", "purple_wool", "green_wool", "stick", "wheat"),
-  plushShapeless("miku_plush_santa", "miku_plush", "red_wool", "white_wool", "snow_block"),
+  plushShapeless("miku_plush_santa", "miku_plush", "red_wool", "white_wool", "snow"),
   plushShapeless("miku_plush_reindeer", "miku_plush", "brown_wool", "redstone_torch"),
   plushShapeless("miku_plush_santa_elf", "miku_plush", "lime_wool", "red_wool"),
   plushShapeless("miku_plush_xmas_tree", "miku_plush", "spruce_leaves", "red_wool"),
@@ -253,7 +253,7 @@ const recipes: Recipe[] = [
   plushShapeless(
     "miku_plush_digital_stars_2025",
     "miku_plush",
-    "note_block",
+    "noteblock",
     "gold_nugget",
     "gold_nugget",
     "gold_nugget",

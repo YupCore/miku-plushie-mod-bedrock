@@ -4,6 +4,12 @@ import * as path from "path";
 const BP_DIR = path.join(__dirname, "..", "behavior_packs", "miku_plushie");
 const BLOCKS_DIR = path.join(BP_DIR, "blocks");
 const RP_DIR = path.join(__dirname, "..", "resource_packs", "miku_plushie");
+const GEO_DIR = path.join(RP_DIR, "models", "blocks");
+
+function resolveGeometry(blockId: string, fallback: string): string {
+  const geoFile = path.join(GEO_DIR, `${blockId}.geo.json`);
+  return fs.existsSync(geoFile) ? `geometry.${blockId}` : fallback;
+}
 
 interface PlushBlockDef {
   blockId: string;
@@ -353,9 +359,10 @@ function ensureDir(dir: string) {
 function generatePlushBlockJson(block: PlushBlockDef): object {
   const fullBlockId = `miku:${block.blockId}`;
   const renderMethod = block.isGhost ? "blend" : "alpha_test";
+  const resolvedGeometry = resolveGeometry(block.blockId, block.geometry);
 
   return {
-    format_version: "1.21.50",
+    format_version: "1.26.10",
     "minecraft:block": {
       description: {
         identifier: fullBlockId,
@@ -365,11 +372,15 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
             y_rotation_offset: 180,
           },
         },
+        "menu_category": {
+          "category": "nature",
+          "group": "miku:itemGroup.miku_plushies.name",
+        },
       },
       components: {
         "miku:plush_block": {},
         "minecraft:display_name": `block.${fullBlockId}.name`,
-        "minecraft:geometry": block.geometry,
+        "minecraft:geometry": resolvedGeometry,
         "minecraft:material_instances": {
           "*": {
             texture: fullBlockId,
@@ -377,7 +388,7 @@ function generatePlushBlockJson(block: PlushBlockDef): object {
           },
         },
         "minecraft:item_visual": {
-          geometry: block.geometry,
+          geometry: resolvedGeometry,
           material_instances: {
             "*": {
               texture: fullBlockId,
@@ -447,8 +458,12 @@ function generateRpBlocksJson(): object {
     blocksSounds[fullBlockId] = { sound: soundGroup };
   }
 
+  // Crop blocks (not generated as plush blocks)
+  blocksSounds["miku:leek_crop"] = { sound: "grass" };
+  blocksSounds["miku:wild_leek_crop"] = { sound: "grass" };
+
   return {
-    format_version: "1.21.50",
+    format_version: "1.21.40",
     ...blocksSounds,
   };
 }

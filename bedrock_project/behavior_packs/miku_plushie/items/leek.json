@@ -22,6 +22,9 @@
         "tags": [
           "minecraft:is_food"
         ]
+      },
+      "minecraft:menu_category": {
+        "category": "items"
       }
     }
   }

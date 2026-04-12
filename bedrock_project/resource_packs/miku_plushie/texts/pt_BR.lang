@@ -130,4 +130,4 @@ entity.miku:meiko_plush.name=Meiko
 entity.miku:gumi_plush.name=Gumi
 entity.miku:kaito_plush.name=Kaito
 
-itemGroup.miku_plushies.name=Mikus!!
+miku:itemGroup.miku_plushies.name=Mikus!!

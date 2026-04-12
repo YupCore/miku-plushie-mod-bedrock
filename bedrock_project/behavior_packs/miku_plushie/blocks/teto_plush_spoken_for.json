@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.26.10",
   "minecraft:block": {
     "description": {
       "identifier": "miku:teto_plush_spoken_for",
@@ -10,12 +10,16 @@
           ],
           "y_rotation_offset": 180
         }
+      },
+      "menu_category": {
+        "category": "nature",
+        "group": "miku:itemGroup.miku_plushies.name"
       }
     },
     "components": {
       "miku:plush_block": {},
       "minecraft:display_name": "block.miku:teto_plush_spoken_for.name",
-      "minecraft:geometry": "geometry.teto_plush",
+      "minecraft:geometry": "geometry.teto_plush_spoken_for",
       "minecraft:material_instances": {
         "*": {
           "texture": "miku:teto_plush_spoken_for",
@@ -23,7 +27,7 @@
         }
       },
       "minecraft:item_visual": {
-        "geometry": "geometry.teto_plush",
+        "geometry": "geometry.teto_plush_spoken_for",
         "material_instances": {
           "*": {
             "texture": "miku:teto_plush_spoken_for",

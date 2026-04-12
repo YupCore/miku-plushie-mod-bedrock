@@ -45,6 +45,9 @@
         "tags": [
           "minecraft:is_pickaxe"
         ]
+      },
+      "minecraft:menu_category": {
+        "category": "equipment"
       }
     }
   }

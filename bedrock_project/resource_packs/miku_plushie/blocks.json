@@ -296,5 +296,11 @@
   },
   "miku:kaito_plush_v4": {
     "sound": "cloth"
+  },
+  "miku:leek_crop": {
+    "sound": "grass"
+  },
+  "miku:wild_leek_crop": {
+    "sound": "grass"
   }
 }

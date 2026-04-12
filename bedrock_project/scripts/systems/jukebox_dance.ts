@@ -1,4 +1,4 @@
-import { world, system, Dimension } from "@minecraft/server";
+import { world, system, Dimension, BlockRecordPlayerComponent } from "@minecraft/server";
 import { getDanceCountForEntity } from "../utils/plush_registry";
 import { getCharacterFromEntity, playPlushSound } from "../utils/sounds";
 
@@ -10,7 +10,14 @@ function isJukeboxNearby(dimension: Dimension, x: number, y: number, z: number):
     for (let dz = -JUKEBOX_CHECK_RADIUS; dz <= JUKEBOX_CHECK_RADIUS; dz++) {
       for (let dy = -2; dy <= 2; dy++) {
         const block = dimension.getBlock({ x: x + dx, y: y + dy, z: z + dz });
-        if (block?.typeId === "minecraft:jukebox") return true;
+        if (block?.typeId === "minecraft:jukebox") {
+          try {
+            const recordPlayer = block.getComponent("minecraft:record_player") as BlockRecordPlayerComponent | undefined;
+            if (recordPlayer?.isPlaying()) return true;
+          } catch {
+            // component unavailable
+          }
+        }
       }
     }
   }

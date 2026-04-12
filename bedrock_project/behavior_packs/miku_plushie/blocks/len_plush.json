@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.26.10",
   "minecraft:block": {
     "description": {
       "identifier": "miku:len_plush",
@@ -10,6 +10,10 @@
           ],
           "y_rotation_offset": 180
         }
+      },
+      "menu_category": {
+        "category": "nature",
+        "group": "miku:itemGroup.miku_plushies.name"
       }
     },
     "components": {

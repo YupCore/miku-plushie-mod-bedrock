@@ -9,7 +9,10 @@
       "minecraft:display_name": {
         "value": "item.miku:canudinho.name"
       },
-      "minecraft:rarity": "rare"
+      "minecraft:rarity": "rare",
+      "minecraft:menu_category": {
+        "category": "items"
+      }
     }
   }
 }

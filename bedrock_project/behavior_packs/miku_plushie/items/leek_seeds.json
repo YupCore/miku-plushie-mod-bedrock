@@ -11,6 +11,9 @@
       },
       "minecraft:block_placer": {
         "block": "miku:leek_crop"
+      },
+      "minecraft:menu_category": {
+        "category": "nature"
       }
     }
   }

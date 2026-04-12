@@ -59,26 +59,22 @@ export function startCropGrowthSystem(): void {
   console.log("[Miku Plushie] Starting crop growth system");
 
   world.afterEvents.playerInteractWithBlock.subscribe((event) => {
-    const { block, player } = event;
-    if (!player) return;
+    const { block, player, itemStack, isFirstEvent } = event;
+    if (!player || !isFirstEvent) return;
 
-    if (block.typeId === "miku:leek_crop") {
-      const equippable = player.getComponent("minecraft:equippable");
-      const mainhand = equippable?.getEquipmentSlot(EquipmentSlot.Mainhand);
+    if (block.typeId === "miku:leek_crop" && itemStack?.typeId === "minecraft:bone_meal") {
+      const currentAge = getGrowthState(block);
+      if (currentAge >= MAX_GROWTH_AGE) return;
 
-      if (mainhand?.typeId === "minecraft:bone_meal") {
-        const currentAge = getGrowthState(block);
-        if (currentAge >= MAX_GROWTH_AGE) return;
+      const growthAmount =
+        Math.floor(Math.random() * (BONE_MEAL_AMOUNT_MAX - BONE_MEAL_AMOUNT_MIN + 1)) + BONE_MEAL_AMOUNT_MIN;
+      setGrowthState(block, Math.min(currentAge + growthAmount, MAX_GROWTH_AGE));
+      block.dimension.playSound("item.bone_meal.use", block.location);
 
-        const growthAmount =
-          Math.floor(Math.random() * (BONE_MEAL_AMOUNT_MAX - BONE_MEAL_AMOUNT_MIN + 1)) + BONE_MEAL_AMOUNT_MIN;
-        const newAge = Math.min(currentAge + growthAmount, MAX_GROWTH_AGE);
-
-        setGrowthState(block, newAge);
-        block.dimension.playSound("item.bone_meal.use", block.location);
-
-        const isCreative = player.getGameMode() === GameMode.Creative;
-        if (!isCreative) {
+      if (player.getGameMode() !== GameMode.Creative) {
+        const equippable = player.getComponent("minecraft:equippable");
+        const mainhand = equippable?.getEquipmentSlot(EquipmentSlot.Mainhand);
+        if (mainhand?.hasItem()) {
           if (mainhand.amount > 1) {
             mainhand.amount--;
           } else {

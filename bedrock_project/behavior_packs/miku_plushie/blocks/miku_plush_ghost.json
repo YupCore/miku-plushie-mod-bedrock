@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.26.10",
   "minecraft:block": {
     "description": {
       "identifier": "miku:miku_plush_ghost",
@@ -10,12 +10,16 @@
           ],
           "y_rotation_offset": 180
         }
+      },
+      "menu_category": {
+        "category": "nature",
+        "group": "miku:itemGroup.miku_plushies.name"
       }
     },
     "components": {
       "miku:plush_block": {},
       "minecraft:display_name": "block.miku:miku_plush_ghost.name",
-      "minecraft:geometry": "geometry.miku_plush",
+      "minecraft:geometry": "geometry.miku_plush_ghost",
       "minecraft:material_instances": {
         "*": {
           "texture": "miku:miku_plush_ghost",
@@ -23,7 +27,7 @@
         }
       },
       "minecraft:item_visual": {
-        "geometry": "geometry.miku_plush",
+        "geometry": "geometry.miku_plush_ghost",
         "material_instances": {
           "*": {
             "texture": "miku:miku_plush_ghost",
