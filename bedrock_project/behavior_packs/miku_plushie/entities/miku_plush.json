@@ -60,20 +60,7 @@
           "stop_distance": 1.0
         }
       },
-      "miku:standing": {
-        "minecraft:behavior.avoid_mob_type": {
-          "priority": 7,
-          "entity_types": [
-            {
-              "filters": {
-                "any_of": [{ "test": "is_family", "value": "creeper" }]
-              },
-              "max_dist": 6.0,
-              "sprint_speed_multiplier": 1.2
-            }
-          ]
-        }
-      },
+      "miku:standing": {},
       "miku:sitting": {
         "minecraft:behavior.stay_while_sitting": {
           "priority": 1
@@ -131,6 +118,7 @@
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -177,7 +165,6 @@
             "filters": {
               "none_of": [
                 { "test": "is_family", "subject": "other", "value": "plush" },
-                { "test": "is_family", "subject": "other", "value": "creeper" },
                 { "test": "is_family", "subject": "other", "value": "ghast" }
               ]
             }
@@ -197,6 +184,10 @@
             }
           }
         ]
+      },
+      "minecraft:inventory": {
+          "size": 1,
+          "container_type": "inventory"
       },
       "minecraft:shareables": {
         "singular_pickup": true,
@@ -288,13 +279,14 @@
         ]
       },
       "minecraft:behavior.pickup_items": {
+        "can_pickup_any_item": false,
         "priority": 5,
         "goal_radius": 2,
         "max_dist": 3,
         "speed_multiplier": 1
       },
       "minecraft:behavior.equip_item": {
-        "priority": 2
+        "priority": 3
       },
       "minecraft:nameable": {},
       "minecraft:persistent": {},

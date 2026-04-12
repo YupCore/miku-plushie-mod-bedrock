@@ -127,6 +127,7 @@
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -220,17 +221,16 @@
                 {
                   "test": "is_family",
                   "subject": "other",
-                  "value": "creeper"
-                },
-                {
-                  "test": "is_family",
-                  "subject": "other",
                   "value": "ghast"
                 }
               ]
             }
           }
         ]
+      },
+      "minecraft:inventory": {
+          "size": 1,
+          "container_type": "inventory"
       },
       "minecraft:shareables": {
         "singular_pickup": true,
@@ -322,13 +322,14 @@
         ]
       },
       "minecraft:behavior.pickup_items": {
+        "can_pickup_any_item": false,
         "priority": 5,
         "goal_radius": 2,
         "max_dist": 3,
         "speed_multiplier": 1
       },
       "minecraft:behavior.equip_item": {
-        "priority": 2
+        "priority": 3
       },
       "minecraft:nameable": {},
       "minecraft:persistent": {},
