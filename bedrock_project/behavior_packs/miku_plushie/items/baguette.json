@@ -2,7 +2,10 @@
   "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:baguette"
+      "identifier": "miku:baguette",
+      "minecraft:menu_category": {
+        "category": "items"
+      }
     },
     "components": {
       "minecraft:icon": "miku:baguette",
@@ -22,9 +25,6 @@
         "tags": [
           "minecraft:is_food"
         ]
-      },
-      "minecraft:menu_category": {
-        "category": "items"
       }
     }
   }

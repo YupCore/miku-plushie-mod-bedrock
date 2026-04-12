@@ -2,7 +2,10 @@
   "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:teto_pickaxe_mesmerizer"
+      "identifier": "miku:teto_pickaxe_mesmerizer",
+      "menu_category": {
+        "category": "equipment"
+      }
     },
     "components": {
       "minecraft:icon": "miku:teto_pickaxe_mesmerizer",
@@ -45,9 +48,6 @@
         "tags": [
           "minecraft:is_pickaxe"
         ]
-      },
-      "minecraft:menu_category": {
-        "category": "equipment"
       }
     }
   }

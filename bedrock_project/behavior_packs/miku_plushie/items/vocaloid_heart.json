@@ -2,15 +2,15 @@
   "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:vocaloid_heart"
+      "identifier": "miku:vocaloid_heart",
+      "menu_category": {
+        "category": "items"
+      }
     },
     "components": {
       "minecraft:icon": "miku:vocaloid_heart",
       "minecraft:display_name": {
         "value": "item.miku:vocaloid_heart.name"
-      },
-      "minecraft:menu_category": {
-        "category": "items"
       }
     }
   }

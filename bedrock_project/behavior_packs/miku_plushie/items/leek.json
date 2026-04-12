@@ -2,7 +2,10 @@
   "format_version": "1.21.50",
   "minecraft:item": {
     "description": {
-      "identifier": "miku:leek"
+      "identifier": "miku:leek",
+      "menu_category": {
+        "category": "items"
+      }
     },
     "components": {
       "minecraft:icon": "miku:leek",
@@ -10,6 +13,7 @@
         "value": "item.miku:leek.name"
       },
       "minecraft:food": {
+        "can_always_eat": false,
         "nutrition": 4,
         "saturation_modifier": 0.6
       },
@@ -22,9 +26,6 @@
         "tags": [
           "minecraft:is_food"
         ]
-      },
-      "minecraft:menu_category": {
-        "category": "items"
       }
     }
   }

@@ -1,99 +1,111 @@
-import { world, EquipmentSlot, GameMode, system, BlockVolume } from "@minecraft/server";
+import {
+  system,
+  EquipmentSlot,
+  GameMode,
+  BlockCustomComponent,
+  BlockComponentRandomTickEvent,
+  BlockComponentPlayerInteractEvent,
+} from "@minecraft/server";
 
-const MAX_GROWTH_AGE = 7;
-const BONE_MEAL_AMOUNT_MIN = 2;
-const BONE_MEAL_AMOUNT_MAX = 5;
-const RANDOM_GROWTH_CHANCE = 0.05;
-const CROP_GROWTH_INTERVAL = 10;
-const SCAN_RADIUS_XZ = 64;
-const SCAN_RADIUS_Y = 16;
+const GROWTH_STATE = "miku:growth";
+const MAX_GROWTH = 7;
+const MIN_LIGHT_LEVEL = 9;
+const FARMLAND_SEARCH_RANGE = 1;
+const FARMLAND_SPEED_MODIFIER = 1;
+const FARMLAND_MOISTURE_SPEED_MODIFIER = 2;
+const NEIGHBORING_FARMLAND_SPEED_MULTIPLIER = 0.25;
+const CROWDING_SPEED_MULTIPLIER = 0.5;
+const BONE_MEAL_MIN = 2;
+const BONE_MEAL_MAX = 5;
 
-function getGrowthState(block: any): number {
-  return (block.permutation.getState("miku:growth" as any) as number) ?? 0;
+function randomInt(min: number, max: number): number {
+  return min + Math.floor(Math.random() * (max - min + 1));
 }
 
-function setGrowthState(block: any, age: number): void {
-  block.setPermutation(block.permutation.withState("miku:growth" as any, age));
-}
-
-function processCropGrowth(dimension: any, center: { x: number; y: number; z: number }): void {
-  const minX = Math.floor(center.x) - SCAN_RADIUS_XZ;
-  const minY = Math.max(-64, Math.floor(center.y) - SCAN_RADIUS_Y);
-  const minZ = Math.floor(center.z) - SCAN_RADIUS_XZ;
-  const maxX = Math.floor(center.x) + SCAN_RADIUS_XZ;
-  const maxY = Math.min(320, Math.floor(center.y) + SCAN_RADIUS_Y);
-  const maxZ = Math.floor(center.z) + SCAN_RADIUS_XZ;
-
-  let blockLocations: Iterable<any>;
-  try {
-    blockLocations = dimension.getBlocks(
-      new BlockVolume({ x: minX, y: minY, z: minZ }, { x: maxX, y: maxY, z: maxZ }),
-      { includeTypes: ["miku:leek_crop"] }
-    );
-  } catch {
-    return;
-  }
-
-  for (const loc of blockLocations) {
-    const block = dimension.getBlock(loc);
-    if (!block) continue;
-
-    const currentAge = getGrowthState(block);
-    if (currentAge >= MAX_GROWTH_AGE) continue;
-
-    const blockBelow = dimension.getBlock({
-      x: block.location.x,
-      y: block.location.y - 1,
-      z: block.location.z,
-    });
-
-    if (blockBelow?.typeId === "minecraft:farmland") {
-      if (Math.random() < RANDOM_GROWTH_CHANCE) {
-        setGrowthState(block, currentAge + 1);
-      }
+function* getFarmlandIterator(crop: any, searchRange: number) {
+  for (let x = -searchRange; x <= searchRange; x++) {
+    for (let z = -searchRange; z <= searchRange; z++) {
+      const block = crop.offset({ x, y: -1, z });
+      if (block?.typeId === "minecraft:farmland") yield block;
     }
   }
 }
 
-export function startCropGrowthSystem(): void {
-  console.log("[Miku Plushie] Starting crop growth system");
+function isCrowded(crop: any): boolean {
+  const north = crop.north();
+  const south = crop.south();
+  const west = crop.west();
+  const east = crop.east();
 
-  world.afterEvents.playerInteractWithBlock.subscribe((event) => {
-    const { block, player, itemStack, isFirstEvent } = event;
-    if (!player || !isFirstEvent) return;
+  const isEnclosed =
+    (west?.typeId === crop.typeId || east?.typeId === crop.typeId) &&
+    (north?.typeId === crop.typeId || south?.typeId === crop.typeId);
+  if (isEnclosed) return true;
 
-    if (block.typeId === "miku:leek_crop" && itemStack?.typeId === "minecraft:bone_meal") {
-      const currentAge = getGrowthState(block);
-      if (currentAge >= MAX_GROWTH_AGE) return;
+  return (
+    north?.west()?.typeId === crop.typeId ||
+    north?.east()?.typeId === crop.typeId ||
+    south?.west()?.typeId === crop.typeId ||
+    south?.east()?.typeId === crop.typeId
+  );
+}
 
-      const growthAmount =
-        Math.floor(Math.random() * (BONE_MEAL_AMOUNT_MAX - BONE_MEAL_AMOUNT_MIN + 1)) + BONE_MEAL_AMOUNT_MIN;
-      setGrowthState(block, Math.min(currentAge + growthAmount, MAX_GROWTH_AGE));
-      block.dimension.playSound("item.bone_meal.use", block.location);
+function getGrowthSpeed(crop: any): number {
+  let speed = 1;
+  for (const farmland of getFarmlandIterator(crop, FARMLAND_SEARCH_RANGE)) {
+    let modifier = FARMLAND_SPEED_MODIFIER;
+    const moisture = farmland.permutation.getState("moisturized_amount") ?? 0;
+    if (moisture > 0) modifier += FARMLAND_MOISTURE_SPEED_MODIFIER;
+    const isDirectlyBelow = farmland.x === crop.x && farmland.z === crop.z;
+    if (!isDirectlyBelow) modifier *= NEIGHBORING_FARMLAND_SPEED_MULTIPLIER;
+    speed += modifier;
+  }
+  if (isCrowded(crop)) speed *= CROWDING_SPEED_MULTIPLIER;
+  return speed;
+}
 
-      if (player.getGameMode() !== GameMode.Creative) {
-        const equippable = player.getComponent("minecraft:equippable");
-        const mainhand = equippable?.getEquipmentSlot(EquipmentSlot.Mainhand);
-        if (mainhand?.hasItem()) {
-          if (mainhand.amount > 1) {
-            mainhand.amount--;
-          } else {
-            mainhand.setItem(undefined);
-          }
-        }
-      }
+function randomShouldCropGrow(crop: any): boolean {
+  const speed = getGrowthSpeed(crop);
+  const range = Math.floor(25 / speed);
+  return randomInt(0, range) === 0;
+}
+
+const CropGrowthComponent: BlockCustomComponent = {
+  onRandomTick({ block }: BlockComponentRandomTickEvent) {
+    if (block.getLightLevel() < MIN_LIGHT_LEVEL) return;
+    const growth = (block.permutation.getState(GROWTH_STATE as any) as number) ?? MAX_GROWTH;
+    if (growth >= MAX_GROWTH) return;
+    if (!randomShouldCropGrow(block)) return;
+    block.setPermutation(block.permutation.withState(GROWTH_STATE as any, growth + 1));
+  },
+
+  onPlayerInteract({ block, dimension, player }: BlockComponentPlayerInteractEvent) {
+    if (!player) return;
+    const equippable = player.getComponent("minecraft:equippable");
+    if (!equippable) return;
+    const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
+    if (!mainhand.hasItem()) return;
+    if (mainhand.typeId !== "minecraft:bone_meal") return;
+
+    const growth = (block.permutation.getState(GROWTH_STATE as any) as number) ?? MAX_GROWTH;
+    if (growth >= MAX_GROWTH) return;
+
+    const newGrowth = Math.min(growth + randomInt(BONE_MEAL_MIN, BONE_MEAL_MAX), MAX_GROWTH);
+    block.setPermutation(block.permutation.withState(GROWTH_STATE as any, newGrowth));
+
+    if (player.getGameMode() !== GameMode.Creative) {
+      if (mainhand.amount > 1) mainhand.amount--;
+      else mainhand.setItem(undefined);
     }
+
+    const effectLocation = block.center();
+    dimension.playSound("item.bone_meal.use", effectLocation);
+    dimension.spawnParticle("minecraft:crop_growth_emitter", effectLocation);
+  },
+};
+
+export function registerCropGrowthComponent(): void {
+  system.beforeEvents.startup.subscribe(({ blockComponentRegistry }) => {
+    blockComponentRegistry.registerCustomComponent("miku:crop_growth", CropGrowthComponent);
   });
-
-  system.runInterval(() => {
-    const seen = new Set<string>();
-    for (const player of world.getAllPlayers()) {
-      const pos = player.location;
-      // Deduplicate: one scan per 64-block tile per dimension per tick
-      const key = `${player.dimension.id}:${Math.floor(pos.x / SCAN_RADIUS_XZ)}:${Math.floor(pos.z / SCAN_RADIUS_XZ)}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      processCropGrowth(player.dimension, pos);
-    }
-  }, CROP_GROWTH_INTERVAL);
 }

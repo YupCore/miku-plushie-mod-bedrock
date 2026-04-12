@@ -1,7 +1,7 @@
 import { world } from "@minecraft/server";
 
 import { registerPlushBlockComponent } from "./components/plush_block";
-import { startCropGrowthSystem } from "./components/crop_growth";
+import { registerCropGrowthComponent } from "./components/crop_growth";
 import { startJukeboxDanceSystem } from "./systems/jukebox_dance";
 import { startPlushInteractionSystem } from "./systems/plush_interaction";
 import { startAttackSoundSystem } from "./systems/attack_sound";
@@ -21,10 +21,10 @@ try {
 }
 
 try {
-  startCropGrowthSystem();
-  console.log("[Miku Plushie] Started crop growth system");
+  registerCropGrowthComponent();
+  console.log("[Miku Plushie] Registered crop growth component");
 } catch (e) {
-  console.error("[Miku Plushie] Failed to start crop growth system:", e);
+  console.error("[Miku Plushie] Failed to register crop growth component:", e);
 }
 
 try {
