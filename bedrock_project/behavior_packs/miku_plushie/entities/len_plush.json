@@ -225,8 +225,8 @@
           }
         ]
       },
-      "minecraft:inventory": {
-          "size": 1,
+       "minecraft:inventory": {
+          "inventory_size": 1,
           "container_type": "inventory"
       },
       "minecraft:shareables": {
@@ -319,11 +319,12 @@
         ]
       },
       "minecraft:behavior.pickup_items": {
-        "can_pickup_any_item": false,
-        "priority": 5,
-        "goal_radius": 2,
-        "max_dist": 3,
-        "speed_multiplier": 1
+          "can_pickup_any_item": false,
+          "can_pickup_to_hand_or_equipment": true,
+          "priority": 5,
+          "goal_radius": 2,
+          "max_dist": 3,
+          "speed_multiplier": 1
       },
       "minecraft:behavior.equip_item": {
         "priority": 3
