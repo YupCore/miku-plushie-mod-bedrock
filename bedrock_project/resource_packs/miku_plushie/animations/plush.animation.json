@@ -2032,8 +2032,8 @@
         },
         "head_offset": {
           "rotation": [
-            "v.head_x - v.health_bend",
-            "v.head_y",
+            "((q.property('miku:is_dancing') ? 0 : v.head_x)) - v.health_bend",
+            "(q.property('miku:is_dancing') ? 0 : v.head_y)",
             0
           ]
         }
@@ -2044,7 +2044,7 @@
       "bones": {
         "hair_offset": {
           "rotation": [
-            "-v.head_x * v.enable_hair_proc",
+            "-(q.property('miku:is_dancing') ? 0 : v.head_x) * v.enable_hair_proc",
             0,
             "Math.sin(v.walk_phase - 128.9155) * (v.walk_amp * -10) * v.enable_hair_proc"
           ]
