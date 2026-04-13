@@ -56,28 +56,16 @@ export function startPlushInteractionSystem(): void {
       return;
     }
 
-    const healthComponent = target.getComponent("minecraft:health");
-    if (healthComponent && healthComponent.currentValue < healthComponent.effectiveMax) {
-      if (playerItem?.typeId === "miku:leek") {
-        healthComponent.setCurrentValue(Math.min(healthComponent.currentValue + 4, healthComponent.effectiveMax));
-
-        const character = getCharacterFromEntity(target.typeId);
-        target.dimension.playSound("entity.generic.eat", target.location, {
-          volume: 1,
-          pitch: 1,
-        });
-        playPlushSound(target, character, "eat", 1, 1);
-
-        const isCreative = player.getGameMode() === GameMode.Creative;
-        if (!isCreative) {
-          if (mainhand!.amount > 1) {
-            mainhand!.amount--;
-          } else {
-            mainhand!.setItem(undefined);
-          }
-        }
-        return;
-      }
+    if (playerItem?.typeId === "miku:leek") {
+      // Healing and item consumption are handled by minecraft:healable in the entity JSON.
+      // Script only plays character-specific eat sounds.
+      const character = getCharacterFromEntity(target.typeId);
+      target.dimension.playSound("entity.generic.eat", target.location, {
+        volume: 1,
+        pitch: 1,
+      });
+      playPlushSound(target, character, "eat", 1, 1);
+      return;
     }
 
     // Default: toggle sit (any item or empty hand, matches Java behavior)

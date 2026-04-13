@@ -110,16 +110,16 @@ export const KAITO_VARIANTS = ["kaito_plush", "kaito_plush_v3", "kaito_plush_v4"
 
 export const SINGLE_VARIANT_ENTITIES = ["aiko_plush", "rin_plush", "len_plush", "konoha_plush", "luka_plush"] as const;
 
-const MODEL2_VARIANTS = [
+const MODEL2_SET = new Set([
   "miku_plush_devil",
   "miku_plush_mushroom",
   "miku_plush_patata",
   "miku_plush_patati",
   "miku_plush_werewoman",
   "miku_plush_witch",
-];
+]);
 
-const MODEL3_VARIANTS = [
+const MODEL3_SET = new Set([
   "miku_plush_digital_stars_2025",
   "miku_plush_dont_believe_in_t",
   "miku_plush_hollow_knight",
@@ -134,36 +134,30 @@ const MODEL3_VARIANTS = [
   "miku_plush_sonic_crossworlds",
   "miku_plush_static",
   "miku_plush_xmas_tree",
-];
+]);
+
+// Pre-built reverse map: cleanId (no "miku:" prefix) → variant index within its group
+const VARIANT_INDEX_MAP = new Map<string, number>();
+(function buildVariantMap() {
+  const groups = [MIKU_VARIANTS, TETO_VARIANTS, NERU_VARIANTS, MEIKO_VARIANTS, GUMI_VARIANTS, KAITO_VARIANTS];
+  for (const group of groups) {
+    group.forEach((id, i) => VARIANT_INDEX_MAP.set(id, i));
+  }
+  // single-variant entities all map to 0 (already default, included for completeness)
+  for (const id of SINGLE_VARIANT_ENTITIES) {
+    VARIANT_INDEX_MAP.set(id, 0);
+  }
+})();
 
 export function getGeoIndex(blockId: string): number {
   const cleanId = blockId.replace("miku:", "");
-  if (MODEL2_VARIANTS.includes(cleanId)) return 1;
-  if (MODEL3_VARIANTS.includes(cleanId)) return 2;
+  if (MODEL2_SET.has(cleanId)) return 1;
+  if (MODEL3_SET.has(cleanId)) return 2;
   return 0;
 }
 
 export function getVariantIndex(blockId: string): number {
-  const cleanId = blockId.replace("miku:", "");
-  const mikuIdx = MIKU_VARIANTS.indexOf(cleanId as (typeof MIKU_VARIANTS)[number]);
-  if (mikuIdx !== -1) return mikuIdx;
-
-  const tetoIdx = TETO_VARIANTS.indexOf(cleanId as (typeof TETO_VARIANTS)[number]);
-  if (tetoIdx !== -1) return tetoIdx;
-
-  const neruIdx = NERU_VARIANTS.indexOf(cleanId as (typeof NERU_VARIANTS)[number]);
-  if (neruIdx !== -1) return neruIdx;
-
-  const meikoIdx = MEIKO_VARIANTS.indexOf(cleanId as (typeof MEIKO_VARIANTS)[number]);
-  if (meikoIdx !== -1) return meikoIdx;
-
-  const gumiIdx = GUMI_VARIANTS.indexOf(cleanId as (typeof GUMI_VARIANTS)[number]);
-  if (gumiIdx !== -1) return gumiIdx;
-
-  const kaitoIdx = KAITO_VARIANTS.indexOf(cleanId as (typeof KAITO_VARIANTS)[number]);
-  if (kaitoIdx !== -1) return kaitoIdx;
-
-  return 0;
+  return VARIANT_INDEX_MAP.get(blockId.replace("miku:", "")) ?? 0;
 }
 
 export function getEntityTypeFromBlock(blockId: string): string {

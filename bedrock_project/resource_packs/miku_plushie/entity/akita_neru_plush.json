@@ -36,7 +36,7 @@
       "scripts": {
         "pre_animation": [
           "v.variant = q.property('miku:variant');",
-          "v.health_bend = q.property('miku:health_bend');",
+          "v.health_bend = (1 - q.health / q.max_health) * 35 ;",
           "v.walk_phase = q.modified_distance_moved * 57.3;",
           "v.walk_phase2 = v.walk_phase * 2;",
           "v.walk_amp = q.modified_move_speed;",

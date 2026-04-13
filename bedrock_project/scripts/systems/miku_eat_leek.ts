@@ -1,4 +1,4 @@
-import { world, system } from "@minecraft/server";
+import { world, system, Block } from "@minecraft/server";
 
 const MIKU_ENTITY_TYPE = "miku:miku_plush";
 const LEEK_CROP_BLOCK = "miku:leek_crop";
@@ -22,31 +22,32 @@ const POSITION_CHECKS = [
 
 interface MikuEatState {
   eating: boolean;
+  isEatingProp: boolean; // tracks last written value of miku:is_eating property
   timer: number;
-  targetPos: { x: number; y: number; z: number } | null;
+  targetBlock: Block | null;
+  maxHealth: number;
 }
 
 const eatingMikus: Map<string, MikuEatState> = new Map();
 
-function findNearbyLeekCrop(
+function findNearbyLeekBlock(
   dimension: any,
   pos: { x: number; y: number; z: number }
-): { x: number; y: number; z: number } | null {
+): Block | null {
   const blockX = Math.floor(pos.x);
   const blockY = Math.floor(pos.y);
   const blockZ = Math.floor(pos.z);
 
   for (const offset of POSITION_CHECKS) {
-    const checkPos = {
+    const block: Block | undefined = dimension.getBlock({
       x: blockX + offset.x,
       y: blockY + offset.y,
       z: blockZ + offset.z,
-    };
-    const block = dimension.getBlock(checkPos);
+    });
     if (block?.typeId === LEEK_CROP_BLOCK) {
       const age = (block.permutation.getState("miku:growth" as any) as number) ?? 0;
       if (age >= MAX_LEEK_AGE) {
-        return checkPos;
+        return block;
       }
     }
   }
@@ -71,13 +72,18 @@ export function startMikuEatLeekSystem(): void {
       const health = miku.getComponent("minecraft:health");
       if (!health) continue;
 
-      if (health.currentValue >= health.effectiveMax) {
+      const maxHealth = health.effectiveMax;
+
+      if (health.currentValue >= maxHealth) {
         const state = eatingMikus.get(entityId);
         if (state) {
           state.eating = false;
           state.timer = 0;
-          state.targetPos = null;
-          miku.setProperty("miku:is_eating", false);
+          state.targetBlock = null;
+          if (state.isEatingProp) {
+            miku.setProperty("miku:is_eating", false);
+            state.isEatingProp = false;
+          }
         }
         continue;
       }
@@ -85,35 +91,44 @@ export function startMikuEatLeekSystem(): void {
       if (miku.getTags().includes("miku_sitting")) continue;
 
       const pos = miku.location;
-      const leekPos = findNearbyLeekCrop(overworld, pos);
+      const leekBlock = findNearbyLeekBlock(overworld, pos);
 
-      if (!leekPos) {
+      if (!leekBlock) {
         const state = eatingMikus.get(entityId);
         if (state) {
           state.eating = false;
           state.timer = 0;
-          state.targetPos = null;
-          miku.setProperty("miku:is_eating", false);
+          state.targetBlock = null;
+          if (state.isEatingProp) {
+            miku.setProperty("miku:is_eating", false);
+            state.isEatingProp = false;
+          }
         }
         continue;
       }
 
       let state = eatingMikus.get(entityId);
       if (!state) {
-        state = { eating: false, timer: 0, targetPos: null };
+        state = { eating: false, timer: 0, targetBlock: null, isEatingProp: false, maxHealth };
         eatingMikus.set(entityId, state);
       }
+      // Update cached maxHealth if needed (in case of attribute change)
+      state.maxHealth = maxHealth;
 
       if (!state.eating) {
         state.eating = true;
         state.timer = EAT_TIMER_TOTAL;
-        state.targetPos = leekPos;
-        miku.setProperty("miku:is_eating", true);
+        state.targetBlock = leekBlock;
+
+        if (!state.isEatingProp) {
+          miku.setProperty("miku:is_eating", true);
+          state.isEatingProp = true;
+        }
 
         miku.lookAt({
-          x: leekPos.x + 0.5,
-          y: leekPos.y + 0.5,
-          z: leekPos.z + 0.5,
+          x: leekBlock.x + 0.5,
+          y: leekBlock.y + 0.5,
+          z: leekBlock.z + 0.5,
         });
 
         miku.dimension.playSound("miku.plushie.miku_nom", miku.location, {
@@ -145,17 +160,17 @@ export function startMikuEatLeekSystem(): void {
         }
 
         if (state.timer === LEEK_BREAK_DELAY) {
-          const currentLeekPos = state.targetPos;
-          if (currentLeekPos) {
-            const leekBlock = overworld.getBlock(currentLeekPos);
-            if (leekBlock?.typeId === LEEK_CROP_BLOCK) {
-              const age = (leekBlock.permutation.getState("miku:growth" as any) as number) ?? 0;
+          const cachedBlock = state.targetBlock;
+          // Use cached block ref — check isValid so we don't crash on chunk unload
+          if (cachedBlock && cachedBlock.isValid) {
+            if (cachedBlock.typeId === LEEK_CROP_BLOCK) {
+              const age = (cachedBlock.permutation.getState("miku:growth" as any) as number) ?? 0;
               if (age >= MAX_LEEK_AGE) {
-                leekBlock.setPermutation(leekBlock.permutation.withState("miku:growth" as any, 0));
+                cachedBlock.setPermutation(cachedBlock.permutation.withState("miku:growth" as any, 0));
 
                 const currentHealth = miku.getComponent("minecraft:health");
                 if (currentHealth) {
-                  const newHealth = Math.min(currentHealth.currentValue + HEAL_AMOUNT, currentHealth.effectiveMax);
+                  const newHealth = Math.min(currentHealth.currentValue + HEAL_AMOUNT, state.maxHealth);
                   currentHealth.setCurrentValue(newHealth);
                 }
               }
@@ -166,8 +181,11 @@ export function startMikuEatLeekSystem(): void {
         if (state.timer <= 0) {
           state.eating = false;
           state.timer = 0;
-          state.targetPos = null;
-          miku.setProperty("miku:is_eating", false);
+          state.targetBlock = null;
+          if (state.isEatingProp) {
+            miku.setProperty("miku:is_eating", false);
+            state.isEatingProp = false;
+          }
         }
       }
     }

@@ -12,12 +12,6 @@
           "default": 0,
           "client_sync": true
         },
-        "miku:spawn_age": {
-          "type": "int",
-          "range": [0, 10],
-          "default": 0,
-          "client_sync": true
-        },
         "miku:is_dancing": {
           "type": "bool",
           "default": false,
@@ -32,12 +26,6 @@
         "miku:is_eating": {
           "type": "bool",
           "default": false,
-          "client_sync": true
-        },
-        "miku:health_bend": {
-          "type": "float",
-          "range": [-35.0, 0.0],
-          "default": 0.0,
           "client_sync": true
         },
         "miku:geo_index": {

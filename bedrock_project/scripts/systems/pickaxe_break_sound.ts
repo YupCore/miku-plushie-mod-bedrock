@@ -1,6 +1,6 @@
 import { world, EquipmentSlot } from "@minecraft/server";
 
-const TETO_PICKAXE_ITEMS = [
+const TETO_PICKAXE_SET = new Set([
   "miku:teto_pickaxe",
   "miku:teto_pickaxe_birdbrain",
   "miku:teto_pickaxe_dont_believe_in_t",
@@ -15,11 +15,7 @@ const TETO_PICKAXE_ITEMS = [
   "miku:teto_pickaxe_spoken_for",
   "miku:teto_pickaxe_synthv",
   "miku:teto_pickaxe_whatchacallitsname",
-];
-
-function isTetoPickaxeItem(itemId: string): boolean {
-  return TETO_PICKAXE_ITEMS.includes(itemId);
-}
+]);
 
 export function startPickaxeBreakSoundSystem(): void {
   console.log("[Miku Plushie] Starting pickaxe break sound system");
@@ -32,23 +28,16 @@ export function startPickaxeBreakSoundSystem(): void {
     const itemInHand = equippable?.getEquipmentSlot(EquipmentSlot.Mainhand);
     if (!itemInHand?.hasItem()) return;
 
-    const itemId = itemInHand.typeId;
+    if (!TETO_PICKAXE_SET.has(itemInHand.typeId)) return;
 
-    if (isTetoPickaxeItem(itemId)) {
-      const item = itemInHand.getItem();
-      if (item) {
-        const durability = item.getComponent("minecraft:durability");
-        if (durability) {
-          const currentDur = durability.damage;
-          const maxDur = durability.maxDurability;
-
-          if (currentDur >= maxDur - 1) {
-            player.dimension.playSound("miku.plushie.teto_bye", block.location, {
-              volume: 0.8,
-              pitch: 1,
-            });
-          }
-        }
+    const item = itemInHand.getItem();
+    if (item) {
+      const durability = item.getComponent("minecraft:durability");
+      if (durability && durability.damage >= durability.maxDurability - 1) {
+        player.dimension.playSound("miku.plushie.teto_bye", block.location, {
+          volume: 0.8,
+          pitch: 1,
+        });
       }
     }
   });

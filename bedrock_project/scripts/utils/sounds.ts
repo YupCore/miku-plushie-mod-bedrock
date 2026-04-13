@@ -5,6 +5,7 @@ export interface SoundCharacter {
   dor: string;
   bye: string;
   eat?: string;
+  canudinho?: string;
 }
 
 export const SOUND_CHARACTERS: Record<string, SoundCharacter> = {

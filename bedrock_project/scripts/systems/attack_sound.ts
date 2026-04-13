@@ -1,7 +1,7 @@
 import { world, EquipmentSlot } from "@minecraft/server";
 import { getCharacterFromBlock, playPlushSoundAtPosition } from "../utils/sounds";
 
-const PLUSH_BLOCK_ITEMS = [
+const PLUSH_BLOCK_PREFIXES = [
   "miku:miku_plush",
   "miku:aiko_plush",
   "miku:teto_plush",
@@ -15,15 +15,22 @@ const PLUSH_BLOCK_ITEMS = [
   "miku:kaito_plush",
 ];
 
+// Exact-match set for items that ARE the base block (no suffix)
+const PLUSH_BLOCK_EXACT = new Set(PLUSH_BLOCK_PREFIXES);
+
 function isPlushItem(itemId: string): boolean {
-  return PLUSH_BLOCK_ITEMS.some((plush) => itemId === plush || itemId.startsWith(plush + "_"));
+  if (PLUSH_BLOCK_EXACT.has(itemId)) return true;
+  for (const prefix of PLUSH_BLOCK_PREFIXES) {
+    if (itemId.startsWith(prefix + "_")) return true;
+  }
+  return false;
 }
 
 export function startAttackSoundSystem(): void {
   console.log("[Miku Plushie] Starting attack sound system");
 
   world.afterEvents.entityHitEntity.subscribe((event) => {
-    const { damagingEntity, hitEntity } = event;
+    const { damagingEntity } = event;
 
     if (damagingEntity.typeId !== "minecraft:player") return;
 

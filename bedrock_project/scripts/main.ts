@@ -8,8 +8,6 @@ import { startAttackSoundSystem } from "./systems/attack_sound";
 import { startDeathSoundSystem } from "./systems/death_sound";
 import { startPickaxeBreakSoundSystem } from "./systems/pickaxe_break_sound";
 import { startMikuEatLeekSystem } from "./systems/miku_eat_leek";
-import { startSpawnAgeTracker } from "./systems/spawn_age_tracker";
-import { startVariantSyncSystem } from "./systems/variant_sync";
 import { startSpawnMikusCommand } from "./commands/spawn_mikus";
 
 console.log("[Miku Plushie] Miku is now Joining Bedrock Edition!!!");
@@ -62,18 +60,6 @@ try {
   startMikuEatLeekSystem();
 } catch (e) {
   console.error("[Miku Plushie] Failed to start Miku eat leek system:", e);
-}
-
-try {
-  startSpawnAgeTracker();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start spawn age tracker:", e);
-}
-
-try {
-  startVariantSyncSystem();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start variant sync system:", e);
 }
 
 try {
