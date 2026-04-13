@@ -3,7 +3,7 @@
   "minecraft:item": {
     "description": {
       "identifier": "miku:teto_pickaxe_dont_believe_in_t",
-      "minecraft:menu_category": {
+      "menu_category": {
         "category": "equipment"
       }
     },

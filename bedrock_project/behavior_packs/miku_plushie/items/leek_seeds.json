@@ -3,7 +3,7 @@
   "minecraft:item": {
     "description": {
       "identifier": "miku:leek_seeds",
-      "minecraft:menu_category": {
+      "menu_category": {
         "category": "nature"
       }
     },

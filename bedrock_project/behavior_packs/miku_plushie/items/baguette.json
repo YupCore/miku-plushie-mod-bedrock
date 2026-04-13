@@ -3,7 +3,7 @@
   "minecraft:item": {
     "description": {
       "identifier": "miku:baguette",
-      "minecraft:menu_category": {
+      "menu_category": {
         "category": "items"
       }
     },
@@ -25,7 +25,8 @@
         "tags": [
           "minecraft:is_food"
         ]
-      }
+      },
+      "minecraft:compostable": { "composting_chance": 85 }
     }
   }
 }

@@ -22,7 +22,7 @@ export function startVariantSyncSystem(): void {
         const health = entity.getComponent("minecraft:health");
         if (health) {
           const healthFactor = health.currentValue / health.effectiveMax;
-          entity.setProperty("miku:health_bend", (healthFactor - 1) * 25);
+          entity.setProperty("miku:health_bend", (healthFactor - 1) * 35);
         }
       }
     }

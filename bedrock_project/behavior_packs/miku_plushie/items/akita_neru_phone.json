@@ -3,7 +3,7 @@
   "minecraft:item": {
     "description": {
       "identifier": "miku:akita_neru_phone",
-      "minecraft:menu_category": {
+      "menu_category": {
         "category": "items"
       }
     },

@@ -26,7 +26,8 @@
         "tags": [
           "minecraft:is_food"
         ]
-      }
+      },
+      "minecraft:compostable": { "composting_chance": 85 }
     }
   }
 }

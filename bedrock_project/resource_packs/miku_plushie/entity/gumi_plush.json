@@ -31,8 +31,8 @@
       },
       "scripts": {
         "pre_animation": [
-          "variable.variant = q.property('miku:variant');",
-          "variable.health_bend = q.property('miku:health_bend');"
+          "v.variant = q.property('miku:variant');",
+          "v.health_bend = q.property('miku:health_bend');"
         ],
         "animate": [
           "main_controller",

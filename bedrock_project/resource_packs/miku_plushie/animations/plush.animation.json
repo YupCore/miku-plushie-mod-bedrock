@@ -1928,14 +1928,14 @@
       "bones": {
         "left_arm": {
           "rotation": [
-            "Math.sin(query.modified_distance_moved * 57.3) * query.modified_move_speed * 50 - v.health_bend",
+            "Math.sin(query.modified_distance_moved * 57.3) * query.modified_move_speed * 50 - v.health_bend * -1",
             0,
             0
           ]
         },
         "right_arm": {
           "rotation": [
-            "Math.sin(query.modified_distance_moved * 57.3) * query.modified_move_speed * -50 - v.health_bend",
+            "Math.sin(query.modified_distance_moved * 57.3) * query.modified_move_speed * -50 - v.health_bend * -1",
             0,
             0
           ]

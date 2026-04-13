@@ -3,7 +3,7 @@
   "minecraft:item": {
     "description": {
       "identifier": "miku:teto_pickaxe_birdbrain",
-      "minecraft:menu_category": {
+      "menu_category": {
         "category": "equipment"
       }
     },
