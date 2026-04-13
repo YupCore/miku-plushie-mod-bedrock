@@ -1,5 +1,4 @@
 import {
-  world,
   system,
   EquipmentSlot,
   GameMode,
@@ -8,7 +7,7 @@ import {
   BlockComponentOnPlaceEvent,
   BlockComponentPlayerBreakEvent,
 } from "@minecraft/server";
-import { getCharacterFromBlock } from "../utils/sounds";
+import { getCharacterFromBlock, playPlushSoundAtPosition } from "../utils/sounds";
 import { getEntityTypeFromBlock, getVariantIndex, getGeoIndex } from "../utils/plush_registry";
 
 class PlushBlockComponent implements BlockCustomComponent {
@@ -58,15 +57,10 @@ class PlushBlockComponent implements BlockCustomComponent {
       }
       entity.triggerEvent("miku:on_tame");
 
-      const character = getCharacterFromBlock(blockId);
-      const isKonoha = character === "konoha";
-
-      if (!isKonoha) {
-        dimension.playSound("random.totem", spawnLocation, {
-          volume: 0.5,
-          pitch: 1,
-        });
-      }
+      dimension.playSound("random.totem", spawnLocation, {
+        volume: 0.5,
+        pitch: 1,
+      });
 
       const isCreative = player.getGameMode() === GameMode.Creative;
       if (!isCreative) {
@@ -95,13 +89,7 @@ class PlushBlockComponent implements BlockCustomComponent {
     if (!blockId.startsWith("miku:") || blockId.includes("leek")) return;
 
     const character = getCharacterFromBlock(blockId);
-    const oieSound = `miku.plushie.${character}_oie`;
-    if (character !== "konoha") {
-      block.dimension.playSound(oieSound, block.location, {
-        volume: 1,
-        pitch: 1,
-      });
-    }
+    playPlushSoundAtPosition(block.dimension, block.location, character, "oie");
   }
 
   onPlayerBreak(event: BlockComponentPlayerBreakEvent): void {
@@ -110,13 +98,7 @@ class PlushBlockComponent implements BlockCustomComponent {
     if (!blockId.startsWith("miku:") || blockId.includes("leek")) return;
 
     const character = getCharacterFromBlock(blockId);
-    const byeSound = `miku.plushie.${character}_bye`;
-    if (character !== "konoha") {
-      block.dimension.playSound(byeSound, block.location, {
-        volume: 1,
-        pitch: 1,
-      });
-    }
+    playPlushSoundAtPosition(block.dimension, block.location, character, "bye");
   }
 }
 

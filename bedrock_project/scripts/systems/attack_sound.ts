@@ -1,5 +1,5 @@
 import { world, EquipmentSlot } from "@minecraft/server";
-import { getCharacterFromBlock } from "../utils/sounds";
+import { getCharacterFromBlock, playPlushSoundAtPosition } from "../utils/sounds";
 
 const PLUSH_BLOCK_ITEMS = [
   "miku:miku_plush",
@@ -37,10 +37,7 @@ export function startAttackSoundSystem(): void {
 
     if (isPlushItem(itemId)) {
       const character = getCharacterFromBlock(itemId);
-      player.dimension?.playSound("miku.plushie." + character + "_dor", player.location, {
-        volume: 0.5,
-        pitch: 1,
-      });
+      playPlushSoundAtPosition(player.dimension, player.location, character, "dor");
     }
   });
 }

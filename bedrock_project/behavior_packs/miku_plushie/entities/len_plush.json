@@ -323,7 +323,7 @@
           },
           {
             "queue_command": {
-              "command": ["playsound miku.plushie.len_oie @s ~ ~ ~ 1.0 1.0"]
+              "command": ["playsound miku.plushie.len_oie @s ~ ~ ~ 0.5 1.0"]
             }
           }
         ]

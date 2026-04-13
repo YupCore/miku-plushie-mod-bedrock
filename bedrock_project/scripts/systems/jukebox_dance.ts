@@ -1,6 +1,5 @@
 import { world, system, Dimension, BlockRecordPlayerComponent } from "@minecraft/server";
 import { getDanceCountForEntity } from "../utils/plush_registry";
-import { getCharacterFromEntity, playPlushSound } from "../utils/sounds";
 
 const JUKEBOX_CHECK_RADIUS = 8;
 const DANCE_CHECK_INTERVAL = 20;
@@ -36,9 +35,6 @@ function processJukeboxDetection(dimension: Dimension): void {
     entity.setProperty("miku:is_dancing", nearJukebox);
 
     if (nearJukebox && !wasDancing) {
-      const character = getCharacterFromEntity(entity.typeId);
-      playPlushSound(entity, character, "oie", 1.0, 1.0);
-
       const maxDances = getDanceCountForEntity(entity.typeId);
       entity.setProperty("miku:dance_index", Math.floor(Math.random() * maxDances));
     }

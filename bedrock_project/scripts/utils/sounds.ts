@@ -1,12 +1,10 @@
-import { world, system, Player, Entity, Vector3, EquipmentSlot, GameMode } from "@minecraft/server";
+import { Entity, Vector3 } from "@minecraft/server";
 
 export interface SoundCharacter {
   oie: string;
   dor: string;
   bye: string;
-  equip: string;
   eat?: string;
-  canudinho?: string;
 }
 
 export const SOUND_CHARACTERS: Record<string, SoundCharacter> = {
@@ -14,7 +12,6 @@ export const SOUND_CHARACTERS: Record<string, SoundCharacter> = {
     oie: "miku.plushie.miku_oie",
     dor: "miku.plushie.miku_dor",
     bye: "miku.plushie.miku_bye",
-    equip: "miku.plushie.miku_equip",
     eat: "miku.plushie.miku_eat",
     canudinho: "miku.plushie.miku_canudinho",
   },
@@ -22,59 +19,50 @@ export const SOUND_CHARACTERS: Record<string, SoundCharacter> = {
     oie: "miku.plushie.teto_oie",
     dor: "miku.plushie.teto_dor",
     bye: "miku.plushie.teto_bye",
-    equip: "miku.plushie.teto_equip",
   },
   neru: {
     oie: "miku.plushie.neru_oie",
     dor: "miku.plushie.neru_dor",
     bye: "miku.plushie.neru_bye",
-    equip: "miku.plushie.neru_equip",
   },
   rin: {
     oie: "miku.plushie.rin_oie",
     dor: "miku.plushie.rin_dor",
     bye: "miku.plushie.rin_bye",
-    equip: "miku.plushie.rin_equip",
   },
   len: {
     oie: "miku.plushie.len_oie",
     dor: "miku.plushie.len_dor",
     bye: "miku.plushie.len_bye",
-    equip: "miku.plushie.len_equip",
   },
   gumi: {
     oie: "miku.plushie.gumi_oie",
     dor: "miku.plushie.gumi_dor",
     bye: "miku.plushie.gumi_bye",
-    equip: "miku.plushie.gumi_equip",
   },
   aiko: {
     oie: "miku.plushie.aiko_oie",
     dor: "miku.plushie.aiko_dor",
     bye: "miku.plushie.aiko_bye",
-    equip: "miku.plushie.aiko_equip",
   },
   luka: {
     oie: "miku.plushie.luka_oie",
     dor: "miku.plushie.luka_dor",
     bye: "miku.plushie.luka_bye",
-    equip: "miku.plushie.luka_equip",
   },
   meiko: {
     oie: "miku.plushie.meiko_oie",
     dor: "miku.plushie.meiko_dor",
     bye: "miku.plushie.meiko_bye",
-    equip: "miku.plushie.meiko_equip",
   },
   kaito: {
     oie: "miku.plushie.kaito_oie",
     dor: "miku.plushie.kaito_dor",
     bye: "miku.plushie.kaito_bye",
-    equip: "miku.plushie.kaito_equip",
   },
 };
 
-export function getCharacterFromEntity(entityTypeId: string): string {
+export function getCharacterFromEntity(entityTypeId: string): string | null {
   const mapping: Record<string, string> = {
     "miku:miku_plush": "miku",
     "miku:aiko_plush": "aiko",
@@ -82,32 +70,35 @@ export function getCharacterFromEntity(entityTypeId: string): string {
     "miku:akita_neru_plush": "neru",
     "miku:rin_plush": "rin",
     "miku:len_plush": "len",
-    "miku:konoha_plush": "miku",
+    "miku:konoha_plush": "",
     "miku:luka_plush": "luka",
     "miku:meiko_plush": "meiko",
     "miku:gumi_plush": "gumi",
     "miku:kaito_plush": "kaito",
   };
-  return mapping[entityTypeId] ?? "miku";
+
+  const family = mapping[entityTypeId];
+  return family === undefined || family === "" ? null : family;
 }
 
-export function getCharacterFromBlock(blockId: string): string {
-  const parts = blockId.replace("miku:", "").split("_");
-  const firstPart = parts[0];
-  return firstPart;
+export function getCharacterFromBlock(blockId: string): string | null {
+  const firstPart = blockId.replace("miku:", "").split("_")[0];
+  return firstPart === "konoha" ? null : firstPart;
 }
 
-export function getSoundForCharacter(character: string, soundType: keyof SoundCharacter): string {
+export function getSoundForCharacter(character: string | null, soundType: keyof SoundCharacter): string | null {
+  if (!character) return null;
+
   const charSounds = SOUND_CHARACTERS[character];
-  if (!charSounds) return SOUND_CHARACTERS["miku"][soundType] ?? "";
-  return charSounds[soundType] ?? "";
+  if (!charSounds) return null;
+  return charSounds[soundType] ?? null;
 }
 
 export function playPlushSound(
   entity: Entity,
-  character: string,
+  character: string | null,
   soundType: keyof SoundCharacter,
-  volume: number = 1.0,
+  volume: number = 0.5,
   pitch: number = 1.0
 ): void {
   const sound = getSoundForCharacter(character, soundType);
@@ -122,9 +113,9 @@ export function playPlushSound(
 export function playPlushSoundAtPosition(
   dimension: any,
   position: Vector3,
-  character: string,
+  character: string | null,
   soundType: keyof SoundCharacter,
-  volume: number = 1.0,
+  volume: number = 0.5,
   pitch: number = 1.0
 ): void {
   const sound = getSoundForCharacter(character, soundType);

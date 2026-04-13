@@ -5,6 +5,7 @@ import { registerCropGrowthComponent } from "./components/crop_growth";
 import { startJukeboxDanceSystem } from "./systems/jukebox_dance";
 import { startPlushInteractionSystem } from "./systems/plush_interaction";
 import { startAttackSoundSystem } from "./systems/attack_sound";
+import { startDeathSoundSystem } from "./systems/death_sound";
 import { startPickaxeBreakSoundSystem } from "./systems/pickaxe_break_sound";
 import { startMikuEatLeekSystem } from "./systems/miku_eat_leek";
 import { startSpawnAgeTracker } from "./systems/spawn_age_tracker";
@@ -43,6 +44,12 @@ try {
   startAttackSoundSystem();
 } catch (e) {
   console.error("[Miku Plushie] Failed to start attack sound system:", e);
+}
+
+try {
+  startDeathSoundSystem();
+} catch (e) {
+  console.error("[Miku Plushie] Failed to start death sound system:", e);
 }
 
 try {

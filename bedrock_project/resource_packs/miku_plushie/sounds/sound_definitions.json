@@ -304,8 +304,7 @@
         "sounds/aiko/aiko-placing2",
         "sounds/aiko/aiko-placing3",
         "sounds/aiko/aiko-placing4",
-        "sounds/aiko/aiko-placing5",
-        "sounds/aiko/aiko-placing6"
+        "sounds/aiko/aiko-placing5"
       ]
     },
     "miku.plushie.aiko_dor": {
@@ -318,8 +317,7 @@
         "sounds/aiko/aiko-hurt5",
         "sounds/aiko/aiko-hurt6",
         "sounds/aiko/aiko-hurt7",
-        "sounds/aiko/aiko-hurt8",
-        "sounds/aiko/aiko-hurt9"
+        "sounds/aiko/aiko-hurt8"
       ]
     },
     "miku.plushie.aiko_bye": {
@@ -346,38 +344,38 @@
     "miku.plushie.luka_oie": {
       "category": "neutral",
       "sounds": [
-        "sounds/luka/luka-placing1",
-        "sounds/luka/luka-placing2",
-        "sounds/luka/luka-placing3",
-        "sounds/luka/luka-placing4",
-        "sounds/luka/luka-placing5",
-        "sounds/luka/luka-placing6"
+        "sounds/luka/luka-oie1",
+        "sounds/luka/luka-oie2",
+        "sounds/luka/luka-oie3",
+        "sounds/luka/luka-oie4",
+        "sounds/luka/luka-oie5",
+        "sounds/luka/luka-oie6"
       ]
     },
     "miku.plushie.luka_dor": {
       "category": "neutral",
       "sounds": [
-        "sounds/luka/luka-hurt1",
-        "sounds/luka/luka-hurt2",
-        "sounds/luka/luka-hurt3",
-        "sounds/luka/luka-hurt4",
-        "sounds/luka/luka-hurt5",
-        "sounds/luka/luka-hurt6",
-        "sounds/luka/luka-hurt7",
-        "sounds/luka/luka-hurt8",
-        "sounds/luka/luka-hurt9"
+        "sounds/luka/luka-dor1",
+        "sounds/luka/luka-dor2",
+        "sounds/luka/luka-dor3",
+        "sounds/luka/luka-dor4",
+        "sounds/luka/luka-dor5",
+        "sounds/luka/luka-dor6",
+        "sounds/luka/luka-dor7",
+        "sounds/luka/luka-dor8",
+        "sounds/luka/luka-dor9"
       ]
     },
     "miku.plushie.luka_bye": {
       "category": "neutral",
       "sounds": [
-        "sounds/luka/luka-break1",
-        "sounds/luka/luka-break2",
-        "sounds/luka/luka-break3",
-        "sounds/luka/luka-break4",
-        "sounds/luka/luka-break5",
-        "sounds/luka/luka-break6",
-        "sounds/luka/luka-break7"
+        "sounds/luka/luka-bye1",
+        "sounds/luka/luka-bye2",
+        "sounds/luka/luka-bye3",
+        "sounds/luka/luka-bye4",
+        "sounds/luka/luka-bye5",
+        "sounds/luka/luka-bye6",
+        "sounds/luka/luka-bye7"
       ]
     },
     "miku.plushie.luka_equip": {
@@ -392,38 +390,38 @@
     "miku.plushie.meiko_oie": {
       "category": "neutral",
       "sounds": [
-        "sounds/meiko/meiko-placing1",
-        "sounds/meiko/meiko-placing2",
-        "sounds/meiko/meiko-placing3",
-        "sounds/meiko/meiko-placing4",
-        "sounds/meiko/meiko-placing5",
-        "sounds/meiko/meiko-placing6"
+        "sounds/meiko/meiko-oie1",
+        "sounds/meiko/meiko-oie2",
+        "sounds/meiko/meiko-oie3",
+        "sounds/meiko/meiko-oie4",
+        "sounds/meiko/meiko-oie5",
+        "sounds/meiko/meiko-oie6"
       ]
     },
     "miku.plushie.meiko_dor": {
       "category": "neutral",
       "sounds": [
-        "sounds/meiko/meiko-hurt1",
-        "sounds/meiko/meiko-hurt2",
-        "sounds/meiko/meiko-hurt3",
-        "sounds/meiko/meiko-hurt4",
-        "sounds/meiko/meiko-hurt5",
-        "sounds/meiko/meiko-hurt6",
-        "sounds/meiko/meiko-hurt7",
-        "sounds/meiko/meiko-hurt8",
-        "sounds/meiko/meiko-hurt9"
+        "sounds/meiko/meiko-dor1",
+        "sounds/meiko/meiko-dor2",
+        "sounds/meiko/meiko-dor3",
+        "sounds/meiko/meiko-dor4",
+        "sounds/meiko/meiko-dor5",
+        "sounds/meiko/meiko-dor6",
+        "sounds/meiko/meiko-dor7",
+        "sounds/meiko/meiko-dor8",
+        "sounds/meiko/meiko-dor9"
       ]
     },
     "miku.plushie.meiko_bye": {
       "category": "neutral",
       "sounds": [
-        "sounds/meiko/meiko-break1",
-        "sounds/meiko/meiko-break2",
-        "sounds/meiko/meiko-break3",
-        "sounds/meiko/meiko-break4",
-        "sounds/meiko/meiko-break5",
-        "sounds/meiko/meiko-break6",
-        "sounds/meiko/meiko-break7"
+        "sounds/meiko/meiko-bye1",
+        "sounds/meiko/meiko-bye2",
+        "sounds/meiko/meiko-bye3",
+        "sounds/meiko/meiko-bye4",
+        "sounds/meiko/meiko-bye5",
+        "sounds/meiko/meiko-bye6",
+        "sounds/meiko/meiko-bye7"
       ]
     },
     "miku.plushie.meiko_equip": {
@@ -438,38 +436,38 @@
     "miku.plushie.kaito_oie": {
       "category": "neutral",
       "sounds": [
-        "sounds/kaito/kaito-placing1",
-        "sounds/kaito/kaito-placing2",
-        "sounds/kaito/kaito-placing3",
-        "sounds/kaito/kaito-placing4",
-        "sounds/kaito/kaito-placing5",
-        "sounds/kaito/kaito-placing6"
+        "sounds/kaito/kaito-oie1",
+        "sounds/kaito/kaito-oie2",
+        "sounds/kaito/kaito-oie3",
+        "sounds/kaito/kaito-oie4",
+        "sounds/kaito/kaito-oie5",
+        "sounds/kaito/kaito-oie6"
       ]
     },
     "miku.plushie.kaito_dor": {
       "category": "neutral",
       "sounds": [
-        "sounds/kaito/kaito-hurt1",
-        "sounds/kaito/kaito-hurt2",
-        "sounds/kaito/kaito-hurt3",
-        "sounds/kaito/kaito-hurt4",
-        "sounds/kaito/kaito-hurt5",
-        "sounds/kaito/kaito-hurt6",
-        "sounds/kaito/kaito-hurt7",
-        "sounds/kaito/kaito-hurt8",
-        "sounds/kaito/kaito-hurt9"
+        "sounds/kaito/kaito-dor1",
+        "sounds/kaito/kaito-dor2",
+        "sounds/kaito/kaito-dor3",
+        "sounds/kaito/kaito-dor4",
+        "sounds/kaito/kaito-dor5",
+        "sounds/kaito/kaito-dor6",
+        "sounds/kaito/kaito-dor7",
+        "sounds/kaito/kaito-dor8",
+        "sounds/kaito/kaito-dor9"
       ]
     },
     "miku.plushie.kaito_bye": {
       "category": "neutral",
       "sounds": [
-        "sounds/kaito/kaito-break1",
-        "sounds/kaito/kaito-break2",
-        "sounds/kaito/kaito-break3",
-        "sounds/kaito/kaito-break4",
-        "sounds/kaito/kaito-break5",
-        "sounds/kaito/kaito-break6",
-        "sounds/kaito/kaito-break7"
+        "sounds/kaito/kaito-bye1",
+        "sounds/kaito/kaito-bye2",
+        "sounds/kaito/kaito-bye3",
+        "sounds/kaito/kaito-bye4",
+        "sounds/kaito/kaito-bye5",
+        "sounds/kaito/kaito-bye6",
+        "sounds/kaito/kaito-bye7"
       ]
     },
     "miku.plushie.kaito_equip": {
@@ -479,52 +477,6 @@
         "sounds/kaito/kaito-equip2",
         "sounds/kaito/kaito-equip3",
         "sounds/kaito/kaito-equip4"
-      ]
-    },
-    "miku.plushie.konoha_oie": {
-      "category": "neutral",
-      "sounds": [
-        "sounds/konoha/konoha-placing1",
-        "sounds/konoha/konoha-placing2",
-        "sounds/konoha/konoha-placing3",
-        "sounds/konoha/konoha-placing4",
-        "sounds/konoha/konoha-placing5",
-        "sounds/konoha/konoha-placing6"
-      ]
-    },
-    "miku.plushie.konoha_dor": {
-      "category": "neutral",
-      "sounds": [
-        "sounds/konoha/konoha-hurt1",
-        "sounds/konoha/konoha-hurt2",
-        "sounds/konoha/konoha-hurt3",
-        "sounds/konoha/konoha-hurt4",
-        "sounds/konoha/konoha-hurt5",
-        "sounds/konoha/konoha-hurt6",
-        "sounds/konoha/konoha-hurt7",
-        "sounds/konoha/konoha-hurt8",
-        "sounds/konoha/konoha-hurt9"
-      ]
-    },
-    "miku.plushie.konoha_bye": {
-      "category": "neutral",
-      "sounds": [
-        "sounds/konoha/konoha-break1",
-        "sounds/konoha/konoha-break2",
-        "sounds/konoha/konoha-break3",
-        "sounds/konoha/konoha-break4",
-        "sounds/konoha/konoha-break5",
-        "sounds/konoha/konoha-break6",
-        "sounds/konoha/konoha-break7"
-      ]
-    },
-    "miku.plushie.konoha_equip": {
-      "category": "neutral",
-      "sounds": [
-        "sounds/konoha/konoha-equip1",
-        "sounds/konoha/konoha-equip2",
-        "sounds/konoha/konoha-equip3",
-        "sounds/konoha/konoha-equip4"
       ]
     }
   }
