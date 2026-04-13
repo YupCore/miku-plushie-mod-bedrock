@@ -11,7 +11,7 @@
           ]
         },
         "idle": {
-          "animations": ["idle", "walk"],
+          "animations": ["idle"],
           "transitions": [
             { "sitting": "q.is_sitting" },
             { "dancing": "q.property('miku:is_dancing') && !q.is_sitting" },
@@ -51,7 +51,63 @@
     "controller.animation.plush.hair": {
       "initial_state": "default",
       "states": {
-        "default": {}
+        "default": {
+          "animations": ["hair_procedural"]
+        }
+      }
+    },
+    "controller.animation.plush.procedural_pose": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["procedural_pose"]
+        }
+      }
+    },
+    "controller.animation.plush.generic_dance_select": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            { "caramelldansen": "q.property('miku:is_dancing')" }
+          ]
+        },
+        "caramelldansen": {
+          "animations": ["caramelldansen"],
+          "transitions": [
+            { "default": "!q.property('miku:is_dancing')" }
+          ]
+        }
+      }
+    },
+    "controller.animation.neru.dance_select": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            { "caramelldansen": "q.property('miku:is_dancing') && q.property('miku:dance_index') == 0" },
+            { "ievan_polkka": "q.property('miku:is_dancing') && q.property('miku:dance_index') == 1" },
+            { "vegetable_juice": "q.property('miku:is_dancing') && q.property('miku:dance_index') == 2" }
+          ]
+        },
+        "caramelldansen": {
+          "animations": ["caramelldansen"],
+          "transitions": [
+            { "default": "!q.property('miku:is_dancing')" }
+          ]
+        },
+        "ievan_polkka": {
+          "animations": ["ievan_polkka"],
+          "transitions": [
+            { "default": "!q.property('miku:is_dancing')" }
+          ]
+        },
+        "vegetable_juice": {
+          "animations": ["vegetable_juice"],
+          "transitions": [
+            { "default": "!q.property('miku:is_dancing')" }
+          ]
+        }
       }
     },
     "controller.animation.miku.eat": {

@@ -25,17 +25,28 @@
         "swipe2": "animation.plush.attack.swipe2",
         "swipe3": "animation.plush.attack.swipe3",
         "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
-        "walk": "animation.plush.procedural.walk",
+        "procedural_pose": "animation.plush.procedural.pose",
+        "hair_procedural": "animation.plush.procedural.hair",
         "main_controller": "controller.animation.plush.main",
-        "hair_controller": "controller.animation.plush.hair"
+        "hair_controller": "controller.animation.plush.hair",
+        "procedural_pose_controller": "controller.animation.plush.procedural_pose",
+        "dance_select": "controller.animation.plush.generic_dance_select"
       },
       "scripts": {
         "pre_animation": [
           "v.variant = q.property('miku:variant');",
-          "v.health_bend = q.property('miku:health_bend');"
+          "v.health_bend = q.property('miku:health_bend');",
+          "v.walk_phase = q.modified_distance_moved * 57.3;",
+          "v.walk_phase2 = v.walk_phase * 2;",
+          "v.walk_amp = q.modified_move_speed;",
+          "v.head_x = q.head_x_rotation(0);",
+          "v.head_y = math.clamp(math.min_angle(q.head_y_rotation(0) - q.body_y_rotation), -85, 85);",
+          "v.enable_hair_proc = 0;"
         ],
         "animate": [
           "main_controller",
+          "dance_select",
+          "procedural_pose_controller",
           "hair_controller"
         ]
       },

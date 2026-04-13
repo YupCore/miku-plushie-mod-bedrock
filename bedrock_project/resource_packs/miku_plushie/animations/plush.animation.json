@@ -1979,6 +1979,77 @@
           ]
         }
       }
+    },
+    "animation.plush.procedural.pose": {
+      "loop": true,
+      "bones": {
+        "root_offset": {
+          "rotation": [
+            0,
+            0,
+            "Math.sin(v.walk_phase) * (v.walk_amp * 5)"
+          ],
+          "position": [
+            0,
+            "Math.sin(v.walk_phase2) * v.walk_amp + v.walk_amp",
+            0
+          ]
+        },
+        "left_arm_offset": {
+          "rotation": [
+            "((q.property('miku:is_dancing') || q.is_delayed_attacking) ? 0 : Math.sin(v.walk_phase) * (v.walk_amp * 50)) - v.health_bend",
+            0,
+            0
+          ]
+        },
+        "right_arm_offset": {
+          "rotation": [
+            "((q.property('miku:is_dancing') || q.is_delayed_attacking) ? 0 : Math.sin(v.walk_phase) * (v.walk_amp * -50)) - v.health_bend",
+            0,
+            0
+          ]
+        },
+        "left_leg_offset": {
+          "rotation": [
+            "Math.sin(v.walk_phase) * (v.walk_amp * -50)",
+            0,
+            0
+          ]
+        },
+        "right_leg_offset": {
+          "rotation": [
+            "Math.sin(v.walk_phase) * (v.walk_amp * 50)",
+            0,
+            0
+          ]
+        },
+        "body_offset": {
+          "rotation": [
+            "v.health_bend",
+            0,
+            0
+          ]
+        },
+        "head_offset": {
+          "rotation": [
+            "v.head_x - v.health_bend",
+            "v.head_y",
+            0
+          ]
+        }
+      }
+    },
+    "animation.plush.procedural.hair": {
+      "loop": true,
+      "bones": {
+        "hair_offset": {
+          "rotation": [
+            "-v.head_x * v.enable_hair_proc",
+            0,
+            "Math.sin(v.walk_phase - 128.9155) * (v.walk_amp * -10) * v.enable_hair_proc"
+          ]
+        }
+      }
     }
   }
 }
