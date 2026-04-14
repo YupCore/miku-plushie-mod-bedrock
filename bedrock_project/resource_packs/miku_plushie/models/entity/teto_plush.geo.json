@@ -12,22 +12,22 @@
       },
       "bones": [
         {
-          "name": "root_offset",
+          "name": "rootOffset",
           "pivot": [0, 0, 0]
         },
         {
           "name": "root",
-          "parent": "root_offset",
+          "parent": "rootOffset",
           "pivot": [0, 0, 0]
         },
         {
-          "name": "body_offset",
+          "name": "bodyOffset",
           "parent": "root",
           "pivot": [0, 5.5, 0]
         },
         {
           "name": "body",
-          "parent": "body_offset",
+          "parent": "bodyOffset",
           "pivot": [0, 5.5, 0],
           "cubes": [
             {
@@ -125,13 +125,13 @@
           ]
         },
         {
-          "name": "left_arm_offset",
+          "name": "leftArmOffset",
           "parent": "body",
           "pivot": [3, 10.5, 0]
         },
         {
-          "name": "left_arm",
-          "parent": "left_arm_offset",
+          "name": "leftArm",
+          "parent": "leftArmOffset",
           "pivot": [3, 10.5, 0],
           "cubes": [
             {
@@ -210,17 +210,17 @@
         },
         {
           "name": "leftItem",
-          "parent": "left_arm",
+          "parent": "leftArm",
           "pivot": [3, 6.5, 0]
         },
         {
-          "name": "right_arm_offset",
+          "name": "rightArmOffset",
           "parent": "body",
           "pivot": [-3, 10.5, 0]
         },
         {
-          "name": "right_arm",
-          "parent": "right_arm_offset",
+          "name": "rightArm",
+          "parent": "rightArmOffset",
           "pivot": [-3, 10.5, 0],
           "cubes": [
             {
@@ -299,7 +299,7 @@
         },
         {
           "name": "rightItem",
-          "parent": "right_arm",
+          "parent": "rightArm",
           "pivot": [-3, 6.5, 0]
         },
         {
@@ -308,7 +308,7 @@
           "pivot": [0, 11.5, 0]
         },
         {
-          "name": "head_offset",
+          "name": "headOffset",
           "parent": "head",
           "pivot": [0, 11.5, 0],
           "cubes": [
@@ -375,17 +375,17 @@
           ]
         },
         {
-          "name": "hair_offset",
-          "parent": "head_offset",
+          "name": "hairOffset",
+          "parent": "headOffset",
           "pivot": [0, 17.5, 2.5]
         },
         {
           "name": "hair",
-          "parent": "hair_offset",
+          "parent": "hairOffset",
           "pivot": [0, 17.5, 2.5]
         },
         {
-          "name": "teto_left_hair",
+          "name": "tetoLeftHair",
           "parent": "hair",
           "pivot": [4.25, 17, 3.5],
           "cubes": [
@@ -457,8 +457,8 @@
           ]
         },
         {
-          "name": "teto_left_hair2",
-          "parent": "teto_left_hair",
+          "name": "tetoLeftHair2",
+          "parent": "tetoLeftHair",
           "pivot": [4.25, 15.5, 3.5],
           "cubes": [
             {
@@ -529,8 +529,8 @@
           ]
         },
         {
-          "name": "teto_left_hair3",
-          "parent": "teto_left_hair2",
+          "name": "tetoLeftHair3",
+          "parent": "tetoLeftHair2",
           "pivot": [4.25, 12.5, 3.5],
           "cubes": [
             {
@@ -601,8 +601,8 @@
           ]
         },
         {
-          "name": "teto_left_hair4",
-          "parent": "teto_left_hair3",
+          "name": "tetoLeftHair4",
+          "parent": "tetoLeftHair3",
           "pivot": [4.25, 10.5, 3.5],
           "cubes": [
             {
@@ -640,7 +640,7 @@
           ]
         },
         {
-          "name": "teto_right_hair",
+          "name": "tetoRightHair",
           "parent": "hair",
           "pivot": [-4.25, 17, 3.5],
           "cubes": [
@@ -712,8 +712,8 @@
           ]
         },
         {
-          "name": "teto_right_hair2",
-          "parent": "teto_right_hair",
+          "name": "tetoRightHair2",
+          "parent": "tetoRightHair",
           "pivot": [-4.25, 15.5, 3.5],
           "cubes": [
             {
@@ -784,8 +784,8 @@
           ]
         },
         {
-          "name": "teto_right_hair3",
-          "parent": "teto_right_hair2",
+          "name": "tetoRightHair3",
+          "parent": "tetoRightHair2",
           "pivot": [-4.25, 12.5, 3.5],
           "cubes": [
             {
@@ -856,8 +856,8 @@
           ]
         },
         {
-          "name": "teto_right_hair4",
-          "parent": "teto_right_hair3",
+          "name": "tetoRightHair4",
+          "parent": "tetoRightHair3",
           "pivot": [-4.25, 10.5, 3.5],
           "cubes": [
             {
@@ -895,7 +895,7 @@
           ]
         },
         {
-          "name": "teto_shrimp_left_hair",
+          "name": "tetoShrimpLeftHair",
           "parent": "hair",
           "pivot": [3.8358, 17.9142, 3],
           "cubes": [
@@ -939,8 +939,8 @@
           ]
         },
         {
-          "name": "teto_shrimp_left_hair2",
-          "parent": "teto_shrimp_left_hair",
+          "name": "tetoShrimpLeftHair2",
+          "parent": "tetoShrimpLeftHair",
           "pivot": [5.25, 16.5, 3],
           "cubes": [
             {
@@ -980,8 +980,8 @@
           ]
         },
         {
-          "name": "teto_shrimp_left_hair3",
-          "parent": "teto_shrimp_left_hair2",
+          "name": "tetoShrimpLeftHair3",
+          "parent": "tetoShrimpLeftHair2",
           "pivot": [6.7807, 12.8045, 3],
           "cubes": [
             {
@@ -1019,8 +1019,8 @@
           ]
         },
         {
-          "name": "teto_shrimp_left_hair4",
-          "parent": "teto_shrimp_left_hair3",
+          "name": "tetoShrimpLeftHair4",
+          "parent": "tetoShrimpLeftHair3",
           "pivot": [5.7807, 9.8045, 3],
           "cubes": [
             {
@@ -1058,7 +1058,7 @@
           ]
         },
         {
-          "name": "teto_shrimp_right_hair",
+          "name": "tetoShrimpRightHair",
           "parent": "hair",
           "pivot": [-3.8358, 17.9142, 3],
           "cubes": [
@@ -1102,8 +1102,8 @@
           ]
         },
         {
-          "name": "teto_shrimp_right_hair2",
-          "parent": "teto_shrimp_right_hair",
+          "name": "tetoShrimpRightHair2",
+          "parent": "tetoShrimpRightHair",
           "pivot": [-5.25, 16.5, 3],
           "cubes": [
             {
@@ -1143,8 +1143,8 @@
           ]
         },
         {
-          "name": "teto_shrimp_right_hair3",
-          "parent": "teto_shrimp_right_hair2",
+          "name": "tetoShrimpRightHair3",
+          "parent": "tetoShrimpRightHair2",
           "pivot": [-6.7807, 12.8045, 3],
           "cubes": [
             {
@@ -1182,8 +1182,8 @@
           ]
         },
         {
-          "name": "teto_shrimp_right_hair4",
-          "parent": "teto_shrimp_right_hair3",
+          "name": "tetoShrimpRightHair4",
+          "parent": "tetoShrimpRightHair3",
           "pivot": [-5.7807, 9.8045, 3],
           "cubes": [
             {
@@ -1221,8 +1221,8 @@
           ]
         },
         {
-          "name": "head-ornaments",
-          "parent": "head_offset",
+          "name": "headOrnaments",
+          "parent": "headOffset",
           "pivot": [-3.35, 17, -0.85],
           "cubes": [
             {
@@ -1288,8 +1288,8 @@
           ]
         },
         {
-          "name": "teto_plush_mesmerizer",
-          "parent": "head-ornaments",
+          "name": "tetoPlushMesmerizer",
+          "parent": "headOrnaments",
           "pivot": [8, 23.35, -10],
           "cubes": [
             {
@@ -1387,8 +1387,8 @@
           ]
         },
         {
-          "name": "teto_plush_regret_rock",
-          "parent": "head-ornaments",
+          "name": "tetoPlushRegretRock",
+          "parent": "headOrnaments",
           "pivot": [8, 22.25, -8],
           "cubes": [
             {
@@ -1458,8 +1458,8 @@
           ]
         },
         {
-          "name": "teto_plush_dont_believe_in_t",
-          "parent": "head-ornaments",
+          "name": "tetoPlushDontBelieveInT",
+          "parent": "headOrnaments",
           "pivot": [8, 24, -9.25],
           "cubes": [
             {
@@ -1587,13 +1587,13 @@
           ]
         },
         {
-          "name": "teto_plush_shadow",
-          "parent": "head-ornaments",
+          "name": "tetoPlushShadow",
+          "parent": "headOrnaments",
           "pivot": [3.25, 15.75, -1]
         },
         {
-          "name": "teto_plush_shadow_ear",
-          "parent": "teto_plush_shadow",
+          "name": "tetoPlushShadowEar",
+          "parent": "tetoPlushShadow",
           "pivot": [-3.25, 15.75, -1],
           "rotation": [0, 0, -22.5],
           "cubes": [
@@ -1690,8 +1690,8 @@
           ]
         },
         {
-          "name": "teto_plush_shadow_ear2",
-          "parent": "teto_plush_shadow",
+          "name": "tetoPlushShadowEar2",
+          "parent": "tetoPlushShadow",
           "pivot": [3.25, 15.75, -1],
           "rotation": [0, 0, 22.5],
           "cubes": [
@@ -1788,8 +1788,8 @@
           ]
         },
         {
-          "name": "teto_plush_shadow_hair",
-          "parent": "teto_plush_shadow",
+          "name": "tetoPlushShadowHair",
+          "parent": "tetoPlushShadow",
           "pivot": [3, 14, -1],
           "rotation": [0, 22.5, 0],
           "cubes": [
@@ -1826,8 +1826,8 @@
           ]
         },
         {
-          "name": "teto_plush_shadow_hair2",
-          "parent": "teto_plush_shadow",
+          "name": "tetoPlushShadowHair2",
+          "parent": "tetoPlushShadow",
           "pivot": [0, 17.5, -1],
           "rotation": [22.5, 0, 0],
           "cubes": [
@@ -1864,8 +1864,8 @@
           ]
         },
         {
-          "name": "teto_plush_shadow_hair3",
-          "parent": "teto_plush_shadow",
+          "name": "tetoPlushShadowHair3",
+          "parent": "tetoPlushShadow",
           "pivot": [0, 14.5, 3],
           "cubes": [
             {
@@ -1901,8 +1901,8 @@
           ]
         },
         {
-          "name": "teto_plush_shadow_hair4",
-          "parent": "teto_plush_shadow",
+          "name": "tetoPlushShadowHair4",
+          "parent": "tetoPlushShadow",
           "pivot": [-3, 14, -1],
           "rotation": [0, -22.5, 0],
           "cubes": [
@@ -1939,13 +1939,13 @@
           ]
         },
         {
-          "name": "teto_plush_lobster",
-          "parent": "head-ornaments",
+          "name": "tetoPlushLobster",
+          "parent": "headOrnaments",
           "pivot": [0, 16.5, 3]
         },
         {
-          "name": "teto_plush_lobster_tail_body",
-          "parent": "teto_plush_lobster",
+          "name": "tetoPlushLobsterTailBody",
+          "parent": "tetoPlushLobster",
           "pivot": [5.5, 16, 4.25],
           "cubes": [
             {
@@ -1983,8 +1983,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_tail",
-          "parent": "teto_plush_lobster_tail_body",
+          "name": "tetoPlushLobsterTail",
+          "parent": "tetoPlushLobsterTailBody",
           "pivot": [5.5, 10, 4.25],
           "cubes": [
             {
@@ -2022,8 +2022,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_tail2",
-          "parent": "teto_plush_lobster_tail",
+          "name": "tetoPlushLobsterTail2",
+          "parent": "tetoPlushLobsterTail",
           "pivot": [5.5, 7, 3.75],
           "cubes": [
             {
@@ -2061,8 +2061,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_arm",
-          "parent": "teto_plush_lobster_tail_body",
+          "name": "tetoPlushLobsterArm",
+          "parent": "tetoPlushLobsterTailBody",
           "pivot": [6.99289, 13.61789, 3.25],
           "rotation": [0, 0, 45],
           "cubes": [
@@ -2101,8 +2101,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_claw",
-          "parent": "teto_plush_lobster_arm",
+          "name": "tetoPlushLobsterClaw",
+          "parent": "tetoPlushLobsterArm",
           "pivot": [7.5, 16.1, 3.75],
           "rotation": [0, 0, -45],
           "cubes": [
@@ -2141,8 +2141,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_arm2",
-          "parent": "teto_plush_lobster_tail_body",
+          "name": "tetoPlushLobsterArm2",
+          "parent": "tetoPlushLobsterTailBody",
           "pivot": [4.00711, 13.61789, 3.25],
           "rotation": [0, 0, -45],
           "cubes": [
@@ -2181,8 +2181,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_claw2",
-          "parent": "teto_plush_lobster_arm2",
+          "name": "tetoPlushLobsterClaw2",
+          "parent": "tetoPlushLobsterArm2",
           "pivot": [3.5, 16.1, 3.75],
           "rotation": [0, 0, 45],
           "cubes": [
@@ -2221,8 +2221,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_leg",
-          "parent": "teto_plush_lobster_tail_body",
+          "name": "tetoPlushLobsterLeg",
+          "parent": "tetoPlushLobsterTailBody",
           "pivot": [6.75, 14.5, 4],
           "cubes": [
             {
@@ -2432,8 +2432,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_antenna",
-          "parent": "teto_plush_lobster_tail_body",
+          "name": "tetoPlushLobsterAntenna",
+          "parent": "tetoPlushLobsterTailBody",
           "pivot": [6, 15, 1.25],
           "cubes": [
             {
@@ -2507,8 +2507,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_tail_body2",
-          "parent": "teto_plush_lobster",
+          "name": "tetoPlushLobsterTailBody2",
+          "parent": "tetoPlushLobster",
           "pivot": [-5.5, 16, 4.25],
           "cubes": [
             {
@@ -2546,8 +2546,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_tail3",
-          "parent": "teto_plush_lobster_tail_body2",
+          "name": "tetoPlushLobsterTail3",
+          "parent": "tetoPlushLobsterTailBody2",
           "pivot": [-5.5, 10, 4.25],
           "cubes": [
             {
@@ -2585,8 +2585,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_tail4",
-          "parent": "teto_plush_lobster_tail3",
+          "name": "tetoPlushLobsterTail4",
+          "parent": "tetoPlushLobsterTail3",
           "pivot": [-5.5, 7, 3.75],
           "cubes": [
             {
@@ -2624,8 +2624,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_arm3",
-          "parent": "teto_plush_lobster_tail_body2",
+          "name": "tetoPlushLobsterArm3",
+          "parent": "tetoPlushLobsterTailBody2",
           "pivot": [-6.99289, 13.61789, 3.25],
           "rotation": [0, 0, -45],
           "cubes": [
@@ -2664,8 +2664,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_claw3",
-          "parent": "teto_plush_lobster_arm3",
+          "name": "tetoPlushLobsterClaw3",
+          "parent": "tetoPlushLobsterArm3",
           "pivot": [-7.5, 16.1, 3.75],
           "rotation": [0, 0, 45],
           "cubes": [
@@ -2704,8 +2704,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_arm4",
-          "parent": "teto_plush_lobster_tail_body2",
+          "name": "tetoPlushLobsterArm4",
+          "parent": "tetoPlushLobsterTailBody2",
           "pivot": [-4.00711, 13.61789, 3.25],
           "rotation": [0, 0, 45],
           "cubes": [
@@ -2744,8 +2744,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_claw4",
-          "parent": "teto_plush_lobster_arm4",
+          "name": "tetoPlushLobsterClaw4",
+          "parent": "tetoPlushLobsterArm4",
           "pivot": [-3.5, 16.1, 3.75],
           "rotation": [0, 0, -45],
           "cubes": [
@@ -2784,8 +2784,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_leg2",
-          "parent": "teto_plush_lobster_tail_body2",
+          "name": "tetoPlushLobsterLeg2",
+          "parent": "tetoPlushLobsterTailBody2",
           "pivot": [-6.75, 14.5, 4],
           "cubes": [
             {
@@ -2995,8 +2995,8 @@
           ]
         },
         {
-          "name": "teto_plush_lobster_antenna2",
-          "parent": "teto_plush_lobster_tail_body2",
+          "name": "tetoPlushLobsterAntenna2",
+          "parent": "tetoPlushLobsterTailBody2",
           "pivot": [-6, 15, 1.25],
           "cubes": [
             {
@@ -3070,8 +3070,8 @@
           ]
         },
         {
-          "name": "teto_plush_synthv",
-          "parent": "head-ornaments",
+          "name": "tetoPlushSynthv",
+          "parent": "headOrnaments",
           "pivot": [2, 18, 3.5],
           "cubes": [
             {
@@ -3110,7 +3110,7 @@
         },
         {
           "name": "ahoge",
-          "parent": "head_offset",
+          "parent": "headOffset",
           "pivot": [0, 17.75, 0],
           "cubes": [
             {
@@ -3148,13 +3148,13 @@
           ]
         },
         {
-          "name": "longer_hair_offset",
-          "parent": "head_offset",
+          "name": "longerHairOffset",
+          "parent": "headOffset",
           "pivot": [0, 11.25, 3.25]
         },
         {
-          "name": "longer_hair",
-          "parent": "longer_hair_offset",
+          "name": "longerHair",
+          "parent": "longerHairOffset",
           "pivot": [0, 11.25, 3.25],
           "cubes": [
             {
@@ -3190,8 +3190,8 @@
           ]
         },
         {
-          "name": "teto_shrimp_ahoge",
-          "parent": "head_offset",
+          "name": "tetoShrimpAhoge",
+          "parent": "headOffset",
           "pivot": [0, 19, -1],
           "cubes": [
             {
@@ -3293,8 +3293,8 @@
           ]
         },
         {
-          "name": "teto_shrimp_ahoge2",
-          "parent": "head_offset",
+          "name": "tetoShrimpAhoge2",
+          "parent": "headOffset",
           "pivot": [0, 19, -1],
           "cubes": [
             {
@@ -3469,7 +3469,7 @@
           ]
         },
         {
-          "name": "teto_shrimp_tail",
+          "name": "tetoShrimpTail",
           "parent": "tail",
           "pivot": [0, 5.5, 1.5],
           "rotation": [22.5, 0, 0],
@@ -3513,13 +3513,13 @@
           ]
         },
         {
-          "name": "right_leg_offset",
+          "name": "rightLegOffset",
           "parent": "root",
           "pivot": [-1, 6, -0.5]
         },
         {
-          "name": "right_leg",
-          "parent": "right_leg_offset",
+          "name": "rightLeg",
+          "parent": "rightLegOffset",
           "pivot": [-1, 6, -0.5],
           "cubes": [
             {
@@ -3720,13 +3720,13 @@
           ]
         },
         {
-          "name": "left_leg_offset",
+          "name": "leftLegOffset",
           "parent": "root",
           "pivot": [1, 6, -0.5]
         },
         {
-          "name": "left_leg",
-          "parent": "left_leg_offset",
+          "name": "leftLeg",
+          "parent": "leftLegOffset",
           "pivot": [1, 6, -0.5],
           "cubes": [
             {

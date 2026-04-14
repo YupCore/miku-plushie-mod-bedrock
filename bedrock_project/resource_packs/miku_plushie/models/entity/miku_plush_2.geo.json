@@ -12,22 +12,22 @@
       },
       "bones": [
         {
-          "name": "root_offset",
+          "name": "rootOffset",
           "pivot": [0, 0, 0]
         },
         {
           "name": "root",
-          "parent": "root_offset",
+          "parent": "rootOffset",
           "pivot": [0, 0, 0]
         },
         {
-          "name": "body_offset",
+          "name": "bodyOffset",
           "parent": "root",
           "pivot": [0, 5.5, 0]
         },
         {
           "name": "body",
-          "parent": "body_offset",
+          "parent": "bodyOffset",
           "pivot": [0, 5.5, 0],
           "cubes": [
             {
@@ -93,13 +93,13 @@
           ]
         },
         {
-          "name": "left_arm_offset",
+          "name": "leftArmOffset",
           "parent": "body",
           "pivot": [3, 10.5, 0]
         },
         {
-          "name": "left_arm",
-          "parent": "left_arm_offset",
+          "name": "leftArm",
+          "parent": "leftArmOffset",
           "pivot": [3, 10.5, 0],
           "cubes": [
             {
@@ -178,17 +178,17 @@
         },
         {
           "name": "leftItem",
-          "parent": "left_arm",
+          "parent": "leftArm",
           "pivot": [3, 6.5, 0]
         },
         {
-          "name": "right_arm_offset",
+          "name": "rightArmOffset",
           "parent": "body",
           "pivot": [-3, 10.5, 0]
         },
         {
-          "name": "right_arm",
-          "parent": "right_arm_offset",
+          "name": "rightArm",
+          "parent": "rightArmOffset",
           "pivot": [-3, 10.5, 0],
           "cubes": [
             {
@@ -267,17 +267,17 @@
         },
         {
           "name": "rightItem",
-          "parent": "right_arm",
+          "parent": "rightArm",
           "pivot": [-3, 6.5, 0]
         },
         {
-          "name": "head_offset",
+          "name": "headOffset",
           "parent": "body",
           "pivot": [0, 11.5, 0]
         },
         {
           "name": "head",
-          "parent": "head_offset",
+          "parent": "headOffset",
           "pivot": [0, 11.5, 0],
           "cubes": [
             {
@@ -378,13 +378,13 @@
           "pivot": [0, 17.5, 2.5]
         },
         {
-          "name": "hair_offset",
+          "name": "hairOffset",
           "parent": "hair",
           "pivot": [0, 17.5, 2.75]
         },
         {
-          "name": "miku_left_hair",
-          "parent": "hair_offset",
+          "name": "mikuLeftHair",
+          "parent": "hairOffset",
           "pivot": [-4, 17.5, 2.75],
           "rotation": [0, 0, 22.5],
           "cubes": [
@@ -451,8 +451,8 @@
           ]
         },
         {
-          "name": "miku_mushroom2",
-          "parent": "miku_left_hair",
+          "name": "mikuMushroom2",
+          "parent": "mikuLeftHair",
           "pivot": [-3.5, 17, 3.75],
           "rotation": [0, 0, -22.5],
           "cubes": [
@@ -489,8 +489,8 @@
           ]
         },
         {
-          "name": "miku_left_hair2",
-          "parent": "miku_left_hair",
+          "name": "mikuLeftHair2",
+          "parent": "mikuLeftHair",
           "pivot": [-4.64805, 12.27164, 2.75],
           "rotation": [0, 0, -22.5],
           "cubes": [
@@ -557,8 +557,8 @@
           ]
         },
         {
-          "name": "miku_right_hair",
-          "parent": "hair_offset",
+          "name": "mikuRightHair",
+          "parent": "hairOffset",
           "pivot": [4, 17.5, 2.75],
           "rotation": [0, 0, -22.5],
           "cubes": [
@@ -625,8 +625,8 @@
           ]
         },
         {
-          "name": "miku_mushroom",
-          "parent": "miku_right_hair",
+          "name": "mikuMushroom",
+          "parent": "mikuRightHair",
           "pivot": [3.5, 17, 3.75],
           "rotation": [0, 0, 22.5],
           "cubes": [
@@ -663,8 +663,8 @@
           ]
         },
         {
-          "name": "miku_right_hair2",
-          "parent": "miku_right_hair",
+          "name": "mikuRightHair2",
+          "parent": "mikuRightHair",
           "pivot": [4.57612, 11.88268, 2.75],
           "rotation": [0, 0, 22.5],
           "cubes": [
@@ -731,7 +731,7 @@
           ]
         },
         {
-          "name": "head-ornaments",
+          "name": "headOrnaments",
           "parent": "head",
           "pivot": [4.65, 20.5, -8.85],
           "cubes": [
@@ -768,8 +768,8 @@
           ]
         },
         {
-          "name": "miku_plush_mushroom",
-          "parent": "head-ornaments",
+          "name": "mikuPlushMushroom",
+          "parent": "headOrnaments",
           "pivot": [-9.5, 7, 8.5],
           "cubes": [
             {
@@ -1016,7 +1016,7 @@
         },
         {
           "name": "mouth",
-          "parent": "head-ornaments",
+          "parent": "headOrnaments",
           "pivot": [8.5, 16.25, -10.25],
           "cubes": [
             {
@@ -1299,8 +1299,8 @@
           ]
         },
         {
-          "name": "miku_plush_patati",
-          "parent": "head-ornaments",
+          "name": "mikuPlushPatati",
+          "parent": "headOrnaments",
           "pivot": [1, 12, 1],
           "cubes": [
             {
@@ -1430,8 +1430,8 @@
           ]
         },
         {
-          "name": "miku_plush_devil",
-          "parent": "head-ornaments",
+          "name": "mikuPlushDevil",
+          "parent": "headOrnaments",
           "pivot": [-1.9, 16.75, -2],
           "cubes": [
             {
@@ -1565,8 +1565,8 @@
           ]
         },
         {
-          "name": "miku_plush_witch",
-          "parent": "head-ornaments",
+          "name": "mikuPlushWitch",
+          "parent": "headOrnaments",
           "pivot": [0, 21.68416, 1.99015],
           "cubes": [
             {
@@ -1796,17 +1796,17 @@
           ]
         },
         {
-          "name": "longer_hair_offset",
+          "name": "longerHairOffset",
           "parent": "head",
           "pivot": [0, 11.25, 3.25]
         },
         {
-          "name": "longer_hair",
-          "parent": "longer_hair_offset",
+          "name": "longerHair",
+          "parent": "longerHairOffset",
           "pivot": [0, 11.25, 3.25]
         },
         {
-          "name": "miku_plush_devil_tail",
+          "name": "mikuPlushDevilTail",
           "parent": "body",
           "pivot": [0, 5.5, 1.5],
           "rotation": [45, 0, 0],
@@ -1846,8 +1846,8 @@
           ]
         },
         {
-          "name": "miku_plush_devil_tail2",
-          "parent": "miku_plush_devil_tail",
+          "name": "mikuPlushDevilTail2",
+          "parent": "mikuPlushDevilTail",
           "pivot": [-1, 5.5, 5.5],
           "rotation": [-45, 0, 0],
           "cubes": [
@@ -1884,13 +1884,13 @@
           ]
         },
         {
-          "name": "right_leg_offset",
+          "name": "rightLegOffset",
           "parent": "root",
           "pivot": [-1, 6, -0.5]
         },
         {
-          "name": "right_leg",
-          "parent": "right_leg_offset",
+          "name": "rightLeg",
+          "parent": "rightLegOffset",
           "pivot": [-1, 6, -0.5],
           "cubes": [
             {
@@ -2027,13 +2027,13 @@
           ]
         },
         {
-          "name": "left_leg_offset",
+          "name": "leftLegOffset",
           "parent": "root",
           "pivot": [1, 6, -0.5]
         },
         {
-          "name": "left_leg",
-          "parent": "left_leg_offset",
+          "name": "leftLeg",
+          "parent": "leftLegOffset",
           "pivot": [1, 6, -0.5],
           "cubes": [
             {

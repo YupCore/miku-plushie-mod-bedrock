@@ -267,6 +267,150 @@
             "priority": 6,
             "surplus_amount": 1,
             "want_amount": 1
+          },
+          {
+            "item": "minecraft:netherite_helmet",
+            "priority": 0,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:netherite_chestplate",
+            "priority": 0,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:netherite_leggings",
+            "priority": 0,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:netherite_boots",
+            "priority": 0,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:diamond_helmet",
+            "priority": 1,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:diamond_chestplate",
+            "priority": 1,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:diamond_leggings",
+            "priority": 1,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:diamond_boots",
+            "priority": 1,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:iron_helmet",
+            "priority": 2,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:iron_chestplate",
+            "priority": 2,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:iron_leggings",
+            "priority": 2,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:iron_boots",
+            "priority": 2,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:chainmail_helmet",
+            "priority": 3,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:chainmail_chestplate",
+            "priority": 3,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:chainmail_leggings",
+            "priority": 3,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:chainmail_boots",
+            "priority": 3,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:golden_helmet",
+            "priority": 4,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:golden_chestplate",
+            "priority": 4,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:golden_leggings",
+            "priority": 4,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:golden_boots",
+            "priority": 4,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:leather_helmet",
+            "priority": 5,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:leather_chestplate",
+            "priority": 5,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:leather_leggings",
+            "priority": 5,
+            "surplus_amount": 1,
+            "want_amount": 1
+          },
+          {
+            "item": "minecraft:leather_boots",
+            "priority": 5,
+            "surplus_amount": 1,
+            "want_amount": 1
           }
         ]
       },
