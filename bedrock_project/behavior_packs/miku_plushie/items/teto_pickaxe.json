@@ -12,6 +12,9 @@
       "minecraft:display_name": {
         "value": "item.miku:teto_pickaxe.name"
       },
+      "minecraft:custom_components": [
+        "miku:pickaxe_durability"
+      ],
       "minecraft:durability": {
         "max_durability": 500
       },

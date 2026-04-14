@@ -14,7 +14,7 @@ class PlushBlockComponent implements BlockCustomComponent {
   constructor() {
     this.onPlayerInteract = this.onPlayerInteract.bind(this);
     this.onPlace = this.onPlace.bind(this);
-    this.onPlayerBreak = this.onPlayerBreak.bind(this);
+    this.onBreak = this.onBreak.bind(this);
   }
 
   onPlayerInteract(event: BlockComponentPlayerInteractEvent): void {
@@ -92,12 +92,13 @@ class PlushBlockComponent implements BlockCustomComponent {
     playPlushSoundAtPosition(block.dimension, block.location, character, "oie");
   }
 
-  onPlayerBreak(event: BlockComponentPlayerBreakEvent): void {
+  onBreak(event: BlockComponentPlayerBreakEvent): void {
     const { block } = event;
-    const blockId = block.typeId;
-    if (!blockId.startsWith("miku:") || blockId.includes("leek")) return;
+    const brokenBlockId = event.brokenBlockPermutation.type.id;
+    if (!brokenBlockId.startsWith("miku:") || brokenBlockId.includes("leek")) return;
 
-    const character = getCharacterFromBlock(blockId);
+    const character = getCharacterFromBlock(brokenBlockId);
+
     playPlushSoundAtPosition(block.dimension, block.location, character, "bye");
   }
 }

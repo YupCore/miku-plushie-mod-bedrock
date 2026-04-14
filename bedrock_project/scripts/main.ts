@@ -2,11 +2,11 @@ import { world } from "@minecraft/server";
 
 import { registerPlushBlockComponent } from "./components/plush_block";
 import { registerCropGrowthComponent } from "./components/crop_growth";
+import { registerPickaxeDurabilityComponent } from "./components/pickaxe_durability";
 import { startJukeboxDanceSystem } from "./systems/jukebox_dance";
 import { startPlushInteractionSystem } from "./systems/plush_interaction";
 import { startAttackSoundSystem } from "./systems/attack_sound";
 import { startDeathSoundSystem } from "./systems/death_sound";
-import { startPickaxeBreakSoundSystem } from "./systems/pickaxe_break_sound";
 import { startMikuEatLeekSystem } from "./systems/miku_eat_leek";
 import { startSpawnMikusCommand } from "./commands/spawn_mikus";
 
@@ -24,6 +24,13 @@ try {
   console.log("[Miku Plushie] Registered crop growth component");
 } catch (e) {
   console.error("[Miku Plushie] Failed to register crop growth component:", e);
+}
+
+try {
+  registerPickaxeDurabilityComponent();
+  console.log("[Miku Plushie] Registered pickaxe durability component");
+} catch (e) {
+  console.error("[Miku Plushie] Failed to register pickaxe durability component:", e);
 }
 
 try {
@@ -48,12 +55,6 @@ try {
   startDeathSoundSystem();
 } catch (e) {
   console.error("[Miku Plushie] Failed to start death sound system:", e);
-}
-
-try {
-  startPickaxeBreakSoundSystem();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start pickaxe break sound system:", e);
 }
 
 try {

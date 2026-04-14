@@ -254,7 +254,7 @@
         {
           "name": "leftItem",
           "parent": "left_arm",
-          "pivot": [3, 5.5, 0]
+          "pivot": [3, 6.5, 0]
         },
         {
           "name": "right_arm_offset",
@@ -386,7 +386,7 @@
         {
           "name": "rightItem",
           "parent": "right_arm",
-          "pivot": [-3, 5.5, 0]
+          "pivot": [-3, 6.5, 0]
         },
         {
           "name": "head_offset",
