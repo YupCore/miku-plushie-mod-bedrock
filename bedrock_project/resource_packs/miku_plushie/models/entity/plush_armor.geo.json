@@ -1,0 +1,135 @@
+{
+  "format_version": "1.8.0",
+  "geometry.miku_plush.armor.helmet": {
+    "texturewidth": 64,
+    "textureheight": 32,
+    "bones": [
+      {
+        "name": "head",
+        "pivot": [0, 11.5, 0],
+        "cubes": [
+          {
+            "origin": [-3.5, 11.0, -3.5],
+            "size": [7, 7, 7],
+            "uv": [0, 0],
+            "inflate": 0
+          }
+        ]
+      }
+    ]
+  },
+  "geometry.miku_plush.armor.chestplate": {
+    "texturewidth": 64,
+    "textureheight": 32,
+    "bones": [
+      {
+        "name": "body",
+        "pivot": [0, 5.5, 0],
+        "cubes": [
+          {
+            "origin": [-2.5, 5.0, -2.0],
+            "size": [5, 6, 4],
+            "uv": [16, 16],
+            "inflate": 0
+          }
+        ]
+      },
+      {
+        "name": "leftArm",
+        "pivot": [3, 10.5, 0],
+        "cubes": [
+          {
+            "origin": [2.0, 9.0, -1.5],
+            "size": [3, 3, 3],
+            "uv": [40, 16],
+            "inflate": 0
+          }
+        ]
+      },
+      {
+        "name": "rightArm",
+        "pivot": [-3, 10.5, 0],
+        "cubes": [
+          {
+            "origin": [-5.0, 9.0, -1.5],
+            "size": [3, 3, 3],
+            "uv": [40, 16],
+            "inflate": 0
+          }
+        ]
+      }
+    ]
+  },
+  "geometry.miku_plush.armor.leggings": {
+    "texturewidth": 64,
+    "textureheight": 32,
+    "bones": [
+      {
+        "name": "body",
+        "pivot": [0, 5.5, 0],
+        "cubes": [
+          {
+            "origin": [-2.5, 3.0, -2.0],
+            "size": [5, 3, 4],
+            "uv": [16, 16],
+            "inflate": 0
+          }
+        ]
+      },
+      {
+        "name": "leftLeg",
+        "pivot": [1, 6, -0.5],
+        "cubes": [
+          {
+            "origin": [-0.25, 1.5, -2.0],
+            "size": [2.5, 4.5, 3],
+            "uv": [0, 16],
+            "inflate": 0
+          }
+        ]
+      },
+      {
+        "name": "rightLeg",
+        "pivot": [-1, 6, -0.5],
+        "cubes": [
+          {
+            "origin": [-2.25, 1.5, -2.0],
+            "size": [2.5, 4.5, 3],
+            "uv": [0, 16],
+            "inflate": 0
+          }
+        ]
+      }
+    ]
+  },
+  "geometry.miku_plush.armor.boots": {
+    "texturewidth": 64,
+    "textureheight": 32,
+    "bones": [
+      {
+        "name": "leftLeg",
+        "pivot": [1, 6, -0.5],
+        "cubes": [
+          {
+            "origin": [-0.25, 0.0, -2.0],
+            "size": [2.5, 2, 3],
+            "uv": [0, 16],
+            "inflate": 0
+          }
+        ]
+      },
+      {
+        "name": "rightLeg",
+        "pivot": [-1, 6, -0.5],
+        "cubes": [
+          {
+            "origin": [-2.25, 0.0, -2.0],
+            "size": [2.5, 2, 3],
+            "uv": [0, 16],
+            "inflate": 0
+          }
+        ]
+      }
+    ]
+  }
+}

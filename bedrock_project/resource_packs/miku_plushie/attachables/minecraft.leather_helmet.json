@@ -1,0 +1,23 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "minecraft:leather_helmet",
+      "item": {
+        "minecraft:leather_helmet": "q.owner_identifier == 'miku:miku_plush' || q.owner_identifier == 'miku:kaito_plush' || q.owner_identifier == 'miku:luka_plush' || q.owner_identifier == 'miku:len_plush' || q.owner_identifier == 'miku:rin_plush' || q.owner_identifier == 'miku:meiko_plush' || q.owner_identifier == 'miku:gumi_plush' || q.owner_identifier == 'miku:teto_plush' || q.owner_identifier == 'miku:aiko_plush' || q.owner_identifier == 'miku:akita_neru_plush' || q.owner_identifier == 'miku:konoha_plush'"
+      },
+      "materials": {
+        "default": "armor_leather",
+        "enchanted": "armor_enchanted"
+      },
+      "textures": {
+        "default": "textures/models/armor/leather_1",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.miku_plush.armor.helmet"
+      },
+      "render_controllers": ["controller.render.armor"]
+    }
+  }
+}

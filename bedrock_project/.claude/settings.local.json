@@ -8,7 +8,13 @@
       "Bash(xargs grep:*)",
       "Bash(grep \"Entity.java$\")",
       "mcp__tavily__tavily_extract",
-      "mcp__microsoft-learn__microsoft_docs_search"
+      "mcp__microsoft-learn__microsoft_docs_search",
+      "Bash(grep -r \"enable_attachables\" /d/source/miku-plushie-mod-bedrock/bedrock_project/resource_packs/miku_plushie/entity/*.json)",
+      "Bash(xargs ls:*)",
+      "Bash(curl -s https://wiki.bedrock.dev/llms.txt)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/Bedrock-OSS/bedrock-wiki/refs/heads/wiki/docs/entities/attachables.md\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/Bedrock-OSS/bedrock-wiki/refs/heads/wiki/docs/items/attachables.md\")",
+      "Bash(grep:*)"
     ]
   }
 }

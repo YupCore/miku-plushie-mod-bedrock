@@ -2030,7 +2030,7 @@
             0
           ]
         },
-        "headOffset": {
+        "head": {
           "rotation": [
             "((q.property('miku:is_dancing') ? 0 : v.head_x)) - v.health_bend",
             "(q.property('miku:is_dancing') ? 0 : v.head_y)",

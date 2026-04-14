@@ -1,0 +1,23 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "minecraft:netherite_leggings",
+      "item": {
+        "minecraft:netherite_leggings": "q.owner_identifier == 'miku:miku_plush' || q.owner_identifier == 'miku:kaito_plush' || q.owner_identifier == 'miku:luka_plush' || q.owner_identifier == 'miku:len_plush' || q.owner_identifier == 'miku:rin_plush' || q.owner_identifier == 'miku:meiko_plush' || q.owner_identifier == 'miku:gumi_plush' || q.owner_identifier == 'miku:teto_plush' || q.owner_identifier == 'miku:aiko_plush' || q.owner_identifier == 'miku:akita_neru_plush' || q.owner_identifier == 'miku:konoha_plush'"
+      },
+      "materials": {
+        "default": "armor",
+        "enchanted": "armor_enchanted"
+      },
+      "textures": {
+        "default": "textures/models/armor/netherite_2",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.miku_plush.armor.leggings"
+      },
+      "render_controllers": ["controller.render.armor"]
+    }
+  }
+}
