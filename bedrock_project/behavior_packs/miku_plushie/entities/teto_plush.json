@@ -37,9 +37,9 @@
         "minecraft:sittable": {},
         "minecraft:behavior.follow_owner": {
           "priority": 4,
-          "speed_multiplier": 1.5,
-          "start_distance": 5.0,
-          "stop_distance": 1.75
+          "speed_multiplier": 1.25,
+          "start_distance": 6.0,
+          "stop_distance": 2.5
         }
       },
       "miku:standing": {},
@@ -111,10 +111,21 @@
         "speed_multiplier": 1.5,
         "items": ["miku:leek"]
       },
+      "minecraft:behavior.look_at_entity": {
+        "priority": 7,
+        "look_distance": 8.0,
+        "probability": 0.05,
+        "look_time": [2, 4],
+        "filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "plush"
+        }
+      },
       "minecraft:behavior.look_at_player": {
         "priority": 8,
         "look_distance": 8.0,
-        "probability": 0.02
+        "probability": 0.05
       },
       "minecraft:behavior.random_look_around": {
         "priority": 9
