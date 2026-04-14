@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.akita_neru_phone.use": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            { "beep": "q.cooldown_time_remaining > 0.0" }
+          ]
+        },
+        "beep": {
+          "animations": ["beep"],
+          "transitions": [
+            { "cooldown": "q.all_animations_finished" }
+          ]
+        },
+        "cooldown": {
+          "transitions": [
+            { "default": "q.cooldown_time_remaining <= 0.0" }
+          ]
+        }
+      }
+    }
+  }
+}
