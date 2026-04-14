@@ -13,7 +13,7 @@
       "bones": [
         {
           "name": "akita_neru_phone",
-          "pivot": [0.5, 15.5, -1.5],
+          "pivot": [0.5, 24.5, -1.5],
           "rotation": [0, 90, 0],
           "binding": "q.item_slot_to_bone_name(context.item_slot)",
           "cubes": [
@@ -30,8 +30,8 @@
               }
             },
             {
-              "origin": [0, 16, -0.5],
-              "size": [1, 8, 1],
+              "origin": [0, 15.75, -0.5],
+              "size": [1, 8.5, 0.75],
               "uv": {
                 "north": { "uv": [0, 1], "uv_size": [1, 11] },
                 "east": { "uv": [0, 1], "uv_size": [1, 11] },
@@ -42,8 +42,8 @@
               }
             },
             {
-              "origin": [0, 16, -5.5],
-              "size": [1, 8, 1],
+              "origin": [0, 15.75, -5.25],
+              "size": [1, 8.5, 0.75],
               "uv": {
                 "north": { "uv": [7, 1], "uv_size": [1, 11] },
                 "east": { "uv": [7, 1], "uv_size": [1, 11] },
@@ -94,7 +94,7 @@
         },
         "gui": {
           "rotation": [0, -180, 0],
-          "translation": [1, -12.5, 0],
+          "translation": [0.75, -11.75, 0],
           "scale": [1, 1, 1],
           "rotation_pivot": [0, 0, 0],
           "scale_pivot": [0, 0, 0],
