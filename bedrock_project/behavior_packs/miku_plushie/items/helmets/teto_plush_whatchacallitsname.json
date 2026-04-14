@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "miku:teto_plush_whatchacallitsname",
+      "menu_category": {
+        "category": "nature",
+        "group": "miku:itemGroup.miku_plushies.name"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "block.miku:teto_plush_whatchacallitsname.name"
+      },
+      "minecraft:block_placer": {
+        "block": "miku:teto_plush_whatchacallitsname",
+        "replace_block_item": true
+      },
+      "minecraft:max_stack_size": 64,
+      "minecraft:wearable": {
+        "slot": "slot.armor.head"
+      },
+      "minecraft:enchantable": {
+        "value": 15,
+        "slot": "armor_head"
+      }
+    }
+  }
+}
