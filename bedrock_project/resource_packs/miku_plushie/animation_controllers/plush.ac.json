@@ -15,7 +15,9 @@
           "transitions": [
             { "sitting": "q.is_sitting" },
             { "dancing": "q.property('miku:is_dancing') && !q.is_sitting" },
-            { "attacking": "q.is_delayed_attacking" }
+            { "attacking_swipe": "q.is_delayed_attacking && math.mod(math.floor(q.life_time * 20), 3) == 0" },
+            { "attacking_swipe2": "q.is_delayed_attacking && math.mod(math.floor(q.life_time * 20), 3) == 1" },
+            { "attacking_swipe3": "q.is_delayed_attacking && math.mod(math.floor(q.life_time * 20), 3) == 2" }
           ]
         },
         "sitting": {
@@ -35,12 +37,25 @@
         "dancing": {
           "blend_transition": 0.1,
           "transitions": [
-            { "idle": "!q.property('miku:is_dancing')" },
-            { "attacking": "q.is_delayed_attacking" }
+            { "idle": "!q.property('miku:is_dancing')" }
           ]
         },
-        "attacking": {
+        "attacking_swipe": {
           "animations": ["swipe"],
+          "blend_transition": 0.1,
+          "transitions": [
+            { "idle": "!q.is_delayed_attacking" }
+          ]
+        },
+        "attacking_swipe2": {
+          "animations": ["swipe2"],
+          "blend_transition": 0.1,
+          "transitions": [
+            { "idle": "!q.is_delayed_attacking" }
+          ]
+        },
+        "attacking_swipe3": {
+          "animations": ["swipe3"],
           "blend_transition": 0.1,
           "transitions": [
             { "idle": "!q.is_delayed_attacking" }

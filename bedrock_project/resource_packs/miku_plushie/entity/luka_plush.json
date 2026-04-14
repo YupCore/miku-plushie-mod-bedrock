@@ -34,7 +34,8 @@
           "v.health_bend = (1 - q.health / q.max_health) * 35 ;",
           "v.walk_phase = q.modified_distance_moved * 57.3;",
           "v.walk_phase2 = v.walk_phase * 2;",
-          "v.walk_amp = q.modified_move_speed;",
+          "v.walk_target = math.min(q.modified_move_speed * 4.0, 1.0);",
+          "v.walk_amp = v.walk_amp + (v.walk_target - v.walk_amp) * 0.4;",
           "v.head_x = q.head_x_rotation(0);",
           "v.head_y = math.clamp(math.min_angle(q.head_y_rotation(0) - q.body_y_rotation), -85, 85);",
           "v.enable_hair_proc = 0;"
