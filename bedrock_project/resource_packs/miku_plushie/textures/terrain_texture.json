@@ -13,6 +13,9 @@
     "miku:akita_neru_plush_tails": {
       "textures": "textures/blocks/akita_neru_plush_tails"
     },
+    "miku:akita_neru_phone": {
+      "textures": "textures/blocks/akita_neru_phone"
+    },
     "miku:gumi_plush": {
       "textures": "textures/blocks/gumi_plush"
     },
