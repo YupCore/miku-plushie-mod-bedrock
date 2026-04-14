@@ -11,6 +11,10 @@
       "minecraft:icon": "miku:akita_neru_phone",
       "minecraft:display_name": {
         "value": "item.miku:akita_neru_phone.name"
+      },
+      "minecraft:block_placer": {
+        "block": "miku:akita_neru_phone",
+        "replace_block_item": true
       }
     }
   }

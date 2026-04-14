@@ -12,9 +12,7 @@
       "minecraft:display_name": {
         "value": "item.miku:teto_pickaxe_dont_believe_in_t.name"
       },
-      "minecraft:custom_components": [
-        "miku:pickaxe_durability"
-      ],
+      "minecraft:custom_components": ["miku:pickaxe_durability"],
       "minecraft:durability": {
         "max_durability": 500
       },
@@ -39,18 +37,18 @@
       "minecraft:repairable": {
         "repair_items": [
           {
-            "items": [
-              "minecraft:diamond"
-            ],
+            "items": ["minecraft:diamond"],
             "repair_amount": "context.other->query.remaining_durability + 0.05 * context.other->query.max_durability"
           }
         ]
       },
       "minecraft:hand_equipped": true,
       "minecraft:tags": {
-        "tags": [
-          "minecraft:is_pickaxe"
-        ]
+        "tags": ["minecraft:is_pickaxe"]
+      },
+      "minecraft:block_placer": {
+        "block": "miku:teto_pickaxe_dont_believe_in_t",
+        "replace_block_item": true
       }
     }
   }
