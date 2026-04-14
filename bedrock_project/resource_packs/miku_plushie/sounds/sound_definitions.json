@@ -159,6 +159,12 @@
         "sounds/neru/neru-equip4"
       ]
     },
+    "miku.plushie.neru_phone": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/neru/neru_phone"
+      ]
+    },
     "miku.plushie.rin_oie": {
       "category": "neutral",
       "sounds": [

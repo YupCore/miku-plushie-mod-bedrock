@@ -8,6 +8,7 @@ import { startPlushInteractionSystem } from "./systems/plush_interaction";
 import { startAttackSoundSystem } from "./systems/attack_sound";
 import { startDeathSoundSystem } from "./systems/death_sound";
 import { startMikuEatLeekSystem } from "./systems/miku_eat_leek";
+import { startNeruPhoneSoundSystem } from "./systems/neru_phone_sound";
 import { startSpawnMikusCommand } from "./commands/spawn_mikus";
 
 console.log("[Miku Plushie] Miku is now Joining Bedrock Edition!!!");
@@ -61,6 +62,12 @@ try {
   startMikuEatLeekSystem();
 } catch (e) {
   console.error("[Miku Plushie] Failed to start Miku eat leek system:", e);
+}
+
+try {
+  startNeruPhoneSoundSystem();
+} catch (e) {
+  console.error("[Miku Plushie] Failed to start Neru phone sound system:", e);
 }
 
 try {

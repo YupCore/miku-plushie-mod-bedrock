@@ -1,4 +1,4 @@
-import { Entity, Vector3 } from "@minecraft/server";
+import { Dimension, Entity, Vector3 } from "@minecraft/server";
 
 export interface SoundCharacter {
   oie: string;
@@ -6,6 +6,7 @@ export interface SoundCharacter {
   bye: string;
   eat?: string;
   canudinho?: string;
+  phone?: string;
 }
 
 export const SOUND_CHARACTERS: Record<string, SoundCharacter> = {
@@ -25,6 +26,7 @@ export const SOUND_CHARACTERS: Record<string, SoundCharacter> = {
     oie: "miku.plushie.neru_oie",
     dor: "miku.plushie.neru_dor",
     bye: "miku.plushie.neru_bye",
+    phone: "miku.plushie.neru_phone",
   },
   rin: {
     oie: "miku.plushie.rin_oie",
@@ -112,7 +114,7 @@ export function playPlushSound(
 }
 
 export function playPlushSoundAtPosition(
-  dimension: any,
+  dimension: Dimension,
   position: Vector3,
   character: string | null,
   soundType: keyof SoundCharacter,

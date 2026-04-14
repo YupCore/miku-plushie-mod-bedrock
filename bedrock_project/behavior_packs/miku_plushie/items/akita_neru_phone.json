@@ -11,6 +11,10 @@
       "minecraft:display_name": {
         "value": "item.miku:akita_neru_phone.name"
       },
+      "minecraft:cooldown": {
+        "category": "miku:akita_neru_phone",
+        "duration": 3
+      },
       "minecraft:block_placer": {
         "block": "miku:akita_neru_phone",
         "replace_block_item": true
