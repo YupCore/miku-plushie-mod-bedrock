@@ -37,9 +37,9 @@
         "minecraft:sittable": {},
         "minecraft:behavior.follow_owner": {
           "priority": 4,
-          "speed_multiplier": 1.0,
+          "speed_multiplier": 1.5,
           "start_distance": 5.0,
-          "stop_distance": 1.0
+          "stop_distance": 1.75
         }
       },
       "miku:standing": {},
@@ -95,7 +95,6 @@
       },
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
-      "minecraft:can_climb": {},
       "minecraft:behavior.float": {
         "priority": 0
       },
