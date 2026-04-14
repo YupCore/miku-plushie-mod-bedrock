@@ -8,7 +8,6 @@
       }
     },
     "components": {
-      "minecraft:icon": "miku:teto_pickaxe_whatchacallitsname",
       "minecraft:display_name": {
         "value": "item.miku:teto_pickaxe_whatchacallitsname.name"
       },

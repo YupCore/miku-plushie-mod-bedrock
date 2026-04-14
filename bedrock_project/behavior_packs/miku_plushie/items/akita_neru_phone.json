@@ -8,7 +8,6 @@
       }
     },
     "components": {
-      "minecraft:icon": "miku:akita_neru_phone",
       "minecraft:display_name": {
         "value": "item.miku:akita_neru_phone.name"
       },

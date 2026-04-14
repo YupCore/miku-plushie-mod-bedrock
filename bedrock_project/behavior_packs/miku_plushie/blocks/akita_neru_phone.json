@@ -1,0 +1,16 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "miku:akita_neru_phone",
+      "menu_category": { "category": "items" }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.akita_neru_phone",
+      "minecraft:material_instances": { "*": { "texture": "miku:akita_neru_phone", "render_method": "alpha_test" } },
+      "minecraft:placement_filter": { "conditions": [] },
+      "minecraft:collision_box": { "origin": [0, 0, 0], "size": [0, 0, 0] },
+      "minecraft:selection_box": { "origin": [0, 0, 0], "size": [0, 0, 0] }
+    }
+  }
+}

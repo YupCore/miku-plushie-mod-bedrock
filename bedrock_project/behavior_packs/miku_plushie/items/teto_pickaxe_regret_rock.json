@@ -8,7 +8,6 @@
       }
     },
     "components": {
-      "minecraft:icon": "miku:teto_pickaxe_regret_rock",
       "minecraft:display_name": {
         "value": "item.miku:teto_pickaxe_regret_rock.name"
       },

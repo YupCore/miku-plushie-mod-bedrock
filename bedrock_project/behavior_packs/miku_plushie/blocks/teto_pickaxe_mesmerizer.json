@@ -1,0 +1,16 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "miku:teto_pickaxe_mesmerizer",
+      "menu_category": { "category": "equipment" }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.teto_pickaxe_mesmerizer",
+      "minecraft:material_instances": { "*": { "texture": "miku:teto_plush_mesmerizer", "render_method": "alpha_test" } },
+      "minecraft:placement_filter": { "conditions": [] },
+      "minecraft:collision_box": { "origin": [0, 0, 0], "size": [0, 0, 0] },
+      "minecraft:selection_box": { "origin": [0, 0, 0], "size": [0, 0, 0] }
+    }
+  }
+}
