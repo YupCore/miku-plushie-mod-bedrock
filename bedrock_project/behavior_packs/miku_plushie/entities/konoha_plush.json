@@ -475,11 +475,7 @@
           }
         ]
       },
-      "miku:toggle_sit": {
-        "queue_command": {
-          "command": ["function miku/toggle_sit"]
-        }
-      },
+
       "miku:start_sitting": {
         "add": {
           "component_groups": ["miku:sitting"]

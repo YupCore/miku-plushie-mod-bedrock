@@ -126,7 +126,7 @@ function deserializeCompactTrackedGearState(serializedState: string): TrackedGea
     const persistedChar = serializedState[index];
     const alphabetIndex = persistedChar ? PERSISTENCE_ALPHABET.indexOf(persistedChar) : 0;
     const itemIndex = alphabetIndex - 1;
-    hydratedState[slotId] = itemIndex >= 0 ? itemIds[itemIndex] ?? "" : "";
+    hydratedState[slotId] = itemIndex >= 0 ? (itemIds[itemIndex] ?? "") : "";
   });
 
   return hydratedState;
@@ -282,8 +282,5 @@ export function startPlushInteractionSystem(): void {
       playPlushSound(target, character, "eat", 1, 1);
       return;
     }
-
-    // Default: toggle sit (any item or empty hand)
-    target.triggerEvent("miku:toggle_sit");
   });
 }
