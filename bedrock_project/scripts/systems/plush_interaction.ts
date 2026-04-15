@@ -220,7 +220,7 @@ export function startPlushInteractionSystem(): void {
     {
       entityFilter: { families: ["plush"] },
       itemFilter: { includeTypes: TRACKED_ITEM_IDS },
-    },
+    }
   );
 
   world.afterEvents.entityItemDrop.subscribe(
@@ -251,7 +251,7 @@ export function startPlushInteractionSystem(): void {
     {
       entityFilter: { families: ["plush"] },
       itemFilter: { includeTypes: TRACKED_ITEM_IDS },
-    },
+    }
   );
 
   world.afterEvents.entityLoad.subscribe((event) => {
@@ -277,6 +277,8 @@ export function startPlushInteractionSystem(): void {
     const { player, target } = event;
     if (!player || !target) return;
 
+    console.log(`[Miku Plushie] Player ${player.name} interacted with entity ${target.id}`);
+
     if (!isTrackedPlushEntity(target)) return;
     if (!target.isOnGround) return;
 
@@ -284,7 +286,12 @@ export function startPlushInteractionSystem(): void {
     if (!tameable?.isTamed) return;
     if (tameable.tamedToPlayerId !== player.id) return;
 
+    console.log(`[Miku Plushie] Interaction conditions met for player ${player.name} and entity ${target.id}`);
+
     if (player.isSneaking) {
+      console.log(
+        `[Miku Plushie] Player ${player.name} is sneaking, attempting to drop tracked gear from entity ${target.id}`
+      );
       dropNextTrackedGear(target);
       return;
     }
