@@ -78,7 +78,7 @@ try {
 
 world.afterEvents.worldLoad.subscribe(() => {
   console.log("[Miku Plushie] World loaded!");
+  console.log("[Miku Plushie] Miku: (^v^)/ Hi!!!");
 });
 
 console.log("[Miku Plushie] All systems initialized successfully!");
-console.log("[Miku Plushie] Miku: (^v^)/ Hi!!!");

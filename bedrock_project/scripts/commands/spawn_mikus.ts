@@ -60,7 +60,6 @@ const PLUSH_BLOCKS = [
   "miku:miku_plush_sonic",
   "miku:miku_plush_sonic_crossworlds",
   "miku:miku_plush_static",
-  "miku:miku_plush_synthv",
   "miku:miku_plush_uraotomelovers",
   "miku:miku_plush_v4",
   "miku:miku_plush_vampire",

@@ -4,8 +4,7 @@
     "description": {
       "identifier": "miku:kaito_plush_v3",
       "menu_category": {
-        "category": "nature",
-        "group": "miku:itemGroup.miku_plushies.name"
+        "category": "nature"
       }
     },
     "components": {

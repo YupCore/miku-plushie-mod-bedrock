@@ -72,7 +72,6 @@ export const MIKU_VARIANTS = [
   "miku_plush_sonic",
   "miku_plush_sonic_crossworlds",
   "miku_plush_static",
-  "miku_plush_synthv",
   "miku_plush_uraotomelovers",
   "miku_plush_v4",
   "miku_plush_vampire",
