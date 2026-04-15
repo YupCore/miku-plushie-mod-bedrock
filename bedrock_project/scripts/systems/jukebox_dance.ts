@@ -2,8 +2,8 @@ import { world, system, BlockRecordPlayerComponent } from "@minecraft/server";
 import { getDanceCountForEntity } from "../utils/plush_registry";
 
 const DANCE_CHECK_INTERVAL = 20;
-const DANCE_SWITCH_MIN_TICKS = 12 * 20;
-const DANCE_SWITCH_MAX_TICKS = 20 * 20;
+const DANCE_SWITCH_MIN_TICKS = 10 * 20;
+const DANCE_SWITCH_MAX_TICKS = 15 * 20;
 
 // dimensionId → Set of "x,y,z" position strings for tracked jukeboxes
 const jukeboxPositions = new Map<string, Set<string>>([
