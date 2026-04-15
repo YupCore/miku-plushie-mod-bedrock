@@ -16,57 +16,75 @@ import {
 } from "@minecraft/core-build-tasks";
 import fs from "fs";
 import path from "path";
+
 setupEnvironment(path.resolve(__dirname, ".env"));
+
 const projectName = getOrThrowFromProcess("PROJECT_NAME");
 const behaviorPackSource = `./behavior_packs/${projectName}`;
 const mainResourcePackSource = `./resource_packs/${projectName}`;
 const scriptsSource = "./dist/scripts";
 const stagedResourcePackRoot = "./dist/staged_resource_packs";
+const stagedMainResourcePack = `${stagedResourcePackRoot}/${projectName}`;
 const packagesRoot = "./dist/packages";
 const developmentBehaviorPacksPath = "development_behavior_packs";
 const developmentResourcePacksPath = "development_resource_packs";
 const mainResourcePackMcpack = `${packagesRoot}/${projectName}_rp.mcpack`;
 const behaviorPackMcpack = `${packagesRoot}/${projectName}_bp.mcpack`;
-const englishDubResourcePackMcpack = `${packagesRoot}/${projectName}_en_us_dub_rp.mcpack`;
-const legacyTexturesResourcePackMcpack = `${packagesRoot}/${projectName}_legacy_textures_rp.mcpack`;
+const obsoleteStandaloneResourcePackNames = [`${projectName}_en_us_dub`, `${projectName}_legacy_textures`];
 
-type OverlayResourcePack = {
-  deployedName: string;
-  sourcePath: string;
-  stagedPath: string;
+type SubpackDefinition = {
+  folderName: string;
+  name: string;
+  sourcePaths: string[];
   injectedFiles: Array<{ sourcePath: string; targetPath: string }>;
 };
 
-const overlayResourcePacks: OverlayResourcePack[] = [
+const subpackDefinitions: SubpackDefinition[] = [
   {
-    deployedName: `${projectName}_en_us_dub`,
-    sourcePath: "./subpacks/en_us_dub",
-    stagedPath: `${stagedResourcePackRoot}/${projectName}_en_us_dub`,
+    folderName: "en_us_dub",
+    name: "English Dub",
+    sourcePaths: [],
+    injectedFiles: [
+      {
+        sourcePath: `${mainResourcePackSource}/sounds/sound_definitions.json`,
+        targetPath: "sounds/sound_definitions.json",
+      },
+    ],
+  },
+  {
+    folderName: "legacy_textures",
+    name: "Legacy Textures",
+    sourcePaths: [],
+    injectedFiles: [
+      {
+        sourcePath: `${mainResourcePackSource}/textures/terrain_texture.json`,
+        targetPath: "textures/terrain_texture.json",
+      },
+    ],
+  },
+  {
+    folderName: "en_us_dub_legacy_textures",
+    name: "English Dub + Legacy Textures",
+    sourcePaths: [
+      `${mainResourcePackSource}/subpacks/en_us_dub`,
+      `${mainResourcePackSource}/subpacks/legacy_textures`,
+    ],
     injectedFiles: [
       {
         sourcePath: `${mainResourcePackSource}/sounds/sound_definitions.json`,
         targetPath: "sounds/sound_definitions.json",
       },
       {
-        sourcePath: `${mainResourcePackSource}/pack_icon.png`,
-        targetPath: "pack_icon.png",
+        sourcePath: `${mainResourcePackSource}/textures/terrain_texture.json`,
+        targetPath: "textures/terrain_texture.json",
       },
     ],
   },
   {
-    deployedName: `${projectName}_legacy_textures`,
-    sourcePath: "./subpacks/legacy_textures",
-    stagedPath: `${stagedResourcePackRoot}/${projectName}_legacy_textures`,
-    injectedFiles: [
-      {
-        sourcePath: `${mainResourcePackSource}/textures/terrain_texture.json`,
-        targetPath: "textures/terrain_texture.json",
-      },
-      {
-        sourcePath: `${mainResourcePackSource}/pack_icon.png`,
-        targetPath: "pack_icon.png",
-      },
-    ],
+    folderName: "default",
+    name: "Default",
+    sourcePaths: [],
+    injectedFiles: [],
   },
 ];
 
@@ -89,6 +107,11 @@ function copyDirectoryContents(sourcePath: string, destinationPath: string): voi
   fs.cpSync(sourcePath, destinationPath, { recursive: true });
 }
 
+function copyDirectoryContentsInto(sourcePath: string, destinationPath: string): void {
+  fs.mkdirSync(destinationPath, { recursive: true });
+  fs.cpSync(sourcePath, destinationPath, { recursive: true });
+}
+
 function copyInjectedFile(sourcePath: string, destinationRoot: string, targetPath: string): void {
   const destinationPath = path.join(destinationRoot, targetPath);
   fs.mkdirSync(path.dirname(destinationPath), { recursive: true });
@@ -99,53 +122,44 @@ function readJsonFile(filePath: string): any {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
 
-function validateOverlayResourcePackManifests(): void {
-  const mainManifest = readJsonFile(projectPath(`${mainResourcePackSource}/manifest.json`));
-  const mainResourcePackUuid = mainManifest.header.uuid;
-  const mainResourcePackVersion = JSON.stringify(mainManifest.header.version);
-  const seenUuids = new Map<string, string>();
-
-  function registerUuid(uuid: string, owner: string): void {
-    const existingOwner = seenUuids.get(uuid);
-    if (existingOwner !== undefined) {
-      throw new Error(`Resource pack manifest UUID collision: ${uuid} is used by both ${existingOwner} and ${owner}.`);
-    }
-    seenUuids.set(uuid, owner);
-  }
-
-  registerUuid(mainManifest.header.uuid, "main resource pack header");
-  for (const module of mainManifest.modules ?? []) {
-    registerUuid(module.uuid, `main resource pack module ${module.description ?? module.type ?? ""}`.trim());
-  }
-
-  for (const overlay of overlayResourcePacks) {
-    const manifest = readJsonFile(projectPath(`${overlay.sourcePath}/manifest.json`));
-    registerUuid(manifest.header.uuid, `${overlay.deployedName} header`);
-    for (const module of manifest.modules ?? []) {
-      registerUuid(module.uuid, `${overlay.deployedName} module ${module.description ?? module.type ?? ""}`.trim());
-    }
-
-    const dependsOnMainResourcePack = (manifest.dependencies ?? []).some(
-      (dependency: { uuid: string; version: number[] }) =>
-        dependency.uuid === mainResourcePackUuid && JSON.stringify(dependency.version) === mainResourcePackVersion
-    );
-    if (!dependsOnMainResourcePack) {
-      throw new Error(`${overlay.deployedName} must depend on main resource pack ${mainResourcePackUuid}.`);
-    }
-  }
+function writeJsonFile(filePath: string, value: unknown): void {
+  fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
 }
 
-function stageOverlayResourcePacks(): void {
-  validateOverlayResourcePackManifests();
-  fs.rmSync(projectPath(stagedResourcePackRoot), { recursive: true, force: true });
+function updateStagedResourcePackManifest(): void {
+  const manifestPath = projectPath(`${stagedMainResourcePack}/manifest.json`);
+  const manifest = readJsonFile(manifestPath);
+  manifest.subpacks = subpackDefinitions.map((subpack) => ({
+    folder_name: subpack.folderName,
+    name: subpack.name,
+    memory_tier: 1,
+  }));
+  manifest.settings = [
+    {
+      type: "label",
+      text: "Choose Default, English Dub, Legacy Textures, or English Dub + Legacy Textures.",
+    },
+  ];
+  writeJsonFile(manifestPath, manifest);
+}
 
-  for (const overlay of overlayResourcePacks) {
-    const stagedPath = projectPath(overlay.stagedPath);
-    copyDirectoryContents(projectPath(overlay.sourcePath), stagedPath);
+function stageMainResourcePack(): void {
+  copyDirectoryContents(projectPath(mainResourcePackSource), projectPath(stagedMainResourcePack));
+  updateStagedResourcePackManifest();
 
-    for (const injectedFile of overlay.injectedFiles) {
-      copyInjectedFile(projectPath(injectedFile.sourcePath), stagedPath, injectedFile.targetPath);
+  for (const subpack of subpackDefinitions) {
+    const stagedSubpackPath = projectPath(`${stagedMainResourcePack}/subpacks/${subpack.folderName}`);
+    fs.mkdirSync(stagedSubpackPath, { recursive: true });
+
+    for (const sourcePath of subpack.sourcePaths) {
+      copyDirectoryContentsInto(projectPath(sourcePath), stagedSubpackPath);
     }
+
+    for (const injectedFile of subpack.injectedFiles) {
+      copyInjectedFile(projectPath(injectedFile.sourcePath), stagedSubpackPath, injectedFile.targetPath);
+    }
+
+    fs.rmSync(path.join(stagedSubpackPath, "manifest.json"), { force: true });
   }
 }
 
@@ -167,17 +181,13 @@ function copyArtifacts(): void {
   const deploymentPath = getDeploymentPath();
   deployPack(behaviorPackSource, path.join(deploymentPath, developmentBehaviorPacksPath, projectName));
   deployPack(scriptsSource, path.join(deploymentPath, developmentBehaviorPacksPath, projectName, "scripts"));
-  deployPack(mainResourcePackSource, path.join(deploymentPath, developmentResourcePacksPath, projectName));
-
-  for (const overlay of overlayResourcePacks) {
-    deployPack(overlay.stagedPath, path.join(deploymentPath, developmentResourcePacksPath, overlay.deployedName));
-  }
+  deployPack(stagedMainResourcePack, path.join(deploymentPath, developmentResourcePacksPath, projectName));
 }
 
-function cleanOverlayCollateral(): void {
+function cleanObsoleteStandaloneResourcePacks(): void {
   const deploymentPath = getDeploymentPath();
-  for (const overlay of overlayResourcePacks) {
-    fs.rmSync(path.join(deploymentPath, developmentResourcePacksPath, overlay.deployedName), {
+  for (const packName of obsoleteStandaloneResourcePackNames) {
+    fs.rmSync(path.join(deploymentPath, developmentResourcePacksPath, packName), {
       recursive: true,
       force: true,
     });
@@ -190,21 +200,16 @@ task("bundle", bundleTask(bundleTaskOptions));
 task("build", series("typescript", "bundle"));
 task("clean-local", cleanTask(DEFAULT_CLEAN_DIRECTORIES));
 task("clean-standard-collateral", cleanCollateralTask(STANDARD_CLEAN_PATHS));
-task("clean-overlay-collateral", cleanOverlayCollateral);
-task("clean-collateral", parallel("clean-standard-collateral", "clean-overlay-collateral"));
+task("clean-obsolete-standalone-resource-packs", cleanObsoleteStandaloneResourcePacks);
+task("clean-collateral", parallel("clean-standard-collateral", "clean-obsolete-standalone-resource-packs"));
 task("clean", parallel("clean-local", "clean-collateral"));
-task("stageOverlayResourcePacks", stageOverlayResourcePacks);
-task("copyArtifacts", series("stageOverlayResourcePacks", copyArtifacts));
+task("stageMainResourcePack", stageMainResourcePack);
+task("copyArtifacts", series("stageMainResourcePack", copyArtifacts));
 task("package", series("clean-collateral", "copyArtifacts"));
 task(
   "local-deploy",
   watchTask(
-    [
-      "scripts/**/*.ts",
-      "behavior_packs/**/*.{json,lang,tga,ogg,png}",
-      "resource_packs/**/*.{json,lang,tga,ogg,png}",
-      "subpacks/**/*.{json,lang,tga,ogg,png}",
-    ],
+    ["scripts/**/*.ts", "behavior_packs/**/*.{json,lang,tga,ogg,png}", "resource_packs/**/*.{json,lang,tga,ogg,png}"],
     series("clean-local", "build", "package")
   )
 );
@@ -215,31 +220,14 @@ task(
     { contents: [scriptsSource], targetPath: "scripts" },
   ])
 );
-task("packMainRP", zipTask(mainResourcePackMcpack, [{ contents: [mainResourcePackSource] }]));
-task("packEnglishDubRP", zipTask(englishDubResourcePackMcpack, [{ contents: [overlayResourcePacks[0].stagedPath] }]));
-task(
-  "packLegacyTexturesRP",
-  zipTask(legacyTexturesResourcePackMcpack, [{ contents: [overlayResourcePacks[1].stagedPath] }])
-);
+task("packMainRP", zipTask(mainResourcePackMcpack, [{ contents: [stagedMainResourcePack] }]));
 task(
   "packMcaddon",
   zipTask(`${packagesRoot}/${projectName}.mcaddon`, [
     {
-      contents: [
-        behaviorPackMcpack,
-        mainResourcePackMcpack,
-        englishDubResourcePackMcpack,
-        legacyTexturesResourcePackMcpack,
-      ],
+      contents: [behaviorPackMcpack, mainResourcePackMcpack],
     },
   ])
 );
-task(
-  "createMcaddonFile",
-  series(
-    "stageOverlayResourcePacks",
-    parallel("packBP", "packMainRP", "packEnglishDubRP", "packLegacyTexturesRP"),
-    "packMcaddon"
-  )
-);
+task("createMcaddonFile", series("stageMainResourcePack", parallel("packBP", "packMainRP"), "packMcaddon"));
 task("mcaddon", series("clean-local", "build", "createMcaddonFile"));
