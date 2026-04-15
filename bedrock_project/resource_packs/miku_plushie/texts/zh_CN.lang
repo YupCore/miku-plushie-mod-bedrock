@@ -131,3 +131,5 @@ entity.miku:gumi_plush.name=GUMI
 entity.miku:kaito_plush.name=KAITO
 
 miku:itemGroup.miku_plushies.name=Mikus!!
+miku:itemGroup.teto_pickaxes.name=重音Teto镐
+miku:itemGroup.miku_items.name=Miku物品

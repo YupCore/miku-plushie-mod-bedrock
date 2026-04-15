@@ -86,7 +86,9 @@ export function getCharacterFromEntity(entityTypeId: string): string | null {
 
 export function getCharacterFromBlock(blockId: string): string | null {
   const firstPart = blockId.replace("miku:", "").split("_")[0];
-  return firstPart === "konoha" ? null : firstPart;
+  if (firstPart === "konoha") return null;
+  if (firstPart === "akita") return "neru";
+  return firstPart;
 }
 
 export function getSoundForCharacter(character: string | null, soundType: keyof SoundCharacter): string | null {

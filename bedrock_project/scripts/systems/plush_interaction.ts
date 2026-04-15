@@ -25,8 +25,6 @@ export function startPlushInteractionSystem(): void {
   });
 
   // Player interaction
-  // TODO: find a way to trigger player "punch" animation manually and make the plush sit via scripting/functions, not vanilla
-  // Why? Currently it makes the plush sit up and down every time you unequip an item, which looks silly
   world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     const { player, target } = event;
     if (!player || !target) return;
@@ -53,6 +51,8 @@ export function startPlushInteractionSystem(): void {
     }
 
     if (playerItem?.typeId === "miku:leek") {
+      const health = target.getComponent("minecraft:health");
+      if (health && health.currentValue >= health.effectiveMax) return;
       const character = getCharacterFromEntity(target.typeId);
       target.dimension.playSound("entity.generic.eat", target.location, { volume: 1, pitch: 1 });
       playPlushSound(target, character, "eat", 1, 1);
