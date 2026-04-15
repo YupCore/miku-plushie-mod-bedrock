@@ -11,10 +11,6 @@ import {
 import { PLUSH_ENTITIES } from "../utils/plush_registry";
 import { getCharacterFromEntity, playPlushSound } from "../utils/sounds";
 
-function isEntityOnGround(entity: Entity): boolean {
-  return entity.isOnGround;
-}
-
 const TRACKED_GEAR_SLOTS = [
   {
     slotId: "mainhand",
@@ -95,11 +91,19 @@ type TrackedGearSlot = (typeof TRACKED_GEAR_SLOTS)[number]["slotId"];
 type TrackedGearSlotInfo = (typeof TRACKED_GEAR_SLOTS)[number];
 
 type GearCandidate = {
-  item: ItemStack;
+  typeId: string;
   priority: number;
   sourceSlot: number;
 };
 
+// Per-entity cache: what's in reserved slots + what's last mirrored to equipment slots.
+// Avoids redundant container writes and runCommand calls on stable ticks.
+type PlushGearCache = {
+  reserved: string[]; // typeIds at inventorySlots 0–4
+  mirror: string[]; // typeIds last mirrored to equipment slots
+};
+
+const plushGearCache = new Map<string, PlushGearCache>();
 
 function getEntityContainer(entity: Entity): Container | null {
   try {
@@ -111,23 +115,12 @@ function getEntityContainer(entity: Entity): Container | null {
   }
 }
 
-
 function getItemPriority(slotInfo: TrackedGearSlotInfo, itemTypeId: string): number {
   return (slotInfo.itemIds as readonly string[]).indexOf(itemTypeId);
 }
 
 function getGearSlotInfoForItem(itemTypeId: string): TrackedGearSlotInfo | undefined {
   return TRACKED_GEAR_SLOTS.find((slotInfo) => getItemPriority(slotInfo, itemTypeId) >= 0);
-}
-
-function cloneWithAmount(item: ItemStack, amount: number): ItemStack {
-  const clone = item.clone();
-  clone.amount = amount;
-  return clone;
-}
-
-function cloneSingleItem(item: ItemStack): ItemStack {
-  return cloneWithAmount(item, 1);
 }
 
 function trySpawnItem(entity: Entity, item: ItemStack): void {
@@ -155,9 +148,7 @@ function tryGetContainerItem(container: Container, slot: number): ItemStack | un
 
 function entityHasMirroredGear(entity: Entity, slotInfo: TrackedGearSlotInfo, itemTypeId: string): boolean {
   try {
-    const result = entity.runCommand(
-      `testfor @s[hasitem={item=${itemTypeId},location=${slotInfo.commandSlot}}]`
-    );
+    const result = entity.runCommand(`testfor @s[hasitem={item=${itemTypeId},location=${slotInfo.commandSlot}}]`);
     return result.successCount > 0;
   } catch {
     return false;
@@ -171,55 +162,45 @@ function applyEquipmentMirror(entity: Entity, slotInfo: TrackedGearSlotInfo, ite
       entity.runCommand(`replaceitem entity @s ${slotInfo.commandSlot} 0 ${itemTypeId}`);
       return;
     }
-
     entity.runCommand(`replaceitem entity @s ${slotInfo.commandSlot} 0 air`);
   } catch {}
 }
 
 function collectGearCandidates(container: Container): Map<TrackedGearSlot, GearCandidate[]> {
   const candidatesBySlot = new Map<TrackedGearSlot, GearCandidate[]>();
-
   for (const slotInfo of TRACKED_GEAR_SLOTS) {
     candidatesBySlot.set(slotInfo.slotId, []);
   }
-
   for (let sourceSlot = 0; sourceSlot < container.size; sourceSlot++) {
     const item = tryGetContainerItem(container, sourceSlot);
     if (!item) continue;
-
     const slotInfo = getGearSlotInfoForItem(item.typeId);
     if (!slotInfo) continue;
-
-    const priority = getItemPriority(slotInfo, item.typeId);
     candidatesBySlot.get(slotInfo.slotId)!.push({
-      item: item.clone(),
-      priority,
+      typeId: item.typeId,
+      priority: getItemPriority(slotInfo, item.typeId),
       sourceSlot,
     });
   }
-
   return candidatesBySlot;
 }
 
 function getBestCandidate(slotInfo: TrackedGearSlotInfo, candidates: GearCandidate[]): GearCandidate | undefined {
   let best: GearCandidate | undefined;
-
   for (const candidate of candidates) {
     if (!best) {
       best = candidate;
       continue;
     }
-
     if (candidate.priority < best.priority) {
       best = candidate;
       continue;
     }
-
+    // Among equal-priority items, prefer whichever is already in the reserved slot
     if (candidate.priority === best.priority && candidate.sourceSlot === slotInfo.inventorySlot) {
       best = candidate;
     }
   }
-
   return best;
 }
 
@@ -227,44 +208,79 @@ function normalizePlushGear(entity: Entity): void {
   const container = getEntityContainer(entity);
   if (!container) return;
 
+  // Fast path: skip if reserved slots (0–4) are unchanged and no gear landed elsewhere
+  const prevCache = plushGearCache.get(entity.id);
+  if (prevCache) {
+    let unchanged = true;
+    for (let i = 0; i < TRACKED_GEAR_SLOTS.length && unchanged; i++) {
+      const typeId = tryGetContainerItem(container, TRACKED_GEAR_SLOTS[i].inventorySlot)?.typeId ?? "";
+      if (typeId !== prevCache.reserved[i]) unchanged = false;
+    }
+    for (let i = TRACKED_GEAR_SLOTS.length; i < container.size && unchanged; i++) {
+      if (tryGetContainerItem(container, i)) unchanged = false;
+    }
+    if (unchanged) return;
+  }
+
+  // --- Full normalize ---
+
   const candidatesBySlot = collectGearCandidates(container);
   const slotsToClear = new Set<number>();
   const drops: ItemStack[] = [];
-  const nextReservedItems = new Map<TrackedGearSlot, ItemStack>();
+  const bestBySlot = new Map<TrackedGearSlot, GearCandidate>();
 
   for (const slotInfo of TRACKED_GEAR_SLOTS) {
     const candidates = candidatesBySlot.get(slotInfo.slotId) ?? [];
     const best = getBestCandidate(slotInfo, candidates);
 
     for (const candidate of candidates) {
-      slotsToClear.add(candidate.sourceSlot);
-
       if (candidate !== best) {
-        drops.push(candidate.item);
+        slotsToClear.add(candidate.sourceSlot);
+        drops.push(new ItemStack(candidate.typeId, 1));
+      } else if (candidate.sourceSlot !== slotInfo.inventorySlot) {
+        // Best needs to move to reserved slot — mark source for clearing
+        slotsToClear.add(candidate.sourceSlot);
       }
+      // Best already at reserved slot — no clear needed
     }
 
-    if (!best) continue;
+    if (best) bestBySlot.set(slotInfo.slotId, best);
+  }
 
-    nextReservedItems.set(slotInfo.slotId, cloneSingleItem(best.item));
-
-    if (best.item.amount > 1) {
-      drops.push(cloneWithAmount(best.item, best.item.amount - 1));
-    }
+  // Read ItemStacks for items that need to move BEFORE their source slots are cleared
+  const itemsToMove = new Map<TrackedGearSlot, ItemStack>();
+  for (const slotInfo of TRACKED_GEAR_SLOTS) {
+    const best = bestBySlot.get(slotInfo.slotId);
+    if (!best || best.sourceSlot === slotInfo.inventorySlot) continue;
+    const item = tryGetContainerItem(container, best.sourceSlot);
+    if (item) itemsToMove.set(slotInfo.slotId, item);
   }
 
   for (const slot of slotsToClear) {
     trySetContainerItem(container, slot, undefined);
   }
 
-  for (const slotInfo of TRACKED_GEAR_SLOTS) {
-    const nextItem = nextReservedItems.get(slotInfo.slotId);
-    if (nextItem) {
-      trySetContainerItem(container, slotInfo.inventorySlot, nextItem);
+  const newReserved: string[] = [];
+  const newMirror: string[] = [];
+
+  for (let i = 0; i < TRACKED_GEAR_SLOTS.length; i++) {
+    const slotInfo = TRACKED_GEAR_SLOTS[i];
+    const typeId = bestBySlot.get(slotInfo.slotId)?.typeId ?? "";
+    newReserved.push(typeId);
+    newMirror.push(typeId);
+
+    const itemToMove = itemsToMove.get(slotInfo.slotId);
+    if (itemToMove) {
+      trySetContainerItem(container, slotInfo.inventorySlot, itemToMove);
     }
 
-    applyEquipmentMirror(entity, slotInfo, nextItem?.typeId ?? "");
+    // Only mirror if the equipment slot state needs to change
+    if (typeId !== (prevCache?.mirror[i] ?? "")) {
+      applyEquipmentMirror(entity, slotInfo, typeId);
+    }
   }
+
+  plushGearCache.set(entity.id, { reserved: newReserved, mirror: newMirror });
 
   for (const item of drops) {
     trySpawnItem(entity, item);
@@ -272,19 +288,17 @@ function normalizePlushGear(entity: Entity): void {
 }
 
 function dropNextTrackedGear(entity: Entity): boolean {
-  normalizePlushGear(entity);
-
   const container = getEntityContainer(entity);
   if (!container) return false;
 
   for (const slotInfo of TRACKED_GEAR_SLOTS) {
     const item = tryGetContainerItem(container, slotInfo.inventorySlot);
-    if (!item) continue;
-    if (getItemPriority(slotInfo, item.typeId) < 0) continue;
+    if (!item || getItemPriority(slotInfo, item.typeId) < 0) continue;
 
-    trySpawnItem(entity, item.clone());
+    trySpawnItem(entity, item);
     trySetContainerItem(container, slotInfo.inventorySlot, undefined);
     applyEquipmentMirror(entity, slotInfo, "");
+    plushGearCache.delete(entity.id);
     return true;
   }
 
@@ -302,12 +316,18 @@ export function startPlushInteractionSystem(): void {
     }
   }, 20);
 
+  world.afterEvents.entityDie.subscribe((event) => {
+    if (PLUSH_ENTITIES.includes(event.deadEntity.typeId as (typeof PLUSH_ENTITIES)[number])) {
+      plushGearCache.delete(event.deadEntity.id);
+    }
+  });
+
   world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     const { player, target } = event;
     if (!player || !target) return;
 
     if (!PLUSH_ENTITIES.includes(target.typeId as any)) return;
-    if (!isEntityOnGround(target)) return;
+    if (!target.isOnGround) return;
 
     const tameable = target.getComponent("minecraft:tameable");
     if (!tameable?.isTamed) return;
