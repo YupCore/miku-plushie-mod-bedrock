@@ -30,10 +30,7 @@ interface PlushEatState {
 
 const eatingPlushes: Map<string, PlushEatState> = new Map();
 
-function findNearbyLeekBlock(
-  dimension: any,
-  pos: { x: number; y: number; z: number }
-): Block | null {
+function findNearbyLeekBlock(dimension: any, pos: { x: number; y: number; z: number }): Block | null {
   const blockX = Math.floor(pos.x);
   const blockY = Math.floor(pos.y);
   const blockZ = Math.floor(pos.z);
@@ -59,9 +56,7 @@ export function startMikuEatLeekSystem(): void {
 
   system.runInterval(() => {
     const overworld = world.getDimension("overworld");
-    const allPlushes = (PLUSH_ENTITIES as readonly string[]).flatMap(
-      (type) => overworld.getEntities({ type })
-    );
+    const allPlushes = (PLUSH_ENTITIES as readonly string[]).flatMap((type) => overworld.getEntities({ type }));
 
     // Clean up state for entities no longer alive
     const liveIds = new Set(allPlushes.map((e) => e.id));
@@ -133,7 +128,7 @@ export function startMikuEatLeekSystem(): void {
         });
 
         if (entity.typeId === "miku:miku_plush") {
-          entity.dimension.playSound("miku.plushie.miku_nom", entity.location, {
+          entity.dimension.playSound("miku.plushie.miku_eat", entity.location, {
             volume: 1,
             pitch: 1,
           });

@@ -10,7 +10,6 @@ const TETO_PICKAXE_SET = new Set([
   "miku:teto_pickaxe_pppp",
   "miku:teto_pickaxe_regret_rock",
   "miku:teto_pickaxe_shadow",
-  "miku:teto_pickaxe_shrimp",
   "miku:teto_pickaxe_some_more_of_that_song",
   "miku:teto_pickaxe_spoken_for",
   "miku:teto_pickaxe_synthv",
