@@ -542,6 +542,9 @@
         "max_dist": 3,
         "speed_multiplier": 1
       },
+      "minecraft:behavior.equip_item": {
+        "priority": 2
+      },
       "minecraft:nameable": {},
       "minecraft:persistent": {}
     },
