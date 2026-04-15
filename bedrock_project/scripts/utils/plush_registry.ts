@@ -186,7 +186,7 @@ export function getDanceCountForEntity(entityTypeId: string): number {
     case "miku:akita_neru_plush":
       return 3;
     default:
-      return 1;
+      return 3;
   }
 }
 

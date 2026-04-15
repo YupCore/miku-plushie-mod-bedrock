@@ -84,13 +84,27 @@
       "states": {
         "default": {
           "transitions": [
-            { "caramelldansen": "q.property('miku:is_dancing')" }
+            { "caramelldansen": "q.property('miku:is_dancing') && q.property('miku:dance_index') == 0" },
+            { "ievan_polkka": "q.property('miku:is_dancing') && q.property('miku:dance_index') == 1" },
+            { "vegetable_juice": "q.property('miku:is_dancing') && q.property('miku:dance_index') == 2" }
           ]
         },
         "caramelldansen": {
           "animations": ["caramelldansen"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 0" }
+          ]
+        },
+        "ievan_polkka": {
+          "animations": ["ievan_polkka"],
+          "transitions": [
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 1" }
+          ]
+        },
+        "vegetable_juice": {
+          "animations": ["vegetable_juice"],
+          "transitions": [
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 2" }
           ]
         }
       }
@@ -108,19 +122,19 @@
         "caramelldansen": {
           "animations": ["caramelldansen"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 0" }
           ]
         },
         "ievan_polkka": {
           "animations": ["ievan_polkka"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 1" }
           ]
         },
         "vegetable_juice": {
           "animations": ["vegetable_juice"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 2" }
           ]
         }
       }
@@ -156,31 +170,31 @@
         "caramelldansen": {
           "animations": ["caramelldansen"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 0" }
           ]
         },
         "miku_dance": {
           "animations": ["miku_dance"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 1" }
           ]
         },
         "ievan_polkka": {
           "animations": ["ievan_polkka"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 2" }
           ]
         },
         "vegetable_juice": {
           "animations": ["vegetable_juice"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 3" }
           ]
         },
         "static_dance": {
           "animations": ["static_dance"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 4" }
           ]
         }
       }
@@ -199,25 +213,25 @@
         "caramelldansen": {
           "animations": ["caramelldansen"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 0" }
           ]
         },
         "teto_territory": {
           "animations": ["teto_territory"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 1" }
           ]
         },
         "birdbrain": {
           "animations": ["birdbrain"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 2" }
           ]
         },
         "liar_dancer": {
           "animations": ["liar_dancer"],
           "transitions": [
-            { "default": "!q.property('miku:is_dancing')" }
+            { "default": "!q.property('miku:is_dancing') || q.property('miku:dance_index') != 3" }
           ]
         }
       }

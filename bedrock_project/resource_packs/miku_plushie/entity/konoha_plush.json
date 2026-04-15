@@ -22,6 +22,8 @@
         "swipe2": "animation.plush.attack.swipe2",
         "swipe3": "animation.plush.attack.swipe3",
         "caramelldansen": "animation.plush.misc.dance.generic.caramelldansen",
+        "ievan_polkka": "animation.plush.misc.dance.miku.ievan_polkka",
+        "vegetable_juice": "animation.plush.misc.dance.miku.vegetable_juice",
         "procedural_pose": "animation.plush.procedural.pose",
         "hair_procedural": "animation.plush.procedural.hair",
         "main_controller": "controller.animation.plush.main",

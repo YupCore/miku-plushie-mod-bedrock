@@ -2,6 +2,8 @@ import { world, system, BlockRecordPlayerComponent } from "@minecraft/server";
 import { getDanceCountForEntity } from "../utils/plush_registry";
 
 const DANCE_CHECK_INTERVAL = 20;
+const DANCE_SWITCH_MIN_TICKS = 12 * 20;
+const DANCE_SWITCH_MAX_TICKS = 20 * 20;
 
 // dimensionId → Set of "x,y,z" position strings for tracked jukeboxes
 const jukeboxPositions = new Map<string, Set<string>>([
@@ -20,6 +22,9 @@ const customPlayingJukeboxes = new Map<string, Set<string>>([
   ["the_end", new Set()],
 ]);
 
+// Entity id → next system tick when that plush should pick a new dance.
+const nextDanceSwitchTicks = new Map<string, number>();
+
 // Dimension.id returns "minecraft:overworld" etc. — normalize to short form for map lookup
 function normDimId(id: string): string {
   return id.replace("minecraft:", "");
@@ -32,6 +37,19 @@ function posKey(x: number, y: number, z: number): string {
 function parseKey(key: string): { x: number; y: number; z: number } {
   const [x, y, z] = key.split(",").map(Number);
   return { x, y, z };
+}
+
+function nextDanceSwitchDelay(): number {
+  return DANCE_SWITCH_MIN_TICKS + Math.floor(Math.random() * (DANCE_SWITCH_MAX_TICKS - DANCE_SWITCH_MIN_TICKS + 1));
+}
+
+function randomDanceIndex(maxDances: number, previous?: number): number {
+  if (maxDances <= 1) return 0;
+  let next = Math.floor(Math.random() * maxDances);
+  if (previous !== undefined && next === previous) {
+    next = (next + 1 + Math.floor(Math.random() * (maxDances - 1))) % maxDances;
+  }
+  return next;
 }
 
 export function startJukeboxDanceSystem(): void {
@@ -119,11 +137,18 @@ export function startJukeboxDanceSystem(): void {
         const nearby = dim.getEntities({ families: ["plush"], location: pos, maxDistance: 8 });
         for (const entity of nearby) {
           const wasDancing = entity.getProperty("miku:is_dancing") ?? false;
+          const maxDances = getDanceCountForEntity(entity.typeId);
           entity.setProperty("miku:is_dancing", true);
+
           if (!wasDancing) {
-            const maxDances = getDanceCountForEntity(entity.typeId);
-            entity.setProperty("miku:dance_index", Math.floor(Math.random() * maxDances));
+            entity.setProperty("miku:dance_index", randomDanceIndex(maxDances));
+            nextDanceSwitchTicks.set(entity.id, system.currentTick + nextDanceSwitchDelay());
+          } else if (maxDances > 1 && system.currentTick >= (nextDanceSwitchTicks.get(entity.id) ?? 0)) {
+            const previousDance = Number(entity.getProperty("miku:dance_index") ?? 0);
+            entity.setProperty("miku:dance_index", randomDanceIndex(maxDances, previousDance));
+            nextDanceSwitchTicks.set(entity.id, system.currentTick + nextDanceSwitchDelay());
           }
+
           dancingEntityIds.add(entity.id);
         }
       }
@@ -135,6 +160,7 @@ export function startJukeboxDanceSystem(): void {
           if (!dancingEntityIds.has(entity.id)) {
             const wasDancing = entity.getProperty("miku:is_dancing") ?? false;
             if (wasDancing) entity.setProperty("miku:is_dancing", false);
+            nextDanceSwitchTicks.delete(entity.id);
           }
         }
       }
