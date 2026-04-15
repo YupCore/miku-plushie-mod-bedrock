@@ -2,9 +2,9 @@
   "format_version": 2,
   "header": {
     "name": "Miku Plushie: Legacy Textures",
-    "description": "Alternative block textures for the Miku Plushie mod. Enable via resource pack settings.",
+    "description": "Alternative block textures for the Miku Plushie add-on. Enable above the main resource pack.",
     "uuid": "b44d1e3f-9c71-4a2b-8e50-c3f61d9a7421",
-    "version": [1, 0, 0],
+    "version": [1, 0, 1],
     "min_engine_version": [1, 26, 10]
   },
   "modules": [
@@ -12,22 +12,14 @@
       "description": "Legacy Texture Resources",
       "type": "resources",
       "uuid": "c52ea4c0-3b82-40d3-a975-8e41f2b6c834",
-      "version": [1, 0, 0]
-    },
-    {
-      "description": "Legacy Textures Subpack",
-      "type": "resources",
-      "uuid": "d73f9e8a-4c93-41e2-b86f-9f52c1d7a562",
-      "version": [1, 0, 0]
+      "version": [1, 0, 1]
     }
   ],
-  "subpack": {
-    "group_name": "Miku Plushie Texture Variants",
-    "entries": {
-      "legacy_textures": {
-        "folder": "textures/blocks",
-        "display_name": "Legacy Textures"
-      }
+  "dependencies": [
+    {
+      "uuid": "de9e4e8b-4c11-43af-91e6-630e7cd17146",
+      "version": [2, 0, 0]
     }
-  }
+  ],
+  "capabilities": ["pbr"]
 }

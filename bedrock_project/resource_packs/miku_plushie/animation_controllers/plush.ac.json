@@ -6,9 +6,7 @@
       "states": {
         "spawning": {
           "animations": ["spawn"],
-          "transitions": [
-            { "idle": "q.life_time > 0.5" }
-          ]
+          "transitions": [{ "idle": "q.life_time > 0.5" }]
         },
         "idle": {
           "animations": ["idle"],
@@ -23,7 +21,6 @@
         },
         "sitting": {
           "animations": ["sit"],
-          "blend_transition": 0.25,
           "transitions": [
             { "sit_dancing": "q.property('miku:is_dancing') && q.is_sitting" },
             { "idle": "!q.is_sitting" }
@@ -31,38 +28,26 @@
         },
         "sit_dancing": {
           "animations": ["sit_dance"],
-          "blend_transition": 0.3,
-          "transitions": [
-            { "sitting": "!q.property('miku:is_dancing')" },
-            { "idle": "!q.is_sitting" }
-          ]
+          "transitions": [{ "sitting": "!q.property('miku:is_dancing')" }, { "idle": "!q.is_sitting" }]
         },
         "dancing": {
           "blend_transition": 0.3,
-          "transitions": [
-            { "idle": "!q.property('miku:is_dancing')" }
-          ]
+          "transitions": [{ "idle": "!q.property('miku:is_dancing')" }]
         },
         "attacking_swipe": {
           "animations": ["swipe"],
           "blend_transition": 0.1,
-          "transitions": [
-            { "idle": "!q.is_delayed_attacking" }
-          ]
+          "transitions": [{ "idle": "!q.is_delayed_attacking" }]
         },
         "attacking_swipe2": {
           "animations": ["swipe2"],
           "blend_transition": 0.1,
-          "transitions": [
-            { "idle": "!q.is_delayed_attacking" }
-          ]
+          "transitions": [{ "idle": "!q.is_delayed_attacking" }]
         },
         "attacking_swipe3": {
           "animations": ["swipe3"],
           "blend_transition": 0.1,
-          "transitions": [
-            { "idle": "!q.is_delayed_attacking" }
-          ]
+          "transitions": [{ "idle": "!q.is_delayed_attacking" }]
         }
       }
     },
@@ -166,15 +151,11 @@
       "initial_state": "default",
       "states": {
         "default": {
-          "transitions": [
-            { "eating": "q.property('miku:is_eating')" }
-          ]
+          "transitions": [{ "eating": "q.property('miku:is_eating')" }]
         },
         "eating": {
           "animations": ["eat"],
-          "transitions": [
-            { "default": "!q.property('miku:is_eating')" }
-          ]
+          "transitions": [{ "default": "!q.property('miku:is_eating')" }]
         }
       }
     },

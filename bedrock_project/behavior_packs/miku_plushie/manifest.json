@@ -3,7 +3,7 @@
   "header": {
     "name": "Miku Plushie",
     "description": "Adds Hatsune Miku and friends as adorable plushies! Tameable, equippable, and full of personality.",
-    "uuid": "1cfc0db2-fd2f-4dce-96ae-bd751f91699e",
+    "uuid": "4989feb1-77e6-488d-9c08-b9938517ea9d",
     "version": [2, 0, 0],
     "min_engine_version": [1, 26, 10]
   },
@@ -11,20 +11,20 @@
     {
       "description": "Behavior Data",
       "version": [2, 0, 0],
-      "uuid": "cc50b29f-243e-41ee-adef-c356161452be",
+      "uuid": "ebd90899-5ad9-4e05-a53d-ce304a9c61d6",
       "type": "data"
     },
     {
       "language": "javascript",
       "type": "script",
-      "uuid": "2807de5c-c8bc-44b9-934a-d6ef7bf6517d",
+      "uuid": "b0538c02-1e53-4fea-8607-eee703460d1b",
       "version": [2, 0, 0],
       "entry": "scripts/main.js"
     }
   ],
   "dependencies": [
     {
-      "uuid": "a33d0d2a-d82b-4840-8b58-f1a45a767f65",
+      "uuid": "de9e4e8b-4c11-43af-91e6-630e7cd17146",
       "version": [2, 0, 0]
     },
     {
