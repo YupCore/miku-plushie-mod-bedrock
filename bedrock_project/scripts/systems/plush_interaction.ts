@@ -159,9 +159,9 @@ function applyEquipmentMirror(entity: Entity, slotInfo: TrackedGearSlotInfo, ite
   try {
     if (itemTypeId) {
       entity.runCommand(`replaceitem entity @s ${slotInfo.commandSlot} 0 ${itemTypeId}`);
-      return;
+    } else {
+      entity.runCommand(`replaceitem entity @s ${slotInfo.commandSlot} 0 air`);
     }
-    entity.runCommand(`replaceitem entity @s ${slotInfo.commandSlot} 0 air`);
   } catch {}
 }
 
@@ -171,12 +171,8 @@ function syncPersistedGearToEquipment(entity: Entity): void {
 
   for (const slotInfo of TRACKED_GEAR_SLOTS) {
     const persistedItem = tryGetContainerItem(container, slotInfo.inventorySlot);
-    if (!persistedItem) {
-      applyEquipmentMirror(entity, slotInfo, "");
-      continue;
-    }
 
-    if (getItemPriority(slotInfo, persistedItem.typeId) < 0) {
+    if (!persistedItem || getItemPriority(slotInfo, persistedItem.typeId) < 0) {
       trySetContainerItem(container, slotInfo.inventorySlot, undefined);
       applyEquipmentMirror(entity, slotInfo, "");
       continue;
@@ -194,9 +190,15 @@ function dropNextTrackedGear(entity: Entity): boolean {
     const item = tryGetContainerItem(container, slotInfo.inventorySlot);
     if (!item || getItemPriority(slotInfo, item.typeId) < 0) continue;
 
+    // Drop the item to the world (this is the only place we manually spawn)
     trySpawnItem(entity, item);
+
+    // Remove from our shadow inventory (source of truth)
     trySetContainerItem(container, slotInfo.inventorySlot, undefined);
+
+    // Visually unequip via the workaround
     applyEquipmentMirror(entity, slotInfo, "");
+
     return true;
   }
 
@@ -214,21 +216,23 @@ function persistPickedTrackedGear(entity: Entity, pickedTypeId: string): void {
   const currentPriority = currentPersistedItem ? getItemPriority(slotInfo, currentPersistedItem.typeId) : -1;
   const pickedPriority = getItemPriority(slotInfo, pickedTypeId);
 
+  // Only keep the best item for this slot (lower index = better)
   if (currentPriority >= 0 && currentPriority <= pickedPriority) {
     return;
   }
 
   const persistedCopy = new ItemStack(pickedTypeId, 1);
-  if (!trySetContainerItem(container, slotInfo.inventorySlot, persistedCopy)) {
-    return;
-  }
+  trySetContainerItem(container, slotInfo.inventorySlot, persistedCopy);
 
-  applyEquipmentMirror(entity, slotInfo, pickedTypeId);
+  // IMPORTANT: Do NOT call applyEquipmentMirror here.
+  // The plush AI (shareables + equip_item) already equipped it.
+  // Calling replaceitem during pickup causes the infinite drop/equip loop.
 }
 
 export function startPlushInteractionSystem(): void {
-  console.log("[Miku Plushie] Starting plush interaction system");
+  console.log("[Miku Plushie] Starting plush interaction system (fixed simplified version)");
 
+  // Pickup → only update our shadow inventory (AI handles the real equip)
   world.beforeEvents.entityItemPickup.subscribe(
     (event) => {
       const entity = event.entity;
@@ -236,10 +240,8 @@ export function startPlushInteractionSystem(): void {
 
       const pickedItemComp = event.item.getComponent("minecraft:item") as EntityItemComponent | undefined;
       const pickedTypeId = pickedItemComp?.itemStack.typeId;
-      if (!pickedTypeId) return;
-      if (!getGearSlotInfoForItem(pickedTypeId)) return;
+      if (!pickedTypeId || !getGearSlotInfoForItem(pickedTypeId)) return;
 
-      // beforeEvents runs in restricted execution; defer writes to next tick.
       system.run(() => {
         if (!isTrackedPlushEntity(entity)) return;
         persistPickedTrackedGear(entity, pickedTypeId);
@@ -251,26 +253,18 @@ export function startPlushInteractionSystem(): void {
     }
   );
 
+  // AI naturally drops an item (e.g. upgrading to better gear) → clear our shadow record
   world.afterEvents.entityItemDrop.subscribe(
     (event) => {
       const entity = event.entity;
       if (!isTrackedPlushEntity(entity)) return;
 
-      console.log(`[Miku Plushie] Detected item drop from ${entity.typeId}, checking for tracked gear...`);
-
       const container = getEntityContainer(entity);
       if (!container) return;
 
-      console.log(
-        `[Miku Plushie] event.items is type of ${typeof event.items}, stringify event.items: ${JSON.stringify(event.items)}`
-      );
-
       const droppedItemEntities = normalizeEntityList(event.items);
 
-      console.log(`[Miku Plushie] Normalized dropped item entities count: ${droppedItemEntities.length}`);
-
-      for (let index = 0; index < droppedItemEntities.length; index++) {
-        const droppedItemEntity = droppedItemEntities[index];
+      for (const droppedItemEntity of droppedItemEntities) {
         const itemComponent = droppedItemEntity.getComponent("minecraft:item") as EntityItemComponent | undefined;
         const droppedItem = itemComponent?.itemStack;
         if (!droppedItem) continue;
@@ -279,9 +273,7 @@ export function startPlushInteractionSystem(): void {
         if (!slotInfo) continue;
 
         const persistedItem = tryGetContainerItem(container, slotInfo.inventorySlot);
-        if (!persistedItem || persistedItem.typeId !== droppedItem.typeId) {
-          continue;
-        }
+        if (!persistedItem || persistedItem.typeId !== droppedItem.typeId) continue;
 
         trySetContainerItem(container, slotInfo.inventorySlot, undefined);
         applyEquipmentMirror(entity, slotInfo, "");
@@ -293,6 +285,8 @@ export function startPlushInteractionSystem(): void {
     }
   );
 
+  // Re-apply shadow → real equipment on load/spawn (this is the MCPE-190513 workaround)
+  // We cannot read equipment, but we can force it to show via replaceitem
   world.afterEvents.entityLoad.subscribe((event) => {
     const { entity } = event;
     if (!isTrackedPlushEntity(entity)) return;
@@ -305,6 +299,7 @@ export function startPlushInteractionSystem(): void {
     syncPersistedGearToEquipment(entity);
   });
 
+  // One-time sync for entities already present
   system.run(() => {
     for (const dimensionId of ["overworld", "nether", "the_end"] as const) {
       for (const entity of world.getDimension(dimensionId).getEntities({ families: ["plush"] })) {
@@ -314,16 +309,15 @@ export function startPlushInteractionSystem(): void {
     }
   });
 
+  // Player interaction
   world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     const { player, target } = event;
     if (!player || !target) return;
-
     if (!isTrackedPlushEntity(target)) return;
     if (!target.isOnGround) return;
 
     const tameable = target.getComponent("minecraft:tameable");
-    if (!tameable?.isTamed) return;
-    if (tameable.tamedToPlayerId !== player.id) return;
+    if (!tameable?.isTamed || tameable.tamedToPlayerId !== player.id) return;
 
     if (player.isSneaking) {
       dropNextTrackedGear(target);
@@ -340,21 +334,15 @@ export function startPlushInteractionSystem(): void {
 
       const isCreative = player.getGameMode() === GameMode.Creative;
       if (!isCreative) {
-        if (mainhand!.amount > 1) {
-          mainhand!.amount--;
-        } else {
-          mainhand!.setItem(undefined);
-        }
+        if (mainhand!.amount > 1) mainhand!.amount--;
+        else mainhand!.setItem(undefined);
       }
       return;
     }
 
     if (playerItem?.typeId === "miku:leek") {
       const character = getCharacterFromEntity(target.typeId);
-      target.dimension.playSound("entity.generic.eat", target.location, {
-        volume: 1,
-        pitch: 1,
-      });
+      target.dimension.playSound("entity.generic.eat", target.location, { volume: 1, pitch: 1 });
       playPlushSound(target, character, "eat", 1, 1);
       return;
     }
