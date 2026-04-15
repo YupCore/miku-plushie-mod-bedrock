@@ -28,16 +28,6 @@
           "default": false,
           "client_sync": true
         }
-      },
-      "animations": {
-        "track_mainhand": "controller.animation.miku.track_mainhand",
-        "track_head": "controller.animation.miku.track_head",
-        "track_chest": "controller.animation.miku.track_chest",
-        "track_legs": "controller.animation.miku.track_legs",
-        "track_feet": "controller.animation.miku.track_feet"
-      },
-      "scripts": {
-        "animate": ["track_mainhand", "track_head", "track_chest", "track_legs", "track_feet"]
       }
     },
     "component_groups": {
@@ -48,7 +38,7 @@
         "minecraft:behavior.follow_owner": {
           "priority": 4,
           "speed_multiplier": 1.25,
-          "start_distance": 6.0,
+          "start_distance": 6,
           "stop_distance": 2.5
         }
       },
@@ -84,14 +74,14 @@
         ]
       },
       "minecraft:attack": {
-        "damage": 2.0
+        "damage": 2
       },
       "minecraft:movement": {
         "value": 0.3
       },
       "minecraft:collision_box": {
         "width": 0.6,
-        "height": 1.0
+        "height": 1
       },
       "minecraft:physics": {},
       "minecraft:pushable": {
@@ -113,7 +103,7 @@
         "speed_multiplier": 2,
         "attack_once": false,
         "track_target": true,
-        "reach_multiplier": 3.0,
+        "reach_multiplier": 3,
         "hit_delay_pct": 0.1
       },
       "minecraft:behavior.tempt": {
@@ -123,7 +113,7 @@
       },
       "minecraft:behavior.look_at_entity": {
         "priority": 7,
-        "look_distance": 8.0,
+        "look_distance": 8,
         "probability": 0.05,
         "look_time": [2, 4],
         "filters": {
@@ -134,7 +124,7 @@
       },
       "minecraft:behavior.look_at_player": {
         "priority": 8,
-        "look_distance": 8.0,
+        "look_distance": 8,
         "probability": 0.05
       },
       "minecraft:behavior.random_look_around": {
@@ -214,236 +204,318 @@
           }
         ]
       },
+      "minecraft:inventory": {
+        "inventory_size": 27,
+        "container_type": "inventory",
+        "private": true,
+        "restrict_to_owner": false
+      },
       "minecraft:shareables": {
         "singular_pickup": true,
         "items": [
           {
             "item": "minecraft:netherite_sword",
             "priority": 0,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:diamond_sword",
             "priority": 1,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:iron_sword",
             "priority": 2,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:golden_sword",
             "priority": 3,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:copper_sword",
             "priority": 4,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:stone_sword",
             "priority": 5,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:wooden_sword",
             "priority": 6,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:netherite_spear",
             "priority": 0,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:diamond_spear",
             "priority": 1,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:iron_spear",
             "priority": 2,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:golden_spear",
             "priority": 3,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:copper_spear",
             "priority": 4,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:stone_spear",
             "priority": 5,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:wooden_spear",
             "priority": 6,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:netherite_helmet",
             "priority": 0,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:netherite_chestplate",
             "priority": 0,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:netherite_leggings",
             "priority": 0,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:netherite_boots",
             "priority": 0,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:diamond_helmet",
             "priority": 1,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:diamond_chestplate",
             "priority": 1,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:diamond_leggings",
             "priority": 1,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:diamond_boots",
             "priority": 1,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:iron_helmet",
             "priority": 2,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:iron_chestplate",
             "priority": 2,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:iron_leggings",
             "priority": 2,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:iron_boots",
             "priority": 2,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:chainmail_helmet",
             "priority": 3,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:chainmail_chestplate",
             "priority": 3,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:chainmail_leggings",
             "priority": 3,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:chainmail_boots",
             "priority": 3,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:golden_helmet",
             "priority": 4,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:golden_chestplate",
             "priority": 4,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:golden_leggings",
             "priority": 4,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:golden_boots",
             "priority": 4,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:leather_helmet",
             "priority": 5,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:leather_chestplate",
             "priority": 5,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:leather_leggings",
             "priority": 5,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           },
           {
             "item": "minecraft:leather_boots",
             "priority": 5,
+            "max_amount": 1,
             "surplus_amount": 1,
-            "want_amount": 1
+            "want_amount": 1,
+            "stored_in_inventory": true
           }
         ]
       },
@@ -454,12 +526,42 @@
         "max_dist": 3,
         "speed_multiplier": 1
       },
-      "minecraft:behavior.equip_item": {
-        "priority": 3
-      },
-      "minecraft:equip_item": {},
       "minecraft:nameable": {},
-      "minecraft:persistent": {}
+      "minecraft:persistent": {},
+      "minecraft:equippable": {
+        "slots": [
+          {
+            "slot": "mainhand",
+            "on_unequip": {
+              "event": "miku:unequip_mainhand"
+            }
+          },
+          {
+            "slot": "armor.head",
+            "on_unequip": {
+              "event": "miku:unequip_head"
+            }
+          },
+          {
+            "slot": "armor.chest",
+            "on_unequip": {
+              "event": "miku:unequip_chest"
+            }
+          },
+          {
+            "slot": "armor.legs",
+            "on_unequip": {
+              "event": "miku:unequip_legs"
+            }
+          },
+          {
+            "slot": "armor.feet",
+            "on_unequip": {
+              "event": "miku:unequip_feet"
+            }
+          }
+        ]
+      }
     },
     "events": {
       "miku:on_tame": {
@@ -479,7 +581,6 @@
           }
         ]
       },
-
       "miku:start_sitting": {
         "add": {
           "component_groups": ["miku:sitting"]
@@ -495,7 +596,12 @@
         "remove": {
           "component_groups": ["miku:sitting"]
         }
-      }
+      },
+      "miku:unequip_mainhand": {},
+      "miku:unequip_head": {},
+      "miku:unequip_chest": {},
+      "miku:unequip_legs": {},
+      "miku:unequip_feet": {}
     }
   }
 }

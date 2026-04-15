@@ -1,4 +1,13 @@
-import { world, system, EquipmentSlot, GameMode, Entity, ItemStack } from "@minecraft/server";
+import {
+  world,
+  system,
+  EquipmentSlot,
+  GameMode,
+  Entity,
+  EntityInventoryComponent,
+  ItemStack,
+  type Container,
+} from "@minecraft/server";
 import { PLUSH_ENTITIES } from "../utils/plush_registry";
 import { getCharacterFromEntity, playPlushSound } from "../utils/sounds";
 
@@ -6,11 +15,10 @@ function isEntityOnGround(entity: Entity): boolean {
   return entity.isOnGround;
 }
 
-const GEAR_CACHE_PROPERTY = "miku:gear_cache";
-
 const TRACKED_GEAR_SLOTS = [
   {
     slotId: "mainhand",
+    inventorySlot: 0,
     commandSlot: "slot.weapon.mainhand",
     itemIds: [
       "minecraft:netherite_sword",
@@ -31,6 +39,7 @@ const TRACKED_GEAR_SLOTS = [
   },
   {
     slotId: "head",
+    inventorySlot: 1,
     commandSlot: "slot.armor.head",
     itemIds: [
       "minecraft:netherite_helmet",
@@ -43,6 +52,7 @@ const TRACKED_GEAR_SLOTS = [
   },
   {
     slotId: "chest",
+    inventorySlot: 2,
     commandSlot: "slot.armor.chest",
     itemIds: [
       "minecraft:netherite_chestplate",
@@ -55,6 +65,7 @@ const TRACKED_GEAR_SLOTS = [
   },
   {
     slotId: "legs",
+    inventorySlot: 3,
     commandSlot: "slot.armor.legs",
     itemIds: [
       "minecraft:netherite_leggings",
@@ -67,6 +78,7 @@ const TRACKED_GEAR_SLOTS = [
   },
   {
     slotId: "feet",
+    inventorySlot: 4,
     commandSlot: "slot.armor.feet",
     itemIds: [
       "minecraft:netherite_boots",
@@ -80,133 +92,209 @@ const TRACKED_GEAR_SLOTS = [
 ] as const;
 
 type TrackedGearSlot = (typeof TRACKED_GEAR_SLOTS)[number]["slotId"];
-type TrackedGearState = Record<TrackedGearSlot, string>;
+type TrackedGearSlotInfo = (typeof TRACKED_GEAR_SLOTS)[number];
 
-const PERSISTENCE_ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyz";
-const trackedGearCache = new Map<string, TrackedGearState>();
+type GearCandidate = {
+  item: ItemStack;
+  priority: number;
+  sourceSlot: number;
+};
 
-// player.isSneaking is unreliable inside event handlers — cache it every tick
-const playerSneakState = new Map<string, boolean>();
+const UNEQUIP_SLOT_MAP: Record<string, TrackedGearSlot> = {
+  "miku:unequip_mainhand": "mainhand",
+  "miku:unequip_head": "head",
+  "miku:unequip_chest": "chest",
+  "miku:unequip_legs": "legs",
+  "miku:unequip_feet": "feet",
+};
 
-function createEmptyTrackedGearState(): TrackedGearState {
-  return {
-    mainhand: "",
-    head: "",
-    chest: "",
-    legs: "",
-    feet: "",
-  };
-}
-
-function isTrackedGearSlot(value: string | undefined): value is TrackedGearSlot {
-  return TRACKED_GEAR_SLOTS.some(({ slotId }) => slotId === value);
-}
-
-function parseGearMessage(message: string): Record<string, string> {
-  const parsed: Record<string, string> = {};
-
-  for (const pair of message.split(";")) {
-    if (!pair) continue;
-
-    const separatorIndex = pair.indexOf("=");
-    if (separatorIndex === -1) continue;
-
-    const key = pair.slice(0, separatorIndex);
-    const value = pair.slice(separatorIndex + 1);
-    parsed[key] = value;
-  }
-
-  return parsed;
-}
-
-function deserializeCompactTrackedGearState(serializedState: string): TrackedGearState {
-  const hydratedState = createEmptyTrackedGearState();
-
-  TRACKED_GEAR_SLOTS.forEach(({ slotId, itemIds }, index) => {
-    const persistedChar = serializedState[index];
-    const alphabetIndex = persistedChar ? PERSISTENCE_ALPHABET.indexOf(persistedChar) : 0;
-    const itemIndex = alphabetIndex - 1;
-    hydratedState[slotId] = itemIndex >= 0 ? (itemIds[itemIndex] ?? "") : "";
-  });
-
-  return hydratedState;
-}
-
-function serializeCompactTrackedGearState(state: TrackedGearState): string {
-  return TRACKED_GEAR_SLOTS.map(({ slotId, itemIds }) => {
-    const trackedItems = itemIds as readonly string[];
-    const itemIndex = trackedItems.indexOf(state[slotId]);
-    return PERSISTENCE_ALPHABET[itemIndex + 1] ?? PERSISTENCE_ALPHABET[0];
-  }).join("");
-}
-
-function hydrateTrackedGearState(entity: Entity): TrackedGearState {
+function getEntityContainer(entity: Entity): Container | null {
   try {
-    const rawState = entity.getDynamicProperty(GEAR_CACHE_PROPERTY);
-    if (typeof rawState !== "string" || rawState.length === 0) {
-      return createEmptyTrackedGearState();
-    }
-
-    if (rawState.startsWith("{")) {
-      const parsedState = JSON.parse(rawState) as Partial<Record<TrackedGearSlot, unknown>>;
-      const hydratedState = createEmptyTrackedGearState();
-
-      for (const { slotId } of TRACKED_GEAR_SLOTS) {
-        if (typeof parsedState[slotId] === "string") {
-          hydratedState[slotId] = parsedState[slotId];
-        }
-      }
-
-      return hydratedState;
-    }
-
-    return deserializeCompactTrackedGearState(rawState);
+    const inv = entity.getComponent("minecraft:inventory") as EntityInventoryComponent | undefined;
+    const container = inv?.container;
+    return container?.isValid ? container : null;
   } catch {
-    return createEmptyTrackedGearState();
+    return null;
   }
 }
 
-function getTrackedGearState(entity: Entity): TrackedGearState {
-  const cachedState = trackedGearCache.get(entity.id);
-  if (cachedState) {
-    return cachedState;
-  }
-
-  const hydratedState = hydrateTrackedGearState(entity);
-  trackedGearCache.set(entity.id, hydratedState);
-  return hydratedState;
+function getGearSlotInfo(slotId: TrackedGearSlot): TrackedGearSlotInfo | undefined {
+  return TRACKED_GEAR_SLOTS.find((slotInfo) => slotInfo.slotId === slotId);
 }
 
-function persistTrackedGearState(entity: Entity, state: TrackedGearState): void {
-  trackedGearCache.set(entity.id, state);
+function getItemPriority(slotInfo: TrackedGearSlotInfo, itemTypeId: string): number {
+  return (slotInfo.itemIds as readonly string[]).indexOf(itemTypeId);
+}
 
+function getGearSlotInfoForItem(itemTypeId: string): TrackedGearSlotInfo | undefined {
+  return TRACKED_GEAR_SLOTS.find((slotInfo) => getItemPriority(slotInfo, itemTypeId) >= 0);
+}
+
+function cloneWithAmount(item: ItemStack, amount: number): ItemStack {
+  const clone = item.clone();
+  clone.amount = amount;
+  return clone;
+}
+
+function cloneSingleItem(item: ItemStack): ItemStack {
+  return cloneWithAmount(item, 1);
+}
+
+function trySpawnItem(entity: Entity, item: ItemStack): void {
   try {
-    entity.setDynamicProperty(GEAR_CACHE_PROPERTY, serializeCompactTrackedGearState(state));
+    entity.dimension.spawnItem(item, entity.location);
   } catch {}
 }
 
-function updateTrackedGearState(entity: Entity, slot: TrackedGearSlot, itemTypeId: string): void {
-  const nextState = { ...getTrackedGearState(entity) };
-  nextState[slot] = itemTypeId;
-  persistTrackedGearState(entity, nextState);
+function trySetContainerItem(container: Container, slot: number, item?: ItemStack): boolean {
+  try {
+    container.setItem(slot, item);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function tryGetContainerItem(container: Container, slot: number): ItemStack | undefined {
+  try {
+    return container.getItem(slot);
+  } catch {
+    return undefined;
+  }
+}
+
+function entityHasMirroredGear(entity: Entity, slotInfo: TrackedGearSlotInfo, itemTypeId: string): boolean {
+  try {
+    const result = entity.runCommand(
+      `testfor @s[hasitem={location=${slotInfo.commandSlot},slot=0,item=${itemTypeId},quantity=1..}]`
+    );
+    return result.successCount > 0;
+  } catch {
+    return false;
+  }
+}
+
+function applyEquipmentMirror(entity: Entity, slotInfo: TrackedGearSlotInfo, itemTypeId: string): void {
+  try {
+    if (itemTypeId) {
+      if (entityHasMirroredGear(entity, slotInfo, itemTypeId)) return;
+      entity.runCommand(`replaceitem entity @s ${slotInfo.commandSlot} 0 ${itemTypeId}`);
+      return;
+    }
+
+    entity.runCommand(`replaceitem entity @s ${slotInfo.commandSlot} 0 air`);
+  } catch {}
+}
+
+function collectGearCandidates(container: Container): Map<TrackedGearSlot, GearCandidate[]> {
+  const candidatesBySlot = new Map<TrackedGearSlot, GearCandidate[]>();
+
+  for (const slotInfo of TRACKED_GEAR_SLOTS) {
+    candidatesBySlot.set(slotInfo.slotId, []);
+  }
+
+  for (let sourceSlot = 0; sourceSlot < container.size; sourceSlot++) {
+    const item = tryGetContainerItem(container, sourceSlot);
+    if (!item) continue;
+
+    const slotInfo = getGearSlotInfoForItem(item.typeId);
+    if (!slotInfo) continue;
+
+    const priority = getItemPriority(slotInfo, item.typeId);
+    candidatesBySlot.get(slotInfo.slotId)!.push({
+      item: item.clone(),
+      priority,
+      sourceSlot,
+    });
+  }
+
+  return candidatesBySlot;
+}
+
+function getBestCandidate(slotInfo: TrackedGearSlotInfo, candidates: GearCandidate[]): GearCandidate | undefined {
+  let best: GearCandidate | undefined;
+
+  for (const candidate of candidates) {
+    if (!best) {
+      best = candidate;
+      continue;
+    }
+
+    if (candidate.priority < best.priority) {
+      best = candidate;
+      continue;
+    }
+
+    if (candidate.priority === best.priority && candidate.sourceSlot === slotInfo.inventorySlot) {
+      best = candidate;
+    }
+  }
+
+  return best;
+}
+
+function normalizePlushGear(entity: Entity): void {
+  const container = getEntityContainer(entity);
+  if (!container) return;
+
+  const candidatesBySlot = collectGearCandidates(container);
+  const slotsToClear = new Set<number>();
+  const drops: ItemStack[] = [];
+  const nextReservedItems = new Map<TrackedGearSlot, ItemStack>();
+
+  for (const slotInfo of TRACKED_GEAR_SLOTS) {
+    const candidates = candidatesBySlot.get(slotInfo.slotId) ?? [];
+    const best = getBestCandidate(slotInfo, candidates);
+
+    for (const candidate of candidates) {
+      slotsToClear.add(candidate.sourceSlot);
+
+      if (candidate !== best) {
+        drops.push(candidate.item);
+      }
+    }
+
+    if (!best) continue;
+
+    nextReservedItems.set(slotInfo.slotId, cloneSingleItem(best.item));
+
+    if (best.item.amount > 1) {
+      drops.push(cloneWithAmount(best.item, best.item.amount - 1));
+    }
+  }
+
+  for (const slot of slotsToClear) {
+    trySetContainerItem(container, slot, undefined);
+  }
+
+  for (const slotInfo of TRACKED_GEAR_SLOTS) {
+    const nextItem = nextReservedItems.get(slotInfo.slotId);
+    if (nextItem) {
+      trySetContainerItem(container, slotInfo.inventorySlot, nextItem);
+    }
+
+    applyEquipmentMirror(entity, slotInfo, nextItem?.typeId ?? "");
+  }
+
+  for (const item of drops) {
+    trySpawnItem(entity, item);
+  }
 }
 
 function dropNextTrackedGear(entity: Entity): boolean {
-  const nextState = { ...getTrackedGearState(entity) };
+  normalizePlushGear(entity);
 
-  for (const { slotId, commandSlot } of TRACKED_GEAR_SLOTS) {
-    const itemTypeId = nextState[slotId];
-    if (!itemTypeId) continue;
+  const container = getEntityContainer(entity);
+  if (!container) return false;
 
-    try {
-      entity.dimension.spawnItem(new ItemStack(itemTypeId, 1), entity.location);
-      entity.runCommand(`replaceitem entity @s ${commandSlot} 0 air`);
-    } catch {
-      return false;
-    }
+  for (const slotInfo of TRACKED_GEAR_SLOTS) {
+    const item = tryGetContainerItem(container, slotInfo.inventorySlot);
+    if (!item) continue;
+    if (getItemPriority(slotInfo, item.typeId) < 0) continue;
 
-    nextState[slotId] = "";
-    persistTrackedGearState(entity, nextState);
+    trySpawnItem(entity, item.clone());
+    trySetContainerItem(container, slotInfo.inventorySlot, undefined);
+    applyEquipmentMirror(entity, slotInfo, "");
     return true;
   }
 
@@ -217,23 +305,21 @@ export function startPlushInteractionSystem(): void {
   console.log("[Miku Plushie] Starting plush interaction system");
 
   system.runInterval(() => {
-    for (const player of world.getAllPlayers()) {
-      playerSneakState.set(player.id, player.isSneaking);
+    for (const dimensionId of ["overworld", "nether", "the_end"] as const) {
+      for (const entity of world.getDimension(dimensionId).getEntities({ families: ["plush"] })) {
+        normalizePlushGear(entity);
+      }
     }
-  }, 1);
+  }, 20);
 
-  system.afterEvents.scriptEventReceive.subscribe((event) => {
-    if (event.id !== "miku:gear") return;
+  world.afterEvents.dataDrivenEntityTrigger.subscribe((event) => {
+    const entity = event.entity;
+    if (!PLUSH_ENTITIES.includes(entity.typeId as (typeof PLUSH_ENTITIES)[number])) return;
 
-    const sourceEntity = event.sourceEntity;
-    if (!sourceEntity) return;
-    if (!PLUSH_ENTITIES.includes(sourceEntity.typeId as (typeof PLUSH_ENTITIES)[number])) return;
+    const slotId = UNEQUIP_SLOT_MAP[event.eventId];
+    if (!slotId) return;
 
-    const parsedMessage = parseGearMessage(event.message);
-    const slot = parsedMessage.slot;
-    if (!isTrackedGearSlot(slot)) return;
-
-    updateTrackedGearState(sourceEntity, slot, parsedMessage.item ?? "");
+    system.run(() => normalizePlushGear(entity));
   });
 
   world.afterEvents.playerInteractWithEntity.subscribe((event) => {
@@ -247,9 +333,7 @@ export function startPlushInteractionSystem(): void {
     if (!tameable?.isTamed) return;
     if (tameable.tamedToPlayerId !== player.id) return;
 
-    const isSneaking = playerSneakState.get(player.id) ?? player.isSneaking;
-
-    if (isSneaking) {
+    if (player.isSneaking) {
       dropNextTrackedGear(target);
       return;
     }
