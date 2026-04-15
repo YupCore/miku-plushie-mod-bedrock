@@ -138,6 +138,23 @@ function tryGetContainerItem(container: Container, slot: number): ItemStack | un
   }
 }
 
+function normalizeEntityList(value: unknown): Entity[] {
+  if (!value || typeof value !== "object") return [];
+
+  const arrayLike = value as { length?: unknown; [index: number]: unknown };
+  if (typeof arrayLike.length !== "number") return [];
+
+  const normalized: Entity[] = [];
+  for (let i = 0; i < arrayLike.length; i++) {
+    const entry = arrayLike[i];
+    if (entry && typeof entry === "object") {
+      normalized.push(entry as Entity);
+    }
+  }
+
+  return normalized;
+}
+
 function applyEquipmentMirror(entity: Entity, slotInfo: TrackedGearSlotInfo, itemTypeId: string): void {
   try {
     if (itemTypeId) {
@@ -239,10 +256,21 @@ export function startPlushInteractionSystem(): void {
       const entity = event.entity;
       if (!isTrackedPlushEntity(entity)) return;
 
+      console.log(`[Miku Plushie] Detected item drop from ${entity.typeId}, checking for tracked gear...`);
+
       const container = getEntityContainer(entity);
       if (!container) return;
 
-      for (const droppedItemEntity of event.items) {
+      console.log(
+        `[Miku Plushie] event.items is type of ${typeof event.items}, stringify event.items: ${JSON.stringify(event.items)}`
+      );
+
+      const droppedItemEntities = normalizeEntityList(event.items);
+
+      console.log(`[Miku Plushie] Normalized dropped item entities count: ${droppedItemEntities.length}`);
+
+      for (let index = 0; index < droppedItemEntities.length; index++) {
+        const droppedItemEntity = droppedItemEntities[index];
         const itemComponent = droppedItemEntity.getComponent("minecraft:item") as EntityItemComponent | undefined;
         const droppedItem = itemComponent?.itemStack;
         if (!droppedItem) continue;
