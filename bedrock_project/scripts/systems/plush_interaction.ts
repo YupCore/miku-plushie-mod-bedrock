@@ -1,4 +1,4 @@
-import { world, EquipmentSlot, GameMode, Entity } from "@minecraft/server";
+import { world, system, EquipmentSlot, GameMode, Entity } from "@minecraft/server";
 import { PLUSH_ENTITIES } from "../utils/plush_registry";
 import { getCharacterFromEntity, playPlushSound } from "../utils/sounds";
 
@@ -6,40 +6,62 @@ function isEntityOnGround(entity: Entity): boolean {
   return entity.isOnGround;
 }
 
+// player.isSneaking is unreliable inside event handlers — cache it every tick
+const playerSneakState = new Map<string, boolean>();
+
 export function startPlushInteractionSystem(): void {
   console.log("[Miku Plushie] Starting plush interaction system");
+
+  system.runInterval(() => {
+    for (const player of world.getAllPlayers()) {
+      playerSneakState.set(player.id, player.isSneaking);
+    }
+  }, 1);
 
   world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     const { player, target } = event;
     if (!player || !target) return;
 
-    if (!PLUSH_ENTITIES.includes(target.typeId as any)) {
-      return;
-    }
-
+    if (!PLUSH_ENTITIES.includes(target.typeId as any)) return;
     if (!isEntityOnGround(target)) return;
 
     const tameable = target.getComponent("minecraft:tameable");
     if (!tameable?.isTamed) return;
     if (tameable.tamedToPlayerId !== player.id) return;
 
-    const equippable = player.getComponent("minecraft:equippable");
-    const mainhand = equippable?.getEquipmentSlot(EquipmentSlot.Mainhand);
-    const playerItem = mainhand?.getItem();
+    const isSneaking = playerSneakState.get(player.id) ?? player.isSneaking;
 
-    if (player.isSneaking && (!playerItem || playerItem.typeId === "minecraft:air")) {
+    if (isSneaking) {
+      // Tiered drop: mainhand → helmet → chestplate → leggings → boots
       const targetEquippable = target.getComponent("minecraft:equippable");
-      const targetMainhand = targetEquippable?.getEquipmentSlot(EquipmentSlot.Mainhand);
 
-      if (targetMainhand?.hasItem()) {
-        const item = targetMainhand.getItem();
-        if (item) {
-          target.dimension.spawnItem(item, target.location);
-          targetMainhand.setItem(undefined);
+      if (!targetEquippable) return;
+
+      const dropOrder = [
+        EquipmentSlot.Mainhand,
+        EquipmentSlot.Head,
+        EquipmentSlot.Chest,
+        EquipmentSlot.Legs,
+        EquipmentSlot.Feet,
+      ];
+
+      for (const slot of dropOrder) {
+        const slotRef = targetEquippable.getEquipmentSlot(slot);
+        if (slotRef?.hasItem()) {
+          const item = slotRef.getItem();
+          if (item) {
+            target.dimension.spawnItem(item, target.location);
+            slotRef.setItem(undefined);
+          }
+          return;
         }
       }
       return;
     }
+
+    const equippable = player.getComponent("minecraft:equippable");
+    const mainhand = equippable?.getEquipmentSlot(EquipmentSlot.Mainhand);
+    const playerItem = mainhand?.getItem();
 
     if (playerItem?.typeId === "miku:canudinho") {
       const character = getCharacterFromEntity(target.typeId);
@@ -57,8 +79,6 @@ export function startPlushInteractionSystem(): void {
     }
 
     if (playerItem?.typeId === "miku:leek") {
-      // Healing and item consumption are handled by minecraft:healable in the entity JSON.
-      // Script only plays character-specific eat sounds.
       const character = getCharacterFromEntity(target.typeId);
       target.dimension.playSound("entity.generic.eat", target.location, {
         volume: 1,
@@ -68,7 +88,7 @@ export function startPlushInteractionSystem(): void {
       return;
     }
 
-    // Default: toggle sit (any item or empty hand, matches Java behavior)
+    // Default: toggle sit (any item or empty hand)
     target.triggerEvent("miku:toggle_sit");
   });
 }
