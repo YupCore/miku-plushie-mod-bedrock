@@ -212,12 +212,6 @@
           }
         ]
       },
-      "minecraft:inventory": {
-        "inventory_size": 27,
-        "container_type": "inventory",
-        "private": true,
-        "restrict_to_owner": false
-      },
       "minecraft:shareables": {
         "singular_pickup": true,
         "items": [
