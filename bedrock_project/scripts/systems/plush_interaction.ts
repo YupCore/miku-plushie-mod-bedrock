@@ -100,13 +100,6 @@ type GearCandidate = {
   sourceSlot: number;
 };
 
-const UNEQUIP_SLOT_MAP: Record<string, TrackedGearSlot> = {
-  "miku:unequip_mainhand": "mainhand",
-  "miku:unequip_head": "head",
-  "miku:unequip_chest": "chest",
-  "miku:unequip_legs": "legs",
-  "miku:unequip_feet": "feet",
-};
 
 function getEntityContainer(entity: Entity): Container | null {
   try {
@@ -118,9 +111,6 @@ function getEntityContainer(entity: Entity): Container | null {
   }
 }
 
-function getGearSlotInfo(slotId: TrackedGearSlot): TrackedGearSlotInfo | undefined {
-  return TRACKED_GEAR_SLOTS.find((slotInfo) => slotInfo.slotId === slotId);
-}
 
 function getItemPriority(slotInfo: TrackedGearSlotInfo, itemTypeId: string): number {
   return (slotInfo.itemIds as readonly string[]).indexOf(itemTypeId);
@@ -166,7 +156,7 @@ function tryGetContainerItem(container: Container, slot: number): ItemStack | un
 function entityHasMirroredGear(entity: Entity, slotInfo: TrackedGearSlotInfo, itemTypeId: string): boolean {
   try {
     const result = entity.runCommand(
-      `testfor @s[hasitem={location=${slotInfo.commandSlot},slot=0,item=${itemTypeId},quantity=1..}]`
+      `testfor @s[hasitem={item=${itemTypeId},location=${slotInfo.commandSlot}}]`
     );
     return result.successCount > 0;
   } catch {
@@ -311,16 +301,6 @@ export function startPlushInteractionSystem(): void {
       }
     }
   }, 20);
-
-  world.afterEvents.dataDrivenEntityTrigger.subscribe((event) => {
-    const entity = event.entity;
-    if (!PLUSH_ENTITIES.includes(entity.typeId as (typeof PLUSH_ENTITIES)[number])) return;
-
-    const slotId = UNEQUIP_SLOT_MAP[event.eventId];
-    if (!slotId) return;
-
-    system.run(() => normalizePlushGear(entity));
-  });
 
   world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     const { player, target } = event;
