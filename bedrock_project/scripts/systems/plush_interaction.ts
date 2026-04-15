@@ -7,8 +7,22 @@ function isTrackedPlushEntity(entity: Entity): boolean {
   return PLUSH_ENTITY_TYPE_SET.has(entity.typeId);
 }
 
+function enablePickupAfterLoad(entity: Entity): void {
+  if (!isTrackedPlushEntity(entity)) return;
+
+  try {
+    entity.triggerEvent("miku:pickup_unlock");
+  } catch (e) {
+    console.warn("[Miku Plushie] Failed to enable plush pickup behavior:", e);
+  }
+}
+
 export function startPlushInteractionSystem(): void {
   console.log("[Miku Plushie] Starting plush interaction system (fixed simplified version)");
+
+  world.afterEvents.entityLoad.subscribe((event) => {
+    enablePickupAfterLoad(event.entity);
+  });
 
   // Player interaction
   // TODO: find a way to trigger player "punch" animation manually and make the plush sit via scripting/functions, not vanilla
