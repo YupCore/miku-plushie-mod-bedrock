@@ -131,6 +131,7 @@
         ]
       },
       "render_controllers": [
+        "controller.render.entity.track_locators",
         "controller.render.miku_plush"
       ]
     }
