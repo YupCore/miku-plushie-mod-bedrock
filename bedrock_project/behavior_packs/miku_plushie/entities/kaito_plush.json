@@ -28,6 +28,16 @@
           "default": false,
           "client_sync": true
         }
+      },
+      "animations": {
+        "track_mainhand": "controller.animation.miku.track_mainhand",
+        "track_head": "controller.animation.miku.track_head",
+        "track_chest": "controller.animation.miku.track_chest",
+        "track_legs": "controller.animation.miku.track_legs",
+        "track_feet": "controller.animation.miku.track_feet"
+      },
+      "scripts": {
+        "animate": ["track_mainhand", "track_head", "track_chest", "track_legs", "track_feet"]
       }
     },
     "component_groups": {
