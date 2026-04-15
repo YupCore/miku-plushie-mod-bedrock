@@ -5,7 +5,6 @@ import {
   GameMode,
   Entity,
   EntityInventoryComponent,
-  EntityComponentTypes,
   EntityItemComponent,
   ItemStack,
   type Container,
@@ -187,44 +186,47 @@ function dropNextTrackedGear(entity: Entity): boolean {
   return false;
 }
 
+function persistPickedTrackedGear(entity: Entity, pickedTypeId: string): void {
+  const slotInfo = getGearSlotInfoForItem(pickedTypeId);
+  if (!slotInfo) return;
+
+  const container = getEntityContainer(entity);
+  if (!container) return;
+
+  const currentPersistedItem = tryGetContainerItem(container, slotInfo.inventorySlot);
+  const currentPriority = currentPersistedItem ? getItemPriority(slotInfo, currentPersistedItem.typeId) : -1;
+  const pickedPriority = getItemPriority(slotInfo, pickedTypeId);
+
+  if (currentPriority >= 0 && currentPriority <= pickedPriority) {
+    return;
+  }
+
+  const persistedCopy = new ItemStack(pickedTypeId, 1);
+  if (!trySetContainerItem(container, slotInfo.inventorySlot, persistedCopy)) {
+    return;
+  }
+
+  applyEquipmentMirror(entity, slotInfo, pickedTypeId);
+}
+
 export function startPlushInteractionSystem(): void {
   console.log("[Miku Plushie] Starting plush interaction system");
 
   world.beforeEvents.entityItemPickup.subscribe(
     (event) => {
       const entity = event.entity;
-
       if (!isTrackedPlushEntity(entity)) return;
 
-      const container = getEntityContainer(entity);
-      if (!container) return;
+      const pickedItemComp = event.item.getComponent("minecraft:item") as EntityItemComponent | undefined;
+      const pickedTypeId = pickedItemComp?.itemStack.typeId;
+      if (!pickedTypeId) return;
+      if (!getGearSlotInfoForItem(pickedTypeId)) return;
 
-      const pickedItemComp = event.item.getComponent(EntityComponentTypes.Item);
-
-      if (!pickedItemComp) return;
-
-      const pickedItem = pickedItemComp.itemStack;
-
-      const slotInfo = getGearSlotInfoForItem(pickedItem.typeId);
-      if (!slotInfo) return;
-
-      const currentPersistedItem = tryGetContainerItem(container, slotInfo.inventorySlot);
-      const currentPriority = currentPersistedItem ? getItemPriority(slotInfo, currentPersistedItem.typeId) : -1;
-      const pickedPriority = getItemPriority(slotInfo, pickedItem.typeId);
-
-      if (currentPriority >= 0 && currentPriority <= pickedPriority) {
-        return;
-      }
-
-      console.log(`[Miku Plushie] Entity ${entity.id} picked up item: ${pickedItem.type}`);
-
-      const persistedCopy = pickedItem.clone();
-      persistedCopy.amount = 1;
-      if (!trySetContainerItem(container, slotInfo.inventorySlot, persistedCopy)) {
-        return;
-      }
-
-      applyEquipmentMirror(entity, slotInfo, pickedItem.typeId);
+      // beforeEvents runs in restricted execution; defer writes to next tick.
+      system.run(() => {
+        if (!isTrackedPlushEntity(entity)) return;
+        persistPickedTrackedGear(entity, pickedTypeId);
+      });
     },
     {
       entityFilter: { families: ["plush"] },
