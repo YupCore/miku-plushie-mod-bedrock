@@ -1,9 +1,11 @@
 import {
   world,
+  system,
   EquipmentSlot,
   GameMode,
   Entity,
   EntityInventoryComponent,
+  EntityComponentTypes,
   EntityItemComponent,
   ItemStack,
   type Container,
@@ -188,34 +190,41 @@ function dropNextTrackedGear(entity: Entity): boolean {
 export function startPlushInteractionSystem(): void {
   console.log("[Miku Plushie] Starting plush interaction system");
 
-  world.afterEvents.entityItemPickup.subscribe(
+  world.beforeEvents.entityItemPickup.subscribe(
     (event) => {
       const entity = event.entity;
+
       if (!isTrackedPlushEntity(entity)) return;
 
       const container = getEntityContainer(entity);
       if (!container) return;
 
-      for (const pickedItem of event.items) {
-        const slotInfo = getGearSlotInfoForItem(pickedItem.typeId);
-        if (!slotInfo) continue;
+      const pickedItemComp = event.item.getComponent(EntityComponentTypes.Item);
 
-        const currentPersistedItem = tryGetContainerItem(container, slotInfo.inventorySlot);
-        const currentPriority = currentPersistedItem ? getItemPriority(slotInfo, currentPersistedItem.typeId) : -1;
-        const pickedPriority = getItemPriority(slotInfo, pickedItem.typeId);
+      if (!pickedItemComp) return;
 
-        if (currentPriority >= 0 && currentPriority <= pickedPriority) {
-          continue;
-        }
+      const pickedItem = pickedItemComp.itemStack;
 
-        const persistedCopy = pickedItem.clone();
-        persistedCopy.amount = 1;
-        if (!trySetContainerItem(container, slotInfo.inventorySlot, persistedCopy)) {
-          continue;
-        }
+      const slotInfo = getGearSlotInfoForItem(pickedItem.typeId);
+      if (!slotInfo) return;
 
-        applyEquipmentMirror(entity, slotInfo, pickedItem.typeId);
+      const currentPersistedItem = tryGetContainerItem(container, slotInfo.inventorySlot);
+      const currentPriority = currentPersistedItem ? getItemPriority(slotInfo, currentPersistedItem.typeId) : -1;
+      const pickedPriority = getItemPriority(slotInfo, pickedItem.typeId);
+
+      if (currentPriority >= 0 && currentPriority <= pickedPriority) {
+        return;
       }
+
+      console.log(`[Miku Plushie] Entity ${entity.id} picked up item: ${pickedItem.type}`);
+
+      const persistedCopy = pickedItem.clone();
+      persistedCopy.amount = 1;
+      if (!trySetContainerItem(container, slotInfo.inventorySlot, persistedCopy)) {
+        return;
+      }
+
+      applyEquipmentMirror(entity, slotInfo, pickedItem.typeId);
     },
     {
       entityFilter: { families: ["plush"] },
@@ -266,18 +275,18 @@ export function startPlushInteractionSystem(): void {
     syncPersistedGearToEquipment(entity);
   });
 
-  for (const dimensionId of ["overworld", "nether", "the_end"] as const) {
-    for (const entity of world.getDimension(dimensionId).getEntities({ families: ["plush"] })) {
-      if (!isTrackedPlushEntity(entity)) continue;
-      syncPersistedGearToEquipment(entity);
+  system.run(() => {
+    for (const dimensionId of ["overworld", "nether", "the_end"] as const) {
+      for (const entity of world.getDimension(dimensionId).getEntities({ families: ["plush"] })) {
+        if (!isTrackedPlushEntity(entity)) continue;
+        syncPersistedGearToEquipment(entity);
+      }
     }
-  }
+  });
 
   world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     const { player, target } = event;
     if (!player || !target) return;
-
-    console.log(`[Miku Plushie] Player ${player.name} interacted with entity ${target.id}`);
 
     if (!isTrackedPlushEntity(target)) return;
     if (!target.isOnGround) return;
@@ -286,12 +295,7 @@ export function startPlushInteractionSystem(): void {
     if (!tameable?.isTamed) return;
     if (tameable.tamedToPlayerId !== player.id) return;
 
-    console.log(`[Miku Plushie] Interaction conditions met for player ${player.name} and entity ${target.id}`);
-
     if (player.isSneaking) {
-      console.log(
-        `[Miku Plushie] Player ${player.name} is sneaking, attempting to drop tracked gear from entity ${target.id}`
-      );
       dropNextTrackedGear(target);
       return;
     }
