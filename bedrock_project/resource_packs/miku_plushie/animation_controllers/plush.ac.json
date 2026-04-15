@@ -10,7 +10,7 @@
         },
         "idle": {
           "animations": ["idle"],
-          "blend_transition": 0.25,
+          "blend_transition": 0.1,
           "transitions": [
             { "sitting": "q.is_sitting" },
             { "dancing": "q.property('miku:is_dancing') && !q.is_sitting" },
@@ -20,6 +20,7 @@
           ]
         },
         "sitting": {
+          "blend_transition": 0.1,
           "animations": ["sit"],
           "transitions": [
             { "sit_dancing": "q.property('miku:is_dancing') && q.is_sitting" },
@@ -27,6 +28,7 @@
           ]
         },
         "sit_dancing": {
+          "blend_transition": 0.1,
           "animations": ["sit_dance"],
           "transitions": [{ "sitting": "!q.property('miku:is_dancing')" }, { "idle": "!q.is_sitting" }]
         },
