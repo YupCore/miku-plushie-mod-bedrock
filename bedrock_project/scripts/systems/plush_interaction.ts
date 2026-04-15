@@ -7,6 +7,9 @@ import {
   EntityInventoryComponent,
   EntityComponentTypes,
   EntityItemComponent,
+  ItemComponentTypes,
+  ItemDurabilityComponent,
+  ItemEnchantableComponent,
   ItemStack,
   Player,
   type Container,
@@ -47,6 +50,7 @@ const TRACKED_GEAR_SLOTS = [
       "minecraft:chainmail_helmet",
       "minecraft:golden_helmet",
       "minecraft:leather_helmet",
+      "minecraft:copper_helmet",
     ],
   },
   {
@@ -60,6 +64,7 @@ const TRACKED_GEAR_SLOTS = [
       "minecraft:chainmail_chestplate",
       "minecraft:golden_chestplate",
       "minecraft:leather_chestplate",
+      "minecraft:copper_chestplate",
     ],
   },
   {
@@ -73,6 +78,7 @@ const TRACKED_GEAR_SLOTS = [
       "minecraft:chainmail_leggings",
       "minecraft:golden_leggings",
       "minecraft:leather_leggings",
+      "minecraft:copper_leggings",
     ],
   },
   {
@@ -86,6 +92,7 @@ const TRACKED_GEAR_SLOTS = [
       "minecraft:chainmail_boots",
       "minecraft:golden_boots",
       "minecraft:leather_boots",
+      "minecraft:copper_boots",
     ],
   },
 ] as const;
@@ -117,25 +124,49 @@ function getGearSlotInfoForItem(itemTypeId: string): TrackedGearSlotInfo | undef
   return TRACKED_GEAR_SLOTS.find((slotInfo) => getItemPriority(slotInfo, itemTypeId) >= 0);
 }
 
-function giveOrDrop(entity: Entity, inventory: EntityInventoryComponent, item: ItemStack) {
-  if (!inventory?.container) {
-    // no inventory component for some reason -> just drop it
-    entity.dimension.spawnItem(item, {
-      x: entity.location.x,
-      y: entity.location.y + 0.5,
-      z: entity.location.z,
-    });
-    return;
-  }
+function getTrackedItemSignature(item: ItemStack): string {
+  const nameTag = item.nameTag ?? "";
+  let damage = -1;
+  let enchantments = "";
 
-  const leftover = inventory.container.addItem(item);
+  try {
+    const durability = item.getComponent(ItemComponentTypes.Durability) as ItemDurabilityComponent | undefined;
+    if (durability) damage = durability.damage;
+  } catch {}
 
-  if (leftover) {
-    entity.dimension.spawnItem(leftover, {
-      x: entity.location.x,
-      y: entity.location.y + 0.5,
-      z: entity.location.z,
-    });
+  try {
+    const enchantable = item.getComponent(ItemComponentTypes.Enchantable) as ItemEnchantableComponent | undefined;
+
+    if (enchantable) {
+      enchantments = enchantable
+        .getEnchantments()
+        .map((e) => `${e.type.id}:${e.level}`)
+        .sort()
+        .join(",");
+    }
+  } catch {}
+
+  return `${item.typeId}|${item.amount}|${nameTag}|${damage}|${enchantments}`;
+}
+
+function giveToPlayerOrDropNearPlayer(player: Player, item: ItemStack): boolean {
+  try {
+    const inventory = player.getComponent(EntityComponentTypes.Inventory) as EntityInventoryComponent | undefined;
+
+    const leftover = inventory?.container?.addItem(item);
+
+    if (leftover) {
+      player.dimension.spawnItem(leftover, {
+        x: player.location.x,
+        y: player.location.y + 0.75,
+        z: player.location.z,
+      });
+    }
+
+    return true;
+  } catch (error) {
+    console.warn(`[Plush] Failed to return item to player: ${error}`);
+    return false;
   }
 }
 
@@ -173,10 +204,14 @@ function normalizeEntityList(value: unknown): Entity[] {
   return normalized;
 }
 
-function dropEquipment(entity: Entity, slotInfo: TrackedGearSlotInfo): void {
+function dropEquipment(entity: Entity, slotInfo: TrackedGearSlotInfo): boolean {
   try {
     entity.runCommand(`replaceitem entity @s ${slotInfo.commandSlot} 0 air`);
-  } catch {}
+    return true;
+  } catch (error) {
+    console.warn(`[Plush] Failed to visually unequip ${slotInfo.slotId}: ${error}`);
+    return false;
+  }
 }
 
 export function getArmorEquipSound(typeId: string): string {
@@ -204,25 +239,29 @@ function dropNextTrackedGear(entity: Entity, player: Player): boolean {
   const container = getEntityContainer(entity);
   if (!container) return false;
 
-  const inventory = player.getComponent(EntityComponentTypes.Inventory) as EntityInventoryComponent | undefined;
-
-  if (!inventory) return false;
-
   for (const slotInfo of TRACKED_GEAR_SLOTS) {
-    const item = tryGetContainerItem(container, slotInfo.inventorySlot);
-    if (!item || getItemPriority(slotInfo, item.typeId) < 0) continue;
+    const storedItem = tryGetContainerItem(container, slotInfo.inventorySlot);
+    if (!storedItem || getItemPriority(slotInfo, storedItem.typeId) < 0) continue;
 
-    // Drop the item to the world (this is the only place we manually spawn)
-    giveOrDrop(entity, inventory, item);
+    const itemToReturn = storedItem.clone();
 
-    // Remove from our shadow inventory (source of truth)
-    trySetContainerItem(container, slotInfo.inventorySlot, undefined);
+    // Clear shadow first. If this fails, do nothing else.
+    if (!trySetContainerItem(container, slotInfo.inventorySlot, undefined)) {
+      console.warn(`[Plush] Failed to clear shadow slot ${slotInfo.slotId}`);
+      return false;
+    }
 
-    // Visually unequip via the workaround
+    // Now return the actual saved copy to the player.
+    if (!giveToPlayerOrDropNearPlayer(player, itemToReturn)) {
+      // restore shadow on failure
+      trySetContainerItem(container, slotInfo.inventorySlot, itemToReturn);
+      return false;
+    }
+
+    // Finally clear the visual equipment.
     dropEquipment(entity, slotInfo);
 
-    player.dimension.playSound(getArmorEquipSound(item.typeId), player.location, { volume: 1, pitch: 1 });
-
+    player.playSound(getArmorEquipSound(itemToReturn.typeId));
     return true;
   }
 
@@ -251,6 +290,8 @@ function persistPickedTrackedGear(entity: Entity, pickedItem: ItemStack): void {
 export function startPlushInteractionSystem(): void {
   console.log("[Miku Plushie] Starting plush interaction system (fixed simplified version)");
 
+  // We're using beforeEvents here because afterEvents.entityItemPickup is bugged and doesn't fire
+  // Might need to file a bug report later...
   world.beforeEvents.entityItemPickup.subscribe(
     (event) => {
       const entity = event.entity;
@@ -273,6 +314,7 @@ export function startPlushInteractionSystem(): void {
     }
   );
 
+  // Strangely, entityItemDrop seems to work fine in afterEvents, so we can use it to detect item drops from the plush and clear the persisted item if needed
   world.afterEvents.entityItemDrop.subscribe(
     (event) => {
       const entity = event.entity;
@@ -283,8 +325,7 @@ export function startPlushInteractionSystem(): void {
 
       const droppedItemEntities = normalizeEntityList(event.items);
 
-      for (let i = 0; i < droppedItemEntities.length; i++) {
-        const droppedItemEntity = droppedItemEntities[i];
+      for (const droppedItemEntity of droppedItemEntities) {
         const itemComponent = droppedItemEntity.getComponent("minecraft:item") as EntityItemComponent | undefined;
         const droppedItem = itemComponent?.itemStack;
         if (!droppedItem) continue;
@@ -293,9 +334,14 @@ export function startPlushInteractionSystem(): void {
         if (!slotInfo) continue;
 
         const persistedItem = tryGetContainerItem(container, slotInfo.inventorySlot);
-        if (!persistedItem || persistedItem.typeId !== droppedItem.typeId) continue;
+        if (!persistedItem) continue;
+
+        if (getTrackedItemSignature(persistedItem) !== getTrackedItemSignature(droppedItem)) {
+          continue;
+        }
 
         trySetContainerItem(container, slotInfo.inventorySlot, undefined);
+        break;
       }
     },
     {
@@ -305,6 +351,8 @@ export function startPlushInteractionSystem(): void {
   );
 
   // Player interaction
+  // TODO: find a way to trigger player "punch" animation manually and make the plush sit via scripting/functions, not vanilla
+  // Why? Currently it makes the plush sit up and down every time you unequip an item, which looks silly
   world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     const { player, target } = event;
     if (!player || !target) return;
