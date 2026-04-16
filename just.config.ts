@@ -14,6 +14,7 @@ import {
   watchTask,
   zipTask,
 } from "@minecraft/core-build-tasks";
+import { buildSync } from "esbuild";
 import fs from "fs";
 import path from "path";
 
@@ -23,8 +24,14 @@ const projectName = getOrThrowFromProcess("PROJECT_NAME");
 const behaviorPackSource = `./behavior_packs/${projectName}`;
 const mainResourcePackSource = `./resource_packs/${projectName}`;
 const scriptsSource = "./dist/scripts";
+const optimizedBuildRoot = "./dist/optimized";
+const optimizedBehaviorPackSource = `${optimizedBuildRoot}/behavior_packs/${projectName}`;
+const optimizedScriptsSource = `${optimizedBuildRoot}/scripts`;
+const optimizedScriptsEntry = `${optimizedScriptsSource}/main.js`;
 const stagedResourcePackRoot = "./dist/staged_resource_packs";
 const stagedMainResourcePack = `${stagedResourcePackRoot}/${projectName}`;
+const optimizedStagedResourcePackRoot = `${optimizedBuildRoot}/staged_resource_packs`;
+const optimizedStagedMainResourcePack = `${optimizedStagedResourcePackRoot}/${projectName}`;
 const packagesRoot = "./dist/packages";
 const developmentBehaviorPacksPath = "development_behavior_packs";
 const developmentResourcePacksPath = "development_resource_packs";
@@ -118,6 +125,27 @@ function copyInjectedFile(sourcePath: string, destinationRoot: string, targetPat
   fs.copyFileSync(sourcePath, destinationPath);
 }
 
+function collectFiles(rootPath: string, predicate: (filePath: string) => boolean): string[] {
+  if (!fs.existsSync(rootPath)) {
+    return [];
+  }
+
+  const collectedFiles: string[] = [];
+  for (const entry of fs.readdirSync(rootPath, { withFileTypes: true })) {
+    const entryPath = path.join(rootPath, entry.name);
+    if (entry.isDirectory()) {
+      collectedFiles.push(...collectFiles(entryPath, predicate));
+      continue;
+    }
+
+    if (predicate(entryPath)) {
+      collectedFiles.push(entryPath);
+    }
+  }
+
+  return collectedFiles;
+}
+
 function readJsonFile(filePath: string): any {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
@@ -163,6 +191,33 @@ function stageMainResourcePack(): void {
   }
 }
 
+function bundleOptimizedScripts(): void {
+  fs.mkdirSync(projectPath(optimizedScriptsSource), { recursive: true });
+  buildSync({
+    entryPoints: [projectPath("./scripts/main.ts")],
+    bundle: true,
+    format: "esm",
+    minify: true,
+    sourcemap: false,
+    legalComments: "none",
+    external: bundleTaskOptions.external,
+    outfile: projectPath(optimizedScriptsEntry),
+  });
+}
+
+function minifyJsonFiles(rootPath: string): void {
+  for (const filePath of collectFiles(rootPath, (candidatePath) => candidatePath.endsWith(".json"))) {
+    fs.writeFileSync(filePath, JSON.stringify(readJsonFile(filePath)));
+  }
+}
+
+function prepareOptimizedMcaddonInputs(): void {
+  copyDirectoryContents(projectPath(behaviorPackSource), projectPath(optimizedBehaviorPackSource));
+  copyDirectoryContents(projectPath(stagedMainResourcePack), projectPath(optimizedStagedMainResourcePack));
+  minifyJsonFiles(projectPath(optimizedBehaviorPackSource));
+  minifyJsonFiles(projectPath(optimizedStagedMainResourcePack));
+}
+
 function getDeploymentPath(): string {
   const product = getOrThrowFromProcess("MINECRAFT_PRODUCT") as keyof ReturnType<typeof getGameDeploymentRootPaths>;
   const deploymentPath = getGameDeploymentRootPaths()[product];
@@ -204,6 +259,8 @@ task("clean-obsolete-standalone-resource-packs", cleanObsoleteStandaloneResource
 task("clean-collateral", parallel("clean-standard-collateral", "clean-obsolete-standalone-resource-packs"));
 task("clean", parallel("clean-local", "clean-collateral"));
 task("stageMainResourcePack", stageMainResourcePack);
+task("bundleOptimizedScripts", bundleOptimizedScripts);
+task("prepareOptimizedMcaddonInputs", prepareOptimizedMcaddonInputs);
 task("copyArtifacts", series("stageMainResourcePack", copyArtifacts));
 task("package", series("clean-collateral", "copyArtifacts"));
 task(
@@ -222,6 +279,14 @@ task(
 );
 task("packMainRP", zipTask(mainResourcePackMcpack, [{ contents: [stagedMainResourcePack] }]));
 task(
+  "packOptimizedBP",
+  zipTask(behaviorPackMcpack, [
+    { contents: [optimizedBehaviorPackSource] },
+    { contents: [optimizedScriptsSource], targetPath: "scripts" },
+  ])
+);
+task("packOptimizedMainRP", zipTask(mainResourcePackMcpack, [{ contents: [optimizedStagedMainResourcePack] }]));
+task(
   "packMcaddon",
   zipTask(`${packagesRoot}/${projectName}.mcaddon`, [
     {
@@ -229,5 +294,8 @@ task(
     },
   ])
 );
-task("createMcaddonFile", series("stageMainResourcePack", parallel("packBP", "packMainRP"), "packMcaddon"));
-task("mcaddon", series("clean-local", "build", "createMcaddonFile"));
+task(
+  "createMcaddonFile",
+  series("stageMainResourcePack", "bundleOptimizedScripts", "prepareOptimizedMcaddonInputs", parallel("packOptimizedBP", "packOptimizedMainRP"), "packMcaddon")
+);
+task("mcaddon", series("clean-local", "typescript", "createMcaddonFile"));
