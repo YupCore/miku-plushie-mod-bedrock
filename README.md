@@ -91,7 +91,7 @@ To remove gear, **sneak and use secondary action** on the plush. Items are dropp
 
 ### Hats
 
-Every plush doubles as headwear.
+Every plush doubles as headwear so you can have a smol Miku or Teto with you at all times!
 
 <p align="center">
   <img src="assets/gameplay/teto%20hat%20w%20miku.png" alt="Teto plush hat with Miku" width="520">
@@ -99,7 +99,7 @@ Every plush doubles as headwear.
 
 ### Neru's Phone
 
-Use Neru's Phone to trigger her Triple Baka intro, complete with the clicking sound and phone animation.
+Use Neru's Phone to trigger her iconic Triple Baka intro, complete with the clicking sound and phone animation.
 
 <p align="center">
   <img src="assets/gameplay/neru_phone.gif" alt="Neru phone animation" width="520">
