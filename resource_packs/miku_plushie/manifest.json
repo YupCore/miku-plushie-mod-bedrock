@@ -4,7 +4,7 @@
     "name": "Miku Plushie Resources",
     "description": "Adds Hatsune Miku and friends as adorable plushies! Tameable, equippable, and full of personality.",
     "uuid": "de9e4e8b-4c11-43af-91e6-630e7cd17146",
-    "version": [2, 0, 1],
+    "version": [2, 0, 2],
     "min_engine_version": [1, 26, 10]
   },
   "modules": [
@@ -18,7 +18,7 @@
   "dependencies": [
     {
       "uuid": "4989feb1-77e6-488d-9c08-b9938517ea9d",
-      "version": [2, 0, 1]
+      "version": [2, 0, 2]
     }
   ],
   "capabilities": ["pbr"]
