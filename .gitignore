@@ -3,7 +3,6 @@ package-lock.json
 .env
 lib/
 dist/
-sample_*/
 .claude/
 .kilo/
 .vscode/

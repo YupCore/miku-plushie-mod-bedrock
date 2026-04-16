@@ -12,11 +12,11 @@ Craft the plushies, wear them as hats, bring them to life as tiny companions, gr
 </p>
 
 <p align="center">
-  <a href="https://github.com/YupCore/miku-plushie-mod-bedrock/releases">
+  <a href="https://github.com/YupCore/miku-plushie-mod-bedrock/releases/latest">
     <img alt="github" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/available/github_vector.svg">
   </a>
   &nbsp;
-  <a href="https://www.curseforge.com/minecraft-bedrock/YOUR_PROJECT">
+  <a href="https://www.curseforge.com/minecraft-bedrock/">
     <img alt="curseforge" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/available/curseforge_vector.svg">
   </a>
 </p>
@@ -64,7 +64,7 @@ Craft the plushies, wear them as hats, bring them to life as tiny companions, gr
 
 ### Dancing
 
-Plushies dance near playing jukeboxes. Miku, Teto, Neru, and others have multiple dance animations and will cycle between them while music plays.
+Plushies dance near playing jukeboxes. Miku, Teto, Neru, and others have multiple dance animations and will cycle between them while music plays! Also, custom music discs play/stop are supported via script events, I'm planning to release an addon soon that takes advantage of this fact, it's still a WIP...
 
 <p align="center">
   <img src="assets/gameplay/dancing_teto_miku.gif" alt="Miku and Teto dancing" width="720">
