@@ -252,7 +252,7 @@ npm run local-deploy
 - ### Q: Does it use any Preview/Beta APIs?
   - A: No! But this addon does require the latest 2.6.0 stable scripting API, and thus, requires latest stable Bedrock version as of April 2026(v26.13).
 - ### Q: Can I add my own plushies/modify the addon?
-  - A: ABSOLUTELY! I'm gonna be very grateful in fact if someone does something like that. Just make sure to publish it as a fork and/or with GPL license as this one. Request your plushies via Github Issues, and please also duplicate it to the <a href="https://github.com/4nyNoob/miku-plushie-mod/issues">original java mod</a> too, thanks!
+  - A: ABSOLUTELY! I'm gonna be very grateful in fact if someone does something like that. Just make sure to publish it as a fork and/or with GPL license as this one if you're doing a full fork. As for plushies, request plushies to be added via Github Issues, and please also duplicate it to the <a href="https://github.com/4nyNoob/miku-plushie-mod/issues">original java mod</a> too, thanks!
 
 </details>
 
