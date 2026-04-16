@@ -45,18 +45,19 @@ Craft the plushies, wear them as hats, bring them to life as tiny companions, gr
 - **90+ plush variants** — Miku, Teto, Neru, Rin, Len, Luka, Meiko, Gumi, Kaito, Aiko, Konoha, seasonal variants, crossover variants, and Brazilian Miku variants.
 - Every plush can be placed as a block and worn as a hat.
 - Plush blocks make character sounds when placed, broken, or used as weapons.
-- Use a **Vocaloid Heart** on a placed plush block to summon a living, tamed companion.
-- Tamed plushies follow, sit, and fight with their owner.
-- Plushies can equip swords, spears, and all vanilla armor tiers — leather through netherite.
-- Sneak + secondary action on a plush to unequip items one at a time.
-- Plushies heal with leeks; injured plushies can also eat nearby mature leek crops on their own.
+- Use a **Vocaloid Heart** on a placed plush block to summon an already tamed plushie!
+- Tamed plushies follow, sit, and fight together with their owner.
+- Plushies can equip swords, spears, and all vanilla armor sets — from leather to netherite.
+- Use sneak + secondary action on a plush to unequip items one at a time.
+- Plushies can be healed with leeks; injured plushies can also eat nearby mature leek crops on their own and heal.
 - Leeks generate naturally in taiga biomes, can be farmed, and harvested for leeks and seeds.
-- Most Teto variants craft into fully functional **pickaxes** — with durability, enchants, and a break sound.
-- Reworked dance animations with smoother transitions; some plushies have expanded dance pools and cycle randomly.
+- _Most_ Teto variants craft into fully functional **pickaxes** — with durability, enchants, and a break sound.
+- Reworked dance animations with smoother transitions! some plushies have expanded dance pools and now slowly cycle randomly through all avaliable dances.
 - Jukebox music makes nearby plushies dance. Custom music discs supported via script events.
-- Neru's Phone plays her Triple Baka intro with a dedicated phone animation.
+- Neru's Phone plays her Triple Baka intro with the iconic phone animation.
 - Resource subpacks for English dub sounds and legacy textures.
-- Translations for English, Brazilian Portuguese, and Simplified Chinese.
+- Translations for English, Brazilian Portuguese, and Simplified Chinese ported & extended from original mod.
+- Creative inventory groups for plushies and items.
 
 ---
 
