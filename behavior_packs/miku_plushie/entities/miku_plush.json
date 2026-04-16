@@ -556,6 +556,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "operator": "not",
@@ -582,6 +587,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -621,6 +631,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -652,6 +667,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -691,6 +711,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -722,6 +747,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -761,6 +791,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -796,6 +831,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -827,6 +867,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -871,6 +916,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -907,6 +957,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -951,6 +1006,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -987,6 +1047,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -1031,6 +1096,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1071,6 +1141,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1107,6 +1182,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -1156,6 +1236,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1197,6 +1282,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -1246,6 +1336,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1287,6 +1382,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -1336,6 +1436,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1381,6 +1486,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1422,6 +1532,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -1476,6 +1591,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1522,6 +1642,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -1576,6 +1701,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1622,6 +1752,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -1676,6 +1811,11 @@
                     "value": true
                   },
                   {
+                    "test": "is_owner",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
                     "test": "all_slots_empty",
                     "subject": "self",
                     "value": "main_hand"
@@ -1722,6 +1862,11 @@
                   },
                   {
                     "test": "is_sneak_held",
+                    "subject": "other",
+                    "value": true
+                  },
+                  {
+                    "test": "is_owner",
                     "subject": "other",
                     "value": true
                   },
@@ -1820,3 +1965,4 @@
     }
   }
 }
+

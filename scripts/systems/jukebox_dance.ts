@@ -2,8 +2,8 @@ import { world, system, BlockRecordPlayerComponent } from "@minecraft/server";
 import { getDanceCountForEntity } from "../utils/plush_registry";
 
 const DANCE_CHECK_INTERVAL = 20;
-const DANCE_SWITCH_MIN_TICKS = 10 * 20;
-const DANCE_SWITCH_MAX_TICKS = 15 * 20;
+const DANCE_SWITCH_MIN_TICKS = 12 * 20;
+const DANCE_SWITCH_MAX_TICKS = 18 * 20;
 
 // dimensionId → Set of "x,y,z" position strings for tracked jukeboxes
 const jukeboxPositions = new Map<string, Set<string>>([
@@ -134,7 +134,7 @@ export function startJukeboxDanceSystem(): void {
         if (!isPlaying && !isCustomPlaying) continue;
 
         // Spatial query — engine does the radius math, far cheaper than manual block scan
-        const nearby = dim.getEntities({ families: ["plush"], location: pos, maxDistance: 8 });
+        const nearby = dim.getEntities({ families: ["plush"], location: pos, maxDistance: 16 });
         for (const entity of nearby) {
           const wasDancing = entity.getProperty("miku:is_dancing") ?? false;
           const maxDances = getDanceCountForEntity(entity.typeId);
