@@ -1,6 +1,6 @@
 # Miku Plushie // Minecraft Bedrock
 
-<small> An unofficial Minecraft Bedrock port of the Miku Plushies Java mod by the [4nyNoob](https://github.com/4nyNoob) and [SuoYukii](https://github.com/suoyukii) </small>
+<sub> An unofficial Minecraft Bedrock port of the Miku Plushies Java mod by the [4nyNoob](https://github.com/4nyNoob) and [SuoYukii](https://github.com/suoyukii) </sub>
 
 Craft the plushies, wear them as hats, bring them to life as tiny companions, grow leeks for them, and watch them dance!
 
@@ -109,7 +109,7 @@ Use Neru's Phone to trigger her Triple Baka intro, complete with the clicking so
 
 ## Leeks
 
-Wild leeks generate in **taiga** and **mega taiga** biomes. Break wild crops to collect leeks and seeds, then plant seeds on farmland. PS. drop rates are generous ^_^
+Wild leeks generate in **taiga** and **mega taiga** biomes. Break wild crops to collect leeks and seeds, then plant seeds on farmland. PS. drop rates are generous ^\_^
 
 Leek crop properties:
 
