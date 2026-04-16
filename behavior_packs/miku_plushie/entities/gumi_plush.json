@@ -564,7 +564,8 @@
             "drop_item_slot": "slot.weapon.mainhand",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "random.pop"
+            "play_sounds": "random.pop",
+            "swing": true
           },
           {
             "on_interact": {
@@ -604,7 +605,8 @@
             "drop_item_slot": "slot.armor.head",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_netherite"
+            "play_sounds": "armor.equip_netherite",
+            "swing": true
           },
           {
             "on_interact": {
@@ -644,7 +646,8 @@
             "drop_item_slot": "slot.armor.head",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_diamond"
+            "play_sounds": "armor.equip_diamond",
+            "swing": true
           },
           {
             "on_interact": {
@@ -684,7 +687,8 @@
             "drop_item_slot": "slot.armor.head",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_iron"
+            "play_sounds": "armor.equip_iron",
+            "swing": true
           },
           {
             "on_interact": {
@@ -724,7 +728,8 @@
             "drop_item_slot": "slot.armor.head",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_chain"
+            "play_sounds": "armor.equip_chain",
+            "swing": true
           },
           {
             "on_interact": {
@@ -764,7 +769,8 @@
             "drop_item_slot": "slot.armor.head",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_copper"
+            "play_sounds": "armor.equip_copper",
+            "swing": true
           },
           {
             "on_interact": {
@@ -804,7 +810,8 @@
             "drop_item_slot": "slot.armor.head",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_gold"
+            "play_sounds": "armor.equip_gold",
+            "swing": true
           },
           {
             "on_interact": {
@@ -844,7 +851,8 @@
             "drop_item_slot": "slot.armor.head",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_leather"
+            "play_sounds": "armor.equip_leather",
+            "swing": true
           },
           {
             "on_interact": {
@@ -889,7 +897,8 @@
             "drop_item_slot": "slot.armor.chest",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_netherite"
+            "play_sounds": "armor.equip_netherite",
+            "swing": true
           },
           {
             "on_interact": {
@@ -934,7 +943,8 @@
             "drop_item_slot": "slot.armor.chest",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_diamond"
+            "play_sounds": "armor.equip_diamond",
+            "swing": true
           },
           {
             "on_interact": {
@@ -979,7 +989,8 @@
             "drop_item_slot": "slot.armor.chest",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_iron"
+            "play_sounds": "armor.equip_iron",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1024,7 +1035,8 @@
             "drop_item_slot": "slot.armor.chest",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_chain"
+            "play_sounds": "armor.equip_chain",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1069,7 +1081,8 @@
             "drop_item_slot": "slot.armor.chest",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_copper"
+            "play_sounds": "armor.equip_copper",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1114,7 +1127,8 @@
             "drop_item_slot": "slot.armor.chest",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_gold"
+            "play_sounds": "armor.equip_gold",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1159,7 +1173,8 @@
             "drop_item_slot": "slot.armor.chest",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_leather"
+            "play_sounds": "armor.equip_leather",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1209,7 +1224,8 @@
             "drop_item_slot": "slot.armor.legs",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_netherite"
+            "play_sounds": "armor.equip_netherite",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1259,7 +1275,8 @@
             "drop_item_slot": "slot.armor.legs",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_diamond"
+            "play_sounds": "armor.equip_diamond",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1309,7 +1326,8 @@
             "drop_item_slot": "slot.armor.legs",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_iron"
+            "play_sounds": "armor.equip_iron",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1359,7 +1377,8 @@
             "drop_item_slot": "slot.armor.legs",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_chain"
+            "play_sounds": "armor.equip_chain",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1409,7 +1428,8 @@
             "drop_item_slot": "slot.armor.legs",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_copper"
+            "play_sounds": "armor.equip_copper",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1459,7 +1479,8 @@
             "drop_item_slot": "slot.armor.legs",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_gold"
+            "play_sounds": "armor.equip_gold",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1509,7 +1530,8 @@
             "drop_item_slot": "slot.armor.legs",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_leather"
+            "play_sounds": "armor.equip_leather",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1564,7 +1586,8 @@
             "drop_item_slot": "slot.armor.feet",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_netherite"
+            "play_sounds": "armor.equip_netherite",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1619,7 +1642,8 @@
             "drop_item_slot": "slot.armor.feet",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_diamond"
+            "play_sounds": "armor.equip_diamond",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1674,7 +1698,8 @@
             "drop_item_slot": "slot.armor.feet",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_iron"
+            "play_sounds": "armor.equip_iron",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1729,7 +1754,8 @@
             "drop_item_slot": "slot.armor.feet",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_chain"
+            "play_sounds": "armor.equip_chain",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1784,7 +1810,8 @@
             "drop_item_slot": "slot.armor.feet",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_copper"
+            "play_sounds": "armor.equip_copper",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1839,7 +1866,8 @@
             "drop_item_slot": "slot.armor.feet",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_gold"
+            "play_sounds": "armor.equip_gold",
+            "swing": true
           },
           {
             "on_interact": {
@@ -1894,7 +1922,8 @@
             "drop_item_slot": "slot.armor.feet",
             "drop_item_y_offset": 1,
             "use_item": false,
-            "play_sounds": "armor.equip_leather"
+            "play_sounds": "armor.equip_leather",
+            "swing": true
           }
         ]
       }
@@ -1957,4 +1986,3 @@
     }
   }
 }
-
