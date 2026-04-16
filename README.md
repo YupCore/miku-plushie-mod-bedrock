@@ -1,17 +1,25 @@
-# Miku Plushie // Minecraft Bedrock
+[//]: # "<!--suppress HtmlDeprecatedAttribute -->"
 
-A Bedrock port of the Miku Plushies Java mod by [4nyNoob](https://github.com/4nyNoob) and [SuoYukii](https://github.com/suoyukii).
+<h1 style="text-align:center">
+# Miku Plushie // Minecraft Bedrock
+</h1>
+
+<small> An unofficial Minecraft Bedrock port of the Miku Plushies Java mod by the [4nyNoob](https://github.com/4nyNoob) and [SuoYukii](https://github.com/suoyukii) </small>
 
 Craft the plushies, wear them as hats, bring them to life as tiny companions, grow leeks for them, and watch them dance!
 
-<p align="center">
+[//]: # (info Badges)
+
+<p style="text-align:center">
   <img alt="License: GPL 3.0" src="https://img.shields.io/badge/License-GPL_3.0-FF6699">
   <img alt="Minecraft Bedrock Edition" src="https://img.shields.io/badge/Minecraft-Bedrock_Edition-62B47A">
   <img alt="Script API" src="https://img.shields.io/badge/Requires-Script_API-00B4AB">
   <img alt="Node.js" src="https://img.shields.io/badge/Build-Node.js-339933?logo=nodedotjs&logoColor=white">
 </p>
 
-<p align="center">
+[//]: # (Download Links)
+
+<p style="text-align:center">
   <a href="https://github.com/YupCore/miku-plushie-mod-bedrock/releases/latest">
     <img alt="github" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/available/github_vector.svg">
   </a>
@@ -109,7 +117,7 @@ Use Neru's Phone to trigger her Triple Baka intro, complete with the clicking so
 
 ## Leeks
 
-Wild leeks generate in **taiga** and **mega taiga** biomes. Break wild crops to collect leeks and seeds, then plant seeds on farmland. Drop rates are generous.
+Wild leeks generate in **taiga** and **mega taiga** biomes. Break wild crops to collect leeks and seeds, then plant seeds on farmland. PS. drop rates are generous ^_^
 
 Leek crop properties:
 
@@ -159,13 +167,13 @@ Other base plushies follow the same 3×2 pattern with their character's colors:
 | Aiko   | Blue, White, Green      |
 | Konoha | White, Light Gray, Lime |
 
-Many **special variants** are crafted shapelessly from an existing plush plus a themed item, dye, or material. For example, Miku V4 is crafted from a Miku Plush + Iron Ingot.
+Many **special variants** are crafted shapelessly from an existing plush plus a themed item, dye, or material. For example, Miku V4 is crafted from a Miku Plush + Iron Ingot in any slots of the crafting menu.
 
 ---
 
 ### Vocaloid Heart
 
-The Vocaloid Heart is used to bring any placed plush block to life. Craft it first, then right-click a placed plush block with it.
+The Vocaloid Heart is used to bring any placed plush block to life. Craft it first, then right-click (or second interact on mobile) a placed plush block with it and whatch your plushies come to life <small>in an epic magical girl transformation</small>!
 
 **Step 1 — Craft a Vocaloid Heart:**
 
@@ -188,7 +196,7 @@ The Vocaloid Heart is used to bring any placed plush block to life. Craft it fir
 
 ### Teto Pickaxe
 
-Most Teto variants can be turned into a working diamond-tier pickaxe. It supports durability, enchantments, diamond repairs, and plays a sound on break.
+Most Teto variants can be turned into a working diamond-tier pickaxe. It supports durability, enchantments, diamond repairs, and even plays a sound on break.
 
 > |                    |                       |                    |
 > | :----------------: | :-------------------: | :----------------: |
@@ -215,7 +223,7 @@ The resource pack ships with four optional subpacks, selectable in-game:
 
 ## Building
 
-**Requirements:** Node.js, npm, Minecraft Bedrock Edition with Script API support.
+**Requirements:** Node.js, npm and Minecraft Bedrock Edition v26.10+.
 
 ```powershell
 # Install dependencies
@@ -245,14 +253,14 @@ npm run local-deploy
 <details>
 <summary><b>FAQ</b></summary>
 
-- ### Can I use this in a server or a modpack?
-  - Yes, but keep the license and credits intact.
-- ### Is the custom music disc add-on required?
-  - No. Vanilla jukebox records already make plushies dance. Compatible custom disc add-ons can notify this pack through the <code>miku_plushie:jukebox_play</code> and <code>miku_plushie:jukebox_stop</code> script events.
-- ### Does it use any Preview/Beta APIs?
-  - No! But this addon does require the latest 2.6.0 stable scripting API, and thus, requires latest stable Bedrock version as of April 2026(v26.13).
-- ### Can I add my own plushies/modify the addon?
-  - ABSOLUTELY! I'm gonna be very grateful in fact if someone does something like that. Just make sure to publish it as a fork and/or with GPL license as this one.
+- ### Q: Can I use this in a server or a modpack?
+  - A: Yes, but keep the license and credits intact.
+- ### Q: Is the custom music disc add-on required?
+  - A: No. Vanilla jukebox records already make plushies dance. Compatible custom disc add-ons can notify this pack through the <code>miku_plushie:jukebox_play</code> and <code>miku_plushie:jukebox_stop</code> script events.
+- ### Q: Does it use any Preview/Beta APIs?
+  - A: No! But this addon does require the latest 2.6.0 stable scripting API, and thus, requires latest stable Bedrock version as of April 2026(v26.13).
+- ### Q: Can I add my own plushies/modify the addon?
+  - A: ABSOLUTELY! I'm gonna be very grateful in fact if someone does something like that. Just make sure to publish it as a fork and/or with GPL license as this one.
 
 </details>
 
@@ -263,3 +271,5 @@ npm run local-deploy
 Original Java mod by [4nyNoob](https://github.com/4nyNoob/miku-plushie-mod). This repository is the Bedrock Edition port.
 
 If you enjoy the original project, consider supporting 4nyNoob on Ko-fi: https://ko-fi.com/4nynoob
+
+Licensed under GPLv3 in accordance with the original project license.
