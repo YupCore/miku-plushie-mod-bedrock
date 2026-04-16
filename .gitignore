@@ -6,5 +6,3 @@ dist/
 .claude/
 .kilo/
 .vscode/
-dist/
-lib/

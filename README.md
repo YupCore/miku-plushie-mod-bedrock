@@ -1,25 +1,17 @@
-[//]: # "<!--suppress HtmlDeprecatedAttribute -->"
-
-<h1 style="text-align:center">
 # Miku Plushie // Minecraft Bedrock
-</h1>
 
 <small> An unofficial Minecraft Bedrock port of the Miku Plushies Java mod by the [4nyNoob](https://github.com/4nyNoob) and [SuoYukii](https://github.com/suoyukii) </small>
 
 Craft the plushies, wear them as hats, bring them to life as tiny companions, grow leeks for them, and watch them dance!
 
-[//]: # (info Badges)
-
-<p style="text-align:center">
+<p align="center">
   <img alt="License: GPL 3.0" src="https://img.shields.io/badge/License-GPL_3.0-FF6699">
   <img alt="Minecraft Bedrock Edition" src="https://img.shields.io/badge/Minecraft-Bedrock_Edition-62B47A">
   <img alt="Script API" src="https://img.shields.io/badge/Requires-Script_API-00B4AB">
   <img alt="Node.js" src="https://img.shields.io/badge/Build-Node.js-339933?logo=nodedotjs&logoColor=white">
 </p>
 
-[//]: # (Download Links)
-
-<p style="text-align:center">
+<p align="center">
   <a href="https://github.com/YupCore/miku-plushie-mod-bedrock/releases/latest">
     <img alt="github" height="40" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/available/github_vector.svg">
   </a>
