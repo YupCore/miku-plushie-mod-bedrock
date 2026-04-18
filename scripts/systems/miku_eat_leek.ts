@@ -1,5 +1,6 @@
 import { Block, Dimension, Entity, system, Vector3, world } from "@minecraft/server";
 import { DIMENSION_IDS, isEdibleLeekBlockType } from "../utils/plush_registry";
+import { getCharacterFromEntity, playPlushSound } from "../utils/sounds";
 
 const MAX_LEEK_AGE = 7;
 const HEAL_AMOUNT = 4;
@@ -84,6 +85,7 @@ function consumeLeekBlock(block: Block): boolean {
 
 function processEatingState(entity: Entity): void {
   const entityId = entity.id;
+  const character = getCharacterFromEntity(entity.typeId);
   const health = entity.getComponent("minecraft:health");
   const state = eatingPlushes.get(entityId);
   if (!health) {
@@ -134,12 +136,7 @@ function processEatingState(entity: Entity): void {
       z: leekBlock.z + 0.5,
     });
 
-    if (entity.typeId === "miku:miku_plush") {
-      entity.dimension.playSound("miku.plushie.miku_eat", entity.location, {
-        volume: 1,
-        pitch: 1,
-      });
-    }
+    playPlushSound(entity, character, "eat", 1, 1);
   }
 
   if (!activeState.eating || activeState.timer <= 0) {
@@ -155,12 +152,7 @@ function processEatingState(entity: Entity): void {
       pitch: 1,
     });
 
-    if (entity.typeId === "miku:miku_plush") {
-      entity.dimension.playSound("miku.plushie.miku_eat", entity.location, {
-        volume: 1,
-        pitch: 1,
-      });
-    }
+    playPlushSound(entity, character, "eat", 1, 1);
   }
 
   if (activeState.timer % 5 === 0 && activeState.timer > 10) {

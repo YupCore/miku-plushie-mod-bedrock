@@ -21,6 +21,7 @@ export const SOUND_CHARACTERS: Record<string, SoundCharacter> = {
     oie: "miku.plushie.teto_oie",
     dor: "miku.plushie.teto_dor",
     bye: "miku.plushie.teto_bye",
+    eat: "miku.plushie.teto_eat",
   },
   neru: {
     oie: "miku.plushie.neru_oie",

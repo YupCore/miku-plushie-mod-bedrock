@@ -50,12 +50,7 @@
     },
     "miku.plushie.miku_eat": {
       "category": "neutral",
-      "sounds": [
-        "sounds/miku/miku-eat1",
-        "sounds/miku/miku-eat2",
-        "sounds/miku/miku-eat3",
-        "sounds/miku/miku-eat4"
-      ]
+      "sounds": ["sounds/miku/miku-eat1", "sounds/miku/miku-eat2", "sounds/miku/miku-eat3", "sounds/miku/miku-eat4"]
     },
     "miku.plushie.miku_canudinho": {
       "category": "neutral",
@@ -113,6 +108,10 @@
         "sounds/teto/teto-equip4"
       ]
     },
+    "miku.plushie.teto_eat": {
+      "category": "neutral",
+      "sounds": ["sounds/teto/teto-eat1", "sounds/teto/teto-eat2", "sounds/teto/teto-eat3"]
+    },
     "miku.plushie.neru_oie": {
       "category": "neutral",
       "sounds": [
@@ -161,9 +160,7 @@
     },
     "miku.plushie.neru_phone": {
       "category": "neutral",
-      "sounds": [
-        "sounds/neru/neru_phone"
-      ]
+      "sounds": ["sounds/neru/neru_phone"]
     },
     "miku.plushie.rin_oie": {
       "category": "neutral",
@@ -204,12 +201,7 @@
     },
     "miku.plushie.rin_equip": {
       "category": "neutral",
-      "sounds": [
-        "sounds/rin/rin-equip1",
-        "sounds/rin/rin-equip2",
-        "sounds/rin/rin-equip3",
-        "sounds/rin/rin-equip4"
-      ]
+      "sounds": ["sounds/rin/rin-equip1", "sounds/rin/rin-equip2", "sounds/rin/rin-equip3", "sounds/rin/rin-equip4"]
     },
     "miku.plushie.len_oie": {
       "category": "neutral",
@@ -250,12 +242,7 @@
     },
     "miku.plushie.len_equip": {
       "category": "neutral",
-      "sounds": [
-        "sounds/len/len-equip1",
-        "sounds/len/len-equip2",
-        "sounds/len/len-equip3",
-        "sounds/len/len-equip4"
-      ]
+      "sounds": ["sounds/len/len-equip1", "sounds/len/len-equip2", "sounds/len/len-equip3", "sounds/len/len-equip4"]
     },
     "miku.plushie.gumi_oie": {
       "category": "neutral",
