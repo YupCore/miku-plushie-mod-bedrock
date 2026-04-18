@@ -115,7 +115,7 @@ Leek crop properties:
 
 | Property          | Details                                      |
 | ----------------- | -------------------------------------------- |
-| Growth stages     | 0 → 7 (8 stages)                             |
+| Growth stages     | 0 -> 7 (8 stages)                            |
 | Light requirement | Level 9 or higher                            |
 | Grows faster on   | Moisturized farmland                         |
 | Bone meal         | Supported                                    |
@@ -141,7 +141,7 @@ Most base plushies use colored wool in a **3×2** crafting table shape.
 > | <kbd>Cyan Wool</kbd> | <kbd>White Wool</kbd> | <kbd>Cyan Wool</kbd> |
 > | <kbd>Cyan Wool</kbd> | <kbd>Gray Wool</kbd>  | <kbd>Cyan Wool</kbd> |
 >
-> → **Miku Plush**
+> -> **Miku Plush**
 
 Other base plushies follow the same 3×2 pattern with their character's colors:
 
@@ -174,7 +174,7 @@ The Vocaloid Heart is used to bring any placed plush block to life. Craft it fir
 > |   <kbd>Leek</kbd>   |  <kbd>Note Block</kbd>  |
 > | <kbd>Baguette</kbd> | <kbd>Neru's Phone</kbd> |
 >
-> → **Vocaloid Heart**
+> -> **Vocaloid Heart**
 
 **Supporting recipes:**
 
@@ -194,7 +194,7 @@ Most Teto variants can be turned into a working diamond-tier pickaxe. It support
 > | :----------------: | :-------------------: | :----------------: |
 > | <kbd>Diamond</kbd> | <kbd>Teto Plush</kbd> | <kbd>Diamond</kbd> |
 >
-> → **Teto Pickaxe**
+> -> **Teto Pickaxe**
 
 ---
 

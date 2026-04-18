@@ -1,5 +1,6 @@
 import {
-  system,
+  Block,
+  BlockComponentRegistry,
   EquipmentSlot,
   GameMode,
   BlockCustomComponent,
@@ -22,7 +23,7 @@ function randomInt(min: number, max: number): number {
   return min + Math.floor(Math.random() * (max - min + 1));
 }
 
-function* getFarmlandIterator(crop: any, searchRange: number) {
+function* getFarmlandIterator(crop: Block, searchRange: number) {
   for (let x = -searchRange; x <= searchRange; x++) {
     for (let z = -searchRange; z <= searchRange; z++) {
       const block = crop.offset({ x, y: -1, z });
@@ -31,7 +32,7 @@ function* getFarmlandIterator(crop: any, searchRange: number) {
   }
 }
 
-function isCrowded(crop: any): boolean {
+function isCrowded(crop: Block): boolean {
   const north = crop.north();
   const south = crop.south();
   const west = crop.west();
@@ -50,7 +51,7 @@ function isCrowded(crop: any): boolean {
   );
 }
 
-function getGrowthSpeed(crop: any): number {
+function getGrowthSpeed(crop: Block): number {
   let speed = 1;
   for (const farmland of getFarmlandIterator(crop, FARMLAND_SEARCH_RANGE)) {
     let modifier = FARMLAND_SPEED_MODIFIER;
@@ -64,7 +65,7 @@ function getGrowthSpeed(crop: any): number {
   return speed;
 }
 
-function randomShouldCropGrow(crop: any): boolean {
+function randomShouldCropGrow(crop: Block): boolean {
   const speed = getGrowthSpeed(crop);
   const range = Math.floor(25 / speed);
   return randomInt(0, range) === 0;
@@ -104,8 +105,6 @@ const CropGrowthComponent: BlockCustomComponent = {
   },
 };
 
-export function registerCropGrowthComponent(): void {
-  system.beforeEvents.startup.subscribe(({ blockComponentRegistry }) => {
-    blockComponentRegistry.registerCustomComponent("miku:crop_growth", CropGrowthComponent);
-  });
+export function registerCropGrowthComponent(blockComponentRegistry: BlockComponentRegistry): void {
+  blockComponentRegistry.registerCustomComponent("miku:crop_growth", CropGrowthComponent);
 }

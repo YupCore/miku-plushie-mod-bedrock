@@ -1,11 +1,11 @@
 import { world, system, BlockRecordPlayerComponent } from "@minecraft/server";
-import { getDanceCountForEntity } from "../utils/plush_registry";
+import { DIMENSION_IDS, getDanceCountForEntity } from "../utils/plush_registry";
 
 const DANCE_CHECK_INTERVAL = 20;
 const DANCE_SWITCH_MIN_TICKS = 12 * 20;
 const DANCE_SWITCH_MAX_TICKS = 18 * 20;
 
-// dimensionId → Set of "x,y,z" position strings for tracked jukeboxes
+// dimensionId -> Set of "x,y,z" position strings for tracked jukeboxes
 const jukeboxPositions = new Map<string, Set<string>>([
   ["overworld", new Set()],
   ["nether", new Set()],
@@ -22,7 +22,13 @@ const customPlayingJukeboxes = new Map<string, Set<string>>([
   ["the_end", new Set()],
 ]);
 
-// Entity id → next system tick when that plush should pick a new dance.
+const dancingPlushesByDimension = new Map<string, Set<string>>([
+  ["overworld", new Set()],
+  ["nether", new Set()],
+  ["the_end", new Set()],
+]);
+
+// Entity id -> next system tick when that plush should pick a new dance.
 const nextDanceSwitchTicks = new Map<string, number>();
 
 // Dimension.id returns "minecraft:overworld" etc. — normalize to short form for map lookup
@@ -53,11 +59,7 @@ function randomDanceIndex(maxDances: number, previous?: number): number {
 }
 
 export function startJukeboxDanceSystem(): void {
-  console.log("[Miku Plushie] Starting jukebox dance detection system");
-
-  // Cross-addon: VocaloidMusicPack (or any addon) notifies us when a custom
-  // disc starts/stops. Completely decoupled — if neither addon is loaded, the
-  // scriptevent is never fired and this subscriber never runs (no-op both ways).
+  // Cross-addon: any addon can notify us when a custom disc starts/stops.
   system.afterEvents.scriptEventReceive.subscribe(
     (event) => {
       try {
@@ -89,6 +91,9 @@ export function startJukeboxDanceSystem(): void {
     if (event.brokenBlockPermutation.type.id !== "minecraft:jukebox") return;
     const set = jukeboxPositions.get(normDimId(event.dimension.id));
     if (set) set.delete(posKey(event.block.x, event.block.y, event.block.z));
+    customPlayingJukeboxes
+      .get(normDimId(event.dimension.id))
+      ?.delete(posKey(event.block.x, event.block.y, event.block.z));
   });
 
   // Lazily register existing jukeboxes from player interaction (back-compat with pre-existing worlds)
@@ -99,8 +104,23 @@ export function startJukeboxDanceSystem(): void {
   });
 
   system.runInterval(() => {
-    for (const [dimId, positions] of jukeboxPositions) {
-      if (positions.size === 0) continue;
+    for (const dimId of DIMENSION_IDS) {
+      const positions = jukeboxPositions.get(dimId);
+      if (!positions || positions.size === 0) {
+        const previousDancers = dancingPlushesByDimension.get(dimId);
+        if (previousDancers) {
+          for (const entityId of previousDancers) {
+            const entity = world.getEntity(entityId);
+            if (entity?.isValid && normDimId(entity.dimension.id) === dimId) {
+              const wasDancing = entity.getProperty("miku:is_dancing") ?? false;
+              if (wasDancing) entity.setProperty("miku:is_dancing", false);
+            }
+            nextDanceSwitchTicks.delete(entityId);
+          }
+          previousDancers.clear();
+        }
+        continue;
+      }
 
       let dim: ReturnType<typeof world.getDimension>;
       try {
@@ -109,7 +129,6 @@ export function startJukeboxDanceSystem(): void {
         continue;
       }
 
-      // Collect entities set dancing this tick to clear stale state afterward
       const dancingEntityIds = new Set<string>();
 
       for (const key of positions) {
@@ -153,17 +172,19 @@ export function startJukeboxDanceSystem(): void {
         }
       }
 
-      // Clear dancing state on plushes not near any playing jukebox
-      {
-        const allPlushes = dim.getEntities({ families: ["plush"] });
-        for (const entity of allPlushes) {
-          if (!dancingEntityIds.has(entity.id)) {
+      const previousDancers = dancingPlushesByDimension.get(dimId) ?? new Set<string>();
+      for (const entityId of previousDancers) {
+        if (!dancingEntityIds.has(entityId)) {
+          const entity = world.getEntity(entityId);
+          if (entity?.isValid && normDimId(entity.dimension.id) === dimId) {
             const wasDancing = entity.getProperty("miku:is_dancing") ?? false;
             if (wasDancing) entity.setProperty("miku:is_dancing", false);
-            nextDanceSwitchTicks.delete(entity.id);
           }
+          nextDanceSwitchTicks.delete(entityId);
         }
       }
+
+      dancingPlushesByDimension.set(dimId, dancingEntityIds);
     }
   }, DANCE_CHECK_INTERVAL);
 }

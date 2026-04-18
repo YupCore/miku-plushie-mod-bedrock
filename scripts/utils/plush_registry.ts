@@ -12,6 +12,10 @@ export const PLUSH_ENTITIES = [
   "miku:kaito_plush",
 ] as const;
 
+export const DIMENSION_IDS = ["overworld", "nether", "the_end"] as const;
+
+export const EDIBLE_LEEK_BLOCKS = ["miku:leek_crop", "miku:wild_leek_crop"] as const;
+
 export const MIKU_VARIANTS = [
   "miku_plush",
   "miku_plush_br",
@@ -135,7 +139,10 @@ const MODEL3_SET = new Set([
   "miku_plush_xmas_tree",
 ]);
 
-// Pre-built reverse map: cleanId (no "miku:" prefix) → variant index within its group
+const PLUSH_ENTITY_TYPE_SET = new Set<string>(PLUSH_ENTITIES);
+const EDIBLE_LEEK_BLOCK_SET = new Set<string>(EDIBLE_LEEK_BLOCKS);
+
+// Pre-built reverse map: cleanId (no "miku:" prefix) -> variant index within its group
 const VARIANT_INDEX_MAP = new Map<string, number>();
 (function buildVariantMap() {
   const groups = [MIKU_VARIANTS, TETO_VARIANTS, NERU_VARIANTS, MEIKO_VARIANTS, GUMI_VARIANTS, KAITO_VARIANTS];
@@ -192,6 +199,24 @@ export function getDanceCountForEntity(entityTypeId: string): number {
 
 export function isMikuEntity(entityTypeId: string): boolean {
   return entityTypeId === "miku:miku_plush";
+}
+
+export function isTrackedPlushEntityType(entityTypeId: string): boolean {
+  return PLUSH_ENTITY_TYPE_SET.has(entityTypeId);
+}
+
+export function isPlushBlockItem(itemId: string): boolean {
+  if (PLUSH_ENTITY_TYPE_SET.has(itemId)) return true;
+
+  for (const prefix of PLUSH_ENTITIES) {
+    if (itemId.startsWith(`${prefix}_`)) return true;
+  }
+
+  return false;
+}
+
+export function isEdibleLeekBlockType(typeId: string): boolean {
+  return EDIBLE_LEEK_BLOCK_SET.has(typeId);
 }
 
 export function isTetoPickaxeItem(itemId: string): boolean {

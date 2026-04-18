@@ -18,8 +18,6 @@ function enablePickupAfterLoad(entity: Entity): void {
 }
 
 export function startPlushInteractionSystem(): void {
-  console.log("[Miku Plushie] Starting plush interaction system");
-
   world.afterEvents.entityLoad.subscribe((event) => {
     enablePickupAfterLoad(event.entity);
   });

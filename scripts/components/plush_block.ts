@@ -1,5 +1,5 @@
 import {
-  system,
+  BlockComponentRegistry,
   EquipmentSlot,
   GameMode,
   BlockCustomComponent,
@@ -103,9 +103,6 @@ class PlushBlockComponent implements BlockCustomComponent {
   }
 }
 
-export function registerPlushBlockComponent(): void {
-  // V2 custom component registration via system.beforeEvents.startup
-  system.beforeEvents.startup.subscribe((initEvent) => {
-    initEvent.blockComponentRegistry.registerCustomComponent("miku:plush_block", new PlushBlockComponent());
-  });
+export function registerPlushBlockComponent(blockComponentRegistry: BlockComponentRegistry): void {
+  blockComponentRegistry.registerCustomComponent("miku:plush_block", new PlushBlockComponent());
 }

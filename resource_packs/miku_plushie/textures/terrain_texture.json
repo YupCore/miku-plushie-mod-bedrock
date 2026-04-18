@@ -142,9 +142,6 @@
     "miku:miku_plush_br_sp": {
       "textures": "textures/blocks/miku_plush_br_sp"
     },
-    "miku:miku_plush_clown": {
-      "textures": "textures/blocks/miku_plush_clown"
-    },
     "miku:miku_plush_deep_sea_girl": {
       "textures": "textures/blocks/miku_plush_deep_sea_girl"
     },
@@ -175,9 +172,6 @@
     "miku:miku_plush_hachune": {
       "textures": "textures/blocks/miku_plush_hachune"
     },
-    "miku:miku_plush_hachune_gun": {
-      "textures": "textures/blocks/miku_plush_hachune_gun"
-    },
     "miku:miku_plush_helloplanet": {
       "textures": "textures/blocks/miku_plush_helloplanet"
     },
@@ -192,9 +186,6 @@
     },
     "miku:miku_plush_jason": {
       "textures": "textures/blocks/miku_plush_jason"
-    },
-    "miku:miku_plush_jason_michael_myers": {
-      "textures": "textures/blocks/miku_plush_jason_michael_myers"
     },
     "miku:miku_plush_link": {
       "textures": "textures/blocks/miku_plush_link"
@@ -211,9 +202,6 @@
     "miku:miku_plush_mochimochi": {
       "textures": "textures/blocks/miku_plush_mochimochi"
     },
-    "miku:miku_plush_mochi_mochi": {
-      "textures": "textures/blocks/miku_plush_mochi_mochi"
-    },
     "miku:miku_plush_monitoring": {
       "textures": "textures/blocks/miku_plush_monitoring"
     },
@@ -226,14 +214,8 @@
     "miku:miku_plush_patata": {
       "textures": "textures/blocks/miku_plush_patata"
     },
-    "miku:miku_plush_patata2": {
-      "textures": "textures/blocks/miku_plush_patata2"
-    },
     "miku:miku_plush_patati": {
       "textures": "textures/blocks/miku_plush_patati"
-    },
-    "miku:miku_plush_patati2": {
-      "textures": "textures/blocks/miku_plush_patati2"
     },
     "miku:miku_plush_personadancing": {
       "textures": "textures/blocks/miku_plush_personadancing"
@@ -300,12 +282,6 @@
     },
     "miku:miku_plush_zatsune": {
       "textures": "textures/blocks/miku_plush_zatsune"
-    },
-    "miku:miku_plush_zatsune2": {
-      "textures": "textures/blocks/miku_plush_zatsune2"
-    },
-    "miku:miku_sonic_crossworlds_plush": {
-      "textures": "textures/blocks/miku_sonic_crossworlds_plush"
     },
     "miku:rin_plush": {
       "textures": "textures/blocks/rin_plush"

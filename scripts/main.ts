@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+import { system, world } from "@minecraft/server";
 
 import { registerPlushBlockComponent } from "./components/plush_block";
 import { registerCropGrowthComponent } from "./components/crop_growth";
@@ -11,67 +11,69 @@ import { startMikuEatLeekSystem } from "./systems/miku_eat_leek";
 import { startNeruPhoneSoundSystem } from "./systems/neru_phone_sound";
 
 console.log("[Miku Plushie] Miku is now Joining Bedrock Edition!!!");
+type StartupRegistration = {
+  label: string;
+  register: (
+    event: Parameters<typeof system.beforeEvents.startup.subscribe>[0] extends (arg: infer T) => void ? T : never
+  ) => void;
+};
 
-try {
-  registerPlushBlockComponent();
-  console.log("[Miku Plushie] Registered plush block component");
-} catch (e) {
-  console.warn("[Miku Plushie] Plush block component registration skipped:", e);
-}
+type RuntimeSystem = {
+  label: string;
+  start: () => void;
+};
 
-try {
-  registerCropGrowthComponent();
-  console.log("[Miku Plushie] Registered crop growth component");
-} catch (e) {
-  console.error("[Miku Plushie] Failed to register crop growth component:", e);
-}
+const startupRegistrations: StartupRegistration[] = [
+  {
+    label: "plush block component",
+    register: ({ blockComponentRegistry }) => registerPlushBlockComponent(blockComponentRegistry),
+  },
+  {
+    label: "crop growth component",
+    register: ({ blockComponentRegistry }) => registerCropGrowthComponent(blockComponentRegistry),
+  },
+  {
+    label: "pickaxe durability component",
+    register: ({ itemComponentRegistry }) => registerPickaxeDurabilityComponent(itemComponentRegistry),
+  },
+];
 
-try {
-  registerPickaxeDurabilityComponent();
-  console.log("[Miku Plushie] Registered pickaxe durability component");
-} catch (e) {
-  console.error("[Miku Plushie] Failed to register pickaxe durability component:", e);
-}
+const runtimeSystems: RuntimeSystem[] = [
+  { label: "jukebox dance system", start: startJukeboxDanceSystem },
+  { label: "plush interaction system", start: startPlushInteractionSystem },
+  { label: "attack sound system", start: startAttackSoundSystem },
+  { label: "death sound system", start: startDeathSoundSystem },
+  { label: "Miku eat leek system", start: startMikuEatLeekSystem },
+  { label: "Neru phone sound system", start: startNeruPhoneSoundSystem },
+];
 
-try {
-  startJukeboxDanceSystem();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start jukebox dance system:", e);
-}
+system.beforeEvents.startup.subscribe((event) => {
+  let registeredCount = 0;
 
-try {
-  startPlushInteractionSystem();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start plush interaction system:", e);
-}
+  for (const registration of startupRegistrations) {
+    try {
+      registration.register(event);
+      registeredCount++;
+    } catch (error) {
+      console.error(`[Miku Plushie] Failed to register ${registration.label}:`, error);
+    }
+  }
 
-try {
-  startAttackSoundSystem();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start attack sound system:", e);
-}
+  console.log(`[Miku Plushie] Startup registration complete (${registeredCount}/${startupRegistrations.length})`);
+});
 
-try {
-  startDeathSoundSystem();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start death sound system:", e);
-}
-
-try {
-  startMikuEatLeekSystem();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start Miku eat leek system:", e);
-}
-
-try {
-  startNeruPhoneSoundSystem();
-} catch (e) {
-  console.error("[Miku Plushie] Failed to start Neru phone sound system:", e);
+let startedCount = 0;
+for (const runtimeSystem of runtimeSystems) {
+  try {
+    runtimeSystem.start();
+    startedCount++;
+  } catch (error) {
+    console.error(`[Miku Plushie] Failed to start ${runtimeSystem.label}:`, error);
+  }
 }
 
 world.afterEvents.worldLoad.subscribe(() => {
-  console.log("[Miku Plushie] World loaded!");
   console.log("[Miku Plushie] Miku: (^v^)/ Hi!!!");
 });
 
-console.log("[Miku Plushie] All systems initialized successfully!");
+console.log(`[Miku Plushie] Runtime systems ready (${startedCount}/${runtimeSystems.length})`);

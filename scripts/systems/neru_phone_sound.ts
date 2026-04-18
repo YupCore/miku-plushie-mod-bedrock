@@ -19,8 +19,6 @@ function tryPlayNeruPhoneSound(player: Player, itemTypeId?: string): void {
 }
 
 export function startNeruPhoneSoundSystem(): void {
-  console.log("[Miku Plushie] Starting Neru phone sound system");
-
   // Covers place/use-on interactions (RMB on blocks).
   world.afterEvents.itemStartUseOn.subscribe((event) => {
     tryPlayNeruPhoneSound(event.source, event.itemStack?.typeId);

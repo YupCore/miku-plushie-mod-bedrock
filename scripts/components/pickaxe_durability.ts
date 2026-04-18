@@ -2,10 +2,10 @@ import {
   EquipmentSlot,
   GameMode,
   ItemComponentTypes,
+  ItemComponentRegistry,
   ItemCustomComponent,
   ItemStack,
   Player,
-  system,
 } from "@minecraft/server";
 
 const PICKAXE_DURABILITY_COMPONENT_ID = "miku:pickaxe_durability";
@@ -56,8 +56,6 @@ const PickaxeDurabilityComponent: ItemCustomComponent = {
   },
 };
 
-export function registerPickaxeDurabilityComponent(): void {
-  system.beforeEvents.startup.subscribe(({ itemComponentRegistry }) => {
-    itemComponentRegistry.registerCustomComponent(PICKAXE_DURABILITY_COMPONENT_ID, PickaxeDurabilityComponent);
-  });
+export function registerPickaxeDurabilityComponent(itemComponentRegistry: ItemComponentRegistry): void {
+  itemComponentRegistry.registerCustomComponent(PICKAXE_DURABILITY_COMPONENT_ID, PickaxeDurabilityComponent);
 }
